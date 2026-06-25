@@ -1,0 +1,4 @@
+User-agent: *
+Allow:/
+Disallow: /x_system/
+Sitemap: http://동탄삼성365.com/sitemap.xml

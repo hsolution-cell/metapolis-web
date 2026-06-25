@@ -1,0 +1,233 @@
+/* quick menu */
+
+.quick {
+  display: block;
+  overflow: visible;
+  position: fixed;
+  right: 32px;
+  bottom: 32px;
+  z-index: 200;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.quick_list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+}
+
+.quick_item {
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+  pointer-events: auto;
+}
+
+.quick_item:hover,
+.quick_item:focus-within {
+  z-index: 2;
+}
+
+.quick_link {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* 펼침형 아이템 */
+.quick_item--expand .quick_link {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  width: 65px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: transparent;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+  transition:
+    width 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+    border-radius 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.quick_item--expand:hover .quick_link,
+.quick_item--expand:focus-within .quick_link {
+  padding: 10px;
+  width: 200px;
+  border-radius: 999px;
+  background: #fff;
+}
+
+.quick_icon {
+  flex-shrink: 0;
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  justify-content: center;
+}
+.quick_item--expand:hover .quick_link .quick_icon,
+.quick_item--expand:focus-within .quick_link .quick_icon {
+  width: 45px;
+  height: 45px;
+  padding: 10px 10px;
+}
+
+.quick_icon--gold {
+  background: linear-gradient(145deg, #c9a96e 0%, #9a7344 55%, #7a5a35 100%);
+}
+
+.quick_icon--dark {
+  background: #1a2e3b;
+}
+
+.quick_icon img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.quick_arrow img {
+  display: block;
+  width: 14px;
+  height: 14px;
+}
+.quick_body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  min-width: 0;
+  padding-left: 4px;
+  opacity: 0;
+  transform: translateX(8px);
+  transition:
+    opacity 0.28s ease 0.08s,
+    transform 0.32s cubic-bezier(0.22, 1, 0.36, 1) 0.08s;
+  pointer-events: none;
+}
+
+.quick_item--expand:hover .quick_body,
+.quick_item--expand:focus-within .quick_body {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.quick_title {
+  font-size: 16px;
+  font-weight: 900;
+  color: #1a2e3b;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+.quick_desc {
+  font-size: 12px;
+  font-weight: 400;
+  color: #1a2e3b;
+  opacity: 0.5;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+.quick_arrow {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: 10px;
+  color: #c5c0b8;
+  opacity: 0;
+  transform: translateX(-6px);
+  transition:
+    opacity 0.28s ease 0.12s,
+    transform 0.32s cubic-bezier(0.22, 1, 0.36, 1) 0.12s;
+}
+
+.quick_item--expand:hover .quick_arrow,
+.quick_item--expand:focus-within .quick_arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* 맨 위로 */
+.quick_item--top .quick_link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.quick_item--top .quick_link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 5px 3px rgba(0, 0, 0, 0.1);
+}
+
+.quick_item--top .quick_icon img {
+  max-width: 15px;
+}
+
+@media (max-width: 600px) {
+  #quick-placeholder {
+    right: 16px;
+    bottom: 20px;
+  }
+
+  .quick_item--expand .quick_link,
+  .quick_icon,
+  .quick_item--top .quick_link {
+    height: 50px;
+  }
+
+  .quick_icon {
+    width: 50px;
+  }
+
+  .quick_item--expand .quick_link {
+    width: 50px;
+  }
+
+  .quick_item--expand:hover .quick_link,
+  .quick_item--expand:focus-within .quick_link {
+    width: 240px;
+  }
+
+  .quick_item--top .quick_link {
+    width: 50px;
+  }
+
+  .quick_title {
+    font-size: 14px;
+  }
+
+  .quick_desc {
+    font-size: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .quick_item--expand .quick_link,
+  .quick_body,
+  .quick_arrow,
+  .quick_item--top .quick_link {
+    transition: none;
+  }
+}

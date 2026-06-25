@@ -1,36 +1,81 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# METAPOLIS Web (Next.js)
 
-## Getting Started
+메타폴리스 공식 홈페이지 Next.js 마이그레이션 프로젝트입니다.
 
-First, run the development server:
+## 기술 스택
+
+- Next.js App Router + TypeScript
+- 기존 정적 사이트 CSS 그대로 사용 (`styles/`)
+- Swiper (메인 Hero 슬라이더)
+- 정적 데이터 (`data/*.ts`) — DB 없음
+
+## 개발
 
 ```bash
+cd metapolis-web
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+브라우저에서 [http://localhost:3000](http://localhost:3000) 접속
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 빌드
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+## URL 구조
 
-To learn more about Next.js, take a look at the following resources:
+| 기존 HTML | 신규 URL |
+|-----------|----------|
+| index.html | `/` |
+| menu1_1~1_4 | `/about`, `/hours`, `/location`, `/parking` |
+| menu2_1~2_4 | `/stores`, `/stores/floors`, `/stores/categories`, `/stores/facilities` |
+| menu3_1~3_3 | `/events`, `/events/stores`, `/events/winners` |
+| menu4_1~4_3 | `/support/faq`, `/support/inquiry`, `/support/notices` |
+| site1~3 | `/privacy`, `/terms`, `/sitemap` |
+| preview.html | `/preview` |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+기존 `menu*.html` URL은 `next.config.ts` redirects로 신규 URL로 301 리다이렉트됩니다.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 서브페이지 시안 이미지
 
-## Deploy on Vercel
+상세 페이지는 통이미지 mockup으로 표시됩니다. 시안 PNG를 아래 경로에 추가하세요:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+public/img/sub/menu1_1.png
+public/img/sub/menu1_2.png
+...
+public/img/sub/menu4_3.png
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+전체 페이지 목록은 `/preview`에서 확인할 수 있습니다.
+
+## Vercel 배포
+
+1. GitHub 저장소에 `metapolis-web` 푸시
+2. [Vercel](https://vercel.com)에서 New Project → 해당 저장소 Import
+3. Root Directory: `metapolis-web` (모노레포인 경우)
+4. Framework Preset: Next.js (자동 감지)
+5. Deploy
+
+환경 변수 (선택):
+
+| 변수 | 설명 |
+|------|------|
+| `NEXT_PUBLIC_SITE_URL` | sitemap.xml용 사이트 URL (예: `https://metapolis.co.kr`) |
+
+## 프로젝트 구조
+
+```
+metapolis-web/
+├── app/              # App Router 페이지
+├── components/       # React 컴포넌트
+├── contexts/         # Toast 등 Context
+├── data/             # 정적 데이터 (navigation, FAQ, 매장 등)
+├── hooks/            # useHeaderMenu 등
+├── public/img/       # 이미지 에셋
+└── styles/           # 기존 CSS
+```
