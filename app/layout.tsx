@@ -5,6 +5,7 @@ import Footer from "@/components/layout/Footer";
 import QuickMenu from "@/components/layout/QuickMenu";
 import { ToastProvider } from "@/contexts/ToastContext";
 import { DEFAULT_META } from "@/data/siteMeta";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export const metadata: Metadata = {
   title: DEFAULT_META.title,
@@ -39,6 +40,7 @@ export default function RootLayout({
             <Footer />
           </div>
           <QuickMenu />
+          <SpeedInsights />
         </ToastProvider>
       </body>
     </html>

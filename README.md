@@ -55,11 +55,12 @@ public/img/sub/menu4_3.png
 
 ## Vercel 배포
 
-1. GitHub 저장소에 `metapolis-web` 푸시
-2. [Vercel](https://vercel.com)에서 New Project → 해당 저장소 Import
-3. Root Directory: `metapolis-web` (모노레포인 경우)
-4. Framework Preset: Next.js (자동 감지)
-5. Deploy
+**GitHub 저장소:** `git@github.com:hsolution-cell/metapolis-web.git`
+
+1. [hsolution-cell/metapolis-web](https://github.com/hsolution-cell/metapolis-web)에 코드 push
+2. [Vercel](https://vercel.com)에서 New Project → `hsolution-cell/metapolis-web` Import
+3. Framework Preset: Next.js (자동 감지)
+4. Deploy
 
 환경 변수 (선택):
 
