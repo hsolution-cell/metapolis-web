@@ -421,6 +421,8 @@
     transform: none;
     filter: none;
   }
+}
+
 /* sub section head (공통) */
 .sub_section_head {
   text-align: center;
