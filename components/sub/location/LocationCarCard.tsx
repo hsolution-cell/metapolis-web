@@ -1,8 +1,10 @@
+import type { CSSProperties } from "react";
 import type { LocationCarIcon, LocationCarRouteItem } from "@/data/locationTransport";
 import { renderInlineMarkup } from "@/lib/renderInlineMarkup";
 
 type LocationCarCardProps = {
   route: LocationCarRouteItem;
+  revealIndex?: number;
 };
 
 function CarIcon({ type }: { type: LocationCarIcon }) {
@@ -61,9 +63,16 @@ function renderHighlightedLine(line: string, highlights: string[] = []) {
   });
 }
 
-export default function LocationCarCard({ route }: LocationCarCardProps) {
+export default function LocationCarCard({ route, revealIndex }: LocationCarCardProps) {
   return (
-    <li className="location_car_card">
+    <li
+      className="location_car_card"
+      style={
+        revealIndex === undefined
+          ? undefined
+          : ({ "--sub-reveal-i": revealIndex } as CSSProperties)
+      }
+    >
       <span className={`location_car_card_icon location_car_card_icon--${route.icon}`}>
         <CarIcon type={route.icon} />
       </span>

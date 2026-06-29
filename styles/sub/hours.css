@@ -16,21 +16,6 @@
   color: #c5a375;
 }
 
-.hours_main_intro:not(.is-inview) .hours_main_head .sub_section_eyebrow,
-.hours_main_intro:not(.is-inview) .hours_main_head .sub_section_title {
-  opacity: 0;
-  transform: translateY(28px);
-  filter: blur(8px);
-}
-
-.hours_main_intro.is-inview .hours_main_head .sub_section_eyebrow {
-  animation: hours-reveal-up 0.95s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-.hours_main_intro.is-inview .hours_main_head .sub_section_title {
-  animation: hours-reveal-up 1s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
-}
-
 .hours_hero {
   position: relative;
   display: flex;
@@ -185,23 +170,8 @@
   color: var(--mp-text, #1a2e3b);
 }
 
-.hours_stores:not(.is-inview) .hours_stores_head .sub_section_eyebrow,
-.hours_stores:not(.is-inview) .hours_stores_head .sub_section_title {
-  opacity: 0;
-  transform: translateY(28px);
-  filter: blur(8px);
-}
-
-.hours_stores.is-inview .hours_stores_head .sub_section_eyebrow {
-  animation: hours-reveal-up 0.95s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-.hours_stores.is-inview .hours_stores_head .sub_section_title {
-  animation: hours-reveal-up 1s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
-}
-
 .hours_category {
-  --hours-reveal-delay: 0ms;
+  --sub-reveal-delay: 0ms;
 }
 
 .hours_category + .hours_category {
@@ -253,19 +223,19 @@
 }
 
 .hours_stores.is-inview .hours_category_title {
-  animation: hours-reveal-title 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
-  animation-delay: calc(var(--hours-reveal-delay) + 120ms);
+  animation: sub-reveal-title 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(var(--sub-reveal-delay, 0ms) + 120ms);
 }
 
 .hours_stores.is-inview .hours_category_line {
-  animation: hours-reveal-line 1.15s cubic-bezier(0.16, 1, 0.3, 1) both;
-  animation-delay: calc(var(--hours-reveal-delay) + 260ms);
+  animation: sub-reveal-line 1.15s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(var(--sub-reveal-delay, 0ms) + 260ms);
 }
 
 .hours_stores.is-inview .hours_store_grid > li {
-  animation: hours-reveal-card 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: sub-reveal-card 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
   animation-delay: calc(
-    var(--hours-reveal-delay) + 360ms + (var(--hours-card-i, 0) * 75ms)
+    var(--sub-reveal-delay, 0ms) + 360ms + (var(--sub-reveal-i, 0) * 75ms)
   );
 }
 
@@ -395,58 +365,6 @@
   color: #b89968;
   display: inline-block;
   margin-right: 6px;
-}
-
-@keyframes hours-reveal-up {
-  from {
-    opacity: 0;
-    transform: translateY(28px);
-    filter: blur(8px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-    filter: blur(0);
-  }
-}
-
-@keyframes hours-reveal-title {
-  from {
-    opacity: 0;
-    transform: translateX(-18px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes hours-reveal-line {
-  from {
-    opacity: 0;
-    clip-path: inset(0 100% 0 0);
-  }
-
-  to {
-    opacity: 0.6;
-    clip-path: inset(0 0 0 0);
-  }
-}
-
-@keyframes hours-reveal-card {
-  from {
-    opacity: 0;
-    transform: translateY(24px) scale(0.98);
-    filter: blur(6px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    filter: blur(0);
-  }
 }
 
 @media (max-width: 1024px) {

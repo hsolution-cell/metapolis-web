@@ -1,13 +1,21 @@
+import type { CSSProperties } from "react";
 import SubSectionHead from "@/components/sub/SubSectionHead";
 import LocationKakaoMap from "@/components/sub/location/LocationKakaoMap";
 import LocationTransportPanel from "@/components/sub/location/LocationTransportPanel";
+import SubReveal from "@/components/sub/SubReveal";
 import { LOCATION_ADDRESS, LOCATION_PHONE } from "@/data/locationTransport";
 
 export default function LocationSection() {
   return (
     <div className="location">
-      <section className="location_hero" aria-labelledby="location-main-title">
-        <div className="location_hero_inner innerTop  content_inner">
+      <SubReveal
+        as="section"
+        className="location_hero"
+        aria-labelledby="location-main-title"
+        threshold={0.12}
+        rootMargin="0px 0px -8% 0px"
+      >
+        <div className="location_hero_inner innerTop content_inner">
           <SubSectionHead
             className="location_head"
             eyebrow="Location"
@@ -20,7 +28,7 @@ export default function LocationSection() {
           />
 
           <ul className="location_contact">
-            <li>
+            <li style={{ "--sub-reveal-i": 0 } as CSSProperties}>
               <span className="location_contact_icon" aria-hidden="true">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -35,7 +43,7 @@ export default function LocationSection() {
               </span>
               <span>{LOCATION_ADDRESS}</span>
             </li>
-            <li>
+            <li style={{ "--sub-reveal-i": 1 } as CSSProperties}>
               <span className="location_contact_icon" aria-hidden="true">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -56,7 +64,7 @@ export default function LocationSection() {
 
           <LocationKakaoMap />
         </div>
-      </section>
+      </SubReveal>
 
       <LocationTransportPanel />
     </div>

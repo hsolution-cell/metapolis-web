@@ -27,7 +27,7 @@ export default function HoursStoresSection({
   return (
     <section
       ref={ref}
-      className={`hours_stores${inView ? " is-inview" : ""}`}
+      className={`hours_stores sub_reveal${inView ? " is-inview" : ""}`}
       aria-labelledby="hours-stores-title"
     >
       <div className="content_inner hours_stores_inner">
@@ -48,7 +48,7 @@ export default function HoursStoresSection({
             className="hours_category"
             style={
               {
-                "--hours-reveal-delay": `${categoryIndex * 140}ms`,
+                "--sub-reveal-delay": `${categoryIndex * 140}ms`,
               } as CSSProperties
             }
           >
@@ -62,7 +62,7 @@ export default function HoursStoresSection({
                 <li
                   key={store.name}
                   style={
-                    { "--hours-card-i": storeIndex } as CSSProperties
+                    { "--sub-reveal-i": storeIndex } as CSSProperties
                   }
                 >
                   <HoursStoreCard {...store} />

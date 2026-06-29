@@ -1,8 +1,10 @@
 "use client";
 
+import type { CSSProperties } from "react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import LocationCarCard from "@/components/sub/location/LocationCarCard";
 import LocationRouteCard from "@/components/sub/location/LocationRouteCard";
+import { useInViewOnce } from "@/hooks/useInViewOnce";
 import {
   BUS_ROUTES,
   CAR_ROUTES,
@@ -14,12 +16,18 @@ type TransportTab = "public" | "car";
 function LocationCategory({
   title,
   routes,
+  index,
 }: {
   title: string;
   routes: typeof SUBWAY_ROUTES;
+  index: number;
 }) {
   return (
-    <section className="location_transport_col" aria-labelledby={`location-${title}-title`}>
+    <section
+      className="location_transport_col"
+      aria-labelledby={`location-${title}-title`}
+      style={{ "--sub-reveal-i": index } as CSSProperties}
+    >
       <div className="location_category_head">
         <h3 id={`location-${title}-title`} className="location_category_title">
           {title}
@@ -27,8 +35,8 @@ function LocationCategory({
         <span className="location_category_line" aria-hidden="true" />
       </div>
       <ul className="location_route_list">
-        {routes.map((route) => (
-          <LocationRouteCard key={route.id} route={route} />
+        {routes.map((route, routeIndex) => (
+          <LocationRouteCard key={route.id} route={route} revealIndex={routeIndex} />
         ))}
       </ul>
     </section>
@@ -36,6 +44,10 @@ function LocationCategory({
 }
 
 export default function LocationTransportPanel() {
+  const { ref: revealRef, inView } = useInViewOnce<HTMLElement>({
+    threshold: 0.08,
+    rootMargin: "0px 0px -6% 0px",
+  });
   const [activeTab, setActiveTab] = useState<TransportTab>("public");
   const [hoverTab, setHoverTab] = useState<TransportTab | null>(null);
   const tabsRef = useRef<HTMLDivElement>(null);
@@ -90,7 +102,11 @@ export default function LocationTransportPanel() {
   }, [updateIndicator]);
 
   return (
-    <section className="location_transport" aria-label="교통 안내">
+    <section
+      ref={revealRef}
+      className={`location_transport sub_reveal${inView ? " is-inview" : ""}`}
+      aria-label="교통 안내"
+    >
       <div className="location_transport_inner content_inner innerBot">
         <div className="location_tabs_wrap">
           <div
@@ -144,8 +160,8 @@ export default function LocationTransportPanel() {
             aria-labelledby="location-tab-public"
             className="location_transport_grid location_transport_public"
           >
-            <LocationCategory title="Subway" routes={SUBWAY_ROUTES} />
-            <LocationCategory title="Bus" routes={BUS_ROUTES} />
+            <LocationCategory title="Subway" routes={SUBWAY_ROUTES} index={0} />
+            <LocationCategory title="Bus" routes={BUS_ROUTES} index={1} />
           </div>
         ) : (
           <div
@@ -159,8 +175,8 @@ export default function LocationTransportPanel() {
               <span className="location_category_line" aria-hidden="true" />
             </div>
             <ul className="location_car_grid">
-              {CAR_ROUTES.map((route) => (
-                <LocationCarCard key={route.id} route={route} />
+              {CAR_ROUTES.map((route, index) => (
+                <LocationCarCard key={route.id} route={route} revealIndex={index} />
               ))}
             </ul>
           </div>

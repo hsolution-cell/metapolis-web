@@ -1,10 +1,18 @@
+import type { CSSProperties } from "react";
 import SubSectionHead from "@/components/sub/SubSectionHead";
 import AboutWayVisual from "@/components/sub/about/AboutWayVisual";
+import SubReveal from "@/components/sub/SubReveal";
 
 export default function AboutSection() {
   return (
     <div className="about innerBot innerTop">
-      <section className="about_intro" aria-labelledby="about-intro-title">
+      <SubReveal
+        as="section"
+        className="about_intro"
+        aria-labelledby="about-intro-title"
+        threshold={0.2}
+        rootMargin="0px 0px -8% 0px"
+      >
         <div className="content_inner">
           <SubSectionHead
             className="sub_section_head--spaced"
@@ -31,9 +39,15 @@ export default function AboutSection() {
           </div>
           <div className="about-line"></div>
         </div>
-      </section>
+      </SubReveal>
 
-      <section className="about_ways" aria-labelledby="about-ways-title">
+      <SubReveal
+        as="section"
+        className="about_ways"
+        aria-labelledby="about-ways-title"
+        threshold={0.08}
+        rootMargin="0px 0px -6% 0px"
+      >
         <div className="content_inner">
           <SubSectionHead
             className="about_ways_head"
@@ -47,7 +61,7 @@ export default function AboutSection() {
           />
 
           <div className="about_ways_list">
-            <article className="about_way">
+            <article className="about_way" style={{ "--sub-reveal-i": 0 } as CSSProperties}>
               <div className="about_way_text">
                 <p className="about_way_num">
                   <span></span>01 천천히
@@ -66,7 +80,7 @@ export default function AboutSection() {
               />
             </article>
 
-            <article className="about_way about_way--reverse">
+            <article className="about_way about_way--reverse" style={{ "--sub-reveal-i": 1 } as CSSProperties}>
               <div className="about_way_text">
                 <p className="about_way_num">
                   <span></span>02 함께
@@ -85,7 +99,7 @@ export default function AboutSection() {
               />
             </article>
 
-            <article className="about_way">
+            <article className="about_way" style={{ "--sub-reveal-i": 2 } as CSSProperties}>
               <div className="about_way_text">
                 <p className="about_way_num">
                   <span></span>03 편하게
@@ -106,7 +120,7 @@ export default function AboutSection() {
             </article>
           </div>
         </div>
-      </section>
+      </SubReveal>
     </div>
   );
 }

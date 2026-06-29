@@ -1,8 +1,10 @@
+import type { CSSProperties } from "react";
 import type { LocationRouteItem } from "@/data/locationTransport";
 import { renderInlineMarkup } from "@/lib/renderInlineMarkup";
 
 type LocationRouteCardProps = {
   route: LocationRouteItem;
+  revealIndex?: number;
 };
 
 function escapeRegExp(value: string) {
@@ -61,11 +63,18 @@ function renderRouteLine(line: string, highlights: string[] = []) {
   ));
 }
 
-export default function LocationRouteCard({ route }: LocationRouteCardProps) {
+export default function LocationRouteCard({ route, revealIndex }: LocationRouteCardProps) {
   const badgeClass = `location_route_badge location_route_badge--${route.badge.type}`;
 
   return (
-    <li className="location_route_card">
+    <li
+      className="location_route_card"
+      style={
+        revealIndex === undefined
+          ? undefined
+          : ({ "--sub-reveal-i": revealIndex } as CSSProperties)
+      }
+    >
       <div className="location_route_card_head">
         <span className={badgeClass} aria-hidden="true">
           {route.badge.label}

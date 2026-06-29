@@ -16,7 +16,7 @@ export default function HoursMainIntro({ children }: HoursMainIntroProps) {
   return (
     <div
       ref={ref}
-      className={`content_inner hours_main_intro${inView ? " is-inview" : ""}`}
+      className={`content_inner hours_main_intro sub_reveal${inView ? " is-inview" : ""}`}
     >
       {children}
     </div>

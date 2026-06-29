@@ -282,8 +282,126 @@
   }
   to {
     opacity: 1;
+    transform: none;
+  }
+}
+
+/* scroll reveal (sub pages) */
+@keyframes sub-reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+    filter: blur(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes sub-reveal-fade {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
     transform: translateY(0);
   }
+}
+
+@keyframes sub-reveal-slide-left {
+  from {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes sub-reveal-slide-right {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes sub-reveal-title {
+  from {
+    opacity: 0;
+    transform: translateX(-18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes sub-reveal-line {
+  from {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+  }
+
+  to {
+    opacity: 0.6;
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes sub-reveal-card {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+    filter: blur(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes sub-reveal-scale {
+  from {
+    opacity: 0;
+    transform: translateY(32px) scale(0.96);
+    filter: blur(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+.sub_reveal:not(.is-inview) .sub_section_eyebrow,
+.sub_reveal:not(.is-inview) .sub_section_title {
+  opacity: 0;
+  transform: translateY(28px);
+  filter: blur(8px);
+}
+
+.sub_reveal.is-inview .sub_section_eyebrow {
+  animation: sub-reveal-up 0.95s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.sub_reveal.is-inview .sub_section_title {
+  animation: sub-reveal-up 1s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
 }
 
 .sub_placeholder {
@@ -415,11 +533,26 @@
   .sub-top-banner-overlay,
   .breadcrumb,
   .sub-top-banner-title,
-  .sub_body {
+  .sub_body,
+  .sub_reveal.is-inview .sub_section_eyebrow,
+  .sub_reveal.is-inview .sub_section_title,
+  .sub_reveal.is-inview [class*="sub_reveal_item"],
+  .sub_reveal.is-inview .sub_reveal_target {
     animation: none;
     opacity: 1;
     transform: none;
     filter: none;
+    clip-path: none;
+  }
+
+  .sub_reveal:not(.is-inview) .sub_section_eyebrow,
+  .sub_reveal:not(.is-inview) .sub_section_title,
+  .sub_reveal:not(.is-inview) [class*="sub_reveal_item"],
+  .sub_reveal:not(.is-inview) .sub_reveal_target {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    clip-path: none;
   }
 }
 
