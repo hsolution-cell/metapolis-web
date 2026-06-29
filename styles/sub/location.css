@@ -1,0 +1,755 @@
+/* sub page location */
+
+.sub_page.location .sub_body {
+  padding: 0;
+}
+
+.location {
+  color: var(--mp-text, #1a2e3b);
+}
+
+/* hero — dark map area */
+.location_hero {
+  overflow: visible;
+  /* padding: clamp(72px, 10vw, 120px) 0 clamp(56px, 8vw, 88px); */
+}
+
+.location_hero_inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.location_head.sub_section_head {
+  width: 100%;
+}
+.location_head .sub_section_title {
+  margin-bottom: 60px;
+}
+.location_contact {
+  list-style: none;
+  margin: 0 0 80px;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.location_contact li {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 24px;
+}
+.location_contact_icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+}
+
+.location_contact_icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.location_map {
+  width: min(95%, 1280px);
+  max-height: 600px;
+  margin: 0;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.location_map_embed {
+  width: 100%;
+  height: 100%;
+}
+.location_map_embed .root_daum_roughmap .cont .section.lst {
+  display: none;
+}
+.location_map_embed .root_daum_roughmap .wrap_controllers {
+  display: none;
+}
+
+.location_map_embed .root_daum_roughmap {
+  width: 100% !important;
+}
+
+.location_map_embed iframe {
+  display: block;
+  width: 100% !important;
+  border: 0;
+}
+
+/* transport panel */
+.location_transport {
+  background: url("/img/sub/location/bg_transport.png") no-repeat center
+    center / cover;
+  overflow: visible;
+}
+
+.location_transport_inner {
+  padding-top: 80px;
+}
+
+.location_tabs_wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: clamp(40px, 6vw, 56px);
+}
+
+.location_tabs {
+  position: relative;
+  display: inline-flex;
+  padding: 5px;
+  border: 1px solid #ccc;
+  background: #f0f0f0;
+  border-radius: 999px;
+}
+
+.location_tabs_indicator {
+  position: absolute;
+  top: 5px;
+  left: 0;
+  height: calc(100% - 10px);
+  border-radius: 999px;
+  background: #1a2e3b;
+  box-shadow: 0 2px 8px rgba(26, 46, 59, 0.18);
+  pointer-events: none;
+  transition:
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 0;
+}
+
+.location_tab {
+  position: relative;
+  z-index: 1;
+  padding: 8px 40px;
+  border: none;
+  background: transparent;
+  font: inherit;
+  font-size: 18px;
+  font-weight: 700;
+  color: #8c857b;
+  cursor: pointer;
+  border-radius: 999px;
+  transition: color 0.25s ease;
+}
+
+.location_tab.is-target {
+  color: #fff;
+}
+
+.location_transport_grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(24px, 4vw, 48px);
+  align-items: start;
+}
+
+.location_transport_public .location_category_head {
+  margin-bottom: 24px;
+}
+
+.location_transport_public .location_category_title {
+  font-size: clamp(2.6rem, 3.4vw, 3.2rem);
+}
+
+.location_transport_public .location_category_line {
+  opacity: 0.45;
+}
+
+.location_transport_car {
+  width: 100%;
+}
+
+.location_transport_car .location_category_head {
+  margin-bottom: 28px;
+}
+
+.location_transport_car .location_category_title {
+  font-size: clamp(2.6rem, 3.4vw, 3.2rem);
+}
+
+.location_transport_car .location_category_line {
+  opacity: 0.45;
+}
+
+.location_car_grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.location_car_card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 100%;
+  padding: 40px;
+  border-radius: 20px;
+  border: 1px solid #dee6e9;
+  background: linear-gradient(180deg, #fff 0%, #fffefe 100%);
+  box-shadow: 0 2px 3px 2px rgba(0, 0, 0, 0.03);
+}
+
+.location_car_card_icon {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  margin-bottom: 30px;
+  border-radius: 10px;
+  background: rgba(234, 223, 201, 0.5);
+  color: #b89968;
+}
+
+.location_car_card_icon svg {
+  display: block;
+}
+
+.location_car_card_icon--nav svg {
+  width: 45px;
+  height: 45px;
+}
+
+.location_car_card_icon--road svg {
+  width: 39px;
+  height: 42px;
+}
+
+.location_car_card_icon--car svg {
+  width: 44px;
+  height: 39px;
+}
+
+.location_car_card_title {
+  margin: 0 0 16px;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: #8a6e3e;
+  word-break: keep-all;
+}
+
+.location_car_card_title b {
+  font-weight: 700;
+}
+
+.location_car_card_lines {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.location_car_card_line {
+  font-size: 18px;
+  line-height: 1.7;
+  color: rgba(51, 48, 43, 0.8);
+  word-break: keep-all;
+}
+
+.location_car_highlight {
+  color: #c85a40;
+  font-weight: 700;
+}
+
+.location_category_head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.location_category_title {
+  margin: 0;
+  flex: none;
+  font-family: "Source Serif Pro", serif;
+  font-size: clamp(2.4rem, 3.2vw, 3rem);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1;
+  color: #c5a375;
+}
+
+.location_category_line {
+  flex: 1;
+  min-width: 0;
+  height: 1px;
+  background: #b89968;
+  opacity: 0.55;
+}
+
+.location_route_list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.location_route_card {
+  padding: 30px;
+  border-radius: 20px;
+  border: 1px solid #dee6e9;
+  background: linear-gradient(180deg, #fff 0%, #fffefe 100%), #d9d9d9;
+  box-shadow: 0 2px 3px 2px rgba(0, 0, 0, 0.03);
+}
+
+.location_route_card_head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.location_route_badge {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 34px;
+  font-weight: 600;
+  line-height: 0.9;
+  color: #fff;
+}
+
+.location_route_badge--subway {
+  border-radius: 50px;
+  border: 2px solid #1a2e3b;
+  color: #1a2e3b;
+}
+
+.location_route_badge--bus-red {
+  background: #8a3a22;
+}
+
+.location_route_badge--bus-green {
+  background: #79a73a;
+}
+
+.location_route_card_title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 350;
+  line-height: 1.35;
+  color: #8a6e3e;
+  word-break: keep-all;
+}
+
+.location_route_card_title b {
+  font-weight: 700;
+}
+
+.location_route_lines {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.location_route_line {
+  font-size: 18px;
+  line-height: 1.75;
+  color: #33302b;
+  word-break: keep-all;
+}
+
+.location_route_segment {
+  display: inline;
+}
+
+.location_route_sep {
+  margin: 0 8px;
+  color: #b89968;
+  font-weight: 400;
+}
+
+.location_route_tag {
+  display: inline-block;
+  margin: 2px 0;
+  padding: 5px 12px;
+  border-radius: 8px;
+  background: rgba(234, 223, 201, 0.5);
+  color: #8a6e3e;
+  font-weight: 700;
+  opacity: 0.8;
+  line-height: 1.45;
+  vertical-align: middle;
+}
+
+.location_route_highlight {
+  color: #c85a40;
+  font-weight: 700;
+}
+
+@media (max-width: 1280px) {
+  .location_head .sub_section_title {
+    margin-bottom: 52px;
+  }
+
+  .location_contact {
+    margin-bottom: 64px;
+  }
+
+  .location_map {
+    border-radius: 18px;
+  }
+
+  .location_transport_inner {
+    padding-top: 72px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .location_hero_inner {
+    width: 100%;
+  }
+
+  .location_head .sub_section_title {
+    margin-bottom: 44px;
+    font-size: clamp(4rem, 6.5vw, 5.2rem);
+  }
+
+  .location_head .sub_section_eyebrow {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+
+  .location_contact {
+    margin-bottom: 48px;
+    gap: 16px;
+  }
+
+  .location_contact li {
+    font-size: 20px;
+  }
+
+  .location_transport_inner {
+    padding-top: 64px;
+  }
+
+  .location_transport_grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .location_car_grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .location_car_card {
+    padding: 32px 28px;
+  }
+
+  .location_route_card {
+    padding: 24px;
+  }
+
+  .location_route_badge {
+    width: 44px;
+    height: 44px;
+    font-size: 28px;
+  }
+
+  .location_category_head {
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .location_hero {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .location_head .sub_section_title {
+    margin-bottom: 32px;
+    font-size: clamp(3.2rem, 8vw, 4.4rem);
+  }
+
+  .location_contact {
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .location_contact li {
+    justify-content: center;
+    text-align: center;
+    font-size: 1.6rem;
+    line-height: 1.5;
+  }
+
+  .location_contact_icon {
+    width: 26px;
+    height: 26px;
+  }
+
+  .location_map {
+    border-radius: 14px;
+  }
+
+  .location_map_embed {
+    min-height: 160px;
+  }
+
+  .location_transport_inner {
+    padding-top: 48px;
+    padding-bottom: 80px;
+  }
+
+  .location_tabs_wrap {
+    width: 100%;
+    margin-bottom: 32px;
+  }
+
+  .location_tabs {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .location_tab {
+    min-width: 0;
+    flex: 1;
+    padding: 12px 20px;
+    font-size: 1.5rem;
+  }
+
+  .location_transport_public .location_category_head,
+  .location_transport_car .location_category_head {
+    margin-bottom: 20px;
+  }
+
+  .location_transport_public .location_category_title,
+  .location_transport_car .location_category_title {
+    font-size: clamp(2.2rem, 5.5vw, 2.8rem);
+  }
+
+  .location_car_grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .location_car_card {
+    padding: 22px 20px 20px;
+    border-radius: 18px;
+  }
+
+  .location_car_card_icon {
+    width: 56px;
+    height: 56px;
+    margin-bottom: 18px;
+    border-radius: 12px;
+  }
+
+  .location_car_card_icon--nav svg {
+    width: 34px;
+    height: 34px;
+  }
+
+  .location_car_card_icon--road svg {
+    width: 30px;
+    height: 32px;
+  }
+
+  .location_car_card_icon--car svg {
+    width: 33px;
+    height: 29px;
+  }
+
+  .location_car_card_title {
+    margin-bottom: 12px;
+    font-size: 1.55rem;
+  }
+
+  .location_car_card_line {
+    font-size: 1.35rem;
+    line-height: 1.65;
+  }
+
+  .location_route_list {
+    gap: 12px;
+  }
+
+  .location_route_card {
+    padding: 20px 18px 18px;
+    border-radius: 16px;
+  }
+
+  .location_route_card_head {
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .location_route_badge {
+    width: 36px;
+    height: 36px;
+    font-size: 1.35rem;
+  }
+
+  .location_route_card_title {
+    font-size: 1.55rem;
+  }
+
+  .location_route_line {
+    font-size: 1.35rem;
+    line-height: 1.65;
+  }
+
+  .location_route_sep {
+    margin: 0 6px;
+  }
+
+  .location_route_tag {
+    padding: 4px 10px;
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .location_head .sub_section_eyebrow {
+    font-size: 1.6rem;
+  }
+
+  .location_head .sub_section_title {
+    font-size: clamp(2.8rem, 9vw, 3.4rem);
+    margin-bottom: 24px;
+  }
+
+  .location_contact {
+    margin-bottom: 24px;
+    gap: 10px;
+  }
+
+  .location_contact li {
+    font-size: 1.4rem;
+    max-width: 28rem;
+  }
+
+  .location_map {
+    border-radius: 12px;
+  }
+
+  .location_transport_inner {
+    padding-top: 40px;
+    padding-bottom: 64px;
+  }
+
+  .location_tabs {
+    max-width: none;
+  }
+
+  .location_tab {
+    padding: 10px 14px;
+    font-size: 1.4rem;
+  }
+
+  .location_category_title {
+    font-size: 2rem;
+  }
+
+  .location_transport_public .location_category_title,
+  .location_transport_car .location_category_title {
+    font-size: 2rem;
+  }
+
+  .location_category_head {
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .location_car_card {
+    padding: 18px 16px 16px;
+    border-radius: 14px;
+  }
+
+  .location_car_card_icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 14px;
+  }
+
+  .location_car_card_icon--nav svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .location_car_card_icon--road svg {
+    width: 24px;
+    height: 26px;
+  }
+
+  .location_car_card_icon--car svg {
+    width: 27px;
+    height: 24px;
+  }
+
+  .location_car_card_title {
+    font-size: 1.45rem;
+  }
+
+  .location_car_card_line {
+    font-size: 1.3rem;
+  }
+
+  .location_route_card {
+    padding: 16px 14px 14px;
+    border-radius: 14px;
+  }
+
+  .location_route_badge {
+    width: 32px;
+    height: 32px;
+    font-size: 1.2rem;
+  }
+
+  .location_route_badge--subway {
+    border-width: 1.5px;
+  }
+
+  .location_route_card_title {
+    font-size: 1.45rem;
+  }
+
+  .location_route_line {
+    font-size: 1.3rem;
+  }
+
+  .location_route_tag {
+    padding: 3px 8px;
+    font-size: 1.2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .location_contact a,
+  .location_tab,
+  .location_tabs_indicator {
+    transition: none;
+  }
+}
