@@ -216,9 +216,13 @@ header.scroll .header_bar {
   position: relative;
   z-index: 2;
 }
-.h_logo img {
-  width: 100%;
+.h_logo img,
+.h_logo_icon {
+  display: block;
+  width: auto;
   height: auto;
+  max-width: 200px;
+  max-height: 44px;
 }
 
 /* 1뎁스 GNB — 화면 중앙 고정 (로고·검색과 분리) */
@@ -386,6 +390,37 @@ header.is-mega-open .mega_col[data-col="4"] {
   gap: 0.8rem;
   position: relative;
   z-index: 1;
+}
+.h_lang {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+.h_lang button {
+  border: none;
+  background: none;
+  padding: 0;
+  font: inherit;
+  font-size: inherit;
+  color: var(--mp-text-muted);
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+.h_lang button.is-active {
+  color: var(--mp-gold);
+  font-weight: 700;
+}
+.h_lang button:not(.is-active):hover {
+  color: var(--mp-gold-dark);
+}
+.h_lang_sep {
+  color: #d0ccc4;
+  font-weight: 300;
+  user-select: none;
 }
 .h_search_btn {
   display: flex;
@@ -590,25 +625,144 @@ header .open_menu span:nth-child(2) {
   :root {
     --header-h: 65px;
   }
+
   .header_inner {
     grid-template-columns: 1fr auto;
     gap: 1rem;
+    width: 100%;
+    max-width: none;
+    padding: 0 16px;
+    box-sizing: border-box;
   }
+
+  .h_logo img,
+  .h_logo_icon {
+    max-width: 148px;
+    max-height: 34px;
+  }
+
   .header_menu,
   .gnb_mega_wrap,
   .header_search_wrap,
   .h_search_btn {
     display: none;
   }
+
   header .open_menu {
     display: flex;
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 768px) {
+  .header_inner {
+    padding: 0 12px;
+    gap: 0.75rem;
+  }
+
+  .h_logo img,
   .h_logo_icon {
-    width: 30px;
-    height: 30px;
+    max-width: 132px;
+    max-height: 30px;
+  }
+
+  .h_right {
+    gap: 0.4rem;
+  }
+
+  .h_lang {
+    font-size: 14px;
+    gap: 5px;
+  }
+
+  header .open_menu {
+    width: 36px;
+    height: 36px;
+    gap: 5px;
+  }
+
+  header .open_menu span {
+    width: 20px;
+  }
+
+  header .open_menu span:nth-child(2) {
+    width: 14px;
+  }
+
+  .hidden_menu {
+    width: min(100%, 340px);
+  }
+
+  .hidden_top_bar {
+    padding: 1.2rem 1.4rem;
+  }
+
+  .hidden_gnb {
+    padding: 0 0.4rem 1.6rem;
+  }
+
+  .hidden_gnb > li > a {
+    font-size: 1.6rem;
+    padding: 1.2rem 1.2rem;
+  }
+
+  .hidden_gnb .top_0 > li > a {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --header-h: 56px;
+  }
+
+  .header_inner {
+    padding: 0 10px;
+  }
+
+  .h_logo img,
+  .h_logo_icon {
+    max-width: 112px;
+    max-height: 26px;
+  }
+
+  .hidden_menu {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+  }
+
+  .hidden_gnb > li > a {
+    font-size: 1.5rem;
+    padding: 1.1rem 1rem;
+  }
+}
+
+@media (hover: none) {
+  .h_search_btn:hover {
+    color: var(--mp-gold);
+  }
+
+  header.is-search-open .h_search_btn:hover {
+    color: var(--mp-accent);
+  }
+
+  .header_search_submit:hover {
+    color: var(--mp-gold);
+  }
+
+  .header_search_tag:hover {
+    background: rgba(234, 223, 201, 0.4);
+    color: rgba(138, 110, 62, 0.8);
+  }
+
+  .mega_col a:hover {
+    color: var(--mp-text-muted);
+    font-weight: 500;
+  }
+
+  .mega_col a.is-current:hover {
+    color: #8a6e3e;
+    font-weight: 700;
   }
 }
 

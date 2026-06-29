@@ -44,9 +44,6 @@ export default function FaqSection() {
       <div className="main_faq_inner content_inner">
         <div className="main_faq_layout">
           <aside className="main_faq_intro">
-            <div className="main_faq_intro_deco" aria-hidden="true">
-              <img src="/img/main_faq_intro_deco.png" alt="" />
-            </div>
             <div className="main_faq_card">
               <h2 className="main_faq_title">
                 메타폴리스 방문 전,

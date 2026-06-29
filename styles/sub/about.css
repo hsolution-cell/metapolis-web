@@ -1,0 +1,422 @@
+/* sub page about */
+.sub_page.about .sub_body {
+  background: url("/img/sub/about/bg.png") no-repeat center center / cover;
+}
+
+.about {
+  color: var(--mp-text, #1a2e3b);
+}
+
+.about_lead {
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.5;
+  color: #33302b;
+  opacity: 0.8;
+  word-break: keep-all;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.about-line {
+  width: 100px;
+  height: 2px;
+  background: #c75d3c;
+  margin: 80px auto;
+}
+
+.about_ways_list {
+  max-width: 1080px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 70px;
+}
+
+.about_way {
+  display: flex;
+  align-items: center;
+  gap: 100px;
+}
+.about_way:nth-child(2n) {
+  flex-direction: row-reverse;
+}
+
+.about_way_num {
+  margin: 0 0 10px;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--mp-gold, #b89968);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.about_way_num span {
+  width: 30px;
+  height: 1.5px;
+  background: var(--mp-gold, #b89968);
+}
+
+.about_way_title {
+  margin: 0 0 16px;
+  font-size: 45px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--mp-text, #1a2e3b);
+}
+
+.about_way_desc {
+  margin: 0;
+  color: #33302b;
+  opacity: 0.8;
+  word-break: keep-all;
+}
+
+.about_way_visual {
+  max-width: 450px;
+  flex: 1;
+  overflow: visible;
+}
+.about_way_text {
+  flex: 1;
+}
+.about_way_frame {
+  position: relative;
+  display: inline-block;
+  overflow: visible;
+}
+
+.about_way_frame--rect {
+  padding-right: 55px;
+}
+
+.about_way_frame--circle {
+  aspect-ratio: 1;
+  overflow: visible;
+  margin-left: 12px;
+}
+
+.about_way_figure {
+  margin: 0;
+  overflow: hidden;
+  box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.12);
+}
+
+.about_way_figure--rect {
+  border-radius: 36px;
+}
+
+.about_way_figure--rect img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about_way_frame--circle .about_way_figure--circle {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+
+.about_way_figure--circle img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about_way_deco_text {
+  fill: currentColor;
+  font-family: "Roboto", sans-serif;
+  font-size: 7px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #d9e4e8;
+}
+
+.about_way_deco--side {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Roboto", sans-serif;
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #eadfc9;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  user-select: none;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.about_way_deco--side.about_way_deco--living {
+  color: #f0d3c4;
+}
+
+.about_way_deco--arc {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  color: rgba(184, 153, 104, 0.42);
+  pointer-events: none;
+  user-select: none;
+}
+
+@media (max-width: 1280px) {
+  .about_way {
+    gap: 72px;
+  }
+
+  .about_ways_list {
+    gap: 64px;
+  }
+
+  .about_way_title {
+    font-size: 40px;
+  }
+
+  .sub_section_title {
+    font-size: 52px;
+    margin-bottom: 64px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .about_intro {
+    padding: 0 4px;
+  }
+
+  .about_ways {
+    padding-bottom: 24px;
+  }
+
+  .about_ways_list {
+    gap: 56px;
+  }
+
+  .about_way {
+    gap: 32px 40px;
+  }
+
+  .about_way_title {
+    font-size: 36px;
+    margin-bottom: 12px;
+  }
+
+  .about_way_desc {
+    font-size: 18px;
+    line-height: 1.65;
+  }
+
+  .about_lead {
+    font-size: 18px;
+    gap: 12px;
+  }
+
+  .about-line {
+    margin: 56px auto;
+  }
+
+  .sub_section_eyebrow {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+
+  .sub_section_title {
+    font-size: 44px;
+    margin-bottom: 56px;
+  }
+
+  .about_way_frame--rect {
+    padding-right: 42px;
+  }
+
+  .about_way_deco--side {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 768px) {
+  .about_intro {
+    padding: 0;
+  }
+
+  .about_lead {
+    font-size: 1.6rem;
+    line-height: 1.65;
+  }
+
+  .about_lead br {
+    display: none;
+  }
+
+  .about-line {
+    width: 80px;
+    margin: 48px auto;
+  }
+
+  .about_ways_list {
+    gap: 48px;
+  }
+
+  .about_way,
+  .about_way:nth-child(2n) {
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+  }
+
+  .about_way_text {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    text-align: center;
+  }
+
+  .about_way_num {
+    justify-content: center;
+    font-size: 16px;
+    gap: 10px;
+  }
+
+  .about_way_num span {
+    width: 24px;
+  }
+
+  .about_way_title {
+    font-size: clamp(2.8rem, 6vw, 3.6rem);
+    margin-bottom: 10px;
+  }
+
+  .about_way_desc {
+    font-size: 1.6rem;
+    line-height: 1.65;
+  }
+
+  .about_way_visual {
+    width: 100%;
+    max-width: min(100%, 420px);
+  }
+
+  .about_way_frame {
+    display: block;
+    width: 100%;
+  }
+
+  .about_way_figure--rect {
+    width: 100%;
+    border-radius: 24px;
+  }
+
+  .about_way_frame--circle {
+    width: min(100%, 320px);
+    margin: 0 auto;
+  }
+
+  .about_way_frame--rect {
+    padding-right: 34px;
+  }
+
+  .about_way_deco--side {
+    font-size: clamp(14px, 3.8vw, 20px);
+  }
+
+  .about_way_deco_text {
+    font-size: 6px;
+  }
+
+  .sub_section_eyebrow {
+    font-size: 1.6rem;
+  }
+
+  .sub_section_title {
+    font-size: clamp(3.2rem, 7vw, 4.8rem);
+    margin-bottom: 48px;
+  }
+
+  .sub_section_title b,
+  .sub_section_title strong {
+    display: block;
+  }
+}
+
+@media (max-width: 480px) {
+  .about_lead,
+  .about_way_desc {
+    font-size: 1.4rem;
+  }
+
+  .about-line {
+    width: 64px;
+    margin: 40px auto;
+  }
+
+  .about_ways {
+    padding-bottom: 16px;
+  }
+
+  .about_ways_list {
+    gap: 40px;
+  }
+
+  .about_way,
+  .about_way:nth-child(2n) {
+    gap: 24px;
+  }
+
+  .about_way_num {
+    font-size: 15px;
+  }
+
+  .about_way_title {
+    font-size: 2.4rem;
+  }
+
+  .about_way_visual {
+    max-width: 100%;
+  }
+
+  .about_way_frame--circle {
+    width: min(100%, 260px);
+  }
+
+  .about_way_frame--rect {
+    padding-right: 26px;
+  }
+
+  .about_way_deco--side {
+    font-size: clamp(12px, 3.2vw, 16px);
+  }
+
+  .about_way_deco_text {
+    font-size: 5.5px;
+  }
+
+  .sub_section_eyebrow {
+    font-size: 1.3rem;
+  }
+
+  .sub_section_title {
+    font-size: clamp(3.6rem, 10vw, 4.8rem);
+    margin-bottom: 40px;
+  }
+}
+

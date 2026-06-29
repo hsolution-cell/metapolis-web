@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import SubPageLayout from "@/components/sub/SubPageLayout";
 import { getPageMeta } from "@/data/siteMeta";
 
 type MockupPageProps = {
@@ -20,15 +21,12 @@ export function buildMockupMetadata({ path, label }: Pick<MockupPageProps, "path
   };
 }
 
-export default function MockupPage({ image, label }: MockupPageProps) {
+export default function MockupPage({ image, label, path }: MockupPageProps) {
   return (
-    <>
-      <div className="header_container" />
-      <div className="sub_page sub_page--mockup page innerBot">
-        <div className="sub_mockup">
-          <img src={`/img/sub/${image}.png?v=1.0.0`} alt={`${label} 페이지 시안`} />
-        </div>
+    <SubPageLayout path={path} className="sub_page--mockup">
+      <div className="sub_mockup">
+        <img src={`/img/sub/${image}.png?v=1.0.0`} alt={`${label} 페이지 시안`} />
       </div>
-    </>
+    </SubPageLayout>
   );
 }

@@ -2,9 +2,11 @@
 
 import Link from "next/link";
 import { SEARCH_TAGS } from "@/data/navigation";
+import { useToast } from "@/contexts/ToastContext";
 import { useHeaderMenu } from "@/hooks/useHeaderMenu";
 
 export default function Header() {
+  const { showToast } = useToast();
   const {
     GNB_GROUPS,
     activeGnbIndex,
@@ -117,6 +119,24 @@ export default function Header() {
             </nav>
 
             <div className="h_right">
+              <div className="h_lang">
+                <button type="button" className="is-active" aria-current="true" data-lang="kor">
+                  KOR
+                </button>
+                <span className="h_lang_sep" aria-hidden="true">
+                  |
+                </span>
+                <button
+                  type="button"
+                  data-lang="eng"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    showToast("영문 버전은 준비 중입니다.");
+                  }}
+                >
+                  ENG
+                </button>
+              </div>
               <button
                 type="button"
                 className="h_search_btn"

@@ -1,0 +1,731 @@
+/* sub page hours */
+
+.hours_main {
+  background: #fff;
+  color: #1a1a1a;
+  overflow: visible;
+  padding-top: clamp(80px, 10vw, 140px);
+  padding-bottom: clamp(64px, 8vw, 120px);
+}
+
+.hours_main .sub_section_head .sub_section_title {
+  margin-bottom: clamp(40px, 6vw, 80px);
+}
+
+.hours_main .sub_section_eyebrow {
+  color: #c5a375;
+}
+
+.hours_main_intro:not(.is-inview) .hours_main_head .sub_section_eyebrow,
+.hours_main_intro:not(.is-inview) .hours_main_head .sub_section_title {
+  opacity: 0;
+  transform: translateY(28px);
+  filter: blur(8px);
+}
+
+.hours_main_intro.is-inview .hours_main_head .sub_section_eyebrow {
+  animation: hours-reveal-up 0.95s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hours_main_intro.is-inview .hours_main_head .sub_section_title {
+  animation: hours-reveal-up 1s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+
+.hours_hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+
+.hours_hero_inner {
+  position: relative;
+  z-index: 1;
+}
+
+.hours_hero_deco {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 100vw;
+  margin-left: -50vw;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+.hours_hero_marquee {
+  width: 100%;
+  overflow: hidden;
+}
+
+.hours_hero_marquee_track {
+  display: flex;
+  width: max-content;
+  animation: hoursMarquee 36s linear infinite;
+}
+
+.hours_hero_marquee_track span {
+  flex: none;
+  font-family: "Roboto", sans-serif;
+  font-size: clamp(4.8rem, 12vw, 11rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: rgba(158, 181, 191, 0.22);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+@keyframes hoursMarquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.hours_hero_visual {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 860px);
+  min-height: 260px;
+  margin: 0 auto;
+  overflow: visible;
+}
+
+.hours_hero_orb {
+  position: relative;
+  z-index: 0;
+  width: 260px;
+  height: 260px;
+  max-width: min(800px, 96vw);
+  margin: 0 auto;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  transition:
+    width 1.8s cubic-bezier(0.16, 1, 0.3, 1),
+    border-radius 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hours_hero_visual.is-expanded .hours_hero_orb {
+  width: min(800px, 96vw);
+  border-radius: 999px;
+}
+
+.hours_hero_moon {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hours_hero_time {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(12px, 2.4vw, 28px);
+  padding: 0 clamp(8px, 2vw, 24px);
+  pointer-events: none;
+}
+
+.hours_hero_open,
+.hours_hero_close {
+  font-family: "Roboto", sans-serif;
+  font-size: clamp(2.8rem, 8vw, 6rem);
+  font-weight: 700;
+  line-height: 1;
+  color: #1a2e3b;
+  letter-spacing: -0.02em;
+  flex: none;
+}
+
+.hours_hero_mid {
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(8px, 1.2vw, 14px);
+  font-size: clamp(1.4rem, 2vw, 2rem);
+  font-weight: 500;
+  color: #1a2e3b;
+  white-space: nowrap;
+  flex: none;
+}
+
+.hours_hero_dash {
+  opacity: 0.7;
+}
+
+.hours_stores {
+  background: url("/img/sub/hours/hours_stores_bg.png") no-repeat bottom
+    center / cover;
+  overflow: visible;
+}
+
+.hours_stores_inner {
+  padding-top: clamp(72px, 10vw, 120px);
+  padding-bottom: clamp(80px, 10vw, 140px);
+}
+
+.hours_stores .content_inner {
+  overflow: visible;
+}
+
+.hours_stores .sub_section_title {
+  margin-bottom: clamp(56px, 8vw, 80px);
+  color: var(--mp-text, #1a2e3b);
+}
+
+.hours_stores:not(.is-inview) .hours_stores_head .sub_section_eyebrow,
+.hours_stores:not(.is-inview) .hours_stores_head .sub_section_title {
+  opacity: 0;
+  transform: translateY(28px);
+  filter: blur(8px);
+}
+
+.hours_stores.is-inview .hours_stores_head .sub_section_eyebrow {
+  animation: hours-reveal-up 0.95s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hours_stores.is-inview .hours_stores_head .sub_section_title {
+  animation: hours-reveal-up 1s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+
+.hours_category {
+  --hours-reveal-delay: 0ms;
+}
+
+.hours_category + .hours_category {
+  margin-top: clamp(48px, 7vw, 72px);
+}
+
+.hours_category_head {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 28px;
+  overflow: visible;
+}
+
+.hours_category_title {
+  margin: 0;
+  flex: none;
+  font-family: "Source Serif Pro", serif;
+  font-size: clamp(2.4rem, 3.6vw, 3.2rem);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1;
+  color: #c5a375;
+}
+
+.hours_category_line {
+  flex: 1;
+  min-width: 0;
+  height: 1px;
+  margin-right: calc(50% - 50vw);
+  background: #b89968;
+  opacity: 0.6;
+}
+
+.hours_stores:not(.is-inview) .hours_category_title {
+  opacity: 0;
+  transform: translateX(-18px);
+}
+
+.hours_stores:not(.is-inview) .hours_category_line {
+  opacity: 0;
+  clip-path: inset(0 100% 0 0);
+}
+
+.hours_stores:not(.is-inview) .hours_store_grid > li {
+  opacity: 0;
+  transform: translateY(24px) scale(0.98);
+  filter: blur(6px);
+}
+
+.hours_stores.is-inview .hours_category_title {
+  animation: hours-reveal-title 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(var(--hours-reveal-delay) + 120ms);
+}
+
+.hours_stores.is-inview .hours_category_line {
+  animation: hours-reveal-line 1.15s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(var(--hours-reveal-delay) + 260ms);
+}
+
+.hours_stores.is-inview .hours_store_grid > li {
+  animation: hours-reveal-card 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(
+    var(--hours-reveal-delay) + 360ms + (var(--hours-card-i, 0) * 75ms)
+  );
+}
+
+.hours_store_grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.hours_store_card {
+  height: 100%;
+  padding: 24px 22px 20px;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(26, 46, 59, 0.06);
+  display: flex;
+  flex-direction: column;
+}
+
+.hours_store_card_head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.hours_store_card_logo {
+  flex: none;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  overflow: hidden;
+  border-radius: 15px;
+  border: 1px solid #eadfc9;
+  background: #fff;
+}
+
+.hours_store_card_logo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.hours_store_card_logo_fallback {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #b89968;
+}
+
+.hours_store_card_meta {
+  min-width: 0;
+}
+
+.hours_store_card_category {
+  margin: 0 0 4px;
+  font-size: 1.3rem;
+  line-height: 1.3;
+  color: #9a9086;
+}
+
+.hours_store_card_name {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--mp-text, #1a2e3b);
+  word-break: keep-all;
+}
+
+.hours_store_card_schedule {
+  list-style: none;
+  flex: 1;
+  margin: 0;
+  padding: 0 0 16px;
+  border-bottom: 1px solid rgba(26, 46, 59, 0.08);
+}
+
+.hours_store_card_schedule li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px dashed rgba(26, 46, 59, 0.1);
+}
+
+.hours_store_card_schedule li:last-child {
+  border-bottom: none;
+}
+
+.hours_store_card_label {
+  flex: 1;
+  min-width: 0;
+  font-size: 1.5rem;
+  color: #66615b;
+}
+
+.hours_store_card_value {
+  flex: none;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--mp-text, #1a2e3b);
+  text-align: right;
+}
+
+.hours_store_card_value.is-closed {
+  color: #d2553f;
+}
+
+.hours_store_card_note {
+  margin: 14px 0 0;
+  font-size: 1.3rem;
+  line-height: 1.5;
+  color: #8d857c;
+  word-break: keep-all;
+}
+
+.hours_store_card_note_label {
+  color: #b89968;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+@keyframes hours-reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+    filter: blur(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes hours-reveal-title {
+  from {
+    opacity: 0;
+    transform: translateX(-18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes hours-reveal-line {
+  from {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+  }
+
+  to {
+    opacity: 0.6;
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes hours-reveal-card {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+    filter: blur(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@media (max-width: 1024px) {
+  .hours_main {
+    padding-top: clamp(64px, 9vw, 100px);
+    padding-bottom: clamp(48px, 7vw, 80px);
+  }
+
+  .hours_stores_inner {
+    padding-top: clamp(56px, 8vw, 96px);
+    padding-bottom: clamp(64px, 9vw, 112px);
+  }
+
+  .hours_store_grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .hours_hero_marquee_track span {
+    font-size: clamp(3.6rem, 10vw, 7rem);
+  }
+
+  .hours_hero_visual {
+    width: min(100%, 720px);
+  }
+
+  .hours_category + .hours_category {
+    margin-top: clamp(40px, 6vw, 56px);
+  }
+}
+
+@media (max-width: 768px) {
+  .hours_main {
+    padding-top: 56px;
+    padding-bottom: 48px;
+  }
+
+  .hours_main .sub_section_head .sub_section_title {
+    margin-bottom: 32px;
+  }
+
+  .hours_stores_inner {
+    padding-top: 48px;
+    padding-bottom: 64px;
+  }
+
+  .hours_stores .sub_section_title {
+    margin-bottom: 40px;
+  }
+
+  .hours_hero {
+    min-height: clamp(200px, 56vw, 260px);
+  }
+
+  .hours_hero_inner {
+    width: 100%;
+  }
+
+  .hours_hero_orb {
+    width: clamp(200px, 56vw, 260px);
+    height: clamp(200px, 56vw, 260px);
+  }
+
+  .hours_hero_visual {
+    min-height: clamp(200px, 56vw, 260px);
+    width: 100%;
+  }
+
+  .hours_hero_visual.is-expanded .hours_hero_orb {
+    width: min(100%, 96vw);
+    height: clamp(200px, 56vw, 260px);
+  }
+
+  .hours_hero_visual:not(.is-expanded) .hours_hero_time,
+  .hours_hero_visual.is-expanded .hours_hero_time {
+    flex-wrap: wrap;
+    align-content: center;
+    row-gap: 8px;
+    column-gap: 0;
+    padding: 0 clamp(12px, 3vw, 20px);
+  }
+
+  .hours_hero_open {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .hours_hero_open::after {
+    content: "—";
+    margin-left: clamp(8px, 2vw, 12px);
+    margin-right: clamp(8px, 2vw, 12px);
+    font-weight: 500;
+    opacity: 0.7;
+  }
+
+  .hours_hero_visual:not(.is-expanded) .hours_hero_mid,
+  .hours_hero_visual.is-expanded .hours_hero_mid {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hours_category_head {
+    gap: 14px;
+    margin-bottom: 22px;
+  }
+
+  .hours_category_title {
+    font-size: clamp(2.2rem, 5.5vw, 2.8rem);
+  }
+
+  .hours_store_grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .hours_store_card {
+    padding: 20px 18px 18px;
+  }
+
+  .hours_store_card_head {
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .hours_store_card_logo {
+    width: 48px;
+    height: 48px;
+  }
+
+  .hours_store_card_name {
+    font-size: 1.7rem;
+  }
+
+  .hours_store_card_schedule li {
+    align-items: flex-start;
+    padding: 9px 0;
+  }
+
+  .hours_store_card_value {
+    max-width: 58%;
+    line-height: 1.35;
+  }
+}
+
+@media (max-width: 480px) {
+  .hours_main {
+    padding-top: 48px;
+    padding-bottom: 40px;
+  }
+
+  .hours_main .sub_section_head .sub_section_eyebrow {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+  }
+
+  .hours_main .sub_section_head .sub_section_title {
+    font-size: clamp(3rem, 9vw, 3.6rem);
+    margin-bottom: 28px;
+  }
+
+  .hours_stores_inner {
+    padding-top: 40px;
+    padding-bottom: 56px;
+  }
+
+  .hours_stores .sub_section_title {
+    font-size: clamp(3rem, 9vw, 3.6rem);
+    margin-bottom: 32px;
+  }
+
+  .hours_hero_marquee_track span {
+    font-size: clamp(2.8rem, 14vw, 4.8rem);
+  }
+
+  .hours_hero_orb {
+    width: clamp(180px, 62vw, 220px);
+    height: clamp(180px, 62vw, 220px);
+  }
+
+  .hours_hero_visual {
+    min-height: clamp(180px, 62vw, 220px);
+  }
+
+  .hours_hero_visual.is-expanded .hours_hero_orb {
+    height: clamp(180px, 62vw, 220px);
+  }
+
+  .hours_hero_open,
+  .hours_hero_close {
+    font-size: clamp(2.4rem, 9vw, 3.2rem);
+  }
+
+  .hours_hero_mid {
+    font-size: 1.25rem;
+    gap: 8px;
+  }
+
+  .hours_category + .hours_category {
+    margin-top: 36px;
+  }
+
+  .hours_category_head {
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+
+  .hours_category_title {
+    font-size: clamp(2rem, 5.2vw, 2.4rem);
+  }
+
+  .hours_store_card {
+    padding: 18px 16px 16px;
+    border-radius: 16px;
+  }
+
+  .hours_store_card_category {
+    font-size: 1.2rem;
+  }
+
+  .hours_store_card_name {
+    font-size: 1.55rem;
+  }
+
+  .hours_store_card_label,
+  .hours_store_card_value {
+    font-size: 1.35rem;
+  }
+
+  .hours_store_card_note {
+    font-size: 1.2rem;
+    margin-top: 12px;
+  }
+
+  .hours_store_card_value {
+    max-width: 52%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hours_hero_marquee_track {
+    animation: none;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .hours_hero_marquee_track span:not(:first-child) {
+    display: none;
+  }
+
+  .hours_hero_orb {
+    transition: none;
+  }
+
+  .hours_main_intro.is-inview .hours_main_head,
+  .hours_main_intro.is-inview .sub_section_eyebrow,
+  .hours_main_intro.is-inview .sub_section_title,
+  .hours_stores.is-inview .hours_stores_head,
+  .hours_stores.is-inview .hours_category_head,
+  .hours_stores.is-inview .hours_category_title,
+  .hours_stores.is-inview .hours_category_line,
+  .hours_stores.is-inview .hours_store_grid > li {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    filter: none;
+    clip-path: none;
+  }
+
+  .hours_main_intro:not(.is-inview) .hours_main_head .sub_section_eyebrow,
+  .hours_main_intro:not(.is-inview) .hours_main_head .sub_section_title,
+  .hours_stores:not(.is-inview) .hours_stores_head .sub_section_eyebrow,
+  .hours_stores:not(.is-inview) .hours_stores_head .sub_section_title,
+  .hours_stores:not(.is-inview) .hours_category_title,
+  .hours_stores:not(.is-inview) .hours_category_line,
+  .hours_stores:not(.is-inview) .hours_store_grid > li {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    clip-path: none;
+  }
+}

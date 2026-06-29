@@ -142,50 +142,134 @@ footer .content_inner {
   text-align: right;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1280px) {
   footer .content_inner {
-    padding: 40px 0 36px;
+    padding: 44px 0 36px;
   }
+
+  .f_top {
+    margin-bottom: 48px;
+  }
+
+  .f_nav,
+  .f_lang {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 1024px) {
+  footer .content_inner {
+    width: 100%;
+    max-width: none;
+    padding: 40px 16px 36px;
+  }
+
+  .f_top {
+    margin-bottom: 36px;
+  }
+
+  .f_mid {
+    margin-bottom: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  footer .content_inner {
+    padding: 36px 16px 88px;
+  }
+
+  .f_top {
+    margin-bottom: 28px;
+  }
+
+  .f_logo img {
+    height: 32px;
+  }
+
   .f_mid {
     flex-direction: column;
     align-items: flex-start;
-    gap: 16px;
+    gap: 20px;
+    margin-bottom: 16px;
+    opacity: 1;
   }
+
   .f_lang {
-    align-self: flex-end;
+    align-self: flex-start;
+    font-size: 16px;
   }
+
+  .f_nav {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .f_nav > li:not(:last-child)::after {
+    margin: 0 8px;
+  }
+
   .f_bottom {
     flex-direction: column;
     align-items: flex-start;
-    gap: 12px;
+    gap: 10px;
+    font-size: 12px;
   }
+
   .f_copy {
     text-align: left;
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 480px) {
   footer .content_inner {
-    padding: 36px 0 100px;
+    padding: 32px 12px 96px;
   }
+
+  .f_top {
+    margin-bottom: 24px;
+  }
+
+  .f_logo img {
+    height: 28px;
+  }
+
   .f_nav {
     font-size: 13px;
   }
-  .f_nav > li:not(:last-child)::after {
-    margin: 0 8px;
+
+  .f_lang {
+    font-size: 14px;
   }
-  .f_bottom {
-    font-size: 12px;
-  }
+
   .f_info .f_sep {
     display: block;
     height: 0;
     overflow: hidden;
     margin: 0;
   }
+
   .f_info {
     display: flex;
     flex-direction: column;
     gap: 4px;
+    line-height: 1.5;
+  }
+
+  .f_bottom {
+    font-size: 11px;
+  }
+}
+
+@media (hover: none) {
+  .f_nav a:hover {
+    color: #fff;
+  }
+
+  .f_lang button:hover {
+    color: rgba(255, 255, 255, 0.45);
+  }
+
+  .f_lang button.is-active:hover {
+    color: #fff;
   }
 }

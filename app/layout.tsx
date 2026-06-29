@@ -5,7 +5,7 @@ import Footer from "@/components/layout/Footer";
 import QuickMenu from "@/components/layout/QuickMenu";
 import { ToastProvider } from "@/contexts/ToastContext";
 import { DEFAULT_META } from "@/data/siteMeta";
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata: Metadata = {
   title: DEFAULT_META.title,
@@ -30,7 +30,15 @@ export default function RootLayout({
     <html lang="ko">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;1,400;1,600&display=swap"
+          rel="stylesheet"
+        />
       </head>
       <body>
         <ToastProvider>

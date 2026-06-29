@@ -119,7 +119,6 @@ html *.m10 {
 }
 p {
   font-size: 20px;
-  line-height: 2;
 }
 /* popup — 우측 상단 슬라이드 스택 */
 @keyframes popupSlideIn {
@@ -422,7 +421,7 @@ p {
     margin-bottom: 1rem;
   }
   p {
-    font-size: 4.3vw;
+    font-size: min(4.3vw, 18px);
   }
   .popups {
     padding: 6px;

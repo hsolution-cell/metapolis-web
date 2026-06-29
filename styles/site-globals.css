@@ -5,5 +5,7 @@
 @import "./footer.css";
 @import "./main.css";
 @import "./hero.css";
-@import "./sub.css";
+@import "./sub/layout.css";
+@import "./sub/about.css";
+@import "./sub/hours.css";
 @import "./site.css";

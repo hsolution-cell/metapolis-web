@@ -1,7 +1,13 @@
-import MockupPage, { buildMockupMetadata } from "@/components/sub/MockupPage";
+import SubPageLayout from "@/components/sub/SubPageLayout";
+import HoursSection from "@/components/sub/hours/HoursSection";
+import { buildMockupMetadata } from "@/components/sub/MockupPage";
 
 export const metadata = buildMockupMetadata({ path: "/hours", label: "영업시간" });
 
 export default function Page() {
-  return <MockupPage path="/hours" image="menu1_2" label="영업시간" />;
+  return (
+    <SubPageLayout path="/hours" className="hours">
+      <HoursSection />
+    </SubPageLayout>
+  );
 }

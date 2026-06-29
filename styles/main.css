@@ -1154,34 +1154,6 @@
   transform: translateX(-48px);
 }
 
-.main_faq_intro_deco {
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 2;
-  width: 120px;
-  height: 120px;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-}
-
-.main_faq_intro_deco img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  animation: mainFaqIntroDecoSpin 24s linear infinite;
-}
-
-@keyframes mainFaqIntroDecoSpin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .main_faq_accordion {
   width: 100%;
   opacity: 0;
@@ -1463,16 +1435,42 @@
   .main_faq_item:not(.is-open) .main_faq_answer {
     display: none;
   }
+}
 
-  .main_faq_intro_deco img {
-    animation: none;
+@media (max-width: 1280px) {
+  .main_faq_layout {
+    gap: 60px;
+  }
+
+  .main_faq_intro {
+    max-width: 420px;
+  }
+
+  .main_faq_card {
+    padding: 42px 40px 38px;
+  }
+
+  .main_faq_title {
+    font-size: 38px;
+  }
+
+  .main_faq_contact {
+    margin: 56px 0;
+  }
+
+  .main_faq_contact_tel {
+    font-size: 28px;
   }
 }
 
 @media (max-width: 1024px) {
   .main_faq_layout {
-    grid-template-columns: 1fr;
+    flex-direction: column;
     gap: 40px;
+  }
+
+  .main_faq_intro {
+    max-width: none;
   }
 
   .main_faq_card {
@@ -1483,13 +1481,29 @@
     font-size: 28px;
   }
 
+  .main_faq_desc {
+    font-size: 16px;
+  }
+
+  .main_faq_contact {
+    margin: 40px 0 32px;
+  }
+
   .main_faq_contact_tel {
     font-size: 26px;
   }
 
+  .main_faq_tags {
+    gap: 12px 8px;
+  }
+
+  .main_faq_tags li {
+    font-size: 15px;
+  }
+
   .main_faq_question {
     gap: 16px;
-    padding: 28px 0;
+    padding: 20px 0;
   }
 
   .main_faq_item.is-open .main_faq_question {
@@ -1503,6 +1517,7 @@
 
   .main_faq_qtext {
     font-size: 17px;
+    line-height: 1.45;
   }
 
   .main_faq_icon {
@@ -1517,25 +1532,178 @@
   .main_faq_answer_inner p {
     padding-bottom: 28px;
     font-size: 16px;
+    line-height: 1.65;
   }
 }
 
 @media (max-width: 768px) {
-  .main_faq_watermark {
-    font-size: 4rem;
+  .main_faq_inner {
+    width: 100%;
+    max-width: none;
+    padding: 0 16px;
+  }
+
+  .main_faq_layout {
+    gap: 32px;
+  }
+
+  .main_faq_card {
+    padding: 28px 20px 24px;
+    border-radius: 20px;
+  }
+
+  .main_faq_title {
+    margin-bottom: 12px;
+    font-size: 2.4rem;
+    line-height: 1.35;
+  }
+
+  .main_faq_desc {
+    font-size: 1.5rem;
+    line-height: 1.5;
+  }
+
+  .main_faq_contact {
+    margin: 28px 0 24px;
+  }
+
+  .main_faq_contact_label {
+    font-size: 1.4rem;
+  }
+
+  .main_faq_contact_tel {
+    font-size: 2.2rem;
+  }
+
+  .main_faq_tags {
+    gap: 10px 8px;
+  }
+
+  .main_faq_tags li {
+    padding: 6px 14px;
+    font-size: 1.3rem;
+  }
+
+  .main_faq_question {
+    gap: 10px;
+    align-items: flex-start;
+    padding: 16px 0;
+  }
+
+  .main_faq_item.is-open .main_faq_question {
+    padding-bottom: 12px;
   }
 
   .main_faq_num {
-    width: 32px;
-    font-size: 18px;
+    width: 28px;
+    padding-top: 2px;
+    font-size: 1.6rem;
   }
 
   .main_faq_qtext {
-    font-size: 16px;
+    font-size: 1.5rem;
+    line-height: 1.45;
+  }
+
+  .main_faq_icon {
+    width: 32px;
+    height: 32px;
+    margin-top: 2px;
   }
 
   .main_faq_answer {
-    padding-left: 48px;
+    padding-left: 38px;
+  }
+
+  .main_faq_answer_inner p {
+    padding: 0 0 20px;
+    font-size: 1.4rem;
+    line-height: 1.6;
+  }
+
+  .main_faq_watermark {
+    font-size: 3.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .main_faq_inner {
+    padding: 0 12px;
+  }
+
+  .main_faq_layout {
+    gap: 24px;
+  }
+
+  .main_faq_card {
+    padding: 24px 16px 20px;
+    border-radius: 16px;
+  }
+
+  .main_faq_title {
+    font-size: 2rem;
+  }
+
+  .main_faq_desc {
+    font-size: 1.3rem;
+  }
+
+  .main_faq_contact {
+    margin: 22px 0 18px;
+  }
+
+  .main_faq_contact_tel {
+    font-size: 1.8rem;
+    letter-spacing: -0.01em;
+  }
+
+  .main_faq_tags li {
+    padding: 5px 12px;
+    font-size: 1.2rem;
+  }
+
+  .main_faq_question {
+    gap: 8px;
+    padding: 14px 0;
+  }
+
+  .main_faq_num {
+    width: 24px;
+    font-size: 1.4rem;
+  }
+
+  .main_faq_qtext {
+    font-size: 1.35rem;
+  }
+
+  .main_faq_icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .main_faq_icon::before,
+  .main_faq_icon::after {
+    width: 11px;
+  }
+
+  .main_faq_answer {
+    padding-left: 32px;
+  }
+
+  .main_faq_answer_inner p {
+    font-size: 1.3rem;
+    padding-bottom: 16px;
+  }
+
+  .main_faq_watermark {
+    font-size: 2.8rem;
+    opacity: 0.06;
+  }
+}
+
+@media (hover: none) {
+  .main_faq_item:not(.is-open) .main_faq_question:hover .main_faq_qtext {
+    color: #8c857b;
   }
 }
 
@@ -1594,12 +1762,25 @@
 
 .main_location_map img {
   width: 100%;
-  height: 100%;
+  height: auto;
   object-fit: cover;
+}
+
+.main_location_info {
+  flex: 1;
+  min-width: 0;
+}
+
+.main_location_list {
+  margin: 0;
 }
 
 .main_location_item {
   margin-bottom: 45px;
+}
+
+.main_location_item:last-child {
+  margin-bottom: 0;
 }
 
 .main_location_label {
@@ -1639,6 +1820,7 @@
 .main_location_actions {
   display: flex;
   flex-wrap: wrap;
+  margin-top: 40px;
   gap: 40px;
 }
 
@@ -1670,14 +1852,70 @@
   display: block;
 }
 
+@media (max-width: 1280px) {
+  .main_location_head {
+    margin-bottom: 56px;
+  }
+
+  .main_location_title {
+    font-size: 48px;
+  }
+
+  .main_location_desc {
+    font-size: 20px;
+  }
+
+  .main_location_body {
+    gap: 56px;
+  }
+
+  .main_location_map {
+    max-width: 520px;
+    border-radius: 24px;
+  }
+
+  .main_location_address_ko,
+  .main_location_tel,
+  .main_location_hour {
+    font-size: 28px;
+  }
+
+  .main_location_address_en {
+    margin-top: 16px;
+    font-size: 24px;
+  }
+
+  .main_location_item {
+    margin-bottom: 36px;
+  }
+
+  .main_location_actions {
+    gap: 24px;
+  }
+}
+
 @media (max-width: 1024px) {
+  .main_location_head {
+    margin-bottom: 40px;
+  }
+
   .main_location_title {
     font-size: 42px;
   }
 
+  .main_location_desc {
+    font-size: 18px;
+  }
+
   .main_location_body {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    align-items: stretch;
     gap: 40px;
+  }
+
+  .main_location_map {
+    max-width: none;
+    margin: 0 auto;
   }
 
   .main_location_address_ko,
@@ -1685,36 +1923,137 @@
   .main_location_hour {
     font-size: 24px;
   }
-}
 
-@media (max-width: 768px) {
-  .main_location_head {
-    margin-bottom: 32px;
-  }
-
-  .main_location_title {
-    font-size: 34px;
-  }
-
-  .main_location_desc {
-    font-size: 16px;
+  .main_location_address_en {
+    font-size: 20px;
   }
 
   .main_location_item {
-    padding: 22px 0;
+    margin-bottom: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .main_location_inner {
+    width: 100%;
+    max-width: none;
+    padding: 0 16px;
+  }
+
+  .main_location_head {
+    margin-bottom: 28px;
+  }
+
+  .main_location_title {
+    margin-bottom: 12px;
+    font-size: 3.2rem;
+  }
+
+  .main_location_desc {
+    font-size: 1.5rem;
+    line-height: 1.5;
+  }
+
+  .main_location_body {
+    gap: 32px;
+  }
+
+  .main_location_map {
+    border-radius: 20px;
+    box-shadow: 0 2px 10px 4px rgba(0, 32, 53, 0.12);
+  }
+
+  .main_location_label {
+    margin-bottom: 10px;
+    font-size: 1.4rem;
   }
 
   .main_location_address_ko,
   .main_location_tel,
   .main_location_hour {
-    font-size: 20px;
+    font-size: 2rem;
+    line-height: 1.35;
+  }
+
+  .main_location_address_en {
+    margin-top: 12px;
+    font-size: 1.6rem;
+    line-height: 1.45;
+  }
+
+  .main_location_item {
+    margin-bottom: 24px;
   }
 
   .main_location_actions {
     flex-direction: column;
+    gap: 12px;
   }
 
   .main_location_btn {
     width: 100%;
+    min-height: 48px;
+    padding: 12px 20px;
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .main_location_inner {
+    padding: 0 12px;
+  }
+
+  .main_location_head {
+    margin-bottom: 20px;
+  }
+
+  .main_location_title {
+    font-size: 2.6rem;
+  }
+
+  .main_location_desc {
+    font-size: 1.3rem;
+  }
+
+  .main_location_body {
+    gap: 24px;
+  }
+
+  .main_location_map {
+    border-radius: 16px;
+  }
+
+  .main_location_label {
+    font-size: 1.3rem;
+  }
+
+  .main_location_address_ko,
+  .main_location_tel,
+  .main_location_hour {
+    font-size: 1.7rem;
+  }
+
+  .main_location_address_en {
+    font-size: 1.4rem;
+  }
+
+  .main_location_item {
+    margin-bottom: 20px;
+  }
+
+  .main_location_btn {
+    min-height: 44px;
+    font-size: 1.4rem;
+    gap: 12px;
+  }
+}
+
+@media (hover: none) {
+  .main_location_tel:hover {
+    color: #1a2e3b;
+  }
+
+  .main_location_btn:hover {
+    background: #c75d3c;
   }
 }
