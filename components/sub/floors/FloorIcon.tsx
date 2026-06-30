@@ -17,7 +17,6 @@ import IconMart from "@/components/sub/floors/icons/IconMart";
 import IconMakeup from "@/components/sub/floors/icons/IconMakeup";
 import IconService from "@/components/sub/floors/icons/IconService";
 import IconShoes from "@/components/sub/floors/icons/IconShoes";
-import IconSpa from "@/components/sub/floors/icons/IconSpa";
 
 type FloorIconProps = {
   category: StoreIconCategory;
@@ -34,7 +33,6 @@ const ICONS: Record<StoreIconCategory, ComponentType> = {
   makeup: IconMakeup,
   jewelry: IconJewelry,
   digital: IconDigital,
-  spa: IconSpa,
   culture: IconCulture,
   book: IconBook,
   hospital: IconHospital,

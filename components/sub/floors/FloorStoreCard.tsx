@@ -2,10 +2,13 @@ import type { StoreCardView } from "@/data/storeDirectory";
 import FloorIcon from "@/components/sub/floors/FloorIcon";
 
 type FloorStoreCardProps = {
-  store: Pick<StoreCardView, "name" | "tel" | "iconCategory" | "hasEvent">;
+  store: Pick<StoreCardView, "name" | "tel" | "iconCategory" | "hasEvent"> & {
+    location?: string;
+  };
+  showLocation?: boolean;
 };
 
-export default function FloorStoreCard({ store }: FloorStoreCardProps) {
+export default function FloorStoreCard({ store, showLocation = false }: FloorStoreCardProps) {
   return (
     <li className={`floors_store_card floors_store_card--${store.iconCategory}`}>
       {store.hasEvent ? (
@@ -18,6 +21,9 @@ export default function FloorStoreCard({ store }: FloorStoreCardProps) {
       </span>
       <div className="floors_store_body">
         <strong className="floors_store_name">{store.name}</strong>
+        {showLocation && store.location ? (
+          <span className="floors_store_location">{store.location}</span>
+        ) : null}
         {store.tel === "—" ? (
           <span className="floors_store_tel">{store.tel}</span>
         ) : (

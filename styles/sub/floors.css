@@ -522,6 +522,7 @@
 }
 
 .floors_store_tel {
+  display: block;
   font-size: 16px;
   color: #8c857b;
   text-decoration: none;
