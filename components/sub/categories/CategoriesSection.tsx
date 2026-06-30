@@ -44,9 +44,7 @@ export default function CategoriesSection() {
   const visibleStores = stores.slice(0, visibleCount);
   const hasMore = visibleCount < stores.length;
 
-  useEffect(() => {
-    setVisibleCount(INITIAL_VISIBLE);
-  }, [block, categoryId]);
+  const resetVisibleCount = () => setVisibleCount(INITIAL_VISIBLE);
 
   useEffect(() => {
     const nav = navListRef.current;
@@ -62,7 +60,13 @@ export default function CategoriesSection() {
         <SubReveal threshold={0.12} rootMargin="0px 0px -8% 0px">
           <div className="floors_layout">
             <aside className="floors_sidebar" aria-label="카테고리 선택">
-              <FloorsBlockToggle block={block} onChange={setBlock} />
+              <FloorsBlockToggle
+                block={block}
+                onChange={(nextBlock) => {
+                  setBlock(nextBlock);
+                  resetVisibleCount();
+                }}
+              />
 
               <div className="floors_nav">
                 <p className="floors_nav_label">
@@ -81,7 +85,10 @@ export default function CategoriesSection() {
                           type="button"
                           className={`floors_nav_btn${isActive ? " is-active" : ""}`}
                           aria-current={isActive ? "true" : undefined}
-                          onClick={() => setCategoryId(item.id)}
+                          onClick={() => {
+                            setCategoryId(item.id);
+                            resetVisibleCount();
+                          }}
                         >
                           <span className="floors_nav_floor">{item.labelEn}</span>
                           <span className="floors_nav_summary">{item.labelKo}</span>
