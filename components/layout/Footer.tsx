@@ -1,11 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import EnFooter from "@/components/en/EnFooter";
 
 export default function Footer() {
   const pathname = usePathname();
+  const router = useRouter();
 
   // 영문 경로에서는 EN 전용 푸터를 렌더
   if (pathname?.startsWith("/en")) {
@@ -46,9 +47,9 @@ export default function Footer() {
             <span className="f_dot" aria-hidden="true">
               ·
             </span>
-            <Link href="/en" data-lang="eng">
+            <button type="button" data-lang="eng" onClick={() => router.push("/en")}>
               ENG
-            </Link>
+            </button>
           </div>
         </div>
 

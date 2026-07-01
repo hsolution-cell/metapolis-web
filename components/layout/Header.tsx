@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { SEARCH_TAGS } from "@/data/navigation";
 import { useHeaderMenu } from "@/hooks/useHeaderMenu";
 import HeaderSearchResults from "@/components/layout/HeaderSearchResults";
@@ -9,6 +9,7 @@ import EnHeader from "@/components/en/EnHeader";
 
 export default function Header() {
   const pathname = usePathname();
+  const router = useRouter();
   const {
     GNB_GROUPS,
     activeGnbIndex,
@@ -134,9 +135,9 @@ export default function Header() {
                 <span className="h_lang_sep" aria-hidden="true">
                   |
                 </span>
-                <Link href="/en" data-lang="eng">
+                <button type="button" data-lang="eng" onClick={() => router.push("/en")}>
                   ENG
-                </Link>
+                </button>
               </div>
               <button
                 type="button"

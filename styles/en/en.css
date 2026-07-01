@@ -1,17 +1,13 @@
 /* ==========================================================================
    영문(EN) 사이트 전용 스타일
-   - 본문 섹션(Hero/Branch/FAQ/Location)은 국문 컴포넌트·CSS를 그대로 재사용
-   - 여기서는 EN 전용 헤더/푸터와 EN 전용 Contact 섹션만 정의
+   - 헤더/푸터/본문 섹션은 국문 CSS(header.css/footer.css/main.css/hero.css)를 재사용
+   - 여기서는 EN 전용 Contact 섹션 스타일만 정의
    ========================================================================== */
 
 :root {
   --en-navy: #14232f;
-  --en-navy-deep: #0f1c26;
   --en-text: #1f2d3a;
-  --en-muted: #8b95a1;
   --en-gold: #b3894e;
-  --en-gold-soft: #c9a877;
-  --en-line: #e7e9ec;
 }
 
 .en-label {
@@ -21,175 +17,6 @@
   letter-spacing: 0.08em;
   color: var(--en-gold);
   margin-right: 8px;
-}
-
-/* ---------- EN Header ---------- */
-.en-header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background: #fff;
-  border-bottom: 1px solid var(--en-line);
-}
-.en-header__inner {
-  max-width: 1440px;
-  margin: 0 auto;
-  height: 74px;
-  padding: 0 40px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-}
-.en-header__logo img {
-  height: 30px;
-  width: auto;
-  display: block;
-}
-.en-nav {
-  display: flex;
-  align-items: center;
-  gap: 56px;
-}
-.en-nav a {
-  font-size: 16px;
-  font-weight: 500;
-  color: var(--en-text);
-  letter-spacing: 0.01em;
-  transition: color 0.2s ease;
-}
-.en-nav a:hover,
-.en-nav a.is-current {
-  color: var(--en-gold);
-}
-.en-header__right {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-}
-.en-lang {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 14px;
-  font-weight: 600;
-}
-.en-lang button,
-.en-lang a {
-  color: var(--en-muted);
-  transition: color 0.2s ease;
-}
-.en-lang .is-active {
-  color: var(--en-gold);
-}
-.en-lang a:hover {
-  color: var(--en-text);
-}
-.en-lang__sep {
-  color: var(--en-line);
-}
-.en-search-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 24px;
-  height: 24px;
-  color: var(--en-gold);
-}
-.en-search-btn svg {
-  width: 22px;
-  height: 22px;
-}
-.en-menu-btn {
-  display: none;
-}
-
-/* ---------- EN Footer ---------- */
-.en-footer {
-  background: var(--en-navy-deep);
-  color: #cfd6dd;
-}
-.en-footer__inner {
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 48px 40px 40px;
-}
-.en-footer__logo img {
-  height: 34px;
-  width: auto;
-  display: block;
-}
-.en-footer__mid {
-  margin-top: 26px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  flex-wrap: wrap;
-}
-.en-footer__nav {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  flex-wrap: wrap;
-}
-.en-footer__nav li {
-  position: relative;
-  font-size: 14px;
-  font-weight: 600;
-  color: #e4e8ec;
-}
-.en-footer__nav li:not(:first-child)::before {
-  content: "·";
-  position: absolute;
-  left: -9px;
-  color: #56636e;
-}
-.en-footer__nav a:hover {
-  color: var(--en-gold-soft);
-}
-.en-footer__copy {
-  font-size: 13px;
-  color: #7b8792;
-  letter-spacing: 0.02em;
-}
-.en-footer__divider {
-  height: 1px;
-  background: #26333d;
-  margin: 24px 0;
-}
-.en-footer__bottom {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-.en-footer__info {
-  font-size: 13px;
-  color: #9aa4ad;
-  letter-spacing: 0.01em;
-}
-.en-footer__info .sep {
-  margin: 0 8px;
-  color: #46525c;
-}
-.en-footer__lang {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 13px;
-  font-weight: 700;
-}
-.en-footer__lang button,
-.en-footer__lang a {
-  color: #cfd6dd;
-}
-.en-footer__lang .is-active {
-  color: #fff;
-}
-.en-footer__lang .dot {
-  color: #46525c;
 }
 
 /* ---------- Contact Us (EN 전용 섹션) ---------- */
@@ -269,36 +96,6 @@
   font-size: 16px;
   color: #fff;
   font-weight: 600;
-}
-
-/* ---------- Responsive ---------- */
-@media (max-width: 1024px) {
-  .en-header__inner {
-    padding: 0 20px;
-    height: 64px;
-  }
-  .en-nav {
-    display: none;
-  }
-  .en-menu-btn {
-    display: inline-flex;
-    flex-direction: column;
-    gap: 5px;
-    width: 26px;
-  }
-  .en-menu-btn span {
-    height: 2px;
-    background: var(--en-text);
-    border-radius: 2px;
-  }
-  .en-footer__inner {
-    padding: 36px 20px 32px;
-  }
-  .en-footer__mid,
-  .en-footer__bottom {
-    flex-direction: column;
-    align-items: flex-start;
-  }
 }
 
 @media (max-width: 960px) {

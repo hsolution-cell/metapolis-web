@@ -15,6 +15,7 @@ import {
 export default function EnHome() {
   return (
     <>
+      <div className="header_container" />
       <HeroSection slides={EN_HERO_SLIDES} ariaLabel="Main banner" />
 
       <BranchSection
