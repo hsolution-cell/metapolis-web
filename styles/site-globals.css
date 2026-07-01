@@ -2,6 +2,7 @@
 @import "./common.css";
 @import "./quick.css";
 @import "./header.css";
+@import "./header-search.css";
 @import "./footer.css";
 @import "./main.css";
 @import "./hero.css";
@@ -11,6 +12,7 @@
 @import "./sub/location.css";
 @import "./sub/parking.css";
 @import "./sub/stores.css";
+@import "./sub/storeSearch.css";
 @import "./sub/floors.css";
 @import "./sub/categories.css";
 @import "./sub/facilities.css";
@@ -18,4 +20,5 @@
 @import "./sub/winners.css";
 @import "./sub/faq.css";
 @import "./sub/inquiry.css";
+@import "./sub/notices.css";
 @import "./site.css";

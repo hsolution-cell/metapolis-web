@@ -303,6 +303,7 @@
 .sub_page.stores .sub_body,
 .sub_page.parking .sub_body,
 .sub_page.location .sub_body,
+.sub_page.notices .sub_body,
 .sub_page.categories .sub_body,
 .sub_page.floors .sub_body {
   padding: 0;
@@ -314,13 +315,15 @@
 .sub_page.winners .sub_body,
 .sub_page.facilities .sub_body,
 .sub_page.stores .sub_body,
-.sub_page.parking .sub_body {
+.sub_page.parking .sub_body,
+.sub_page.notices .sub_body {
   pointer-events: auto;
   animation: subBodyFadeEnter 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.72s forwards;
 }
 
 .sub_page.events.events--detail .sub_body,
-.sub_page.winners.winners--detail .sub_body {
+.sub_page.winners.winners--detail .sub_body,
+.sub_page.notices.notices--detail .sub_body {
   opacity: 1;
   animation: none;
 }
@@ -348,13 +351,15 @@
 .faq_head.sub_section_head,
 .events_head.sub_section_head,
 .winners_head.sub_section_head,
+.notices_head.sub_section_head,
 .facilities_cards_head.sub_section_head,
 .stores_brands_head.sub_section_head {
   margin-bottom: 0;
 }
 
 .faq_head .sub_section_title,
-.winners_head .sub_section_title {
+.winners_head .sub_section_title,
+.notices_head .sub_section_title {
   margin-bottom: 24px;
 }
 

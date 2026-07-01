@@ -4,6 +4,7 @@ import Link from "next/link";
 import { SEARCH_TAGS } from "@/data/navigation";
 import { useToast } from "@/contexts/ToastContext";
 import { useHeaderMenu } from "@/hooks/useHeaderMenu";
+import HeaderSearchResults from "@/components/layout/HeaderSearchResults";
 
 export default function Header() {
   const { showToast } = useToast();
@@ -28,6 +29,7 @@ export default function Header() {
     cancelCloseMega,
     handleSearchSubmit,
     handleSearchTag,
+    closeSearch,
     setSearchQuery,
     isCurrentLink,
   } = useHeaderMenu();
@@ -225,6 +227,7 @@ export default function Header() {
                 </svg>
               </button>
             </form>
+            <HeaderSearchResults query={searchQuery} onSelect={closeSearch} />
             <ul className="header_search_tags" aria-label="추천 검색어">
               {SEARCH_TAGS.map((keyword) => (
                 <li key={keyword}>

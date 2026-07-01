@@ -60,6 +60,7 @@ export const PATH_GNB_INDEX: Record<string, number> = {
   "/parking": 0,
   "/stores": 1,
   "/stores/floors": 1,
+  "/stores/search": 1,
   "/stores/categories": 1,
   "/stores/facilities": 1,
   "/events": 2,

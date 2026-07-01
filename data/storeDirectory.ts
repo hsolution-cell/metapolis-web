@@ -167,8 +167,8 @@ export const STORE_DIRECTORY: StoreRecord[] = [
     block: "a",
     floorId: "4f",
     tel: "010-8689-8241",
-    iconCategory: "living",
-    guideCategory: "lifestyle",
+    iconCategory: "makeup",
+    guideCategory: "beauty",
   },
   {
     id: "yoshikatsu",

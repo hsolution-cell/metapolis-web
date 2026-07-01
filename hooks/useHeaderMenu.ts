@@ -1,8 +1,9 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { getGnbIndex, GNB_GROUPS } from "@/data/navigation";
+import { resolveStoreSearchDestination } from "@/data/storeSearch";
 import { useToast } from "@/contexts/ToastContext";
 
 const DESKTOP_BREAKPOINT = 1280;
@@ -13,6 +14,7 @@ function isDesktop() {
 
 export function useHeaderMenu() {
   const pathname = usePathname();
+  const router = useRouter();
   const { showToast } = useToast();
 
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -101,18 +103,36 @@ export function useHeaderMenu() {
     setMobileAccordion((prev) => (prev === index ? null : index));
   }, []);
 
+  const navigateStoreSearch = useCallback(
+    (query: string) => {
+      const destination = resolveStoreSearchDestination(query);
+
+      if (destination.type === "empty") {
+        showToast("검색어를 입력해 주세요.");
+        return;
+      }
+
+      router.push(destination.href);
+      closeSearch();
+    },
+    [router, closeSearch, showToast]
+  );
+
   const handleSearchSubmit = useCallback(
     (e: React.FormEvent) => {
       e.preventDefault();
-      showToast("검색 기능은 준비 중입니다.");
+      navigateStoreSearch(searchQuery);
     },
-    [showToast]
+    [navigateStoreSearch, searchQuery]
   );
 
-  const handleSearchTag = useCallback((keyword: string) => {
-    setSearchQuery(keyword);
-    searchInputRef.current?.focus();
-  }, []);
+  const handleSearchTag = useCallback(
+    (keyword: string) => {
+      setSearchQuery(keyword);
+      navigateStoreSearch(keyword);
+    },
+    [navigateStoreSearch]
+  );
 
   const isCurrentLink = useCallback(
     (href: string) => pathname === href,
