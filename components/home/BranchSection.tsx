@@ -10,7 +10,7 @@ import {
   type BranchBlock,
 } from "@/data/branchStores";
 
-function BackButton({ onClick }: { onClick: () => void }) {
+function BackButton({ onClick, backLabel = "돌아가기" }: { onClick: () => void; backLabel?: string }) {
   return (
     <li className="main_branch_cell main_branch_cell--back">
       <button type="button" className="main_branch_back_btn" data-branch-back onClick={onClick}>
@@ -29,7 +29,7 @@ function BackButton({ onClick }: { onClick: () => void }) {
             </clipPath>
           </defs>
         </svg>
-        <span>돌아가기</span>
+        <span>{backLabel}</span>
       </button>
     </li>
   );
@@ -79,16 +79,18 @@ function StoreGrid({
   block,
   floorId,
   onBack,
+  backLabel,
 }: {
   block: BranchBlock;
   floorId: string;
   onBack: () => void;
+  backLabel?: string;
 }) {
   const stores = BRANCH_STORES[block][floorId] ?? [];
 
   return (
     <>
-      <BackButton onClick={onBack} />
+      <BackButton onClick={onBack} backLabel={backLabel} />
       {Array.from({ length: STORE_SLOTS }, (_, i) => {
         const slug = stores[i];
         if (slug) {
@@ -107,7 +109,19 @@ function StoreGrid({
   );
 }
 
-export default function BranchSection() {
+type BranchSectionProps = {
+  title?: string;
+  desc?: string;
+  backLabel?: string;
+  ariaLabel?: string;
+};
+
+export default function BranchSection({
+  title = "메타폴리스 층별 주요 매장 안내",
+  desc = "층마다 다르게 보여지는 다채로운 즐거움을 지금 한눈에 확인해 보세요",
+  backLabel = "돌아가기",
+  ariaLabel = "지점 소개",
+}: BranchSectionProps = {}) {
   const sectionRef = useRef<HTMLElement>(null);
   const [decoAnimated, setDecoAnimated] = useState(false);
   const [detailBlock, setDetailBlock] = useState<BranchBlock | null>(null);
@@ -166,7 +180,7 @@ export default function BranchSection() {
     ));
 
   return (
-    <section ref={sectionRef} className={sectionClass} aria-label="지점 소개">
+    <section ref={sectionRef} className={sectionClass} aria-label={ariaLabel}>
       <div className="main_branch_deco main_branch_deco--gift" aria-hidden="true">
         <img src="/img/main_branch_gift.png" alt="" />
       </div>
@@ -196,8 +210,8 @@ export default function BranchSection() {
 
       <div className="main_branch_inner content_inner">
         <div className="main_branch_head">
-          <h2 className="main_branch_title">메타폴리스 층별 주요 매장 안내</h2>
-          <p className="main_branch_desc">층마다 다르게 보여지는 다채로운 즐거움을 지금 한눈에 확인해 보세요</p>
+          <h2 className="main_branch_title">{title}</h2>
+          <p className="main_branch_desc">{desc}</p>
         </div>
 
         <div className="main_branch_panel">
@@ -242,7 +256,7 @@ export default function BranchSection() {
               <div className="main_branch_block">
                 <ul className="main_branch_grid">
                   {detailBlock === "a" && (
-                    <StoreGrid block="a" floorId={activeFloorId} onBack={closeDetail} />
+                    <StoreGrid block="a" floorId={activeFloorId} onBack={closeDetail} backLabel={backLabel} />
                   )}
                 </ul>
               </div>
@@ -254,7 +268,7 @@ export default function BranchSection() {
               <div className="main_branch_block">
                 <ul className="main_branch_grid">
                   {detailBlock === "b" && (
-                    <StoreGrid block="b" floorId={activeFloorId} onBack={closeDetail} />
+                    <StoreGrid block="b" floorId={activeFloorId} onBack={closeDetail} backLabel={backLabel} />
                   )}
                 </ul>
               </div>

@@ -1,9 +1,37 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { FAQ_ITEMS, FAQ_TAGS } from "@/data/faq";
 
-export default function FaqSection() {
+type FaqItem = { num: string; question: string; answer: string };
+
+type FaqSectionProps = {
+  items?: FaqItem[];
+  tags?: string[];
+  title?: ReactNode;
+  desc?: string;
+  contactLabel?: string;
+  tel?: string;
+  telHref?: string;
+  ariaLabel?: string;
+};
+
+export default function FaqSection({
+  items = FAQ_ITEMS,
+  tags = FAQ_TAGS,
+  title = (
+    <>
+      메타폴리스 방문 전,
+      <br />
+      <strong>가장 많이 찾는 질문</strong>
+    </>
+  ),
+  desc = "가장 많이 찾으시는 문의사항을 정리해 드립니다.",
+  contactLabel = "고객센터",
+  tel = "Tel. 031 - 731 - 7000",
+  telHref = "tel:0317317000",
+  ariaLabel = "자주 묻는 질문",
+}: FaqSectionProps = {}) {
   const sectionRef = useRef<HTMLElement>(null);
   const [inView, setInView] = useState(false);
   const [openIndex, setOpenIndex] = useState(0);
@@ -34,7 +62,7 @@ export default function FaqSection() {
     <section
       ref={sectionRef}
       className={`main_faq page main_section_pad${inView ? " is-inview" : ""}`}
-      aria-label="자주 묻는 질문"
+      aria-label={ariaLabel}
     >
       <div className="main_faq_bg" aria-hidden="true" />
       <p className="main_faq_watermark" aria-hidden="true">
@@ -45,20 +73,16 @@ export default function FaqSection() {
         <div className="main_faq_layout">
           <aside className="main_faq_intro">
             <div className="main_faq_card">
-              <h2 className="main_faq_title">
-                메타폴리스 방문 전,
-                <br />
-                <strong>가장 많이 찾는 질문</strong>
-              </h2>
-              <p className="main_faq_desc">가장 많이 찾으시는 문의사항을 정리해 드립니다.</p>
+              <h2 className="main_faq_title">{title}</h2>
+              <p className="main_faq_desc">{desc}</p>
               <div className="main_faq_contact">
-                <span className="main_faq_contact_label">고객센터</span>
-                <a href="tel:0317317000" className="main_faq_contact_tel">
-                  Tel. 031 - 731 - 7000
+                <span className="main_faq_contact_label">{contactLabel}</span>
+                <a href={telHref} className="main_faq_contact_tel">
+                  {tel}
                 </a>
               </div>
               <ul className="main_faq_tags">
-                {FAQ_TAGS.map((tag) => (
+                {tags.map((tag) => (
                   <li key={tag}>{tag}</li>
                 ))}
               </ul>
@@ -67,7 +91,7 @@ export default function FaqSection() {
 
           <div className="main_faq_accordion">
             <div className="main_faq_list">
-              {FAQ_ITEMS.map((item, index) => {
+              {items.map((item, index) => {
                 const isOpen = openIndex === index;
                 return (
                   <div key={item.num} className={`main_faq_item${isOpen ? " is-open" : ""}`}>

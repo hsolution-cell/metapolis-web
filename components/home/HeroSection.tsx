@@ -4,14 +4,22 @@ import { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import type { Swiper as SwiperType } from "swiper";
-import { HERO_SLIDES } from "@/data/heroSlides";
+import { HERO_SLIDES, type HeroSlide } from "@/data/heroSlides";
 
-export default function HeroSection() {
+type HeroSectionProps = {
+  slides?: HeroSlide[];
+  ariaLabel?: string;
+};
+
+export default function HeroSection({
+  slides = HERO_SLIDES,
+  ariaLabel = "메인 배너",
+}: HeroSectionProps = {}) {
   const swiperRef = useRef<SwiperType | null>(null);
   const [autoplayPaused, setAutoplayPaused] = useState(false);
 
   // 슬라이드가 1개면 루프/자동재생/네비/페이지네이션 컨트롤을 숨김
-  const isSingle = HERO_SLIDES.length <= 1;
+  const isSingle = slides.length <= 1;
 
   useEffect(() => {
     const onResize = () => {
@@ -40,7 +48,7 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="main_hero page" aria-label="메인 배너">
+    <section className="main_hero page" aria-label={ariaLabel}>
       <div className="hero_swiper_wrap">
         <Swiper
           className="hero_swiper swiper"
@@ -77,7 +85,7 @@ export default function HeroSection() {
             swiper.el.classList.remove("is-transitioning");
           }}
         >
-          {HERO_SLIDES.map((slide, i) => (
+          {slides.map((slide, i) => (
             <SwiperSlide key={i}>
               <div className="hero_slide">
                 <div className="hero_slide_bg" aria-hidden="true">

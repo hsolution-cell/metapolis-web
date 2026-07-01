@@ -1,50 +1,66 @@
-// 영문 홈 콘텐츠 — 시안(메인) 기준
+import type { HeroSlide } from "@/data/heroSlides";
 
-export const EN_HERO = {
-  badge: "NOTICE",
-  title: "A joyful daily stroll\nat the all-new METAPOLIS",
-  desc: "A new beginning this May, a new name.",
-  bg: "/img/hero_bg_01.png",
-  bgMobile: "/img/hero_bg_01_mo.png",
-};
+// 영문 홈 콘텐츠 — 국문 홈 컴포넌트를 재사용하되 콘텐츠만 영어로 제공
 
-// 층별 안내 그리드 (A/B 블록)
-export type EnFloorGroup = { block: string; floors: string[] };
-export const EN_FLOOR_GROUPS: EnFloorGroup[] = [
-  { block: "A Block", floors: ["4F", "3F", "2F", "1F", "B2"] },
-  { block: "B Block", floors: ["4F", "3F", "2F", "1F", "B2-B4"] },
+export const EN_HERO_SLIDES: HeroSlide[] = [
+  {
+    bg: "/img/hero_bg_01.png",
+    bgMobile: "/img/hero_bg_01_mo.png",
+    badge: "NOTICE",
+    title: "A joyful daily stroll\nat the all-new METAPOLIS",
+    desc: "A new beginning this May, a new name.",
+  },
 ];
 
-// FAQ (시안 문항)
-export type EnFaqItem = { q: string; a: string };
-export const EN_FAQ: EnFaqItem[] = [
+export const EN_BRANCH = {
+  title: "Metapolis Store Directory by Floor",
+  desc: "Discover the endless fun at Time Terrace at a glance",
+  backLabel: "Back",
+};
+
+// FAQ 아이템 — 국문 FaqSection과 동일 형태 { num, question, answer }
+export type EnFaqItem = { num: string; question: string; answer: string };
+export const EN_FAQ_ITEMS: EnFaqItem[] = [
   {
-    q: "What is the parking policy at Metapolis?",
-    a: "Free for the first 30 mins, then 500 won per 10 mins. Free parking varies by purchase amount. See [Access & Parking] for details.",
+    num: "01",
+    question: "What is the parking policy at Metapolis?",
+    answer:
+      'Free for the first 30 mins, then 500 won per 10 mins. Free parking varies by purchase amount. See <a href="/en/location">Access &amp; Parking</a> for details.',
   },
   {
-    q: "Where are the nursing rooms and smoking areas?",
-    a: "Nursing Rooms: 4F (Blocks A & B) / Smoking Areas: 4F (Block A), 3F (Block B).",
+    num: "02",
+    question: "Where are the nursing rooms and smoking areas?",
+    answer: "Nursing Rooms: 4F (Blocks A &amp; B) / Smoking Areas: 4F (Block A), 3F (Block B).",
   },
   {
-    q: "Where can I rent a stroller or wheelchair?",
-    a: "Rentals are available at the Service Desk (Block A, 2nd floor). For inquiries, call 031-731-7000.",
+    num: "03",
+    question: "Where can I rent a stroller or wheelchair?",
+    answer:
+      "Rentals are available at the Service Desk (Block A, 2nd floor). For inquiries, call 031-731-7000.",
   },
   {
-    q: "What should I do if I lose something?",
-    a: "Please contact the Service Desk (Block A, 2nd floor / 031-371-7083~5) for lost and found items.",
+    num: "04",
+    question: "What should I do if I lose something?",
+    answer:
+      "Please contact the Service Desk (Block A, 2nd floor / 031-371-7083~5) for lost and found items.",
   },
   {
-    q: "What is the exchange and refund policy?",
-    a: "Available within 7 days of purchase. Please visit the original store with the item and receipt.",
+    num: "05",
+    question: "What is the exchange and refund policy?",
+    answer:
+      "Available within 7 days of purchase. Please visit the original store with the item and receipt.",
   },
   {
-    q: "What are your regular closed days and store hours?",
-    a: "We are open year-round from 10:30 AM to 10:00 PM (hours may vary for some stores).",
+    num: "06",
+    question: "What are your regular closed days and store hours?",
+    answer:
+      "We are open year-round from 10:30 AM to 10:00 PM (hours may vary for some stores).",
   },
   {
-    q: "How do I inquire about partnerships and venue rentals?",
-    a: "Please contact our Customer Center (031-731-7000). A representative will review and assist you.",
+    num: "07",
+    question: "How do I inquire about partnerships and venue rentals?",
+    answer:
+      "Please contact our Customer Center (031-731-7000). A representative will review and assist you.",
   },
 ];
 
@@ -58,6 +74,22 @@ export const EN_FAQ_TAGS = [
   "Operating Hours",
 ];
 
+export const EN_FAQ_INTRO = {
+  desc: "Here are our most frequently asked questions",
+  contactLabel: "Customer Service Center",
+  tel: "Tel. 031 - 731 - 7000",
+  telHref: "tel:0317317000",
+};
+
+export const EN_LOCATION = {
+  desc: "Enjoy a relaxing time at Metapolis, a place to stroll and unwind.",
+  addressEn: "220, Dongtanjungang-ro, Dongtan-gu, Hwaseong-si, Gyeonggi-do",
+  tel: "031-371-7000",
+  hour: "10:30 - 22:00",
+  primary: { href: "/en/location", label: "Access & Parking" },
+  secondary: { href: "/en/floors", label: "Floor Guide" },
+};
+
 export const EN_CONTACT = {
   eyebrow: "We're Here to Help",
   title: "Contact Us",
@@ -67,13 +99,4 @@ export const EN_CONTACT = {
   phone: "031-371-7000",
   supportHours: "09:00 - 18:00",
   operatingHours: "10:30 - 22:00 (365 days)",
-};
-
-export const EN_LOCATION = {
-  eyebrow: "LOCATION",
-  text: "Enjoy a relaxing time at Metapolis, a place to stroll and unwind",
-  mapImage: "/img/sub/location/map.png",
-  address: "220, Dongtanjungang-ro, Dongtan-gu, Hwaseong-si, Gyeonggi-do",
-  phone: "031-371-7000",
-  hour: "10:30 - 22:00",
 };
