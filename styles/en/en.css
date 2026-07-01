@@ -59,6 +59,16 @@
   white-space: nowrap;
 }
 
+/* Floor Guide 좌측 nav: 영문 요약이 활성(bold) 시 줄바꿈되지 않게 크기 조정 + 한 줄 유지 */
+.en-root .floors_nav_summary {
+  font-size: 15px;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+.en-root .floors_nav_btn.is-active .floors_nav_summary {
+  font-weight: 600;
+}
+
 /* ---------- EN Contact(=국문 문의하기 재사용) ---------- */
 /* 카드 배경 변경 */
 .inquiry.en-inquiry .inquiry_card {
