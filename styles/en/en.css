@@ -52,6 +52,12 @@
   font-weight: 700;
 }
 
+/* Parking 요금 headline: 영문은 자간 줄이고 한 줄 유지 */
+.en-root .parking_fee_headline {
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
 /* ---------- EN Contact(=국문 문의하기 재사용) ---------- */
 /* 카드 배경 변경 */
 .inquiry.en-inquiry .inquiry_card {
