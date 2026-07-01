@@ -18,6 +18,26 @@
   white-space: nowrap;
 }
 
+/* EN Access & Parking: 지도 아래 주소 영역(국문엔 없음) */
+.parking_map_address {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 16px;
+  padding: 16px 22px;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 6px 22px rgba(20, 35, 47, 0.07);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--en-text, #1f2d3a);
+}
+.parking_map_address_icon {
+  width: 30px;
+  height: auto;
+  flex: none;
+}
+
 /* ---------- EN 본문 타이포 미세조정 (.en-root 스코프 = 헤더/푸터 제외) ---------- */
 /* 히어로: 영문 라벨이 2줄에 맞도록 크기·굵기·자간 조정 */
 .en-root .hero_title {

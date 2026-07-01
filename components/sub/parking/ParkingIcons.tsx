@@ -1,5 +1,7 @@
+export type ParkingIconType = "entry" | "confirm" | "payment" | "clinic" | "cgv";
+
 type ParkingIconProps = {
-  type: "entry" | "confirm" | "payment" | "clinic" | "cgv";
+  type: ParkingIconType;
 };
 
 export default function ParkingIcon({ type }: ParkingIconProps) {
