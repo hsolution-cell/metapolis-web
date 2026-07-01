@@ -1,10 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import { useToast } from "@/contexts/ToastContext";
+import { usePathname } from "next/navigation";
+import EnFooter from "@/components/en/EnFooter";
 
 export default function Footer() {
-  const { showToast } = useToast();
+  const pathname = usePathname();
+
+  // 영문 경로에서는 EN 전용 푸터를 렌더
+  if (pathname?.startsWith("/en")) {
+    return <EnFooter />;
+  }
 
   return (
     <footer>
@@ -40,16 +46,9 @@ export default function Footer() {
             <span className="f_dot" aria-hidden="true">
               ·
             </span>
-            <button
-              type="button"
-              data-lang="eng"
-              onClick={(e) => {
-                e.preventDefault();
-                showToast("영문 버전은 준비 중입니다.");
-              }}
-            >
+            <Link href="/en" data-lang="eng">
               ENG
-            </button>
+            </Link>
           </div>
         </div>
 

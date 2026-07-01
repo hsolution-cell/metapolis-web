@@ -1,13 +1,14 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { SEARCH_TAGS } from "@/data/navigation";
-import { useToast } from "@/contexts/ToastContext";
 import { useHeaderMenu } from "@/hooks/useHeaderMenu";
 import HeaderSearchResults from "@/components/layout/HeaderSearchResults";
+import EnHeader from "@/components/en/EnHeader";
 
 export default function Header() {
-  const { showToast } = useToast();
+  const pathname = usePathname();
   const {
     GNB_GROUPS,
     activeGnbIndex,
@@ -33,6 +34,11 @@ export default function Header() {
     setSearchQuery,
     isCurrentLink,
   } = useHeaderMenu();
+
+  // 영문 경로에서는 EN 전용 헤더를 렌더
+  if (pathname?.startsWith("/en")) {
+    return <EnHeader />;
+  }
 
   return (
     <>
@@ -128,16 +134,9 @@ export default function Header() {
                 <span className="h_lang_sep" aria-hidden="true">
                   |
                 </span>
-                <button
-                  type="button"
-                  data-lang="eng"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    showToast("영문 버전은 준비 중입니다.");
-                  }}
-                >
+                <Link href="/en" data-lang="eng">
                   ENG
-                </button>
+                </Link>
               </div>
               <button
                 type="button"
