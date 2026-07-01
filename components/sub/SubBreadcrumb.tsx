@@ -9,6 +9,7 @@ type SubBreadcrumbProps = {
   siblings: NavLink[];
   currentPath: string;
   currentLabel: string;
+  homeHref?: string;
 };
 
 export default function SubBreadcrumb({
@@ -16,6 +17,7 @@ export default function SubBreadcrumb({
   siblings,
   currentPath,
   currentLabel,
+  homeHref = "/",
 }: SubBreadcrumbProps) {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -47,7 +49,7 @@ export default function SubBreadcrumb({
     <nav className="breadcrumb" aria-label="breadcrumb">
       <ol className="breadcrumb__list">
         <li className="breadcrumb__item breadcrumb__home">
-          <Link href="/" aria-label="홈">
+          <Link href={homeHref} aria-label="홈">
             <img
               src="/img/sub/breadcrumb-home.svg"
               alt=""
@@ -57,9 +59,11 @@ export default function SubBreadcrumb({
             />
           </Link>
         </li>
-        <li className="breadcrumb__item breadcrumb__group">
-          <span>{groupLabel}</span>
-        </li>
+        {groupLabel && (
+          <li className="breadcrumb__item breadcrumb__group">
+            <span>{groupLabel}</span>
+          </li>
+        )}
         <li className="breadcrumb__item breadcrumb__current">
           <div
             className={`breadcrumb__dropdown${open ? " is-open" : ""}`}

@@ -3,6 +3,7 @@ import SubBreadcrumb from "@/components/sub/SubBreadcrumb";
 
 type SubTopBannerProps = SubPageContext & {
   bannerImage?: string;
+  homeHref?: string;
 };
 
 export default function SubTopBanner({
@@ -11,6 +12,7 @@ export default function SubTopBanner({
   siblings,
   currentPath,
   bannerImage,
+  homeHref,
 }: SubTopBannerProps) {
   const image = bannerImage ?? config.bannerImage;
 
@@ -31,6 +33,7 @@ export default function SubTopBanner({
           siblings={siblings}
           currentPath={currentPath}
           currentLabel={config.label}
+          homeHref={homeHref}
         />
         <h1 id="sub-banner-title" className="sub-top-banner-title">
           {config.label}
