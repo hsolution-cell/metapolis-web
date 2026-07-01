@@ -5,12 +5,33 @@ import SubReveal from "@/components/sub/SubReveal";
 import FloorsBlockToggle from "@/components/sub/floors/FloorsBlockToggle";
 import FloorMapPanel from "@/components/sub/floors/FloorMapPanel";
 import FloorStoreCard from "@/components/sub/floors/FloorStoreCard";
-import { FLOOR_GUIDE_BLOCKS } from "@/data/floorGuide";
+import { FLOOR_GUIDE_BLOCKS, getFloorGuideBlock } from "@/data/floorGuide";
 import type { BranchBlock } from "@/data/branchStores";
 
-export default function FloorsSection() {
-  const [block, setBlock] = useState<BranchBlock>("a");
-  const [floorId, setFloorId] = useState("b2");
+type FloorsSectionProps = {
+  initialBlock?: BranchBlock;
+  initialFloorId?: string;
+};
+
+function resolveInitialFloorId(block: BranchBlock, floorId?: string) {
+  const blockData = getFloorGuideBlock(block);
+  if (!blockData) return "b2";
+
+  if (floorId && blockData.floors.some((floor) => floor.id === floorId)) {
+    return floorId;
+  }
+
+  return blockData.floors[0].id;
+}
+
+export default function FloorsSection({
+  initialBlock = "a",
+  initialFloorId,
+}: FloorsSectionProps) {
+  const [block, setBlock] = useState<BranchBlock>(initialBlock);
+  const [floorId, setFloorId] = useState(() =>
+    resolveInitialFloorId(initialBlock, initialFloorId)
+  );
   const navListRef = useRef<HTMLUListElement>(null);
 
   const blockData = useMemo(

@@ -1,4 +1,8 @@
 import { BRANCH_FLOORS, type BranchBlock } from "@/data/branchStores";
+import {
+  getOngoingStoreEventForStore,
+  getOngoingStoreEventHref,
+} from "@/data/events";
 
 /** 카드 아이콘용 (층별·카테고리별 공통) */
 export type StoreIconCategory =
@@ -46,8 +50,6 @@ export type StoreRecord = {
   tel: string;
   iconCategory: StoreIconCategory;
   guideCategory: StoreGuideCategory;
-  hasEvent?: boolean;
-  /** 주요매장(Signature) 탭 노출 여부 */
   isSignature?: boolean;
 };
 
@@ -158,7 +160,6 @@ export const STORE_DIRECTORY: StoreRecord[] = [
     tel: "031-8015-4102",
     iconCategory: "hair_service",
     guideCategory: "beauty",
-    hasEvent: true,
   },
   {
     id: "bandiinhouse",
@@ -168,7 +169,6 @@ export const STORE_DIRECTORY: StoreRecord[] = [
     tel: "010-8689-8241",
     iconCategory: "living",
     guideCategory: "lifestyle",
-    hasEvent: true,
   },
   {
     id: "yoshikatsu",
@@ -683,7 +683,6 @@ export const STORE_DIRECTORY: StoreRecord[] = [
     tel: "031-8043-6949",
     iconCategory: "fashion",
     guideCategory: "fashion",
-    hasEvent: true,
   },
   {
     id: "mindbridge",
@@ -1257,11 +1256,14 @@ export type StoreCardView = {
   location: string;
   iconCategory: StoreIconCategory;
   guideCategory: StoreGuideCategory;
-  hasEvent?: boolean;
+  hasEvent: boolean;
+  eventHref?: string;
   isSignature?: boolean;
 };
 
 export function toStoreCardView(store: StoreRecord): StoreCardView {
+  const ongoingEvent = getOngoingStoreEventForStore(store);
+
   return {
     id: store.id,
     name: store.name,
@@ -1269,7 +1271,8 @@ export function toStoreCardView(store: StoreRecord): StoreCardView {
     location: formatStoreLocation(store),
     iconCategory: store.iconCategory,
     guideCategory: store.guideCategory,
-    hasEvent: store.hasEvent,
+    hasEvent: Boolean(ongoingEvent),
+    eventHref: getOngoingStoreEventHref(store),
     isSignature: store.isSignature,
   };
 }

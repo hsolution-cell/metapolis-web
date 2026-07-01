@@ -103,14 +103,87 @@
 
 .categories_store_grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
 }
 
-.floors_store_location {
+.categories .floors_store_card {
+  align-items: center;
+  gap: 18px;
+  min-height: 96px;
+  padding: 20px;
+  border-radius: 14px;
+  border: 1px solid #e5e1da;
+  background: #fff;
+  box-shadow: none;
+}
+
+.categories .floors_store_icon {
+  width: 72px;
+  height: 72px;
+}
+
+.categories .floors_store_icon svg,
+.categories .floors_store_icon img {
   display: block;
-  margin-bottom: 2px;
-  font-size: 14px;
-  font-weight: 500;
+  width: 72px;
+  height: 72px;
+  border-radius: 12px;
+}
+
+.categories .floors_store_name {
+  margin-bottom: 12px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  color: #1a2e3b;
+}
+
+.categories .floors_store_meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+}
+
+.categories .floors_store_location {
+  display: inline-flex;
+  align-items: center;
+  margin: 0;
+  padding: 5px 10px;
+  border-radius: 6px;
+  background: #f5efe6;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.02em;
   color: #b89968;
+}
+
+.categories .floors_store_tel {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1;
+  color: #8c857b;
+}
+
+.categories .floors_store_tel_icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  color: #8c857b;
+}
+
+.categories .floors_store_tel:hover {
+  color: #1a2e3b;
+  text-decoration: none;
+}
+
+.categories .floors_store_tel:hover .floors_store_tel_icon {
+  color: #8c857b;
 }
 
 .categories_load_more_wrap {
@@ -166,16 +239,42 @@
 
   .categories_store_grid {
     grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .categories .floors_store_card {
+    min-height: 88px;
+    padding: 16px;
+    gap: 14px;
+    border-radius: 12px;
+  }
+
+  .categories .floors_store_icon,
+  .categories .floors_store_icon svg,
+  .categories .floors_store_icon img {
+    width: 64px;
+    height: 64px;
+    border-radius: 10px;
+  }
+
+  .categories .floors_store_name {
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+
+  .categories .floors_store_location {
+    padding: 4px 9px;
+    font-size: 12px;
+  }
+
+  .categories .floors_store_tel {
+    font-size: 14px;
   }
 
   .categories_load_more {
     min-width: 100%;
     padding: 14px 20px;
     font-size: 15px;
-  }
-
-  .floors_store_location {
-    font-size: 13px;
   }
 
   .categories .floors_nav_floor {
@@ -188,6 +287,26 @@
 @media (max-width: 480px) {
   .sub_page.categories .sub_body::after {
     display: none;
+  }
+
+  .categories .floors_store_card {
+    padding: 14px;
+    gap: 12px;
+  }
+
+  .categories .floors_store_icon,
+  .categories .floors_store_icon svg,
+  .categories .floors_store_icon img {
+    width: 56px;
+    height: 56px;
+  }
+
+  .categories .floors_store_name {
+    font-size: 17px;
+  }
+
+  .categories .floors_store_meta {
+    gap: 6px 10px;
   }
 }
 

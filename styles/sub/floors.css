@@ -482,10 +482,36 @@
   box-shadow: 0 1px 4px 1px rgba(34, 34, 34, 0.05);
 }
 
+.floors_store_card.is-event-link {
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.floors_store_card.is-event-link:hover {
+  border-color: var(--mp-gold, #b89968);
+  box-shadow: 0 2px 8px 1px rgba(184, 153, 104, 0.12);
+}
+
+.floors_store_hit {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  text-decoration: none;
+}
+
+.floors_store_hit:focus-visible {
+  outline: 2px solid var(--mp-gold, #b89968);
+  outline-offset: 2px;
+}
+
 .floors_store_event {
   position: absolute;
   top: 0;
   right: 0;
+  z-index: 2;
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.08em;
@@ -493,9 +519,12 @@
   border-radius: 0 0 0 10px;
   color: #fff;
   background: var(--mp-gold, #b89968);
+  pointer-events: none;
 }
 
 .floors_store_icon {
+  position: relative;
+  z-index: 2;
   display: block;
   flex-shrink: 0;
   width: 60px;
@@ -510,6 +539,8 @@
 }
 
 .floors_store_body {
+  position: relative;
+  z-index: 2;
   min-width: 0;
 }
 

@@ -6,16 +6,22 @@ type SubPageLayoutProps = {
   path: string;
   children: ReactNode;
   className?: string;
+  bannerImage?: string;
 };
 
-export default function SubPageLayout({ path, children, className }: SubPageLayoutProps) {
+export default function SubPageLayout({
+  path,
+  children,
+  className,
+  bannerImage,
+}: SubPageLayoutProps) {
   const ctx = getSubPageContext(path);
 
   return (
     <>
       <div className="header_container" />
       <div className={`sub_page page${className ? ` ${className}` : ""}`}>
-        <SubTopBanner {...ctx} />
+        <SubTopBanner {...ctx} bannerImage={bannerImage} />
         <div className="sub_body ">
           {children}
         </div>

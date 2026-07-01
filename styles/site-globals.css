@@ -13,4 +13,7 @@
 @import "./sub/stores.css";
 @import "./sub/floors.css";
 @import "./sub/categories.css";
+@import "./sub/facilities.css";
+@import "./sub/events.css";
+@import "./sub/winners.css";
 @import "./site.css";

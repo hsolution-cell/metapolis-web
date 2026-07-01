@@ -12,7 +12,7 @@ export type FloorStoreCategory = StoreIconCategory;
 /** @deprecated StoreCardView 사용 권장 */
 export type FloorGuideStore = Pick<
   StoreCardView,
-  "id" | "name" | "tel" | "iconCategory" | "hasEvent"
+  "id" | "name" | "tel" | "iconCategory" | "hasEvent" | "eventHref"
 >;
 
 function toFloorGuideStore(store: StoreCardView): FloorGuideStore {
@@ -22,6 +22,7 @@ function toFloorGuideStore(store: StoreCardView): FloorGuideStore {
     tel: store.tel,
     iconCategory: store.iconCategory,
     hasEvent: store.hasEvent,
+    eventHref: store.eventHref,
   };
 }
 
@@ -153,4 +154,26 @@ export function getFloorGuideBlock(block: BranchBlock) {
 
 export function getFloorGuideFloor(block: BranchBlock, floorId: string) {
   return getFloorGuideBlock(block)?.floors.find((floor) => floor.id === floorId);
+}
+
+export function buildFloorGuideHref(block: BranchBlock, floorId: string) {
+  const params = new URLSearchParams({ block, floor: floorId });
+  return `/stores/floors?${params.toString()}`;
+}
+
+export function resolveFloorGuideSelection(
+  blockParam: string | null | undefined,
+  floorParam: string | null | undefined
+): { block: BranchBlock; floorId: string } | null {
+  if (!blockParam && !floorParam) return null;
+
+  const block: BranchBlock = blockParam === "b" ? "b" : "a";
+  const blockData = getFloorGuideBlock(block);
+  if (!blockData) return null;
+
+  if (floorParam && blockData.floors.some((floor) => floor.id === floorParam)) {
+    return { block, floorId: floorParam };
+  }
+
+  return { block, floorId: blockData.floors[0].id };
 }

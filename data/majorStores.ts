@@ -1,7 +1,9 @@
+import type { BranchBlock } from "@/data/branchStores";
+
 export type MajorStoreDetailRow = {
   label: string;
   value: string;
-  link?: { href: string; label: string };
+  link?: { label: string };
 };
 
 export type MajorStore = {
@@ -11,6 +13,10 @@ export type MajorStore = {
   detailName?: string;
   cardLocation: string;
   locationBadge: string;
+  floorGuide: {
+    block: BranchBlock;
+    floorId: string;
+  };
   description: string;
   cardLogo: string;
   detailLogo: string;
@@ -27,6 +33,7 @@ export const MAJOR_STORES: MajorStore[] = [
     name: "CGV",
     cardLocation: "A블록 3·4F",
     locationBadge: "A블록 3·4F",
+    floorGuide: { block: "a", floorId: "3f" },
     description:
       "선진화된 관람 문화와 최고의 서비스로 영화 그 이상의 감동을 선사합니다",
     cardLogo: "/img/main_branch_store_cgv.png",
@@ -39,7 +46,7 @@ export const MAJOR_STORES: MajorStore[] = [
       {
         label: "Location",
         value: "A블록 3·4층",
-        link: { href: "/location", label: "위치 확인하기" },
+        link: { label: "위치 확인하기" },
       },
       { label: "Parking", value: "영화 관람 시 3시간 무료" },
     ],
@@ -50,6 +57,7 @@ export const MAJOR_STORES: MajorStore[] = [
     name: "홈플러스",
     cardLocation: "B블록 B2 ~ B5",
     locationBadge: "B블록 B2 ~ B5",
+    floorGuide: { block: "b", floorId: "b2b4" },
     description:
       "엄선된 신선함과 합리적인 가치로 쇼핑 그 이상의 풍요로운 일상을 선물합니다",
     cardLogo: "/img/main_branch_store_homeplus.png",
@@ -62,7 +70,7 @@ export const MAJOR_STORES: MajorStore[] = [
       {
         label: "Location",
         value: "B블록 B2 ~ B5",
-        link: { href: "/location", label: "위치 확인하기" },
+        link: { label: "위치 확인하기" },
       },
       { label: "Parking", value: "구매 금액별 무료 시간 상이" },
     ],
@@ -74,6 +82,7 @@ export const MAJOR_STORES: MajorStore[] = [
     detailName: "아웃백 스테이크 하우스",
     cardLocation: "A블록 3F",
     locationBadge: "A블록 3F",
+    floorGuide: { block: "a", floorId: "3f" },
     description:
       "완벽한 굽기의 스테이크와 따뜻한 환대로 특별한 추억을 남기는 아웃백입니다",
     cardLogo: "/img/main_branch_store_outback.png",
@@ -89,7 +98,7 @@ export const MAJOR_STORES: MajorStore[] = [
       {
         label: "Location",
         value: "A블록 3층",
-        link: { href: "/location", label: "위치 확인하기" },
+        link: { label: "위치 확인하기" },
       },
       { label: "Parking", value: "구매 금액별 무료 시간 상이" },
     ],
@@ -101,6 +110,7 @@ export const MAJOR_STORES: MajorStore[] = [
     detailName: "알라딘 중고서점",
     cardLocation: "B블록 4F",
     locationBadge: "B블록 4F",
+    floorGuide: { block: "b", floorId: "4f" },
     description:
       "넓고 탁 트인 문화 공간 속 가치있는 지식으로 독서의 재발견을 선사해 드립니다",
     cardLogo: "/img/main_branch_store_aladin.png",
@@ -114,7 +124,7 @@ export const MAJOR_STORES: MajorStore[] = [
       {
         label: "Location",
         value: "B블록 4층",
-        link: { href: "/location", label: "위치 확인하기" },
+        link: { label: "위치 확인하기" },
       },
       { label: "Parking", value: "구매 금액별 무료 시간 상이" },
     ],
@@ -126,6 +136,7 @@ export const MAJOR_STORES: MajorStore[] = [
     detailName: "LX Z:IN 인테리어",
     cardLocation: "B블록 2F",
     locationBadge: "B블록 2F",
+    floorGuide: { block: "b", floorId: "2f" },
     description:
       "프리미엄 소재와 감각적인 디자인으로 공간 그 이상의 품격 있는 삶을 완성합니다",
     cardLogo: "/img/main_branch_store_zin.png",
@@ -138,7 +149,7 @@ export const MAJOR_STORES: MajorStore[] = [
       {
         label: "Location",
         value: "B블록 2층",
-        link: { href: "/location", label: "위치 확인하기" },
+        link: { label: "위치 확인하기" },
       },
       { label: "Parking", value: "구매 금액별 무료 시간 상이" },
     ],
@@ -149,6 +160,7 @@ export const MAJOR_STORES: MajorStore[] = [
     name: "챔피언 더 블랙벨트",
     cardLocation: "B블록 3F",
     locationBadge: "B블록 3F",
+    floorGuide: { block: "b", floorId: "3f" },
     description:
       "다이내믹한 체험과 도전으로 놀이 그 이상의 짜릿한 성취감을 안겨드립니다",
     cardLogo: "/img/main_branch_store_theblackbelt.png",
@@ -161,7 +173,7 @@ export const MAJOR_STORES: MajorStore[] = [
       {
         label: "Location",
         value: "B블록 3층",
-        link: { href: "/location", label: "위치 확인하기" },
+        link: { label: "위치 확인하기" },
       },
       { label: "Parking", value: "구매 금액별 무료 시간 상이" },
     ],
@@ -172,6 +184,7 @@ export const MAJOR_STORES: MajorStore[] = [
     name: "무인양품",
     cardLocation: "B블록 1F",
     locationBadge: "B블록 1F",
+    floorGuide: { block: "b", floorId: "1f" },
     description:
       "본질에 충실한 디자인과 기분 좋은 쓰임새로 편안한 일상을 제안합니다",
     cardLogo: "/img/main_branch_store_muji.png",
@@ -184,7 +197,7 @@ export const MAJOR_STORES: MajorStore[] = [
       {
         label: "Location",
         value: "B블록 1층",
-        link: { href: "/location", label: "위치 확인하기" },
+        link: { label: "위치 확인하기" },
       },
       { label: "Parking", value: "구매 금액별 무료 시간 상이" },
     ],

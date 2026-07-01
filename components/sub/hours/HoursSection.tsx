@@ -114,8 +114,8 @@ const HOURS_CATEGORIES: HoursCategory[] = [
         name: "근앤본 정형신경외과",
         logo: "/img/sub/hours/icons/orthopedics.png",
         schedules: [
-          { label: "평일", value: "10:00 - 19:00" },
-          { label: "토요일", value: "10:00 - 16:00" },
+          { label: "평일", value: "09:30 - 20:00" },
+          { label: "토요일", value: "09:30 - 14:30" },
           { label: "공휴일", value: "유동적 휴진", closed: true },
           { label: "일요일", value: "휴진", closed: true },
         ],

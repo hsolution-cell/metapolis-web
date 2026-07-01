@@ -1,4 +1,6 @@
+import Link from "next/link";
 import type { CSSProperties } from "react";
+import { buildFloorGuideHref } from "@/data/floorGuide";
 import type { MajorStore } from "@/data/majorStores";
 
 type StoreDetailItemProps = {
@@ -49,9 +51,12 @@ export default function StoreDetailItem({ store, revealIndex }: StoreDetailItemP
                 {row.link ? (
                   <>
                     {" "}
-                    <a className="stores_detail_link" href={row.link.href}>
+                    <Link
+                      className="stores_detail_link"
+                      href={buildFloorGuideHref(store.floorGuide.block, store.floorGuide.floorId)}
+                    >
                       {row.link.label} &gt;
-                    </a>
+                    </Link>
                   </>
                 ) : null}
               </dd>
