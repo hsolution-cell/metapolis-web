@@ -31,6 +31,10 @@
 .inquiry.en-inquiry .inquiry_card {
   background: linear-gradient(180deg, rgba(91, 65, 22, 0.95) 0%, rgba(58, 39, 8, 0.95) 77%);
 }
+/* 제목 색상(영문) */
+.inquiry.en-inquiry .inquiry_title {
+  color: #462e0a;
+}
 /* 주소 텍스트: 색/크기 조정 + 한 줄 유지 */
 .inquiry.en-inquiry .inquiry_address_text {
   font-size: 16px;
