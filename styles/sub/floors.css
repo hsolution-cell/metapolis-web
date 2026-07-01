@@ -1,24 +1,5 @@
 /* sub page floors */
 
-.sub_page.floors .sub_body {
-  position: relative;
-  padding: 0;
-  overflow: visible;
-  background: linear-gradient(180deg, #fff 35%, rgba(247, 244, 240, 0.5) 100%);
-}
-
-.sub_page.floors .sub_body::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: clamp(280px, 50vw, 720px);
-  aspect-ratio: 720 / 683;
-  background: url("/img/sub/floors/bg-deco.svg") no-repeat left bottom / contain;
-  pointer-events: none;
-  z-index: 0;
-}
-
 .floors {
   position: relative;
   z-index: 1;
@@ -902,10 +883,6 @@
     padding-bottom: 6rem;
   }
 
-  .floors_inner.content_inner {
-    width: 92%;
-  }
-
   .floors_layout {
     gap: 24px;
   }
@@ -949,10 +926,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .sub_page.floors .sub_body {
-    animation: none;
-  }
-
   .floors_block_indicator {
     transition: none;
   }

@@ -1,24 +1,5 @@
 /* sub page categories — 층별안내와 공통 레이아웃(.floors_*) 재사용 */
 
-.sub_page.categories .sub_body {
-  position: relative;
-  padding: 0;
-  overflow: visible;
-  background: linear-gradient(180deg, #fff 35%, rgba(247, 244, 240, 0.5) 100%);
-}
-
-.sub_page.categories .sub_body::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: clamp(280px, 50vw, 720px);
-  aspect-ratio: 720 / 683;
-  background: url("/img/sub/floors/bg-deco.svg") no-repeat left bottom / contain;
-  pointer-events: none;
-  z-index: 0;
-}
-
 .categories_content_title {
   font-family: "Roboto", "Noto Sans KR", sans-serif;
   font-size: 45px;
@@ -307,11 +288,5 @@
 
   .categories .floors_store_meta {
     gap: 6px 10px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .sub_page.categories .sub_body {
-    animation: none;
   }
 }

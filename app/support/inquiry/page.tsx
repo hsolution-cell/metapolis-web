@@ -1,7 +1,16 @@
-import MockupPage, { buildMockupMetadata } from "@/components/sub/MockupPage";
+import SubPageLayout from "@/components/sub/SubPageLayout";
+import InquirySection from "@/components/sub/inquiry/InquirySection";
+import { buildMockupMetadata } from "@/components/sub/MockupPage";
 
-export const metadata = buildMockupMetadata({ path: "/support/inquiry", label: "문의하기" });
+export const metadata = buildMockupMetadata({
+  path: "/support/inquiry",
+  label: "문의하기",
+});
 
 export default function Page() {
-  return <MockupPage path="/support/inquiry" image="menu4_2" label="문의하기" />;
+  return (
+    <SubPageLayout path="/support/inquiry" className="inquiry">
+      <InquirySection />
+    </SubPageLayout>
+  );
 }

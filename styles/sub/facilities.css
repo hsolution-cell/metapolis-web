@@ -1,20 +1,5 @@
 /* sub page facilities — 주요매장(stores) 레이아웃 패턴 재사용 */
 
-.sub_page.facilities .sub_body {
-  padding: 0;
-  animation: facilitiesSubBodyEnter 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.72s
-    forwards;
-}
-
-@keyframes facilitiesSubBodyEnter {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
 .facilities {
   color: var(--mp-text, #1a2e3b);
 }
@@ -39,19 +24,6 @@ html:has(.sub_page.facilities) {
 .facilities_cards_inner {
   position: relative;
   z-index: 1;
-}
-
-.facilities_cards_head.sub_section_head {
-  margin-bottom: 0;
-}
-
-.facilities_cards_head .sub_section_eyebrow {
-  color: var(--mp-gold, #b89968);
-}
-
-.facilities_cards_head .sub_section_title {
-  margin-bottom: 20px;
-  color: var(--mp-text, #1a2e3b);
 }
 
 .facilities_cards_lead {
@@ -887,11 +859,6 @@ html:has(.sub_page.facilities) {
 @media (prefers-reduced-motion: reduce) {
   html:has(.sub_page.facilities) {
     scroll-behavior: auto;
-  }
-
-  .sub_page.facilities .sub_body {
-    animation: none;
-    opacity: 1;
   }
 
   .facilities_cards_marquee_track {

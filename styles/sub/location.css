@@ -1,9 +1,5 @@
 /* sub page location */
 
-.sub_page.location .sub_body {
-  padding: 0;
-}
-
 .location {
   color: var(--mp-text, #1a2e3b);
 }

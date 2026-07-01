@@ -286,6 +286,84 @@
   }
 }
 
+@keyframes subBodyFadeEnter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.sub_page.faq .sub_body,
+.sub_page.inquiry .sub_body,
+.sub_page.events .sub_body,
+.sub_page.winners .sub_body,
+.sub_page.facilities .sub_body,
+.sub_page.stores .sub_body,
+.sub_page.parking .sub_body,
+.sub_page.location .sub_body,
+.sub_page.categories .sub_body,
+.sub_page.floors .sub_body {
+  padding: 0;
+}
+
+.sub_page.faq .sub_body,
+.sub_page.inquiry .sub_body,
+.sub_page.events .sub_body,
+.sub_page.winners .sub_body,
+.sub_page.facilities .sub_body,
+.sub_page.stores .sub_body,
+.sub_page.parking .sub_body {
+  pointer-events: auto;
+  animation: subBodyFadeEnter 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.72s forwards;
+}
+
+.sub_page.events.events--detail .sub_body,
+.sub_page.winners.winners--detail .sub_body {
+  opacity: 1;
+  animation: none;
+}
+
+.sub_page.floors .sub_body,
+.sub_page.categories .sub_body {
+  position: relative;
+  overflow: visible;
+  background: linear-gradient(180deg, #fff 35%, rgba(247, 244, 240, 0.5) 100%);
+}
+
+.sub_page.floors .sub_body::after,
+.sub_page.categories .sub_body::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: clamp(280px, 50vw, 720px);
+  aspect-ratio: 720 / 683;
+  background: url("/img/sub/floors/bg-deco.svg") no-repeat left bottom / contain;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.faq_head.sub_section_head,
+.events_head.sub_section_head,
+.winners_head.sub_section_head,
+.facilities_cards_head.sub_section_head,
+.stores_brands_head.sub_section_head {
+  margin-bottom: 0;
+}
+
+.faq_head .sub_section_title,
+.winners_head .sub_section_title {
+  margin-bottom: 24px;
+}
+
+.events_head .sub_section_title,
+.facilities_cards_head .sub_section_title,
+.stores_brands_head .sub_section_title {
+  margin-bottom: 20px;
+}
+
 /* scroll reveal (sub pages) */
 @keyframes sub-reveal-up {
   from {
@@ -515,6 +593,12 @@
 @media (hover: none) {
   .breadcrumb__home a:hover {
     opacity: 0.92;
+  }
+}
+
+@media (min-width: 0px) and (max-width: 600px) {
+  .sub_page .content_inner {
+    width: min(92%, 1280px);
   }
 }
 

@@ -1,19 +1,5 @@
 /* sub page parking */
 
-.sub_page.parking .sub_body {
-  padding: 0;
-  animation: parkingSubBodyEnter 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.72s forwards;
-}
-
-@keyframes parkingSubBodyEnter {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
 .parking {
   color: var(--mp-text, #1a2e3b);
 }

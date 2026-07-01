@@ -1,40 +1,12 @@
 /* sub page winners — 당첨자 발표 */
 
-.sub_page.winners .sub_body {
-  padding: 0;
-  pointer-events: auto;
-  animation: eventsSubBodyEnter 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.72s
-    forwards;
-}
-
-.sub_page.winners.winners--detail .sub_body {
-  opacity: 1;
-  animation: none;
-}
-
 .winners {
   color: var(--mp-text, #1a2e3b);
   background: linear-gradient(180deg, rgba(255, 253, 249, 0.7) 0%, #fffdf9 90%);
 }
 
-.winners_inner.content_inner {
-  max-width: 1280px;
-  width: min(95%, 1280px);
-}
-
-.winners_head.sub_section_head {
-  margin-bottom: 0;
-  text-align: center;
-}
-
 .winners_head .sub_section_eyebrow {
   margin-bottom: 12px;
-  color: var(--mp-gold, #b89968);
-}
-
-.winners_head .sub_section_title {
-  margin-bottom: 24px;
-  color: var(--mp-text, #1a2e3b);
 }
 
 .winners_lead {
@@ -490,12 +462,5 @@
   .winners_empty {
     padding: 40px 0;
     font-size: 15px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .sub_page.winners .sub_body {
-    animation: none;
-    opacity: 1;
   }
 }

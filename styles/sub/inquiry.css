@@ -1,0 +1,390 @@
+/* sub page inquiry — 문의하기 */
+
+.inquiry {
+  color: var(--mp-text, #1a2e3b);
+  background: url("/img/sub/inquiry/bg.png") no-repeat center / cover;
+  background-attachment: fixed;
+}
+
+.inquiry_layout {
+  display: flex;
+  align-items: center;
+  gap: clamp(48px, 8vw, 130px);
+}
+
+.inquiry_intro,
+.inquiry_card {
+  flex: 1;
+  min-width: 0;
+}
+
+.inquiry_intro {
+  display: flex;
+  flex-direction: column;
+}
+
+.inquiry_eyebrow,
+.inquiry_address_label {
+  font-family: "Source Serif Pro", "Times New Roman", serif;
+  font-style: italic;
+  font-weight: 600;
+  color: #b89968;
+}
+
+.inquiry_eyebrow {
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+
+.inquiry_title {
+  margin-bottom: 30px;
+  font-size: 52px;
+  font-weight: 700;
+  line-height: 1.22;
+  word-break: keep-all;
+}
+
+.inquiry_desc {
+  margin-bottom: clamp(40px, 6vw, 60px);
+  font-size: 20px;
+  line-height: 1.75;
+  color: #33302b;
+  opacity: 0.6;
+  word-break: keep-all;
+}
+
+.inquiry_address {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  border-top: 0.5px solid #b8996862;
+  border-bottom: 0.5px solid #b8996862;
+}
+
+.inquiry_address_label {
+  flex-shrink: 0;
+  font-size: 16px;
+}
+
+.inquiry_address_text {
+  font-size: 18px;
+  font-weight: 700;
+  word-break: keep-all;
+}
+
+.inquiry_card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(56px, 10vw, 130px) clamp(28px, 4vw, 50px);
+  border-radius: clamp(24px, 3vw, 36px);
+  background: #33302b;
+  color: #fff;
+  overflow: hidden;
+}
+
+.inquiry_card_badge {
+  align-self: flex-start;
+  margin-bottom: clamp(22px, 3vw, 30px);
+  padding: 10px 20px;
+  border-radius: 50px;
+  background: rgba(184, 153, 104, 0.18);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+  color: #d0aa6d;
+}
+
+.inquiry_card_lead {
+  margin-bottom: clamp(28px, 4vw, 40px);
+  font-size: 20px;
+  line-height: 1.65;
+  word-break: keep-all;
+}
+
+.inquiry_card_phone {
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(12px, 2vw, 18px);
+  margin-bottom: clamp(32px, 5vw, 60px);
+  font-family: "Roboto", sans-serif;
+  transition: opacity 0.25s ease;
+}
+
+.inquiry_card_phone:hover {
+  opacity: 0.86;
+}
+
+.inquiry_card_phone_icon,
+.inquiry_card_hour_icon {
+  flex-shrink: 0;
+  color: #d0aa6d;
+}
+
+.inquiry_card_phone_icon {
+  width: clamp(42px, 5vw, 54px);
+  height: clamp(42px, 5vw, 54px);
+}
+
+.inquiry_card_hour_icon {
+  width: clamp(34px, 4vw, 40px);
+  height: clamp(34px, 4vw, 40px);
+}
+
+.inquiry_card_phone_icon svg,
+.inquiry_card_hour_icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.inquiry_card_phone_num {
+  font-size: clamp(2rem, 5vw, 3.75rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.inquiry_card_divider {
+  height: 1px;
+  margin-bottom: clamp(28px, 4vw, 40px);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.inquiry_card_hours {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(18px, 3vw, 40px);
+}
+
+.inquiry_card_hour {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  min-width: min(100%, 220px);
+  flex: 1 1 180px;
+}
+
+.inquiry_card_hour_body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.inquiry_card_hour_label {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #d0aa6d;
+}
+
+.inquiry_card_hour_value {
+  font-size: clamp(15px, 2vw, 20px);
+  font-weight: 600;
+  line-height: 1.45;
+  word-break: keep-all;
+}
+
+.inquiry_card_watermark {
+  position: absolute;
+  right: 0;
+  bottom: clamp(8px, 2vw, 20px);
+  font-family: "Source Serif Pro", "Times New Roman", serif;
+  font-size: clamp(4.5rem, 11vw, 96px);
+  font-style: italic;
+  font-weight: 600;
+  line-height: 1;
+  color: #b89968;
+  opacity: 0.07;
+  pointer-events: none;
+  user-select: none;
+}
+
+@media (max-width: 1280px) {
+  .inquiry_eyebrow {
+    font-size: 18px;
+  }
+
+  .inquiry_desc,
+  .inquiry_address_text {
+    font-size: 17px;
+  }
+
+  .inquiry_card_lead {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .inquiry {
+    background-attachment: scroll;
+  }
+
+  .inquiry_inner.innerTop {
+    padding-top: 100px;
+  }
+
+  .inquiry_inner.innerBot {
+    padding-bottom: 100px;
+  }
+
+  .inquiry_layout {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 48px;
+  }
+
+  .inquiry_intro {
+    text-align: center;
+  }
+
+  .inquiry_desc {
+    max-width: 640px;
+    margin-inline: auto;
+  }
+
+  .inquiry_address {
+    justify-content: center;
+    max-width: 640px;
+    margin-inline: auto;
+  }
+
+  .inquiry_card {
+    width: 100%;
+    max-width: 640px;
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .inquiry_inner.innerTop {
+    padding-top: 80px;
+  }
+
+  .inquiry_inner.innerBot {
+    padding-bottom: 64px;
+  }
+
+  .inquiry_eyebrow {
+    margin-bottom: 12px;
+    font-size: 17px;
+  }
+
+  .inquiry_title {
+    margin-bottom: 20px;
+    font-size: clamp(1.875rem, 7vw, 3.5rem);
+  }
+
+  .inquiry_desc {
+    margin-bottom: 36px;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .inquiry_address {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 20px 0;
+  }
+
+  .inquiry_address_label {
+    font-size: 15px;
+  }
+
+  .inquiry_address_text {
+    font-size: 16px;
+  }
+
+  .inquiry_card {
+    max-width: none;
+    padding: 36px 28px 32px;
+    border-radius: 28px;
+  }
+
+  .inquiry_card_badge {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+
+  .inquiry_card_lead {
+    font-size: 16px;
+  }
+
+  .inquiry_card_phone {
+    margin-bottom: 28px;
+  }
+
+  .inquiry_card_hour_label {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .inquiry_inner.innerTop {
+    padding-top: 64px;
+  }
+
+  .inquiry_inner.innerBot {
+    padding-bottom: 56px;
+  }
+
+  .inquiry_layout {
+    gap: 32px;
+  }
+
+  .inquiry_eyebrow {
+    font-size: 16px;
+  }
+
+  .inquiry_title {
+    font-size: 2rem;
+  }
+
+  .inquiry_desc {
+    margin-bottom: 28px;
+    font-size: 14px;
+  }
+
+  .inquiry_address {
+    padding: 18px 0;
+  }
+
+  .inquiry_address_text {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .inquiry_card {
+    padding: 28px 22px 24px;
+    border-radius: 24px;
+  }
+
+  .inquiry_card_lead {
+    font-size: 15px;
+  }
+
+  .inquiry_card_phone_num {
+    font-size: 1.875rem;
+  }
+
+  .inquiry_card_hours {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .inquiry_card_hour {
+    min-width: 0;
+  }
+  .inquiry_card_hour {
+    flex: auto;
+  }
+
+  .inquiry_card_watermark {
+    right: 4px;
+    bottom: -8px;
+    font-size: 4.5rem;
+  }
+}
