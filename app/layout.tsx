@@ -7,7 +7,10 @@ import { ToastProvider } from "@/contexts/ToastContext";
 import { DEFAULT_META } from "@/data/siteMeta";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://metapolis.co.kr";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: DEFAULT_META.title,
   description: DEFAULT_META.description,
   icons: {
@@ -18,6 +21,7 @@ export const metadata: Metadata = {
     description: DEFAULT_META.description,
     type: "website",
     siteName: "METAPOLIS",
+    images: [{ url: "/img/thumbnail.png", width: 1200, height: 630 }],
   },
 };
 
