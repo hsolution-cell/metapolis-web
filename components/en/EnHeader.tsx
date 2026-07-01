@@ -67,7 +67,7 @@ export default function EnHeader() {
               </Link>
             </div>
 
-            <nav className="header_menu" aria-label="Main menu">
+            <nav className="header_menu en-gnb" aria-label="Main menu">
               <ul className="gnb">
                 {EN_NAV.map((item) => (
                   <li key={item.href} className={isCurrentLink(item.href) ? "is-active" : undefined}>

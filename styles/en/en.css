@@ -10,6 +10,15 @@
   --en-gold: #b3894e;
 }
 
+/* ---------- EN 헤더 nav: 영문 라벨에 맞춰 폭 자동 + 간격 확대 ---------- */
+.en-gnb .gnb {
+  gap: 48px;
+}
+.en-gnb .gnb > li > a {
+  width: auto;
+  padding: 0 4px;
+}
+
 .en-label {
   display: inline-block;
   font-size: 12px;
