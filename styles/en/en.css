@@ -46,9 +46,10 @@
   letter-spacing: -0.01em;
 }
 
-/* Hours: "Hours", "Store Hours Vary" 제목 굵기(영문은 strong 없이 평문) */
+/* 섹션 제목 굵기 700 (영문은 strong 없이 평문이라 기본 굵기로 렌더됨) */
 .en-root .hours_main_head .sub_section_title,
-.en-root .hours_stores_head .sub_section_title {
+.en-root .hours_stores_head .sub_section_title,
+.en-root .parking_head .sub_section_title {
   font-weight: 700;
 }
 
