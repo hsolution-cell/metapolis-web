@@ -1,5 +1,6 @@
 "use client";
 
+import type { ReactNode } from "react";
 import SubReveal from "@/components/sub/SubReveal";
 import {
   INQUIRY_ADDRESS,
@@ -8,6 +9,25 @@ import {
   INQUIRY_PHONE,
   INQUIRY_PHONE_HREF,
 } from "@/data/inquiry";
+
+type InquirySectionProps = {
+  className?: string;
+  eyebrow?: string;
+  title?: ReactNode;
+  desc?: string;
+  addressLabel?: string;
+  address?: string;
+  cardAriaLabel?: string;
+  cardBadge?: string;
+  cardLead?: ReactNode;
+  phone?: string;
+  phoneHref?: string;
+  consultLabel?: string;
+  consultHours?: string;
+  operationLabel?: string;
+  operationHours?: string;
+  watermark?: string;
+};
 
 function PhoneIcon() {
   return (
@@ -53,41 +73,64 @@ function InfoIcon() {
   );
 }
 
-export default function InquirySection() {
+export default function InquirySection({
+  className,
+  eyebrow = "We're Here to Help",
+  title = (
+    <>
+      메타폴리스에
+      <br />
+      무엇이든 문의하세요
+    </>
+  ),
+  desc = "대표 번호로 편하게 연락해 주시면, 서비스 데스크에서 이용 안내 및 입점 · 대관 등의 업무를 친절하게 안내해 드립니다.",
+  addressLabel = "ADDRESS",
+  address = INQUIRY_ADDRESS,
+  cardAriaLabel = "고객센터 연락처",
+  cardBadge = "• 고객센터 안내 •",
+  cardLead = (
+    <>
+      메타폴리스에 대한 <b>문의 사항은 아래 번호로 연락</b>해 주십시오
+    </>
+  ),
+  phone = INQUIRY_PHONE,
+  phoneHref = INQUIRY_PHONE_HREF,
+  consultLabel = "상담 시간",
+  consultHours = INQUIRY_CONSULT_HOURS,
+  operationLabel = "운영 시간",
+  operationHours = INQUIRY_OPERATION_HOURS,
+  watermark = "CALL",
+}: InquirySectionProps = {}) {
   return (
-    <section className="inquiry" aria-labelledby="inquiry-main-title">
+    <section
+      className={`inquiry${className ? ` ${className}` : ""}`}
+      aria-labelledby="inquiry-main-title"
+    >
       <div className="inquiry_inner content_inner innerTop innerBot">
         <SubReveal threshold={0.12} rootMargin="0px 0px -8% 0px">
           <div className="inquiry_layout">
             <div className="inquiry_intro">
-              <p className="inquiry_eyebrow">We&apos;re Here to Help</p>
+              <p className="inquiry_eyebrow">{eyebrow}</p>
               <h2 id="inquiry-main-title" className="inquiry_title">
-                메타폴리스에
-                <br />
-                무엇이든 문의하세요
+                {title}
               </h2>
-              <p className="inquiry_desc">
-                대표 번호로 편하게 연락해 주시면, 서비스 데스크에서 이용 안내 및
-                입점 · 대관 등의 업무를 친절하게 안내해 드립니다.
-              </p>
+              <p className="inquiry_desc">{desc}</p>
 
               <div className="inquiry_address">
-                <p className="inquiry_address_label">ADDRESS</p>
-                <p className="inquiry_address_text">{INQUIRY_ADDRESS}</p>
+                <p className="inquiry_address_label">{addressLabel}</p>
+                <p className="inquiry_address_text">{address}</p>
               </div>
             </div>
 
-            <aside className="inquiry_card" aria-label="고객센터 연락처">
-              <span className="inquiry_card_badge">• 고객센터 안내 •</span>
-              <p className="inquiry_card_lead">
-                메타폴리스에 대한 <b>문의 사항은 아래 번호로 연락</b>해 주십시오
-              </p>
+            <aside className="inquiry_card" aria-label={cardAriaLabel}>
+              <span className="inquiry_card_badge">{cardBadge}</span>
+              <p className="inquiry_card_lead">{cardLead}</p>
 
-              <a href={INQUIRY_PHONE_HREF} className="inquiry_card_phone">
+              <a href={phoneHref} className="inquiry_card_phone">
                 <span className="inquiry_card_phone_icon">
                   <PhoneIcon />
                 </span>
-                <span className="inquiry_card_phone_num">{INQUIRY_PHONE}</span>
+                <span className="inquiry_card_phone_num">{phone}</span>
               </a>
 
               <div className="inquiry_card_divider" aria-hidden="true" />
@@ -98,10 +141,8 @@ export default function InquirySection() {
                     <HeadsetIcon />
                   </span>
                   <div className="inquiry_card_hour_body">
-                    <span className="inquiry_card_hour_label">상담 시간</span>
-                    <span className="inquiry_card_hour_value">
-                      {INQUIRY_CONSULT_HOURS}
-                    </span>
+                    <span className="inquiry_card_hour_label">{consultLabel}</span>
+                    <span className="inquiry_card_hour_value">{consultHours}</span>
                   </div>
                 </div>
 
@@ -110,16 +151,14 @@ export default function InquirySection() {
                     <InfoIcon />
                   </span>
                   <div className="inquiry_card_hour_body">
-                    <span className="inquiry_card_hour_label">운영 시간</span>
-                    <span className="inquiry_card_hour_value">
-                      {INQUIRY_OPERATION_HOURS}
-                    </span>
+                    <span className="inquiry_card_hour_label">{operationLabel}</span>
+                    <span className="inquiry_card_hour_value">{operationHours}</span>
                   </div>
                 </div>
               </div>
 
               <span className="inquiry_card_watermark" aria-hidden="true">
-                CALL
+                {watermark}
               </span>
             </aside>
           </div>

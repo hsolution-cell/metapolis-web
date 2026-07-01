@@ -1,14 +1,8 @@
 /* ==========================================================================
    영문(EN) 사이트 전용 스타일
-   - 헤더/푸터/본문 섹션은 국문 CSS(header.css/footer.css/main.css/hero.css)를 재사용
-   - 여기서는 EN 전용 Contact 섹션 스타일만 정의
+   - 헤더/푸터/본문/문의(Contact) 섹션은 국문 CSS를 재사용
+   - 여기서는 EN 전용 미세 조정만 정의
    ========================================================================== */
-
-:root {
-  --en-navy: #14232f;
-  --en-text: #1f2d3a;
-  --en-gold: #b3894e;
-}
 
 /* ---------- EN 헤더 nav: 영문 라벨에 맞춰 폭 자동 + 간격 확대 ---------- */
 .en-gnb .gnb {
@@ -19,97 +13,7 @@
   padding: 0 4px;
 }
 
-.en-label {
-  display: inline-block;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  color: var(--en-gold);
-  margin-right: 8px;
-}
-
-/* ---------- Contact Us (EN 전용 섹션) ---------- */
-.en-contact {
-  background: #fff;
-}
-.en-contact__inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 56px;
-  align-items: center;
-}
-.en-contact__eyebrow {
-  font-size: 13px;
-  font-weight: 700;
-  color: #c96a3a;
-}
-.en-contact__title {
-  margin-top: 10px;
-  font-size: 32px;
-  font-weight: 700;
-  color: var(--en-navy);
-}
-.en-contact__subtitle {
-  font-size: 32px;
-  font-weight: 700;
-  color: var(--en-navy);
-}
-.en-contact__text {
-  margin-top: 18px;
-  font-size: 15px;
-  line-height: 1.7;
-  color: #6b7580;
-  max-width: 420px;
-}
-.en-contact__address {
-  margin-top: 22px;
-  font-size: 14px;
-  color: var(--en-text);
-}
-.en-contact__card {
-  background: linear-gradient(150deg, #7a5a2f, #4f3a1e);
-  border-radius: 18px;
-  padding: 40px;
-  color: #f2e9db;
-}
-.en-contact__card-eyebrow {
-  font-size: 13px;
-  letter-spacing: 0.06em;
-  color: #d8c39c;
-}
-.en-contact__card-note {
-  margin-top: 14px;
-  font-size: 14px;
-  color: #e6dcc9;
-}
-.en-contact__phone {
-  display: block;
-  margin-top: 8px;
-  font-size: 36px;
-  font-weight: 700;
-  color: #fff;
-}
-.en-contact__hours {
-  margin-top: 28px;
-  display: flex;
-  gap: 40px;
-  border-top: 1px solid rgba(255, 255, 255, 0.16);
-  padding-top: 20px;
-}
-.en-contact__hours .en-label {
-  display: block;
-  color: #d8c39c;
-  margin-bottom: 4px;
-}
-.en-contact__hours strong {
-  font-size: 16px;
-  color: #fff;
-  font-weight: 600;
-}
-
-@media (max-width: 960px) {
-  .en-contact__inner {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
+/* ---------- EN Contact(=국문 문의하기 재사용): 카드 배경만 변경 ---------- */
+.inquiry.en-inquiry .inquiry_card {
+  background: linear-gradient(180deg, rgba(91, 65, 22, 0.95) 0%, rgba(58, 39, 8, 0.95) 77%);
 }

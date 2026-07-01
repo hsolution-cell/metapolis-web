@@ -2,6 +2,7 @@ import HeroSection from "@/components/home/HeroSection";
 import BranchSection from "@/components/home/BranchSection";
 import FaqSection from "@/components/home/FaqSection";
 import LocationSection from "@/components/home/LocationSection";
+import InquirySection from "@/components/sub/inquiry/InquirySection";
 import {
   EN_HERO_SLIDES,
   EN_BRANCH,
@@ -42,38 +43,34 @@ export default function EnHome() {
         ariaLabel="Frequently asked questions"
       />
 
-      {/* Contact Us — EN 전용 섹션 */}
-      <section className="en-contact page main_section_pad" aria-label="Contact us">
-        <div className="content_inner en-contact__inner">
-          <div className="en-contact__lead">
-            <p className="en-contact__eyebrow">{EN_CONTACT.eyebrow}</p>
-            <h2 className="en-contact__title">{EN_CONTACT.title}</h2>
-            <p className="en-contact__subtitle">{EN_CONTACT.subtitle}</p>
-            <p className="en-contact__text">{EN_CONTACT.text}</p>
-            <p className="en-contact__address">
-              <span className="en-label">ADDRESS</span>
-              {EN_CONTACT.address}
-            </p>
-          </div>
-          <div className="en-contact__card">
-            <p className="en-contact__card-eyebrow">Customer Support</p>
-            <p className="en-contact__card-note">For inquiries, please call the number below.</p>
-            <a className="en-contact__phone" href={`tel:${EN_CONTACT.phone}`}>
-              {EN_CONTACT.phone}
-            </a>
-            <div className="en-contact__hours">
-              <div>
-                <span className="en-label">Support Hours</span>
-                <strong>{EN_CONTACT.supportHours}</strong>
-              </div>
-              <div>
-                <span className="en-label">Operating Hours</span>
-                <strong>{EN_CONTACT.operatingHours}</strong>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Contact Us — 국문 문의하기(InquirySection) 디자인 재사용 */}
+      <InquirySection
+        className="en-inquiry"
+        eyebrow={EN_CONTACT.eyebrow}
+        title={
+          <>
+            {EN_CONTACT.title}
+            <br />
+            {EN_CONTACT.subtitle}
+          </>
+        }
+        desc={EN_CONTACT.text}
+        address={EN_CONTACT.address}
+        cardAriaLabel="Customer support"
+        cardBadge="• Customer Support •"
+        cardLead={
+          <>
+            For inquiries, <b>please call the number below</b>
+          </>
+        }
+        phone={EN_CONTACT.phone}
+        phoneHref="tel:0313717000"
+        consultLabel="Support Hours"
+        consultHours={EN_CONTACT.supportHours}
+        operationLabel="Operating Hours"
+        operationHours={EN_CONTACT.operatingHours}
+        watermark="CALL"
+      />
 
       <LocationSection
         desc={EN_LOCATION.desc}
