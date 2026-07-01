@@ -26,7 +26,14 @@
   letter-spacing: -0.01em;
 }
 
-/* ---------- EN Contact(=국문 문의하기 재사용): 카드 배경만 변경 ---------- */
+/* ---------- EN Contact(=국문 문의하기 재사용) ---------- */
+/* 카드 배경 변경 */
 .inquiry.en-inquiry .inquiry_card {
   background: linear-gradient(180deg, rgba(91, 65, 22, 0.95) 0%, rgba(58, 39, 8, 0.95) 77%);
+}
+/* 주소 텍스트: 색/크기 조정 + 한 줄 유지 */
+.inquiry.en-inquiry .inquiry_address_text {
+  font-size: 16px;
+  color: #8a6e3e;
+  white-space: nowrap;
 }
