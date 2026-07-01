@@ -19,7 +19,7 @@
 
 ## Tier 2 — SEO / 공유 마감
 
-- [ ] **`app/robots.ts` 생성** (현재 없음) — `/preview` disallow, `sitemap.xml` 지정
+- [x] **`app/robots.ts` 생성** — `/preview` disallow, `sitemap.xml`·host 지정. `/robots.txt` 출력 확인 완료
 - [x] **OG 이미지 + `metadataBase`** `app/layout.tsx` (+`lib/pageMetadata.ts`)
   - `public/img/thumbnail.png` (1200×630) 적용, `metadataBase` 설정 완료 → 전 페이지 공유 썸네일·절대 URL 정상
 - [x] **`npm run build` 검증** — 프로덕션 빌드/타입체크 통과 확인
