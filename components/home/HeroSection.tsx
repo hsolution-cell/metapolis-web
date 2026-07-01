@@ -10,6 +10,9 @@ export default function HeroSection() {
   const swiperRef = useRef<SwiperType | null>(null);
   const [autoplayPaused, setAutoplayPaused] = useState(false);
 
+  // 슬라이드가 1개면 루프/자동재생/네비/페이지네이션 컨트롤을 숨김
+  const isSingle = HERO_SLIDES.length <= 1;
+
   useEffect(() => {
     const onResize = () => {
       swiperRef.current?.update();
@@ -42,20 +45,28 @@ export default function HeroSection() {
         <Swiper
           className="hero_swiper swiper"
           modules={[Autoplay, Navigation, Pagination]}
-          loop
+          loop={!isSingle}
           speed={800}
           observer
           observeParents
-          autoplay={{ delay: 5000, disableOnInteraction: false }}
-          navigation={{
-            nextEl: ".hero_nav--next",
-            prevEl: ".hero_nav--prev",
-          }}
-          pagination={{
-            el: ".hero_pagination",
-            clickable: true,
-            type: "bullets",
-          }}
+          autoplay={isSingle ? false : { delay: 5000, disableOnInteraction: false }}
+          navigation={
+            isSingle
+              ? false
+              : {
+                  nextEl: ".hero_nav--next",
+                  prevEl: ".hero_nav--prev",
+                }
+          }
+          pagination={
+            isSingle
+              ? false
+              : {
+                  el: ".hero_pagination",
+                  clickable: true,
+                  type: "bullets",
+                }
+          }
           onSwiper={(swiper) => {
             swiperRef.current = swiper;
           }}
@@ -98,28 +109,34 @@ export default function HeroSection() {
             </SwiperSlide>
           ))}
 
-          <button type="button" className="hero_nav hero_nav--prev" aria-label="이전 배너">
-            <svg width="16" height="28" viewBox="0 0 16 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M13 2L3 14L13 26" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </button>
-          <button type="button" className="hero_nav hero_nav--next" aria-label="다음 배너">
-            <svg width="16" height="28" viewBox="0 0 16 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M3 2L13 14L3 26" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </button>
+          {!isSingle && (
+            <>
+              <button type="button" className="hero_nav hero_nav--prev" aria-label="이전 배너">
+                <svg width="16" height="28" viewBox="0 0 16 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M13 2L3 14L13 26" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
+              <button type="button" className="hero_nav hero_nav--next" aria-label="다음 배너">
+                <svg width="16" height="28" viewBox="0 0 16 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M3 2L13 14L3 26" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
+            </>
+          )}
         </Swiper>
 
-        <div className="hero_controls">
-          <div className="hero_pagination swiper-pagination" />
-          <button
-            type="button"
-            className={`hero_autoplay_btn${autoplayPaused ? " is-paused" : ""}`}
-            aria-label={autoplayPaused ? "재생" : "멈춤"}
-            aria-pressed={autoplayPaused}
-            onClick={toggleAutoplay}
-          />
-        </div>
+        {!isSingle && (
+          <div className="hero_controls">
+            <div className="hero_pagination swiper-pagination" />
+            <button
+              type="button"
+              className={`hero_autoplay_btn${autoplayPaused ? " is-paused" : ""}`}
+              aria-label={autoplayPaused ? "재생" : "멈춤"}
+              aria-pressed={autoplayPaused}
+              onClick={toggleAutoplay}
+            />
+          </div>
+        )}
       </div>
     </section>
   );
