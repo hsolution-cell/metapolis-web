@@ -5,16 +5,24 @@ import SubReveal from "@/components/sub/SubReveal";
 import FloorsBlockToggle from "@/components/sub/floors/FloorsBlockToggle";
 import FloorMapPanel from "@/components/sub/floors/FloorMapPanel";
 import FloorStoreCard from "@/components/sub/floors/FloorStoreCard";
-import { FLOOR_GUIDE_BLOCKS, getFloorGuideBlock } from "@/data/floorGuide";
+import { FLOOR_GUIDE_BLOCKS } from "@/data/floorGuide";
+import type { FloorGuideBlock } from "@/data/floorGuide";
 import type { BranchBlock } from "@/data/branchStores";
 
 type FloorsSectionProps = {
   initialBlock?: BranchBlock;
   initialFloorId?: string;
+  blocks?: FloorGuideBlock[];
+  ariaLabel?: string;
+  mapAltSuffix?: string;
 };
 
-function resolveInitialFloorId(block: BranchBlock, floorId?: string) {
-  const blockData = getFloorGuideBlock(block);
+function resolveInitialFloorId(
+  blocks: FloorGuideBlock[],
+  block: BranchBlock,
+  floorId?: string
+) {
+  const blockData = blocks.find((item) => item.id === block);
   if (!blockData) return "b2";
 
   if (floorId && blockData.floors.some((floor) => floor.id === floorId)) {
@@ -27,16 +35,19 @@ function resolveInitialFloorId(block: BranchBlock, floorId?: string) {
 export default function FloorsSection({
   initialBlock = "a",
   initialFloorId,
+  blocks = FLOOR_GUIDE_BLOCKS,
+  ariaLabel = "층별 선택",
+  mapAltSuffix = "층별 안내 지도",
 }: FloorsSectionProps) {
   const [block, setBlock] = useState<BranchBlock>(initialBlock);
   const [floorId, setFloorId] = useState(() =>
-    resolveInitialFloorId(initialBlock, initialFloorId)
+    resolveInitialFloorId(blocks, initialBlock, initialFloorId)
   );
   const navListRef = useRef<HTMLUListElement>(null);
 
   const blockData = useMemo(
-    () => FLOOR_GUIDE_BLOCKS.find((item) => item.id === block)!,
-    [block]
+    () => blocks.find((item) => item.id === block)!,
+    [blocks, block]
   );
 
   const floor = useMemo(() => {
@@ -54,7 +65,7 @@ export default function FloorsSection({
 
   const handleBlockChange = (next: BranchBlock) => {
     setBlock(next);
-    const firstFloor = FLOOR_GUIDE_BLOCKS.find((item) => item.id === next)?.floors[0];
+    const firstFloor = blocks.find((item) => item.id === next)?.floors[0];
     if (firstFloor) setFloorId(firstFloor.id);
   };
 
@@ -63,7 +74,7 @@ export default function FloorsSection({
       <div className="floors_inner content_inner innerTop innerBot">
         <SubReveal threshold={0.12} rootMargin="0px 0px -8% 0px">
           <div className="floors_layout">
-            <aside className="floors_sidebar" aria-label="층별 선택">
+            <aside className="floors_sidebar" aria-label={ariaLabel}>
               <FloorsBlockToggle block={block} onChange={handleBlockChange} />
 
               <div className="floors_nav">
@@ -106,7 +117,7 @@ export default function FloorsSection({
 
               <FloorMapPanel
                 src={floor.mapImage}
-                alt={`${blockData.label} ${floor.label} 층별 안내 지도`}
+                alt={`${blockData.label} ${floor.label} ${mapAltSuffix}`}
                 caption={floor.mapCaption}
               />
 
