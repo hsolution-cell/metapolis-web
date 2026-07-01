@@ -68,7 +68,11 @@ export default function EnHome() {
         consultLabel="Support Hours"
         consultHours={EN_CONTACT.supportHours}
         operationLabel="Operating Hours"
-        operationHours={EN_CONTACT.operatingHours}
+        operationHours={
+          <>
+            10:30 - 22:00 <span className="en-nowrap">(365 days)</span>
+          </>
+        }
         watermark="CALL"
       />
 

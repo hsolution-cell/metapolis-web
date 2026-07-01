@@ -98,5 +98,6 @@ export const EN_CONTACT = {
   address: "220 Dongtanjungang-ro, Hwaseong-si, Gyeonggi-do",
   phone: "031-371-7000",
   supportHours: "09:00 - 18:00",
+  // "(365 days)"가 중간에서 끊기지 않도록 비분리 공백 사용 → "10:30 - 22:00 / (365 days)"
   operatingHours: "10:30 - 22:00 (365 days)",
 };

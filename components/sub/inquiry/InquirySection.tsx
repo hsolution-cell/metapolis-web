@@ -23,9 +23,9 @@ type InquirySectionProps = {
   phone?: string;
   phoneHref?: string;
   consultLabel?: string;
-  consultHours?: string;
+  consultHours?: ReactNode;
   operationLabel?: string;
-  operationHours?: string;
+  operationHours?: ReactNode;
   watermark?: string;
 };
 
