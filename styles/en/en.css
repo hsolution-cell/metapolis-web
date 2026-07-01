@@ -26,6 +26,12 @@
   letter-spacing: -0.01em;
 }
 
+/* Hours: "Hours", "Store Hours Vary" 제목 굵기(영문은 strong 없이 평문) */
+.en-root .hours_main_head .sub_section_title,
+.en-root .hours_stores_head .sub_section_title {
+  font-weight: 700;
+}
+
 /* ---------- EN Contact(=국문 문의하기 재사용) ---------- */
 /* 카드 배경 변경 */
 .inquiry.en-inquiry .inquiry_card {
