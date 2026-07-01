@@ -1,8 +1,30 @@
 import { INQUIRY_PHONE } from "@/data/inquiry";
 import { LOCATION_ADDRESS } from "@/data/locationTransport";
 import type { LegalArticle } from "@/data/legal";
+import {
+  LEGAL_COMPANY_NAME,
+  PRIVACY_OFFICER_EMAIL,
+  PRIVACY_OFFICER_NAME,
+  PRIVACY_OFFICER_PHONE,
+  optionalLegalLine,
+} from "@/data/legalContact";
 
 export const PRIVACY_REVISED_AT = "2026년 06월 17일 시행";
+
+const companyLabel = LEGAL_COMPANY_NAME.trim()
+  ? `${LEGAL_COMPANY_NAME.trim()}(이하 "회사")`
+  : '메타폴리스(이하 "회사")';
+
+const contactPhone = PRIVACY_OFFICER_PHONE.trim() || INQUIRY_PHONE;
+
+const contactItems = [
+  optionalLegalLine("법인명", LEGAL_COMPANY_NAME),
+  optionalLegalLine("개인정보 보호책임자", PRIVACY_OFFICER_NAME),
+  optionalLegalLine("연락처", contactPhone),
+  optionalLegalLine("이메일", PRIVACY_OFFICER_EMAIL),
+  `주소: ${LOCATION_ADDRESS}`,
+  '문의: <a href="/support/inquiry">문의하기</a>',
+].filter((item): item is string => item !== null);
 
 export const PRIVACY_ARTICLES: LegalArticle[] = [
   {
@@ -11,7 +33,7 @@ export const PRIVACY_ARTICLES: LegalArticle[] = [
     blocks: [
       {
         type: "paragraph",
-        text: '메타폴리스(이하 "회사")는 「개인정보 보호법」에 따라 이용자 정보를 보호하며, 본 방침은 메타폴리스 공식 홈페이지에 적용됩니다.',
+        text: `${companyLabel}는 「개인정보 보호법」에 따라 이용자 정보를 보호하며, 본 방침은 메타폴리스 공식 홈페이지에 적용됩니다.`,
       },
       {
         type: "paragraph",
@@ -39,7 +61,17 @@ export const PRIVACY_ARTICLES: LegalArticle[] = [
   },
   {
     id: "privacy-3",
-    title: "3. 전화·방문 문의 시",
+    title: "3. 쿠키 및 접속 분석",
+    blocks: [
+      {
+        type: "paragraph",
+        text: "회사는 웹사이트 운영·품질 개선을 위해 <strong>Vercel Speed Insights</strong> 등 접속·성능 관련 정보를 비식별 형태로 수집할 수 있습니다. 브라우저 설정에서 쿠키 저장을 거부할 수 있으나, 일부 기능 이용에 제한이 있을 수 있습니다.",
+      },
+    ],
+  },
+  {
+    id: "privacy-4",
+    title: "4. 전화·방문 문의 시",
     blocks: [
       {
         type: "paragraph",
@@ -48,17 +80,12 @@ export const PRIVACY_ARTICLES: LegalArticle[] = [
     ],
   },
   {
-    id: "privacy-4",
-    title: "4. 문의",
+    id: "privacy-5",
+    title: "5. 문의",
     blocks: [
       {
         type: "unordered-list",
-        items: [
-          "개인정보 보호책임자: 고객센터 담당",
-          `연락처: ${INQUIRY_PHONE}`,
-          `주소: ${LOCATION_ADDRESS}`,
-          '문의: <a href="/support/inquiry">문의하기</a>',
-        ],
+        items: contactItems,
       },
       {
         type: "paragraph",
@@ -67,8 +94,8 @@ export const PRIVACY_ARTICLES: LegalArticle[] = [
     ],
   },
   {
-    id: "privacy-5",
-    title: "5. 방침 변경",
+    id: "privacy-6",
+    title: "6. 방침 변경",
     blocks: [
       {
         type: "paragraph",
