@@ -13,6 +13,14 @@
   padding: 0 4px;
 }
 
+/* ---------- EN 본문 타이포 미세조정 (.en-root 스코프 = 헤더/푸터 제외) ---------- */
+/* 히어로: 영문 라벨이 2줄에 맞도록 크기·굵기·자간 조정 */
+.en-root .hero_title {
+  font-size: 40px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
 /* ---------- EN Contact(=국문 문의하기 재사용): 카드 배경만 변경 ---------- */
 .inquiry.en-inquiry .inquiry_card {
   background: linear-gradient(180deg, rgba(91, 65, 22, 0.95) 0%, rgba(58, 39, 8, 0.95) 77%);
