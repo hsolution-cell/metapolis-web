@@ -1,11 +1,8 @@
 import SubPageLayout from "@/components/sub/SubPageLayout";
 import FaqSection from "@/components/sub/faq/FaqSection";
-import { buildMockupMetadata } from "@/components/sub/MockupPage";
+import { buildPageMetadata } from "@/lib/pageMetadata";
 
-export const metadata = buildMockupMetadata({
-  path: "/support/faq",
-  label: "자주 묻는 질문",
-});
+export const metadata = buildPageMetadata({ path: "/support/faq" });
 
 export default function Page() {
   return (

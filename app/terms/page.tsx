@@ -1,7 +1,7 @@
 import TermsSection from "@/components/site/TermsSection";
-import { buildSiteMetadata } from "@/components/sub/SitePlaceholder";
+import { buildPageMetadata } from "@/lib/pageMetadata";
 
-export const metadata = buildSiteMetadata({ path: "/terms", title: "이용약관" });
+export const metadata = buildPageMetadata({ path: "/terms" });
 
 export default function TermsPage() {
   return <TermsSection />;

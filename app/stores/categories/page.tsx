@@ -1,8 +1,8 @@
 import SubPageLayout from "@/components/sub/SubPageLayout";
 import CategoriesSection from "@/components/sub/categories/CategoriesSection";
-import { buildMockupMetadata } from "@/components/sub/MockupPage";
+import { buildPageMetadata } from "@/lib/pageMetadata";
 
-export const metadata = buildMockupMetadata({ path: "/stores/categories", label: "카테고리별 안내" });
+export const metadata = buildPageMetadata({ path: "/stores/categories" });
 
 export default function Page() {
   return (

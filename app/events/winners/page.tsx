@@ -1,11 +1,8 @@
 import SubPageLayout from "@/components/sub/SubPageLayout";
 import WinnersSection from "@/components/sub/winners/WinnersSection";
-import { buildMockupMetadata } from "@/components/sub/MockupPage";
+import { buildPageMetadata } from "@/lib/pageMetadata";
 
-export const metadata = buildMockupMetadata({
-  path: "/events/winners",
-  label: "당첨자 발표",
-});
+export const metadata = buildPageMetadata({ path: "/events/winners" });
 
 export default function Page() {
   return (

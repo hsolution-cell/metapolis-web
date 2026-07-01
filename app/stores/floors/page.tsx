@@ -1,9 +1,9 @@
 import SubPageLayout from "@/components/sub/SubPageLayout";
 import FloorsSection from "@/components/sub/floors/FloorsSection";
-import { buildMockupMetadata } from "@/components/sub/MockupPage";
+import { buildPageMetadata } from "@/lib/pageMetadata";
 import { resolveFloorGuideSelection } from "@/data/floorGuide";
 
-export const metadata = buildMockupMetadata({ path: "/stores/floors", label: "층별안내" });
+export const metadata = buildPageMetadata({ path: "/stores/floors" });
 
 type PageProps = {
   searchParams: Promise<{ block?: string; floor?: string }>;

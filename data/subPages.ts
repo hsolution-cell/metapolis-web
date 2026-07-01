@@ -1,4 +1,4 @@
-import { MOCKUP_PAGES } from "@/data/siteMeta";
+import { SUB_PAGES } from "@/data/siteMeta";
 import { getGnbIndex } from "@/data/navigation";
 
 export type SubPageConfig = {
@@ -23,14 +23,14 @@ export function getSubBannerImage(path: string): string {
   return GNB_BANNER_IMAGES[gnbIndex] ?? DEFAULT_SUB_BANNER;
 }
 
-/** pathname → 서브 배너·타이틀 설정 (14개 mockup 페이지) */
-export const SUB_PAGES: SubPageConfig[] = MOCKUP_PAGES.map((page) => ({
+/** pathname → 서브 배너·타이틀 설정 */
+export const SUB_PAGES_CONFIG: SubPageConfig[] = SUB_PAGES.map((page) => ({
   path: page.path,
   label: page.label,
   bannerImage: getSubBannerImage(page.path),
 }));
 
-const SUB_PAGE_MAP = new Map(SUB_PAGES.map((page) => [page.path, page]));
+const SUB_PAGE_MAP = new Map(SUB_PAGES_CONFIG.map((page) => [page.path, page]));
 
 export function getSubPageConfig(path: string): SubPageConfig | undefined {
   return SUB_PAGE_MAP.get(path);

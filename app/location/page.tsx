@@ -1,8 +1,8 @@
 import SubPageLayout from "@/components/sub/SubPageLayout";
 import LocationSection from "@/components/sub/location/LocationSection";
-import { buildMockupMetadata } from "@/components/sub/MockupPage";
+import { buildPageMetadata } from "@/lib/pageMetadata";
 
-export const metadata = buildMockupMetadata({ path: "/location", label: "오시는 길" });
+export const metadata = buildPageMetadata({ path: "/location" });
 
 export default function Page() {
   return (

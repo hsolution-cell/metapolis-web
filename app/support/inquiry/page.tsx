@@ -1,11 +1,8 @@
 import SubPageLayout from "@/components/sub/SubPageLayout";
 import InquirySection from "@/components/sub/inquiry/InquirySection";
-import { buildMockupMetadata } from "@/components/sub/MockupPage";
+import { buildPageMetadata } from "@/lib/pageMetadata";
 
-export const metadata = buildMockupMetadata({
-  path: "/support/inquiry",
-  label: "문의하기",
-});
+export const metadata = buildPageMetadata({ path: "/support/inquiry" });
 
 export default function Page() {
   return (

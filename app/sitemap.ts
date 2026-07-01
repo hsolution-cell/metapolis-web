@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { MOCKUP_PAGES } from "@/data/siteMeta";
+import { SUB_PAGES } from "@/data/siteMeta";
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://metapolis.co.kr";
 
@@ -9,7 +9,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/privacy",
     "/terms",
     "/sitemap",
-    ...MOCKUP_PAGES.map((p) => p.path),
+    ...SUB_PAGES.map((p) => p.path),
+    "/stores/search",
   ];
 
   return staticPaths.map((path) => ({

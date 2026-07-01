@@ -41,7 +41,6 @@ export type FloorGuideBlock = {
   floors: FloorGuideFloor[];
 };
 
-const MAP = "/img/sub/floors/maps/placeholder.png";
 const MAP_A4 = "/img/sub/floors/maps/a4.png";
 const MAP_A3 = "/img/sub/floors/maps/a3.png";
 const MAP_A2 = "/img/sub/floors/maps/a2.png";

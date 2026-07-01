@@ -19,6 +19,7 @@ export const PAGE_META: Record<string, PageMeta> = {
   "/stores/floors": { title: "METAPOLIS | 층별안내", description: "METAPOLIS 층별안내" },
   "/stores/categories": { title: "METAPOLIS | 카테고리별 안내", description: "METAPOLIS 카테고리별 안내" },
   "/stores/facilities": { title: "METAPOLIS | 편의시설", description: "METAPOLIS 편의시설" },
+  "/stores/search": { title: "METAPOLIS | 매장 검색", description: "METAPOLIS 매장 검색" },
   "/events": { title: "METAPOLIS | 메타폴리스 이벤트", description: "METAPOLIS 메타폴리스 이벤트" },
   "/events/stores": { title: "METAPOLIS | 매장 이벤트", description: "METAPOLIS 매장 이벤트" },
   "/events/winners": { title: "METAPOLIS | 당첨자 발표", description: "METAPOLIS 당첨자 발표" },
@@ -35,21 +36,21 @@ export const PAGE_META: Record<string, PageMeta> = {
   },
 };
 
-export const MOCKUP_PAGES = [
-  { path: "/about", legacy: "menu1_1", image: "menu1_1", label: "메타폴리스 소개" },
-  { path: "/hours", legacy: "menu1_2", image: "menu1_2", label: "영업시간" },
-  { path: "/location", legacy: "menu1_3", image: "menu1_3", label: "오시는 길" },
-  { path: "/parking", legacy: "menu1_4", image: "menu1_4", label: "주차안내" },
-  { path: "/stores", legacy: "menu2_1", image: "menu2_1", label: "주요매장" },
-  { path: "/stores/floors", legacy: "menu2_2", image: "menu2_2", label: "층별안내" },
-  { path: "/stores/categories", legacy: "menu2_3", image: "menu2_3", label: "카테고리별 안내" },
-  { path: "/stores/facilities", legacy: "menu2_4", image: "menu2_4", label: "편의시설" },
-  { path: "/events", legacy: "menu3_1", image: "menu3_1", label: "메타폴리스 이벤트" },
-  { path: "/events/stores", legacy: "menu3_2", image: "menu3_2", label: "매장 이벤트" },
-  { path: "/events/winners", legacy: "menu3_3", image: "menu3_3", label: "당첨자 발표" },
-  { path: "/support/faq", legacy: "menu4_1", image: "menu4_1", label: "자주 묻는 질문" },
-  { path: "/support/inquiry", legacy: "menu4_2", image: "menu4_2", label: "문의하기" },
-  { path: "/support/notices", legacy: "menu4_3", image: "menu4_3", label: "고객알림" },
+export const SUB_PAGES = [
+  { path: "/about", legacy: "menu1_1", label: "메타폴리스 소개" },
+  { path: "/hours", legacy: "menu1_2", label: "영업시간" },
+  { path: "/location", legacy: "menu1_3", label: "오시는 길" },
+  { path: "/parking", legacy: "menu1_4", label: "주차안내" },
+  { path: "/stores", legacy: "menu2_1", label: "주요매장" },
+  { path: "/stores/floors", legacy: "menu2_2", label: "층별안내" },
+  { path: "/stores/categories", legacy: "menu2_3", label: "카테고리별 안내" },
+  { path: "/stores/facilities", legacy: "menu2_4", label: "편의시설" },
+  { path: "/events", legacy: "menu3_1", label: "메타폴리스 이벤트" },
+  { path: "/events/stores", legacy: "menu3_2", label: "매장 이벤트" },
+  { path: "/events/winners", legacy: "menu3_3", label: "당첨자 발표" },
+  { path: "/support/faq", legacy: "menu4_1", label: "자주 묻는 질문" },
+  { path: "/support/inquiry", legacy: "menu4_2", label: "문의하기" },
+  { path: "/support/notices", legacy: "menu4_3", label: "고객알림" },
 ] as const;
 
 export function getPageMeta(pathname: string): PageMeta {

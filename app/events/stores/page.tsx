@@ -1,9 +1,9 @@
 import SubPageLayout from "@/components/sub/SubPageLayout";
 import EventsSection from "@/components/sub/events/EventsSection";
 import { STORE_EVENTS } from "@/data/events";
-import { buildMockupMetadata } from "@/components/sub/MockupPage";
+import { buildPageMetadata } from "@/lib/pageMetadata";
 
-export const metadata = buildMockupMetadata({ path: "/events/stores", label: "매장 이벤트" });
+export const metadata = buildPageMetadata({ path: "/events/stores" });
 
 export default function Page() {
   return (

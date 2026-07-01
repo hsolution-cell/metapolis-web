@@ -1,10 +1,7 @@
 import PrivacySection from "@/components/site/PrivacySection";
-import { buildSiteMetadata } from "@/components/sub/SitePlaceholder";
+import { buildPageMetadata } from "@/lib/pageMetadata";
 
-export const metadata = buildSiteMetadata({
-  path: "/privacy",
-  title: "개인정보처리방침",
-});
+export const metadata = buildPageMetadata({ path: "/privacy" });
 
 export default function PrivacyPage() {
   return <PrivacySection />;

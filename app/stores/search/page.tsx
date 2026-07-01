@@ -1,12 +1,9 @@
 import { Suspense } from "react";
 import SubPageLayout from "@/components/sub/SubPageLayout";
 import StoreSearchSection from "@/components/sub/stores/StoreSearchSection";
-import { buildMockupMetadata } from "@/components/sub/MockupPage";
+import { buildPageMetadata } from "@/lib/pageMetadata";
 
-export const metadata = buildMockupMetadata({
-  path: "/stores/floors",
-  label: "매장 검색",
-});
+export const metadata = buildPageMetadata({ path: "/stores/search" });
 
 export default function Page() {
   return (

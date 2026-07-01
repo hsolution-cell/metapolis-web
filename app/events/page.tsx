@@ -1,9 +1,9 @@
 import SubPageLayout from "@/components/sub/SubPageLayout";
 import EventsSection from "@/components/sub/events/EventsSection";
 import { METAPOLIS_EVENTS } from "@/data/events";
-import { buildMockupMetadata } from "@/components/sub/MockupPage";
+import { buildPageMetadata } from "@/lib/pageMetadata";
 
-export const metadata = buildMockupMetadata({ path: "/events", label: "메타폴리스 이벤트" });
+export const metadata = buildPageMetadata({ path: "/events" });
 
 export default function Page() {
   return (
