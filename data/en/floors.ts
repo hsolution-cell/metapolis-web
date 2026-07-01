@@ -154,8 +154,9 @@ function buildEnBlock(block: BranchBlock): FloorGuideBlock {
           name: EN_STORE_NAME[v.name] ?? v.name,
           tel: v.tel,
           iconCategory: v.iconCategory,
-          hasEvent: v.hasEvent,
-          eventHref: v.eventHref,
+          // 영문 Floor Guide에서는 이벤트(EVENT 배지·이벤트 링크) 미노출
+          hasEvent: false,
+          eventHref: undefined,
         };
       }),
     })),
