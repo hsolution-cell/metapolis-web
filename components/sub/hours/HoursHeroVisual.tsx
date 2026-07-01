@@ -4,7 +4,17 @@ import { useEffect, useRef, useState } from "react";
 
 const MARQUEE_TEXT = "METAPOLIS DONGTAN";
 
-export default function HoursHeroVisual() {
+type HoursHeroVisualProps = {
+  open?: string;
+  close?: string;
+  midText?: string;
+};
+
+export default function HoursHeroVisual({
+  open = "10:30",
+  close = "22:00",
+  midText = "연중무휴",
+}: HoursHeroVisualProps = {}) {
   const visualRef = useRef<HTMLDivElement>(null);
   const lastScrollYRef = useRef(0);
   const [isExpanded, setIsExpanded] = useState(false);
@@ -66,17 +76,17 @@ export default function HoursHeroVisual() {
             />
           </div>
           <div className="hours_hero_time">
-            <span className="hours_hero_open">10:30</span>
+            <span className="hours_hero_open">{open}</span>
             <span className="hours_hero_mid">
               <span className="hours_hero_dash" aria-hidden="true">
                 —
               </span>
-              연중무휴
+              {midText}
               <span className="hours_hero_dash" aria-hidden="true">
                 —
               </span>
             </span>
-            <span className="hours_hero_close">22:00</span>
+            <span className="hours_hero_close">{close}</span>
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import type { CSSProperties } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import SubSectionHead from "@/components/sub/SubSectionHead";
 import HoursStoreCard, {
   type HoursStoreCardProps,
@@ -14,10 +14,20 @@ type HoursCategory = {
 
 type HoursStoresSectionProps = {
   categories: HoursCategory[];
+  eyebrow?: string;
+  title?: ReactNode;
+  noteLabel?: string;
 };
 
 export default function HoursStoresSection({
   categories,
+  eyebrow = "Stores with Different Hours",
+  title = (
+    <>
+      <strong>영업시간이 다른 매장</strong> 안내
+    </>
+  ),
+  noteLabel,
 }: HoursStoresSectionProps) {
   const { ref, inView } = useInViewOnce<HTMLElement>({
     threshold: 0.08,
@@ -33,12 +43,8 @@ export default function HoursStoresSection({
       <div className="content_inner hours_stores_inner">
         <SubSectionHead
           className="hours_stores_head"
-          eyebrow="Stores with Different Hours"
-          title={
-            <>
-              <strong>영업시간이 다른 매장</strong> 안내
-            </>
-          }
+          eyebrow={eyebrow}
+          title={title}
           titleId="hours-stores-title"
         />
 
@@ -65,7 +71,7 @@ export default function HoursStoresSection({
                     { "--sub-reveal-i": storeIndex } as CSSProperties
                   }
                 >
-                  <HoursStoreCard {...store} />
+                  <HoursStoreCard {...store} noteLabel={store.noteLabel ?? noteLabel} />
                 </li>
               ))}
             </ul>

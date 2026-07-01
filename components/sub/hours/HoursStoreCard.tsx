@@ -11,6 +11,7 @@ export type HoursStoreCardProps = {
   logoAlt?: string;
   schedules: HoursScheduleRow[];
   note?: string;
+  noteLabel?: string;
 };
 
 export default function HoursStoreCard({
@@ -20,6 +21,7 @@ export default function HoursStoreCard({
   logoAlt,
   schedules,
   note,
+  noteLabel = "비고사항 :",
 }: HoursStoreCardProps) {
   return (
     <article className="hours_store_card">
@@ -53,7 +55,7 @@ export default function HoursStoreCard({
       </ul>
 
       <p className="hours_store_card_note">
-        <span className="hours_store_card_note_label">비고사항 :</span>
+        <span className="hours_store_card_note_label">{noteLabel}</span>
         {note ?? "—"}
       </p>
     </article>

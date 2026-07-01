@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import SubSectionHead from "@/components/sub/SubSectionHead";
 import HoursHeroVisual from "@/components/sub/hours/HoursHeroVisual";
 import HoursMainIntro from "@/components/sub/hours/HoursMainIntro";
@@ -7,6 +8,16 @@ import type { HoursScheduleRow, HoursStoreCardProps } from "@/components/sub/hou
 type HoursCategory = {
   title: string;
   stores: HoursStoreCardProps[];
+};
+
+type HoursSectionProps = {
+  introEyebrow?: string;
+  introTitle?: ReactNode;
+  heroMidText?: string;
+  storesEyebrow?: string;
+  storesTitle?: ReactNode;
+  categories?: HoursCategory[];
+  noteLabel?: string;
 };
 
 const DAILY = (hours: string): HoursScheduleRow[] => [
@@ -143,7 +154,19 @@ const HOURS_CATEGORIES: HoursCategory[] = [
   },
 ];
 
-export default function HoursSection() {
+export default function HoursSection({
+  introEyebrow = "Opening Hours",
+  introTitle = (
+    <>
+      <strong>영업시간</strong> 안내
+    </>
+  ),
+  heroMidText = "연중무휴",
+  storesEyebrow,
+  storesTitle,
+  categories = HOURS_CATEGORIES,
+  noteLabel,
+}: HoursSectionProps = {}) {
   return (
     <div className="hours">
       <section
@@ -153,19 +176,20 @@ export default function HoursSection() {
         <HoursMainIntro>
           <SubSectionHead
             className="hours_main_head"
-            eyebrow="Opening Hours"
-            title={
-              <>
-                <strong>영업시간</strong> 안내
-              </>
-            }
+            eyebrow={introEyebrow}
+            title={introTitle}
             titleId="hours-main-title"
           />
         </HoursMainIntro>
-        <HoursHeroVisual />
+        <HoursHeroVisual midText={heroMidText} />
       </section>
 
-      <HoursStoresSection categories={HOURS_CATEGORIES} />
+      <HoursStoresSection
+        categories={categories}
+        eyebrow={storesEyebrow}
+        title={storesTitle}
+        noteLabel={noteLabel}
+      />
     </div>
   );
 }
