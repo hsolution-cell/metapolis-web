@@ -31,6 +31,13 @@ export default async function AdminDashLayout({
         </nav>
         <div className="admin-side__foot">
           <p className="admin-side__user">{user?.email}</p>
+          <Link
+            href="/admin/password"
+            className="admin-btn admin-btn--sm"
+            style={{ width: "100%", justifyContent: "center", marginBottom: 8 }}
+          >
+            비밀번호 변경
+          </Link>
           <form action={signOut}>
             <button
               type="submit"
