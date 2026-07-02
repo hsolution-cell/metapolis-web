@@ -23,8 +23,10 @@ export default async function EditPopupPage({ params }: PageProps) {
       </div>
       <PopupForm
         mode="edit"
+        locale={popup.locale}
         popupId={popup.id}
         initial={{
+          locale: popup.locale,
           title: popup.title,
           image: popup.image,
           linkHref: popup.linkHref,

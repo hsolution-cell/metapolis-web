@@ -7,6 +7,7 @@ import { createPopup, updatePopup, type PopupInput } from "@/app/admin/actions";
 
 type PopupFormProps = {
   mode: "new" | "edit";
+  locale: "ko" | "en";
   popupId?: string;
   initial?: PopupInput;
 };
@@ -15,8 +16,9 @@ function todayISO() {
   return new Date().toISOString().slice(0, 10);
 }
 
-export default function PopupForm({ mode, popupId, initial }: PopupFormProps) {
+export default function PopupForm({ mode, locale, popupId, initial }: PopupFormProps) {
   const router = useRouter();
+  const listPath = locale === "en" ? "/admin/popups?locale=en" : "/admin/popups";
   const [title, setTitle] = useState(initial?.title ?? "");
   const [image, setImage] = useState<string | null>(initial?.image ?? null);
   const [linkHref, setLinkHref] = useState(initial?.linkHref ?? "");
@@ -46,6 +48,7 @@ export default function PopupForm({ mode, popupId, initial }: PopupFormProps) {
     startTransition(async () => {
       try {
         const input: PopupInput = {
+          locale,
           title,
           image,
           linkHref: linkHref.trim() || null,
@@ -59,7 +62,7 @@ export default function PopupForm({ mode, popupId, initial }: PopupFormProps) {
         } else {
           await updatePopup(popupId!, input);
         }
-        router.push("/admin/popups");
+        router.push(listPath);
         router.refresh();
       } catch {
         setError("저장 중 오류가 발생했습니다. 다시 시도해 주세요.");
@@ -135,7 +138,7 @@ export default function PopupForm({ mode, popupId, initial }: PopupFormProps) {
         <button
           type="button"
           className="admin-btn"
-          onClick={() => router.push("/admin/popups")}
+          onClick={() => router.push(listPath)}
         >
           취소
         </button>

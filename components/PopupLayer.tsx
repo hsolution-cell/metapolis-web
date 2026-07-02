@@ -39,8 +39,9 @@ export default function PopupLayer() {
   const pathname = usePathname();
   const [popups, setPopups] = useState<Popup[]>([]);
 
-  // 메인 페이지에서만 노출
-  const isHome = pathname === "/";
+  // 국문 메인("/")·영문 메인("/en")에서만 노출
+  const isHome = pathname === "/" || pathname === "/en";
+  const locale = pathname === "/en" ? "en" : "ko";
 
   useEffect(() => {
     if (!isHome) return;
@@ -48,7 +49,7 @@ export default function PopupLayer() {
 
     (async () => {
       try {
-        const res = await fetch("/api/popups");
+        const res = await fetch(`/api/popups?locale=${locale}`);
         if (!res.ok) return;
         const data: Popup[] = await res.json();
         if (cancelled) return;
@@ -62,7 +63,7 @@ export default function PopupLayer() {
     return () => {
       cancelled = true;
     };
-  }, [isHome]);
+  }, [isHome, locale]);
 
   if (!isHome || popups.length === 0) return null;
 

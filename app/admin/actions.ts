@@ -466,6 +466,7 @@ export async function deleteHeroBanner(id: string) {
 
 // ---------- 팝업(popup) ----------
 export type PopupInput = {
+  locale: "ko" | "en";
   title: string;
   image: string | null;
   linkHref: string | null;
@@ -477,12 +478,14 @@ export type PopupInput = {
 
 function revalidatePopups() {
   revalidatePath("/");
+  revalidatePath("/en");
   revalidatePath("/admin/popups");
 }
 
 export async function createPopup(input: PopupInput) {
   const supabase = await createSupabaseServerClient();
   const { error } = await supabase.from("popups").insert({
+    locale: input.locale,
     title: input.title.trim(),
     image: input.image,
     link_href: input.linkHref?.trim() || null,
@@ -500,6 +503,7 @@ export async function updatePopup(id: string, input: PopupInput) {
   const { error } = await supabase
     .from("popups")
     .update({
+      locale: input.locale,
       title: input.title.trim(),
       image: input.image,
       link_href: input.linkHref?.trim() || null,
