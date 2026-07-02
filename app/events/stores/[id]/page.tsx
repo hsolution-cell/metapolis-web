@@ -1,50 +1,35 @@
 import { notFound } from "next/navigation";
 import SubPageLayout from "@/components/sub/SubPageLayout";
 import EventDetailSection from "@/components/sub/events/EventDetailSection";
-import {
-  EVENT_DETAIL_BANNER,
-  getEventBody,
-  getEventById,
-  getEventsByKind,
-  getNextEvent,
-  STORE_EVENTS,
-} from "@/data/events";
+import { EVENT_DETAIL_BANNER } from "@/data/events";
+import { getStoreEventById, listStoreEvents } from "@/lib/store-events-db";
+
+export const dynamic = "force-dynamic";
 
 type PageProps = {
   params: Promise<{ id: string }>;
 };
 
-export async function generateStaticParams() {
-  return STORE_EVENTS.map((event) => ({ id: event.id }));
-}
-
 export async function generateMetadata({ params }: PageProps) {
   const { id } = await params;
-  const event = getEventById(STORE_EVENTS, id);
-
+  const event = await getStoreEventById(id);
   if (!event) {
     return { title: "METAPOLIS | 매장 이벤트" };
   }
-
-  return {
-    title: `METAPOLIS | ${event.title}`,
-    description: event.title,
-  };
+  return { title: `METAPOLIS | ${event.title}`, description: event.title };
 }
 
 export default async function Page({ params }: PageProps) {
   const { id } = await params;
-  const events = getEventsByKind("store");
-  const event = getEventById(events, id);
+  const event = await getStoreEventById(id);
 
   if (!event) {
     notFound();
   }
 
-  const bodyHtml = getEventBody(event)
-    .map((p) => `<p>${p}</p>`)
-    .join("");
-  const next = getNextEvent(events, event.id);
+  const all = await listStoreEvents();
+  const index = all.findIndex((e) => e.id === id);
+  const next = index >= 0 && index < all.length - 1 ? all[index + 1] : null;
 
   return (
     <SubPageLayout
@@ -56,7 +41,7 @@ export default async function Page({ params }: PageProps) {
         title={event.title}
         startDate={event.startDate}
         endDate={event.endDate}
-        bodyHtml={bodyHtml}
+        bodyHtml={event.body ?? ""}
         listPath="/events/stores"
         nextHref={next ? `/events/stores/${next.id}` : undefined}
       />

@@ -1,8 +1,10 @@
 import { BRANCH_FLOORS, type BranchBlock } from "@/data/branchStores";
-import {
-  getOngoingStoreEventForStore,
-  getOngoingStoreEventHref,
-} from "@/data/events";
+
+/** 진행중 매장 이벤트 링크맵 — 매장 카드 배지용 (store-events-db에서 생성) */
+export type OngoingStoreEventLinks = {
+  byStoreId: Record<string, string>;
+  byBrandName: Record<string, string>;
+};
 
 /** 카드 아이콘용 (층별·카테고리별 공통) */
 export type StoreIconCategory =
@@ -1261,8 +1263,13 @@ export type StoreCardView = {
   isSignature?: boolean;
 };
 
-export function toStoreCardView(store: StoreRecord): StoreCardView {
-  const ongoingEvent = getOngoingStoreEventForStore(store);
+export function toStoreCardView(
+  store: StoreRecord,
+  ongoing?: OngoingStoreEventLinks
+): StoreCardView {
+  const eventHref = ongoing
+    ? ongoing.byStoreId[store.id] ?? ongoing.byBrandName[store.name]
+    : undefined;
 
   return {
     id: store.id,
@@ -1271,8 +1278,8 @@ export function toStoreCardView(store: StoreRecord): StoreCardView {
     location: formatStoreLocation(store),
     iconCategory: store.iconCategory,
     guideCategory: store.guideCategory,
-    hasEvent: Boolean(ongoingEvent),
-    eventHref: getOngoingStoreEventHref(store),
+    hasEvent: Boolean(eventHref),
+    eventHref,
     isSignature: store.isSignature,
   };
 }

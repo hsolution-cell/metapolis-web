@@ -5,6 +5,7 @@ import {
   type StoreIconCategory,
   type StoreCardView,
   type StoreRecord,
+  type OngoingStoreEventLinks,
 } from "@/data/storeDirectory";
 
 /** @deprecated StoreIconCategory 사용 권장 */
@@ -149,7 +150,10 @@ export const FLOOR_GUIDE_BLOCKS: FloorGuideBlock[] = [
 ];
 
 /** DB에서 받은 매장 목록으로 층별 블록 구성 (국문 층별안내용) */
-export function buildFloorGuideBlocksFrom(allStores: StoreRecord[]): FloorGuideBlock[] {
+export function buildFloorGuideBlocksFrom(
+  allStores: StoreRecord[],
+  ongoing?: OngoingStoreEventLinks
+): FloorGuideBlock[] {
   const blocks: BranchBlock[] = ["a", "b"];
   return blocks.map((block) => ({
     id: block,
@@ -158,7 +162,7 @@ export function buildFloorGuideBlocksFrom(allStores: StoreRecord[]): FloorGuideB
       ...floor,
       stores: allStores
         .filter((store) => store.block === block && store.floorId === floor.id)
-        .map((store) => toFloorGuideStore(toStoreCardView(store))),
+        .map((store) => toFloorGuideStore(toStoreCardView(store, ongoing))),
     })),
   }));
 }

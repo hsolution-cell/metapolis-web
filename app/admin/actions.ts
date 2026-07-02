@@ -276,6 +276,68 @@ export async function deleteFaqCategory(id: string) {
   revalidateFaqCategories();
 }
 
+// ---------- 매장 이벤트 ----------
+export type StoreEventInput = {
+  title: string;
+  brandName: string;
+  storeId: string | null;
+  startDate: string;
+  endDate: string;
+  thumbnail: string | null;
+  body: string;
+  pinned: boolean;
+};
+
+function revalidateStoreEvents(id?: string) {
+  revalidatePath("/events/stores");
+  revalidatePath("/admin/store-events");
+  revalidatePath("/stores/floors");
+  revalidatePath("/stores/categories");
+  if (id) revalidatePath(`/events/stores/${id}`);
+}
+
+export async function createStoreEvent(input: StoreEventInput) {
+  const supabase = await createSupabaseServerClient();
+  const { error } = await supabase.from("store_events").insert({
+    title: input.title.trim(),
+    brand_name: input.brandName.trim() || null,
+    store_id: input.storeId,
+    start_date: input.startDate,
+    end_date: input.endDate,
+    thumbnail: input.thumbnail,
+    body: input.body.trim() || null,
+    pinned: input.pinned,
+  });
+  if (error) throw new Error(error.message);
+  revalidateStoreEvents();
+}
+
+export async function updateStoreEvent(id: string, input: StoreEventInput) {
+  const supabase = await createSupabaseServerClient();
+  const { error } = await supabase
+    .from("store_events")
+    .update({
+      title: input.title.trim(),
+      brand_name: input.brandName.trim() || null,
+      store_id: input.storeId,
+      start_date: input.startDate,
+      end_date: input.endDate,
+      thumbnail: input.thumbnail,
+      body: input.body.trim() || null,
+      pinned: input.pinned,
+    })
+    .eq("id", id);
+  if (error) throw new Error(error.message);
+  revalidateStoreEvents(id);
+}
+
+export async function deleteStoreEvent(id: string) {
+  const supabase = await createSupabaseServerClient();
+  const { error } = await supabase.from("store_events").delete().eq("id", id);
+  if (error) throw new Error(error.message);
+  revalidateStoreEvents(id);
+}
+
 // ---------- 입점 매장 ----------
 export type StoreInput = {
   name: string;

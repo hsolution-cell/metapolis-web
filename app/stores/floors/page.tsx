@@ -3,6 +3,7 @@ import FloorsSection from "@/components/sub/floors/FloorsSection";
 import { buildPageMetadata } from "@/lib/pageMetadata";
 import { buildFloorGuideBlocksFrom, resolveFloorGuideSelection } from "@/data/floorGuide";
 import { listStores } from "@/lib/stores-db";
+import { getOngoingStoreEventLinks } from "@/lib/store-events-db";
 
 export const metadata = buildPageMetadata({ path: "/stores/floors" });
 export const dynamic = "force-dynamic";
@@ -14,8 +15,11 @@ type PageProps = {
 export default async function Page({ searchParams }: PageProps) {
   const params = await searchParams;
   const selection = resolveFloorGuideSelection(params.block, params.floor);
-  const stores = await listStores();
-  const blocks = buildFloorGuideBlocksFrom(stores);
+  const [stores, ongoing] = await Promise.all([
+    listStores(),
+    getOngoingStoreEventLinks(),
+  ]);
+  const blocks = buildFloorGuideBlocksFrom(stores, ongoing);
 
   return (
     <SubPageLayout path="/stores/floors" className="floors">
