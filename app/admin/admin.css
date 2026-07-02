@@ -113,6 +113,39 @@
   margin: 0;
 }
 
+/* 대시보드 통계 카드 */
+.admin-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 14px;
+}
+.admin-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 18px 20px;
+  background: #fff;
+  border: 1px solid var(--a-border);
+  border-radius: 12px;
+  transition: border-color 0.15s;
+}
+.admin-card:hover {
+  border-color: var(--a-accent);
+}
+.admin-card__label {
+  font-size: 13px;
+  color: #6b7580;
+}
+.admin-card__value {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--a-text);
+}
+.admin-card__sub {
+  font-size: 12px;
+  color: #9aa3ad;
+}
+
 /* 탭 (국문/영문 등 필터) */
 .admin-tabs {
   display: flex;

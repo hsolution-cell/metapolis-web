@@ -4,7 +4,7 @@ import { NextResponse, type NextRequest } from "next/server";
 /**
  * /admin/* 접근 보호 + Supabase 세션 쿠키 갱신.
  * - 비로그인 상태로 관리자 페이지 접근 → /admin/login 으로
- * - 로그인 상태로 로그인 페이지 접근 → /admin/notices 로
+ * - 로그인 상태로 로그인 페이지 접근 → /admin (대시보드)으로
  */
 export async function middleware(request: NextRequest) {
   let response = NextResponse.next({ request });
@@ -45,7 +45,7 @@ export async function middleware(request: NextRequest) {
 
   if (user && isLoginPage) {
     const url = request.nextUrl.clone();
-    url.pathname = "/admin/notices";
+    url.pathname = "/admin";
     return NextResponse.redirect(url);
   }
 
