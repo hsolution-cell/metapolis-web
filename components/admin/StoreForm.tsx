@@ -40,6 +40,7 @@ type StoreFormProps = {
 export default function StoreForm({ mode, storeId, initial }: StoreFormProps) {
   const router = useRouter();
   const [name, setName] = useState(initial?.name ?? "");
+  const [nameEn, setNameEn] = useState(initial?.nameEn ?? "");
   const [block, setBlock] = useState<BranchBlock>((initial?.block as BranchBlock) ?? "a");
   const [floorId, setFloorId] = useState(
     initial?.floorId ?? BRANCH_FLOORS.a[0].id
@@ -74,6 +75,7 @@ export default function StoreForm({ mode, storeId, initial }: StoreFormProps) {
       try {
         const input: StoreInput = {
           name,
+          nameEn,
           block,
           floorId,
           tel,
@@ -97,9 +99,20 @@ export default function StoreForm({ mode, storeId, initial }: StoreFormProps) {
 
   return (
     <form className="admin-form" onSubmit={handleSubmit}>
-      <div className="admin-field">
-        <label htmlFor="name">매장명</label>
-        <input id="name" value={name} onChange={(e) => setName(e.target.value)} />
+      <div style={{ display: "flex", gap: 16 }}>
+        <div className="admin-field" style={{ flex: 1 }}>
+          <label htmlFor="name">매장명</label>
+          <input id="name" value={name} onChange={(e) => setName(e.target.value)} />
+        </div>
+        <div className="admin-field" style={{ flex: 1 }}>
+          <label htmlFor="nameEn">영문 매장명 (영문 층별안내용, 비우면 매장명 그대로)</label>
+          <input
+            id="nameEn"
+            value={nameEn}
+            onChange={(e) => setNameEn(e.target.value)}
+            placeholder="예: STARBUCKS"
+          />
+        </div>
       </div>
 
       <div style={{ display: "flex", gap: 16 }}>

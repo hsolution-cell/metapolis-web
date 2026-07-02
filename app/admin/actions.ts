@@ -384,6 +384,7 @@ export async function deleteStoreEvent(id: string) {
 // ---------- 입점 매장 ----------
 export type StoreInput = {
   name: string;
+  nameEn: string;
   block: string;
   floorId: string;
   tel: string;
@@ -406,6 +407,7 @@ export async function createStore(input: StoreInput) {
   const { error } = await supabase.from("stores").insert({
     id,
     name: input.name.trim(),
+    name_en: input.nameEn.trim() || null,
     block: input.block,
     floor_id: input.floorId,
     tel: input.tel.trim() || "—",
@@ -424,6 +426,7 @@ export async function updateStore(id: string, input: StoreInput) {
     .from("stores")
     .update({
       name: input.name.trim(),
+      name_en: input.nameEn.trim() || null,
       block: input.block,
       floor_id: input.floorId,
       tel: input.tel.trim() || "—",

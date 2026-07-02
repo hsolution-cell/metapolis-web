@@ -26,6 +26,7 @@ export default async function EditStorePage({ params }: PageProps) {
         storeId={store.id}
         initial={{
           name: store.name,
+          nameEn: store.nameEn ?? "",
           block: store.block,
           floorId: store.floorId,
           tel: store.tel,

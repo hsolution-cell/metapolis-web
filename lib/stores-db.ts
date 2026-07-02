@@ -9,6 +9,7 @@ import type { BranchBlock } from "@/data/branchStores";
 type StoreRow = {
   id: string;
   name: string;
+  name_en: string | null;
   block: BranchBlock;
   floor_id: string;
   tel: string;
@@ -19,12 +20,13 @@ type StoreRow = {
 };
 
 const STORE_SELECT =
-  "id, name, block, floor_id, tel, icon_category, guide_category, is_signature, sort_order";
+  "id, name, name_en, block, floor_id, tel, icon_category, guide_category, is_signature, sort_order";
 
 function mapRow(row: StoreRow): StoreRecord & { sortOrder: number } {
   return {
     id: row.id,
     name: row.name,
+    nameEn: row.name_en,
     block: row.block,
     floorId: row.floor_id,
     tel: row.tel,

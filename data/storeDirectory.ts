@@ -47,6 +47,8 @@ export type StoreGuideCategoryFilter = "all" | StoreGuideCategory;
 export type StoreRecord = {
   id: string;
   name: string;
+  /** 영문 매장명(관리자 입력, 없으면 국문 이름 사용) */
+  nameEn?: string | null;
   block: BranchBlock;
   floorId: string;
   tel: string;

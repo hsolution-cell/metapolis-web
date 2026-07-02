@@ -103,6 +103,11 @@ export default async function AdminStoresPage({ searchParams }: PageProps) {
               <td>
                 {s.isSignature && <span className="admin-pin">시그니처</span>}
                 {s.name}
+                {s.nameEn && (
+                  <span style={{ marginLeft: 6, color: "#9aa3ad", fontSize: 12 }}>
+                    {s.nameEn}
+                  </span>
+                )}
               </td>
               <td>{s.tel}</td>
               <td>
