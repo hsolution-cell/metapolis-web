@@ -1,2 +1,2 @@
-/** 썸네일 미지정 시 기본 이미지 (OG 대표 이미지) */
-export const DEFAULT_THUMBNAIL = "/img/thumbnail.png";
+/** 썸네일 미지정 시 기본 이미지 */
+export const DEFAULT_THUMBNAIL = "/img/thumbnail_temp.png";
