@@ -20,6 +20,7 @@ export default async function AdminDashLayout({
           <Link href="/admin/notices">고객알림</Link>
           <Link href="/admin/categories">└ 구분 관리</Link>
           <Link href="/admin/events">메타폴리스 이벤트</Link>
+          <Link href="/admin/winners">당첨자 발표</Link>
         </nav>
         <div className="admin-side__foot">
           <p className="admin-side__user">{user?.email}</p>

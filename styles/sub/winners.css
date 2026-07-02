@@ -102,6 +102,15 @@
   text-align: center;
   color: #b0aaa2;
 }
+.winners_row_pin {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: var(--mp-gold, #b89968);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+}
 
 .winners_row_link {
   flex: 1 1 auto;

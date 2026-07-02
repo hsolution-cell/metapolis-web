@@ -5,6 +5,7 @@ export type WinnerItem = {
   date: string;
   body?: string[];
   contentImage?: string;
+  pinned?: boolean;
 };
 
 export const WINNERS_PER_PAGE = 5;

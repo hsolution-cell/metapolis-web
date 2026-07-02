@@ -142,6 +142,57 @@ export async function deleteEvent(id: string) {
   revalidateEvents(id);
 }
 
+// ---------- 당첨자 발표 ----------
+export type WinnerInput = {
+  title: string;
+  date: string;
+  thumbnail: string | null;
+  body: string;
+  pinned: boolean;
+};
+
+function revalidateWinners(id?: string) {
+  revalidatePath("/events/winners");
+  revalidatePath("/admin/winners");
+  if (id) revalidatePath(`/events/winners/${id}`);
+}
+
+export async function createWinner(input: WinnerInput) {
+  const supabase = await createSupabaseServerClient();
+  const { error } = await supabase.from("winners").insert({
+    title: input.title.trim(),
+    date: input.date,
+    thumbnail: input.thumbnail,
+    body: input.body.trim() || null,
+    pinned: input.pinned,
+  });
+  if (error) throw new Error(error.message);
+  revalidateWinners();
+}
+
+export async function updateWinner(id: string, input: WinnerInput) {
+  const supabase = await createSupabaseServerClient();
+  const { error } = await supabase
+    .from("winners")
+    .update({
+      title: input.title.trim(),
+      date: input.date,
+      thumbnail: input.thumbnail,
+      body: input.body.trim() || null,
+      pinned: input.pinned,
+    })
+    .eq("id", id);
+  if (error) throw new Error(error.message);
+  revalidateWinners(id);
+}
+
+export async function deleteWinner(id: string) {
+  const supabase = await createSupabaseServerClient();
+  const { error } = await supabase.from("winners").delete().eq("id", id);
+  if (error) throw new Error(error.message);
+  revalidateWinners(id);
+}
+
 // ---------- 인증 ----------
 export async function signOut() {
   const supabase = await createSupabaseServerClient();

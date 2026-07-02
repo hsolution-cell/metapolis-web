@@ -8,6 +8,7 @@ import {
   type EventItem,
   type EventListKind,
 } from "@/data/events";
+import { DEFAULT_THUMBNAIL } from "@/lib/constants";
 
 type EventCardProps = {
   event: EventItem;
@@ -15,7 +16,7 @@ type EventCardProps = {
 };
 
 export default function EventCard({ event, kind }: EventCardProps) {
-  const [hideImage, setHideImage] = useState(false);
+  const [imgSrc, setImgSrc] = useState(event.thumbnail || DEFAULT_THUMBNAIL);
   const status = getEventStatus(event);
   const statusLabel = status === "ongoing" ? "진행중" : "종료";
   const href = getEventDetailHref(kind, event.id);
@@ -23,19 +24,13 @@ export default function EventCard({ event, kind }: EventCardProps) {
   return (
     <a href={href} className="events_card">
       <div className="events_card_media">
-        {!hideImage && event.thumbnail ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            className="events_card_img"
-            src={event.thumbnail}
-            alt=""
-            onError={() => setHideImage(true)}
-          />
-        ) : (
-          <div className="events_card_placeholder" aria-hidden="true">
-            <span>실제 이벤트 이미지 반영 예정</span>
-          </div>
-        )}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          className="events_card_img"
+          src={imgSrc}
+          alt=""
+          onError={() => setImgSrc(DEFAULT_THUMBNAIL)}
+        />
         <span
           className={`events_card_badge events_card_badge--${status}`}
           aria-hidden="true"
