@@ -18,6 +18,32 @@
   white-space: nowrap;
 }
 
+/* ---------- EN 푸터 레이아웃 (시안 기준) ---------- */
+/* 1행: 주소(좌) ↔ FAX·TEL(우) */
+.en-footer .f_mid {
+  opacity: 1;
+  align-items: baseline;
+}
+.en-footer .f_info {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+}
+.en-footer .f_contact {
+  margin: 0;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+}
+/* 2행: 저작권(좌) ↔ KOR·ENG(우) */
+.en-footer .f_copy {
+  text-align: left;
+  font-size: 13px;
+}
+.en-footer .f_bottom .f_lang {
+  font-size: 14px;
+}
+
 /* EN Access & Parking: 지도 아래 주소 영역(국문엔 없음) */
 .parking_map_address {
   display: flex;
@@ -48,7 +74,7 @@
 
 /* 서브 상단 배너 제목: 국문(-0.02em)은 영문 대형 제목엔 촘촘 → 자간 넓힘 */
 .en-root .sub-top-banner-title {
-  letter-spacing: 0.01em;
+  letter-spacing: 0.04em;
 }
 
 /* 섹션 제목 굵기 700 (영문은 strong 없이 평문이라 기본 굵기로 렌더됨) */
@@ -77,7 +103,11 @@
 /* ---------- EN Contact(=국문 문의하기 재사용) ---------- */
 /* 카드 배경 변경 */
 .inquiry.en-inquiry .inquiry_card {
-  background: linear-gradient(180deg, rgba(91, 65, 22, 0.95) 0%, rgba(58, 39, 8, 0.95) 77%);
+  background: linear-gradient(
+    180deg,
+    rgba(91, 65, 22, 0.95) 0%,
+    rgba(58, 39, 8, 0.95) 77%
+  );
 }
 /* 제목 색상(영문) */
 .inquiry.en-inquiry .inquiry_title {
