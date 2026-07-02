@@ -46,6 +46,11 @@
   letter-spacing: -0.01em;
 }
 
+/* 서브 상단 배너 제목: 국문(-0.02em)은 영문 대형 제목엔 촘촘 → 자간 넓힘 */
+.en-root .sub-top-banner-title {
+  letter-spacing: 0.01em;
+}
+
 /* 섹션 제목 굵기 700 (영문은 strong 없이 평문이라 기본 굵기로 렌더됨) */
 .en-root .hours_main_head .sub_section_title,
 .en-root .hours_stores_head .sub_section_title,
