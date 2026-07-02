@@ -113,6 +113,26 @@
   margin: 0;
 }
 
+/* 탭 (국문/영문 등 필터) */
+.admin-tabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #e5e5e5;
+}
+.admin-tab {
+  padding: 9px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #888;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+}
+.admin-tab.is-active {
+  color: #111;
+  border-bottom-color: #111;
+}
+
 /* 버튼 */
 .admin-btn {
   display: inline-flex;

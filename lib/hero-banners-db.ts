@@ -1,8 +1,11 @@
 import { createSupabasePublicClient } from "@/lib/supabase/public";
 import type { HeroSlide } from "@/data/heroSlides";
 
+export type HeroLocale = "ko" | "en";
+
 export type HeroBannerRecord = {
   id: string;
+  locale: HeroLocale;
   badge: string;
   title: string;
   description: string;
@@ -15,6 +18,7 @@ export type HeroBannerRecord = {
 
 type HeroBannerRow = {
   id: string;
+  locale: string;
   badge: string | null;
   title: string;
   description: string | null;
@@ -26,11 +30,12 @@ type HeroBannerRow = {
 };
 
 const HERO_SELECT =
-  "id, badge, title, description, link_href, bg, bg_mobile, sort_order, active";
+  "id, locale, badge, title, description, link_href, bg, bg_mobile, sort_order, active";
 
 function mapRow(row: HeroBannerRow): HeroBannerRecord {
   return {
     id: row.id,
+    locale: row.locale === "en" ? "en" : "ko",
     badge: row.badge ?? "",
     title: row.title,
     description: row.description ?? "",
@@ -42,12 +47,15 @@ function mapRow(row: HeroBannerRow): HeroBannerRecord {
   };
 }
 
-/** 관리자 목록 — 노출/비노출 전부, 정렬 순서 오름차순 */
-export async function listHeroBanners(): Promise<HeroBannerRecord[]> {
+/** 관리자 목록 — 특정 언어의 노출/비노출 전부, 정렬 순서 오름차순 */
+export async function listHeroBanners(
+  locale: HeroLocale = "ko"
+): Promise<HeroBannerRecord[]> {
   const supabase = createSupabasePublicClient();
   const { data, error } = await supabase
     .from("hero_banners")
     .select(HERO_SELECT)
+    .eq("locale", locale)
     .order("sort_order", { ascending: true })
     .order("created_at", { ascending: true });
 
@@ -75,9 +83,11 @@ export async function getHeroBannerById(
  * HeroSection 이 기대하는 HeroSlide 형태로 변환.
  * 조회 실패/미설정 시 null 반환 → 호출부에서 하드코딩 기본값으로 폴백.
  */
-export async function getActiveHeroSlides(): Promise<HeroSlide[] | null> {
+export async function getActiveHeroSlides(
+  locale: HeroLocale = "ko"
+): Promise<HeroSlide[] | null> {
   try {
-    const banners = (await listHeroBanners()).filter((b) => b.active);
+    const banners = (await listHeroBanners(locale)).filter((b) => b.active);
     if (!banners.length) return null;
     return banners.map((b) => ({
       bg: b.bg ?? "",

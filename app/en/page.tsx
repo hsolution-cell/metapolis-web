@@ -12,12 +12,16 @@ import {
   EN_LOCATION,
   EN_CONTACT,
 } from "@/data/en/home";
+import { getActiveHeroSlides } from "@/lib/hero-banners-db";
 
-export default function EnHome() {
+export default async function EnHome() {
+  // 관리자가 등록한 영문 배너 사용, 없거나 조회 실패 시 기본 슬라이드로 폴백
+  const slides = await getActiveHeroSlides("en");
+
   return (
     <>
       <div className="header_container" />
-      <HeroSection slides={EN_HERO_SLIDES} ariaLabel="Main banner" />
+      <HeroSection slides={slides ?? EN_HERO_SLIDES} ariaLabel="Main banner" />
 
       <BranchSection
         title={EN_BRANCH.title}

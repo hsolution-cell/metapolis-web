@@ -11,16 +11,20 @@ import {
 
 type HeroBannerFormProps = {
   mode: "new" | "edit";
+  locale: "ko" | "en";
   bannerId?: string;
   initial?: HeroBannerInput;
 };
 
 export default function HeroBannerForm({
   mode,
+  locale,
   bannerId,
   initial,
 }: HeroBannerFormProps) {
   const router = useRouter();
+  const listPath =
+    locale === "en" ? "/admin/hero-banners?locale=en" : "/admin/hero-banners";
   const [badge, setBadge] = useState(initial?.badge ?? "");
   const [title, setTitle] = useState(initial?.title ?? "");
   const [description, setDescription] = useState(initial?.description ?? "");
@@ -47,6 +51,7 @@ export default function HeroBannerForm({
     startTransition(async () => {
       try {
         const input: HeroBannerInput = {
+          locale,
           badge,
           title,
           description,
@@ -61,7 +66,7 @@ export default function HeroBannerForm({
         } else {
           await updateHeroBanner(bannerId!, input);
         }
-        router.push("/admin/hero-banners");
+        router.push(listPath);
         router.refresh();
       } catch {
         setError("저장 중 오류가 발생했습니다. 다시 시도해 주세요.");
@@ -147,7 +152,7 @@ export default function HeroBannerForm({
         <button
           type="button"
           className="admin-btn"
-          onClick={() => router.push("/admin/hero-banners")}
+          onClick={() => router.push(listPath)}
         >
           취소
         </button>

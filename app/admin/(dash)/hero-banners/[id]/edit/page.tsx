@@ -23,8 +23,10 @@ export default async function EditHeroBannerPage({ params }: PageProps) {
       </div>
       <HeroBannerForm
         mode="edit"
+        locale={banner.locale}
         bannerId={banner.id}
         initial={{
+          locale: banner.locale,
           badge: banner.badge,
           title: banner.title,
           description: banner.description,

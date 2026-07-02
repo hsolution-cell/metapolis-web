@@ -403,6 +403,7 @@ export async function deleteStore(id: string) {
 
 // ---------- 메인 배너(hero) ----------
 export type HeroBannerInput = {
+  locale: "ko" | "en";
   badge: string;
   title: string;
   description: string;
@@ -415,12 +416,14 @@ export type HeroBannerInput = {
 
 function revalidateHeroBanners() {
   revalidatePath("/");
+  revalidatePath("/en");
   revalidatePath("/admin/hero-banners");
 }
 
 export async function createHeroBanner(input: HeroBannerInput) {
   const supabase = await createSupabaseServerClient();
   const { error } = await supabase.from("hero_banners").insert({
+    locale: input.locale,
     badge: input.badge.trim() || null,
     title: input.title.trim(),
     description: input.description.trim() || null,
@@ -439,6 +442,7 @@ export async function updateHeroBanner(id: string, input: HeroBannerInput) {
   const { error } = await supabase
     .from("hero_banners")
     .update({
+      locale: input.locale,
       badge: input.badge.trim() || null,
       title: input.title.trim(),
       description: input.description.trim() || null,

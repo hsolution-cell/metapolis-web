@@ -1,18 +1,41 @@
 import Link from "next/link";
-import { listHeroBanners } from "@/lib/hero-banners-db";
+import { listHeroBanners, type HeroLocale } from "@/lib/hero-banners-db";
 import HeroBannerDeleteButton from "@/components/admin/HeroBannerDeleteButton";
 
 export const dynamic = "force-dynamic";
 
-export default async function AdminHeroBannersPage() {
-  const banners = await listHeroBanners();
+type PageProps = {
+  searchParams: Promise<{ locale?: string }>;
+};
+
+export default async function AdminHeroBannersPage({ searchParams }: PageProps) {
+  const { locale: localeParam } = await searchParams;
+  const locale: HeroLocale = localeParam === "en" ? "en" : "ko";
+  const banners = await listHeroBanners(locale);
+  const newHref =
+    locale === "en" ? "/admin/hero-banners/new?locale=en" : "/admin/hero-banners/new";
 
   return (
     <>
       <div className="admin-page-head">
         <h1>메인 배너</h1>
-        <Link href="/admin/hero-banners/new" className="admin-btn admin-btn--primary">
+        <Link href={newHref} className="admin-btn admin-btn--primary">
           + 새 배너
+        </Link>
+      </div>
+
+      <div className="admin-tabs">
+        <Link
+          href="/admin/hero-banners"
+          className={`admin-tab${locale === "ko" ? " is-active" : ""}`}
+        >
+          국문
+        </Link>
+        <Link
+          href="/admin/hero-banners?locale=en"
+          className={`admin-tab${locale === "en" ? " is-active" : ""}`}
+        >
+          영문
         </Link>
       </div>
 
@@ -67,7 +90,7 @@ export default async function AdminHeroBannersPage() {
         </table>
       ) : (
         <div className="admin-empty">
-          등록된 배너가 없습니다. “+ 새 배너”로 추가해 보세요.
+          등록된 {locale === "en" ? "영문" : "국문"} 배너가 없습니다. “+ 새 배너”로 추가해 보세요.
         </div>
       )}
     </>
