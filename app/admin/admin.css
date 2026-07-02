@@ -380,5 +380,9 @@
   }
   .admin-main {
     padding: 24px 20px;
+    overflow-x: auto; /* 넓은 표 가로 스크롤 */
+  }
+  .admin-table {
+    min-width: 640px;
   }
 }
