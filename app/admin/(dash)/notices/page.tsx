@@ -33,7 +33,10 @@ export default async function AdminNoticesPage() {
                 <td>
                   <span className="admin-badge">{n.categoryLabel}</span>
                 </td>
-                <td>{n.title}</td>
+                <td>
+                  {n.pinned && <span className="admin-pin">고정</span>}
+                  {n.title}
+                </td>
                 <td>{formatNoticeDate(n.date)}</td>
                 <td>
                   <div className="admin-cell-actions">

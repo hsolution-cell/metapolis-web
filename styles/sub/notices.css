@@ -145,6 +145,21 @@
   text-align: center;
 }
 
+/* 상단 고정 */
+.notices_row--pinned {
+  background: #fbf7f0;
+}
+.notices_pin {
+  display: inline-block;
+  padding: 3px 9px;
+  border-radius: 6px;
+  background: var(--mp-gold, #b89968);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
 .notices_col_category {
   display: flex;
   justify-content: center;

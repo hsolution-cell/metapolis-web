@@ -5,10 +5,11 @@ import { redirect } from "next/navigation";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
 export type NoticeInput = {
-  category: string;
+  categoryId: string | null;
   title: string;
   date: string;
   body: string;
+  pinned: boolean;
 };
 
 function revalidateNotices(id?: string) {
@@ -17,13 +18,15 @@ function revalidateNotices(id?: string) {
   if (id) revalidatePath(`/support/notices/${id}`);
 }
 
+// ---------- 공지 ----------
 export async function createNotice(input: NoticeInput) {
   const supabase = await createSupabaseServerClient();
   const { error } = await supabase.from("notices").insert({
-    category: input.category,
+    category_id: input.categoryId,
     title: input.title.trim(),
     date: input.date,
     body: input.body.trim() || null,
+    pinned: input.pinned,
   });
   if (error) throw new Error(error.message);
   revalidateNotices();
@@ -34,10 +37,11 @@ export async function updateNotice(id: string, input: NoticeInput) {
   const { error } = await supabase
     .from("notices")
     .update({
-      category: input.category,
+      category_id: input.categoryId,
       title: input.title.trim(),
       date: input.date,
       body: input.body.trim() || null,
+      pinned: input.pinned,
     })
     .eq("id", id);
   if (error) throw new Error(error.message);
@@ -51,6 +55,40 @@ export async function deleteNotice(id: string) {
   revalidateNotices(id);
 }
 
+// ---------- 카테고리(구분) ----------
+function revalidateCategories() {
+  revalidatePath("/admin/categories");
+  revalidatePath("/admin/notices");
+  revalidatePath("/support/notices");
+}
+
+export async function createCategory(name: string, sortOrder: number) {
+  const supabase = await createSupabaseServerClient();
+  const { error } = await supabase
+    .from("notice_categories")
+    .insert({ name: name.trim(), sort_order: sortOrder });
+  if (error) throw new Error(error.message);
+  revalidateCategories();
+}
+
+export async function updateCategory(id: string, name: string, sortOrder: number) {
+  const supabase = await createSupabaseServerClient();
+  const { error } = await supabase
+    .from("notice_categories")
+    .update({ name: name.trim(), sort_order: sortOrder })
+    .eq("id", id);
+  if (error) throw new Error(error.message);
+  revalidateCategories();
+}
+
+export async function deleteCategory(id: string) {
+  const supabase = await createSupabaseServerClient();
+  const { error } = await supabase.from("notice_categories").delete().eq("id", id);
+  if (error) throw new Error(error.message);
+  revalidateCategories();
+}
+
+// ---------- 인증 ----------
 export async function signOut() {
   const supabase = await createSupabaseServerClient();
   await supabase.auth.signOut();

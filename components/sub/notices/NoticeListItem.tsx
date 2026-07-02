@@ -2,19 +2,21 @@ import Link from "next/link";
 import {
   formatNoticeDate,
   getNoticeDetailHref,
-  type NoticeItem,
+  type NoticeListData,
 } from "@/data/notices";
 
 type NoticeListItemProps = {
-  item: NoticeItem;
+  item: NoticeListData;
   listNumber: number;
 };
 
 export default function NoticeListItem({ item, listNumber }: NoticeListItemProps) {
   return (
-    <div className="notices_row">
+    <div className={`notices_row${item.pinned ? " notices_row--pinned" : ""}`}>
       <Link href={getNoticeDetailHref(item.id)} className="notices_row_link">
-        <span className="notices_col notices_col_num">{listNumber}</span>
+        <span className="notices_col notices_col_num">
+          {item.pinned ? <span className="notices_pin">고정</span> : listNumber}
+        </span>
         <span className="notices_col notices_col_category">
           <span className="notices_badge">{item.categoryLabel}</span>
         </span>

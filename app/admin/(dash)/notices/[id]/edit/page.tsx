@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import NoticeForm from "@/components/admin/NoticeForm";
-import { getNoticeById } from "@/lib/notices-db";
+import { getNoticeById, listCategories } from "@/lib/notices-db";
 
 export const dynamic = "force-dynamic";
 
@@ -10,7 +10,7 @@ type PageProps = {
 
 export default async function EditNoticePage({ params }: PageProps) {
   const { id } = await params;
-  const item = await getNoticeById(id);
+  const [item, categories] = await Promise.all([getNoticeById(id), listCategories()]);
 
   if (!item) {
     notFound();
@@ -24,11 +24,13 @@ export default async function EditNoticePage({ params }: PageProps) {
       <NoticeForm
         mode="edit"
         noticeId={item.id}
+        categories={categories}
         initial={{
-          category: item.category,
+          categoryId: item.categoryId,
           title: item.title,
           date: item.date,
           body: item.body ?? "",
+          pinned: item.pinned,
         }}
       />
     </>

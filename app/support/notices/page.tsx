@@ -10,10 +10,10 @@ export default async function Page() {
   const notices = await listNotices();
   const items = notices.map((n) => ({
     id: n.id,
-    category: n.category,
     categoryLabel: n.categoryLabel,
     title: n.title,
     date: n.date,
+    pinned: n.pinned,
   }));
 
   return (

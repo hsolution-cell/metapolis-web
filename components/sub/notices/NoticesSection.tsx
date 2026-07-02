@@ -6,19 +6,18 @@ import SubSectionHead from "@/components/sub/SubSectionHead";
 import EventsPagination from "@/components/sub/events/EventsPagination";
 import NoticeListItem from "@/components/sub/notices/NoticeListItem";
 import {
-  NOTICE_ITEMS,
   NOTICES_PER_PAGE,
   filterNotices,
   getNoticeListNumber,
   paginateNotices,
-  type NoticeItem,
+  type NoticeListData,
 } from "@/data/notices";
 
 type NoticesSectionProps = {
-  items?: NoticeItem[];
+  items: NoticeListData[];
 };
 
-export default function NoticesSection({ items = NOTICE_ITEMS }: NoticesSectionProps) {
+export default function NoticesSection({ items }: NoticesSectionProps) {
   const [query, setQuery] = useState("");
   const [page, setPage] = useState(1);
 

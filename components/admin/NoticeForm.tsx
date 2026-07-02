@@ -4,11 +4,12 @@ import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { Editor } from "@tinymce/tinymce-react";
 import { createNotice, updateNotice, type NoticeInput } from "@/app/admin/actions";
-import { NOTICE_CATEGORY_OPTIONS } from "@/lib/notices-db";
+import type { NoticeCategory } from "@/lib/notices-db";
 
 type NoticeFormProps = {
   mode: "new" | "edit";
   noticeId?: string;
+  categories: NoticeCategory[];
   initial?: NoticeInput;
 };
 
@@ -16,7 +17,6 @@ function todayISO() {
   return new Date().toISOString().slice(0, 10);
 }
 
-// TinyMCE 이미지 업로드 → /api/admin/upload → Supabase Storage
 function imagesUploadHandler(blobInfo: { blob: () => Blob; filename: () => string }): Promise<string> {
   return new Promise((resolve, reject) => {
     const formData = new FormData();
@@ -28,12 +28,15 @@ function imagesUploadHandler(blobInfo: { blob: () => Blob; filename: () => strin
   });
 }
 
-export default function NoticeForm({ mode, noticeId, initial }: NoticeFormProps) {
+export default function NoticeForm({ mode, noticeId, categories, initial }: NoticeFormProps) {
   const router = useRouter();
-  const [category, setCategory] = useState(initial?.category ?? "info");
+  const [categoryId, setCategoryId] = useState(
+    initial?.categoryId ?? categories[0]?.id ?? ""
+  );
   const [title, setTitle] = useState(initial?.title ?? "");
   const [date, setDate] = useState(initial?.date ?? todayISO());
   const [body, setBody] = useState(initial?.body ?? "");
+  const [pinned, setPinned] = useState(initial?.pinned ?? false);
   const [error, setError] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
 
@@ -47,7 +50,13 @@ export default function NoticeForm({ mode, noticeId, initial }: NoticeFormProps)
 
     startTransition(async () => {
       try {
-        const input: NoticeInput = { category, title, date, body };
+        const input: NoticeInput = {
+          categoryId: categoryId || null,
+          title,
+          date,
+          body,
+          pinned,
+        };
         if (mode === "new") {
           await createNotice(input);
         } else {
@@ -65,10 +74,15 @@ export default function NoticeForm({ mode, noticeId, initial }: NoticeFormProps)
     <form className="admin-form" onSubmit={handleSubmit}>
       <div className="admin-field">
         <label htmlFor="category">구분</label>
-        <select id="category" value={category} onChange={(e) => setCategory(e.target.value)}>
-          {NOTICE_CATEGORY_OPTIONS.map((o) => (
-            <option key={o.value} value={o.value}>
-              {o.label}
+        <select
+          id="category"
+          value={categoryId}
+          onChange={(e) => setCategoryId(e.target.value)}
+        >
+          {categories.length === 0 && <option value="">(구분 없음)</option>}
+          {categories.map((c) => (
+            <option key={c.id} value={c.id}>
+              {c.name}
             </option>
           ))}
         </select>
@@ -83,6 +97,15 @@ export default function NoticeForm({ mode, noticeId, initial }: NoticeFormProps)
         <label htmlFor="date">등록일</label>
         <input id="date" type="date" value={date} onChange={(e) => setDate(e.target.value)} />
       </div>
+
+      <label className="admin-check">
+        <input
+          type="checkbox"
+          checked={pinned}
+          onChange={(e) => setPinned(e.target.checked)}
+        />
+        상단 고정 (목록 맨 위에 표시)
+      </label>
 
       <div className="admin-field">
         <label>본문</label>

@@ -11,6 +11,15 @@ export type NoticeItem = {
 
 export const NOTICES_PER_PAGE = 10;
 
+/** 공개 목록(NoticesSection/NoticeListItem)에서 쓰는 최소 형태 */
+export type NoticeListData = {
+  id: string;
+  categoryLabel: string;
+  title: string;
+  date: string;
+  pinned?: boolean;
+};
+
 export const NOTICE_ITEMS: NoticeItem[] = [
   {
     id: "parking-entrance-change",
@@ -129,7 +138,10 @@ export function getNoticeDetailHref(id: string): string {
   return `/support/notices/${id}`;
 }
 
-export function filterNotices(items: NoticeItem[], query: string): NoticeItem[] {
+export function filterNotices<T extends { title: string; categoryLabel: string }>(
+  items: T[],
+  query: string
+): T[] {
   const keyword = query.trim().toLowerCase();
   if (!keyword) return items;
 

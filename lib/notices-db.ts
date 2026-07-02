@@ -1,60 +1,59 @@
 import { createSupabasePublicClient } from "@/lib/supabase/public";
 
-export type NoticeCategory = "info" | "notice" | "event";
-
-export const NOTICE_CATEGORY_LABEL: Record<NoticeCategory, string> = {
-  info: "안내",
-  notice: "공지",
-  event: "행사",
+export type NoticeCategory = {
+  id: string;
+  name: string;
+  sortOrder: number;
 };
 
-/** 관리 폼용 카테고리 옵션 */
-export const NOTICE_CATEGORY_OPTIONS: { value: NoticeCategory; label: string }[] = [
-  { value: "info", label: "안내" },
-  { value: "notice", label: "공지" },
-  { value: "event", label: "행사" },
-];
-
-/** DB row 뷰모델 */
+/** 공지 뷰모델 */
 export type NoticeRecord = {
   id: string;
-  category: NoticeCategory;
-  categoryLabel: string;
+  categoryId: string | null;
+  categoryLabel: string; // 카테고리명 (없으면 "미분류")
   title: string;
   date: string; // YYYY-MM-DD
   body: string | null; // HTML
+  pinned: boolean;
 };
 
 type NoticeRow = {
   id: string;
-  category: NoticeCategory;
+  category_id: string | null;
   title: string;
   date: string;
   body: string | null;
+  pinned: boolean;
+  notice_categories: { name: string } | null;
 };
+
+const NOTICE_SELECT =
+  "id, category_id, title, date, body, pinned, notice_categories(name)";
 
 function mapRow(row: NoticeRow): NoticeRecord {
   return {
     id: row.id,
-    category: row.category,
-    categoryLabel: NOTICE_CATEGORY_LABEL[row.category] ?? row.category,
+    categoryId: row.category_id,
+    categoryLabel: row.notice_categories?.name ?? "미분류",
     title: row.title,
     date: row.date,
     body: row.body,
+    pinned: row.pinned,
   };
 }
 
-/** 최신순 전체 목록 (공개 페이지·관리 목록 공용) */
+/** 목록 — 고정글 우선, 최신순 */
 export async function listNotices(): Promise<NoticeRecord[]> {
   const supabase = createSupabasePublicClient();
   const { data, error } = await supabase
     .from("notices")
-    .select("id, category, title, date, body")
+    .select(NOTICE_SELECT)
+    .order("pinned", { ascending: false })
     .order("date", { ascending: false })
     .order("created_at", { ascending: false });
 
   if (error) throw new Error(`공지 목록 조회 실패: ${error.message}`);
-  return (data ?? []).map(mapRow);
+  return (data ?? []).map((row) => mapRow(row as unknown as NoticeRow));
 }
 
 /** 단건 조회 */
@@ -62,10 +61,27 @@ export async function getNoticeById(id: string): Promise<NoticeRecord | null> {
   const supabase = createSupabasePublicClient();
   const { data, error } = await supabase
     .from("notices")
-    .select("id, category, title, date, body")
+    .select(NOTICE_SELECT)
     .eq("id", id)
     .maybeSingle();
 
   if (error) throw new Error(`공지 조회 실패: ${error.message}`);
-  return data ? mapRow(data as NoticeRow) : null;
+  return data ? mapRow(data as unknown as NoticeRow) : null;
+}
+
+/** 카테고리 목록 (관리·폼 공용) */
+export async function listCategories(): Promise<NoticeCategory[]> {
+  const supabase = createSupabasePublicClient();
+  const { data, error } = await supabase
+    .from("notice_categories")
+    .select("id, name, sort_order")
+    .order("sort_order", { ascending: true })
+    .order("name", { ascending: true });
+
+  if (error) throw new Error(`카테고리 조회 실패: ${error.message}`);
+  return (data ?? []).map((c) => ({
+    id: c.id,
+    name: c.name,
+    sortOrder: c.sort_order,
+  }));
 }
