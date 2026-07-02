@@ -1,0 +1,271 @@
+/* ==========================================================================
+   관리자(admin) 전용 스타일 — 공개 사이트 디자인과 분리
+   ========================================================================== */
+.admin {
+  --a-bg: #f4f6f8;
+  --a-surface: #ffffff;
+  --a-border: #e2e6ea;
+  --a-text: #1f2a37;
+  --a-muted: #6b7580;
+  --a-primary: #14232f;
+  --a-accent: #b3894e;
+  min-height: 100dvh;
+  background: var(--a-bg);
+  color: var(--a-text);
+  font-size: 14px;
+  line-height: 1.5;
+}
+.admin * {
+  box-sizing: border-box;
+}
+.admin a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* 로그인 */
+.admin-login {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.admin-login__card {
+  width: 100%;
+  max-width: 380px;
+  background: var(--a-surface);
+  border: 1px solid var(--a-border);
+  border-radius: 14px;
+  padding: 36px 32px;
+  box-shadow: 0 10px 30px rgba(20, 35, 47, 0.06);
+}
+.admin-login__title {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 4px;
+}
+.admin-login__desc {
+  color: var(--a-muted);
+  margin: 0 0 24px;
+}
+
+/* 대시보드 레이아웃 */
+.admin-shell {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  min-height: 100dvh;
+}
+.admin-side {
+  background: var(--a-primary);
+  color: #cfd6dd;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.admin-side__brand {
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  padding: 8px 12px 20px;
+  letter-spacing: 0.04em;
+}
+.admin-side__nav a {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: #cfd6dd;
+  font-weight: 500;
+}
+.admin-side__nav a:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+.admin-side__nav a.is-active {
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+}
+.admin-side__foot {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+.admin-side__user {
+  font-size: 12px;
+  color: #9aa4ad;
+  padding: 0 12px 10px;
+  word-break: break-all;
+}
+.admin-main {
+  padding: 32px 40px;
+  max-width: 1000px;
+}
+.admin-page-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.admin-page-head h1 {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* 버튼 */
+.admin-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--a-border);
+  background: var(--a-surface);
+  color: var(--a-text);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+.admin-btn:hover {
+  border-color: #cfd5da;
+}
+.admin-btn--primary {
+  background: var(--a-primary);
+  border-color: var(--a-primary);
+  color: #fff;
+}
+.admin-btn--primary:hover {
+  background: #1c2f3d;
+}
+.admin-btn--danger {
+  color: #c0392b;
+  border-color: #ecc7c3;
+  background: #fff;
+}
+.admin-btn--danger:hover {
+  background: #fdf3f2;
+}
+.admin-btn--sm {
+  padding: 6px 12px;
+  font-size: 13px;
+}
+
+/* 테이블 */
+.admin-table {
+  width: 100%;
+  background: var(--a-surface);
+  border: 1px solid var(--a-border);
+  border-radius: 12px;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+}
+.admin-table th,
+.admin-table td {
+  text-align: left;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--a-border);
+  vertical-align: middle;
+}
+.admin-table thead th {
+  background: #fafbfc;
+  font-size: 12px;
+  color: var(--a-muted);
+  font-weight: 600;
+}
+.admin-table tbody tr:last-child td {
+  border-bottom: none;
+}
+.admin-table .admin-cell-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+.admin-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: #eef1f4;
+  color: #55606b;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* 폼 */
+.admin-form {
+  background: var(--a-surface);
+  border: 1px solid var(--a-border);
+  border-radius: 12px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 820px;
+}
+.admin-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.admin-field > label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--a-text);
+}
+.admin-field input,
+.admin-field select {
+  height: 42px;
+  padding: 0 12px;
+  border: 1px solid var(--a-border);
+  border-radius: 8px;
+  font-size: 14px;
+  background: #fff;
+  color: var(--a-text);
+}
+.admin-field input:focus,
+.admin-field select:focus {
+  outline: none;
+  border-color: var(--a-accent);
+}
+.admin-form__actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  padding-top: 4px;
+}
+.admin-error {
+  color: #c0392b;
+  font-size: 13px;
+  margin: 0;
+}
+.admin-empty {
+  padding: 40px;
+  text-align: center;
+  color: var(--a-muted);
+  background: var(--a-surface);
+  border: 1px solid var(--a-border);
+  border-radius: 12px;
+}
+
+@media (max-width: 800px) {
+  .admin-shell {
+    grid-template-columns: 1fr;
+  }
+  .admin-side {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 12px 16px;
+  }
+  .admin-side__foot {
+    margin: 0;
+    border: none;
+    padding: 0;
+  }
+  .admin-main {
+    padding: 24px 20px;
+  }
+}

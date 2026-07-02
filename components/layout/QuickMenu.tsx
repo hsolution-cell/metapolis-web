@@ -1,8 +1,16 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function QuickMenu() {
+  const pathname = usePathname();
+
+  // 관리자 페이지에서는 퀵메뉴 미노출
+  if (pathname?.startsWith("/admin")) {
+    return null;
+  }
+
   const scrollToTop = (e: React.MouseEvent) => {
     e.preventDefault();
     window.scrollTo({ top: 0, behavior: "smooth" });

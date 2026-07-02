@@ -36,6 +36,11 @@ export default function Header() {
     isCurrentLink,
   } = useHeaderMenu();
 
+  // 관리자 페이지에서는 공개 헤더 미노출
+  if (pathname?.startsWith("/admin")) {
+    return null;
+  }
+
   // 영문 경로에서는 EN 전용 헤더를 렌더
   if (pathname?.startsWith("/en")) {
     return <EnHeader />;
