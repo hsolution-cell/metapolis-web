@@ -26,22 +26,19 @@
 }
 .en-footer .f_info {
   margin: 0;
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 600;
   color: #fff;
 }
 .en-footer .f_contact {
   margin: 0;
-  font-size: 14px;
+  font-size: 13px;
   color: rgba(255, 255, 255, 0.5);
 }
-/* 2행: 저작권(좌) ↔ KOR·ENG(우) */
+/* 2행: 저작권(좌) ↔ KOR·ENG(우) — 사이즈는 국문 푸터와 동일(info 13px, lang 20px) */
 .en-footer .f_copy {
   text-align: left;
   font-size: 13px;
-}
-.en-footer .f_bottom .f_lang {
-  font-size: 14px;
 }
 
 /* EN Access & Parking: 지도 아래 주소 영역(국문엔 없음) */
