@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import EnSubLayout from "@/components/en/EnSubLayout";
 import FloorsSection from "@/components/sub/floors/FloorsSection";
-import { EN_FLOOR_GUIDE_BLOCKS } from "@/data/en/floors";
+import { buildEnFloorGuideBlocks } from "@/data/en/floors";
 import { resolveFloorGuideSelection } from "@/data/floorGuide";
+import { listStores } from "@/lib/stores-db";
 
 export const metadata: Metadata = {
   title: "METAPOLIS | Floor Guide",
@@ -13,9 +14,13 @@ type PageProps = {
   searchParams: Promise<{ block?: string; floor?: string }>;
 };
 
+export const dynamic = "force-dynamic";
+
 export default async function Page({ searchParams }: PageProps) {
   const params = await searchParams;
   const selection = resolveFloorGuideSelection(params.block, params.floor);
+  const stores = await listStores();
+  const blocks = buildEnFloorGuideBlocks(stores);
 
   return (
     <EnSubLayout
@@ -28,7 +33,7 @@ export default async function Page({ searchParams }: PageProps) {
         key={selection ? `${selection.block}-${selection.floorId}` : "default"}
         initialBlock={selection?.block}
         initialFloorId={selection?.floorId}
-        blocks={EN_FLOOR_GUIDE_BLOCKS}
+        blocks={blocks}
         ariaLabel="Floor selection"
         mapAltSuffix="floor directory map"
       />

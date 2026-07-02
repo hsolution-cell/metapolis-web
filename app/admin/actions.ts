@@ -276,6 +276,69 @@ export async function deleteFaqCategory(id: string) {
   revalidateFaqCategories();
 }
 
+// ---------- 입점 매장 ----------
+export type StoreInput = {
+  name: string;
+  block: string;
+  floorId: string;
+  tel: string;
+  iconCategory: string;
+  guideCategory: string;
+  isSignature: boolean;
+  sortOrder: number;
+};
+
+function revalidateStores() {
+  revalidatePath("/stores/floors");
+  revalidatePath("/stores/categories");
+  revalidatePath("/en/floors");
+  revalidatePath("/admin/stores");
+}
+
+export async function createStore(input: StoreInput) {
+  const supabase = await createSupabaseServerClient();
+  const id = `s-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 7)}`;
+  const { error } = await supabase.from("stores").insert({
+    id,
+    name: input.name.trim(),
+    block: input.block,
+    floor_id: input.floorId,
+    tel: input.tel.trim() || "—",
+    icon_category: input.iconCategory,
+    guide_category: input.guideCategory,
+    is_signature: input.isSignature,
+    sort_order: input.sortOrder,
+  });
+  if (error) throw new Error(error.message);
+  revalidateStores();
+}
+
+export async function updateStore(id: string, input: StoreInput) {
+  const supabase = await createSupabaseServerClient();
+  const { error } = await supabase
+    .from("stores")
+    .update({
+      name: input.name.trim(),
+      block: input.block,
+      floor_id: input.floorId,
+      tel: input.tel.trim() || "—",
+      icon_category: input.iconCategory,
+      guide_category: input.guideCategory,
+      is_signature: input.isSignature,
+      sort_order: input.sortOrder,
+    })
+    .eq("id", id);
+  if (error) throw new Error(error.message);
+  revalidateStores();
+}
+
+export async function deleteStore(id: string) {
+  const supabase = await createSupabaseServerClient();
+  const { error } = await supabase.from("stores").delete().eq("id", id);
+  if (error) throw new Error(error.message);
+  revalidateStores();
+}
+
 // ---------- 인증 ----------
 export async function signOut() {
   const supabase = await createSupabaseServerClient();

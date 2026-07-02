@@ -8,10 +8,10 @@ import FloorStoreCard from "@/components/sub/floors/FloorStoreCard";
 import { getCategoryBanner, getCategoryGuideSummary } from "@/data/categoryGuide";
 import type { BranchBlock } from "@/data/branchStores";
 import {
-  getStoresByGuideCategory,
   STORE_GUIDE_CATEGORIES,
   toStoreCardView,
   type StoreGuideCategoryFilter,
+  type StoreRecord,
 } from "@/data/storeDirectory";
 
 const INITIAL_VISIBLE = 16;
@@ -22,7 +22,11 @@ const BLOCK_LABELS: Record<BranchBlock, string> = {
   b: "B Block",
 };
 
-export default function CategoriesSection() {
+type CategoriesSectionProps = {
+  allStores: StoreRecord[];
+};
+
+export default function CategoriesSection({ allStores }: CategoriesSectionProps) {
   const [block, setBlock] = useState<BranchBlock>("a");
   const [categoryId, setCategoryId] = useState<StoreGuideCategoryFilter>("all");
   const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE);
@@ -37,8 +41,15 @@ export default function CategoriesSection() {
   const banner = getCategoryBanner(categoryId);
 
   const stores = useMemo(
-    () => getStoresByGuideCategory(categoryId, block).map(toStoreCardView),
-    [categoryId, block]
+    () =>
+      allStores
+        .filter(
+          (store) =>
+            store.block === block &&
+            (categoryId === "all" || store.guideCategory === categoryId)
+        )
+        .map(toStoreCardView),
+    [allStores, categoryId, block]
   );
 
   const visibleStores = stores.slice(0, visibleCount);

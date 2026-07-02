@@ -1,6 +1,6 @@
 import type { BranchBlock } from "@/data/branchStores";
 import type { FloorGuideBlock, FloorGuideFloor } from "@/data/floorGuide";
-import { getStoresByBlockAndFloor, toStoreCardView } from "@/data/storeDirectory";
+import { toStoreCardView, type StoreRecord } from "@/data/storeDirectory";
 
 // 영문 Floor Guide — 층 요약/맵캡션은 영문(시안 기준)
 const EN_FLOOR_META: Record<BranchBlock, Omit<FloorGuideFloor, "stores">[]> = {
@@ -141,29 +141,28 @@ const EN_STORE_NAME: Record<string, string> = {
   히노아지: "HINOAJI",
 };
 
-function buildEnBlock(block: BranchBlock): FloorGuideBlock {
-  return {
+/** DB에서 받은 매장 목록으로 영문 층별 블록 구성 (매장명은 영문 매핑) */
+export function buildEnFloorGuideBlocks(allStores: StoreRecord[]): FloorGuideBlock[] {
+  const blocks: BranchBlock[] = ["a", "b"];
+  return blocks.map((block) => ({
     id: block,
     label: block === "a" ? "A Block" : "B Block",
     floors: EN_FLOOR_META[block].map((floor) => ({
       ...floor,
-      stores: getStoresByBlockAndFloor(block, floor.id).map((store) => {
-        const v = toStoreCardView(store);
-        return {
-          id: v.id,
-          name: EN_STORE_NAME[v.name] ?? v.name,
-          tel: v.tel,
-          iconCategory: v.iconCategory,
-          // 영문 Floor Guide에서는 이벤트(EVENT 배지·이벤트 링크) 미노출
-          hasEvent: false,
-          eventHref: undefined,
-        };
-      }),
+      stores: allStores
+        .filter((store) => store.block === block && store.floorId === floor.id)
+        .map((store) => {
+          const v = toStoreCardView(store);
+          return {
+            id: v.id,
+            name: EN_STORE_NAME[v.name] ?? v.name,
+            tel: v.tel,
+            iconCategory: v.iconCategory,
+            // 영문 Floor Guide에서는 이벤트(EVENT 배지·이벤트 링크) 미노출
+            hasEvent: false,
+            eventHref: undefined,
+          };
+        }),
     })),
-  };
+  }));
 }
-
-export const EN_FLOOR_GUIDE_BLOCKS: FloorGuideBlock[] = [
-  buildEnBlock("a"),
-  buildEnBlock("b"),
-];

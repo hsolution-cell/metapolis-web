@@ -4,6 +4,7 @@ import {
   toStoreCardView,
   type StoreIconCategory,
   type StoreCardView,
+  type StoreRecord,
 } from "@/data/storeDirectory";
 
 /** @deprecated StoreIconCategory 사용 권장 */
@@ -146,6 +147,21 @@ export const FLOOR_GUIDE_BLOCKS: FloorGuideBlock[] = [
   buildFloorGuideBlock("a"),
   buildFloorGuideBlock("b"),
 ];
+
+/** DB에서 받은 매장 목록으로 층별 블록 구성 (국문 층별안내용) */
+export function buildFloorGuideBlocksFrom(allStores: StoreRecord[]): FloorGuideBlock[] {
+  const blocks: BranchBlock[] = ["a", "b"];
+  return blocks.map((block) => ({
+    id: block,
+    label: block === "a" ? "A Block" : "B Block",
+    floors: FLOOR_META[block].map((floor) => ({
+      ...floor,
+      stores: allStores
+        .filter((store) => store.block === block && store.floorId === floor.id)
+        .map((store) => toFloorGuideStore(toStoreCardView(store))),
+    })),
+  }));
+}
 
 export function getFloorGuideBlock(block: BranchBlock) {
   return FLOOR_GUIDE_BLOCKS.find((item) => item.id === block);
