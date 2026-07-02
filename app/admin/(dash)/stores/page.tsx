@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { listStores } from "@/lib/stores-db";
 import { getFloorLabel, STORE_GUIDE_CATEGORIES } from "@/data/storeDirectory";
+import { BRANCH_FLOORS } from "@/data/branchStores";
 import StoreDeleteButton from "@/components/admin/StoreDeleteButton";
 
 export const dynamic = "force-dynamic";
 
 type PageProps = {
-  searchParams: Promise<{ block?: string }>;
+  searchParams: Promise<{ block?: string; floor?: string; q?: string }>;
 };
 
 function guideLabel(code: string) {
@@ -14,10 +15,16 @@ function guideLabel(code: string) {
 }
 
 export default async function AdminStoresPage({ searchParams }: PageProps) {
-  const { block: blockParam } = await searchParams;
+  const { block: blockParam, floor, q } = await searchParams;
   const block = blockParam === "b" ? "b" : "a";
+  const query = q?.trim() ?? "";
   const all = await listStores();
-  const stores = all.filter((s) => s.block === block);
+  const stores = all.filter(
+    (s) =>
+      s.block === block &&
+      (!floor || s.floorId === floor) &&
+      (!query || s.name.toLowerCase().includes(query.toLowerCase()))
+  );
 
   return (
     <>
@@ -28,7 +35,7 @@ export default async function AdminStoresPage({ searchParams }: PageProps) {
         </Link>
       </div>
 
-      <div style={{ display: "flex", gap: 8, marginBottom: 16, alignItems: "center" }}>
+      <div style={{ display: "flex", gap: 8, marginBottom: 16, alignItems: "center", flexWrap: "wrap" }}>
         <Link
           href="/admin/stores?block=a"
           className={`admin-btn admin-btn--sm${block === "a" ? " admin-btn--primary" : ""}`}
@@ -41,9 +48,44 @@ export default async function AdminStoresPage({ searchParams }: PageProps) {
         >
           B Block
         </Link>
+
+        {/* 층 필터 + 매장명 검색 (GET 폼 → searchParams) */}
+        <form
+          method="get"
+          style={{ display: "flex", gap: 8, alignItems: "center", marginLeft: 8 }}
+        >
+          <input type="hidden" name="block" value={block} />
+          <select name="floor" defaultValue={floor ?? ""} className="admin-select">
+            <option value="">전체 층</option>
+            {BRANCH_FLOORS[block].map((f) => (
+              <option key={f.id} value={f.id}>
+                {f.label}
+              </option>
+            ))}
+          </select>
+          <input
+            type="search"
+            name="q"
+            defaultValue={query}
+            placeholder="매장명 검색"
+            className="admin-input--inline"
+          />
+          <button type="submit" className="admin-btn admin-btn--sm">
+            검색
+          </button>
+          {(floor || query) && (
+            <Link href={`/admin/stores?block=${block}`} className="admin-btn admin-btn--sm">
+              초기화
+            </Link>
+          )}
+        </form>
+
         <span style={{ color: "#6b7580" }}>{stores.length}개</span>
       </div>
 
+      {stores.length === 0 ? (
+        <div className="admin-empty">조건에 맞는 매장이 없습니다.</div>
+      ) : (
       <table className="admin-table">
         <thead>
           <tr>
@@ -78,6 +120,7 @@ export default async function AdminStoresPage({ searchParams }: PageProps) {
           ))}
         </tbody>
       </table>
+      )}
     </>
   );
 }

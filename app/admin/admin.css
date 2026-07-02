@@ -249,6 +249,26 @@
   outline: none;
   border-color: var(--a-accent);
 }
+
+/* 목록 상단 인라인 필터(층 선택·검색) */
+.admin-select,
+.admin-input--inline {
+  height: 34px;
+  padding: 0 10px;
+  border: 1px solid var(--a-border);
+  border-radius: 8px;
+  font-size: 13px;
+  background: #fff;
+  color: var(--a-text);
+}
+.admin-select:focus,
+.admin-input--inline:focus {
+  outline: none;
+  border-color: var(--a-accent);
+}
+.admin-input--inline {
+  width: 160px;
+}
 .admin-form__actions {
   display: flex;
   gap: 10px;
