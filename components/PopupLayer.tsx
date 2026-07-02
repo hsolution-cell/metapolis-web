@@ -39,10 +39,11 @@ export default function PopupLayer() {
   const pathname = usePathname();
   const [popups, setPopups] = useState<Popup[]>([]);
 
-  const isAdmin = pathname?.startsWith("/admin");
+  // 메인 페이지에서만 노출
+  const isHome = pathname === "/";
 
   useEffect(() => {
-    if (isAdmin) return;
+    if (!isHome) return;
     let cancelled = false;
 
     (async () => {
@@ -61,9 +62,9 @@ export default function PopupLayer() {
     return () => {
       cancelled = true;
     };
-  }, [isAdmin]);
+  }, [isHome]);
 
-  if (isAdmin || popups.length === 0) return null;
+  if (!isHome || popups.length === 0) return null;
 
   function close(id: string) {
     setPopups((prev) => prev.filter((p) => p.id !== id));
