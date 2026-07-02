@@ -3,6 +3,7 @@ import SubPageLayout from "@/components/sub/SubPageLayout";
 import EventDetailSection from "@/components/sub/events/EventDetailSection";
 import { EVENT_DETAIL_BANNER } from "@/data/events";
 import { getStoreEventById, listStoreEvents } from "@/lib/store-events-db";
+import { postOpenGraph } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
 
@@ -16,7 +17,11 @@ export async function generateMetadata({ params }: PageProps) {
   if (!event) {
     return { title: "METAPOLIS | 매장 이벤트" };
   }
-  return { title: `METAPOLIS | ${event.title}`, description: event.title };
+  return {
+    title: `METAPOLIS | ${event.title}`,
+    description: event.title,
+    openGraph: postOpenGraph(event.title, event.thumbnail),
+  };
 }
 
 export default async function Page({ params }: PageProps) {

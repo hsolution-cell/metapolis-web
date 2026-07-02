@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import SubPageLayout from "@/components/sub/SubPageLayout";
 import NoticeDetailSection from "@/components/sub/notices/NoticeDetailSection";
 import { getNoticeById, listNotices } from "@/lib/notices-db";
+import { firstImageSrc, postOpenGraph } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
 
@@ -20,6 +21,7 @@ export async function generateMetadata({ params }: PageProps) {
   return {
     title: `METAPOLIS | ${item.title}`,
     description: item.title,
+    openGraph: postOpenGraph(item.title, firstImageSrc(item.body)),
   };
 }
 

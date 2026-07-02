@@ -3,6 +3,7 @@ import SubPageLayout from "@/components/sub/SubPageLayout";
 import WinnerDetailSection from "@/components/sub/winners/WinnerDetailSection";
 import { EVENT_DETAIL_BANNER } from "@/data/events";
 import { getWinnerById, listWinners } from "@/lib/winners-db";
+import { postOpenGraph } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
 
@@ -16,7 +17,11 @@ export async function generateMetadata({ params }: PageProps) {
   if (!item) {
     return { title: "METAPOLIS | 당첨자 발표" };
   }
-  return { title: `METAPOLIS | ${item.title}`, description: item.title };
+  return {
+    title: `METAPOLIS | ${item.title}`,
+    description: item.title,
+    openGraph: postOpenGraph(item.title, item.thumbnail),
+  };
 }
 
 export default async function Page({ params }: PageProps) {
