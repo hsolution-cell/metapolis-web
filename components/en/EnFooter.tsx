@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { EN_FOOTER_LINKS } from "@/data/en/navigation";
 
 export default function EnFooter() {
   const router = useRouter();
@@ -17,13 +16,7 @@ export default function EnFooter() {
         </div>
 
         <div className="f_mid">
-          <ul className="f_nav">
-            {EN_FOOTER_LINKS.map((item) => (
-              <li key={item.label}>
-                <Link href={item.href}>{item.label}</Link>
-              </li>
-            ))}
-          </ul>
+          {/* 영문 푸터에서는 입점문의·대관문의·이용약관·개인정보처리방침·사이트맵 링크 미노출 */}
           <div className="f_lang">
             <button type="button" data-lang="kor" onClick={() => router.push("/")}>
               KOR
