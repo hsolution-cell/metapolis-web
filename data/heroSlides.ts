@@ -4,6 +4,7 @@ export type HeroSlide = {
   badge: string;
   title: string;
   desc: string;
+  link?: string;
 };
 
 // TODO(고객확정): 슬라이드별 실제 이미지/문구 확정 시 항목 추가(다중 슬라이드).

@@ -1,5 +1,6 @@
 @import "../styles/site-globals.css";
 @import "../styles/en/en.css";
+@import "../styles/popup.css";
 @import "swiper/css";
 @import "swiper/css/pagination";
 @import "swiper/css/navigation";

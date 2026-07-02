@@ -17,6 +17,8 @@ export default async function AdminDashLayout({
       <aside className="admin-side">
         <div className="admin-side__brand">METAPOLIS Admin</div>
         <nav className="admin-side__nav">
+          <Link href="/admin/hero-banners">메인 배너</Link>
+          <Link href="/admin/popups">팝업</Link>
           <Link href="/admin/notices">고객알림</Link>
           <Link href="/admin/categories">└ 구분 관리</Link>
           <Link href="/admin/events">메타폴리스 이벤트</Link>

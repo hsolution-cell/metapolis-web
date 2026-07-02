@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import QuickMenu from "@/components/layout/QuickMenu";
+import PopupLayer from "@/components/PopupLayer";
 import { ToastProvider } from "@/contexts/ToastContext";
 import { DEFAULT_META } from "@/data/siteMeta";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -52,6 +53,7 @@ export default function RootLayout({
             <Footer />
           </div>
           <QuickMenu />
+          <PopupLayer />
           <SpeedInsights />
         </ToastProvider>
       </body>

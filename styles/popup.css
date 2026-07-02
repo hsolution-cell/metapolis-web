@@ -1,0 +1,86 @@
+/* ============================================================
+   메인 팝업 레이어
+   ============================================================ */
+.popup-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup-layer__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.popup-layer__stack {
+  position: relative;
+  z-index: 1;
+}
+
+.popup-card {
+  position: relative;
+  width: 360px;
+  max-width: calc(100vw - 40px);
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.28);
+}
+
+/* 여러 개일 때 겹쳐진 카드가 어긋나 보이도록 stack 컨테이너 중앙 정렬 */
+.popup-layer__stack .popup-card:not(:first-child) {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.popup-card__body {
+  display: block;
+  line-height: 0;
+}
+
+.popup-card__body img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.popup-card__link {
+  display: block;
+}
+
+.popup-card__foot {
+  display: flex;
+  align-items: stretch;
+  border-top: 1px solid #eee;
+}
+
+.popup-card__btn {
+  flex: 1;
+  padding: 13px 8px;
+  background: #fff;
+  border: 0;
+  font-size: 14px;
+  color: #444;
+  cursor: pointer;
+}
+
+.popup-card__btn:hover {
+  background: #f6f6f6;
+}
+
+.popup-card__btn--close {
+  border-left: 1px solid #eee;
+  font-weight: 600;
+  color: #111;
+}
+
+@media (max-width: 768px) {
+  .popup-card {
+    width: 300px;
+  }
+}

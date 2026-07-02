@@ -401,6 +401,121 @@ export async function deleteStore(id: string) {
   revalidateStores();
 }
 
+// ---------- 메인 배너(hero) ----------
+export type HeroBannerInput = {
+  badge: string;
+  title: string;
+  description: string;
+  linkHref: string | null;
+  bg: string | null;
+  bgMobile: string | null;
+  sortOrder: number;
+  active: boolean;
+};
+
+function revalidateHeroBanners() {
+  revalidatePath("/");
+  revalidatePath("/admin/hero-banners");
+}
+
+export async function createHeroBanner(input: HeroBannerInput) {
+  const supabase = await createSupabaseServerClient();
+  const { error } = await supabase.from("hero_banners").insert({
+    badge: input.badge.trim() || null,
+    title: input.title.trim(),
+    description: input.description.trim() || null,
+    link_href: input.linkHref?.trim() || null,
+    bg: input.bg,
+    bg_mobile: input.bgMobile,
+    sort_order: input.sortOrder,
+    active: input.active,
+  });
+  if (error) throw new Error(error.message);
+  revalidateHeroBanners();
+}
+
+export async function updateHeroBanner(id: string, input: HeroBannerInput) {
+  const supabase = await createSupabaseServerClient();
+  const { error } = await supabase
+    .from("hero_banners")
+    .update({
+      badge: input.badge.trim() || null,
+      title: input.title.trim(),
+      description: input.description.trim() || null,
+      link_href: input.linkHref?.trim() || null,
+      bg: input.bg,
+      bg_mobile: input.bgMobile,
+      sort_order: input.sortOrder,
+      active: input.active,
+    })
+    .eq("id", id);
+  if (error) throw new Error(error.message);
+  revalidateHeroBanners();
+}
+
+export async function deleteHeroBanner(id: string) {
+  const supabase = await createSupabaseServerClient();
+  const { error } = await supabase.from("hero_banners").delete().eq("id", id);
+  if (error) throw new Error(error.message);
+  revalidateHeroBanners();
+}
+
+// ---------- 팝업(popup) ----------
+export type PopupInput = {
+  title: string;
+  image: string | null;
+  linkHref: string | null;
+  startDate: string;
+  endDate: string;
+  sortOrder: number;
+  active: boolean;
+};
+
+function revalidatePopups() {
+  revalidatePath("/");
+  revalidatePath("/admin/popups");
+}
+
+export async function createPopup(input: PopupInput) {
+  const supabase = await createSupabaseServerClient();
+  const { error } = await supabase.from("popups").insert({
+    title: input.title.trim(),
+    image: input.image,
+    link_href: input.linkHref?.trim() || null,
+    start_date: input.startDate,
+    end_date: input.endDate,
+    sort_order: input.sortOrder,
+    active: input.active,
+  });
+  if (error) throw new Error(error.message);
+  revalidatePopups();
+}
+
+export async function updatePopup(id: string, input: PopupInput) {
+  const supabase = await createSupabaseServerClient();
+  const { error } = await supabase
+    .from("popups")
+    .update({
+      title: input.title.trim(),
+      image: input.image,
+      link_href: input.linkHref?.trim() || null,
+      start_date: input.startDate,
+      end_date: input.endDate,
+      sort_order: input.sortOrder,
+      active: input.active,
+    })
+    .eq("id", id);
+  if (error) throw new Error(error.message);
+  revalidatePopups();
+}
+
+export async function deletePopup(id: string) {
+  const supabase = await createSupabaseServerClient();
+  const { error } = await supabase.from("popups").delete().eq("id", id);
+  if (error) throw new Error(error.message);
+  revalidatePopups();
+}
+
 // ---------- 인증 ----------
 export async function signOut() {
   const supabase = await createSupabaseServerClient();
