@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { getGnbIndex, GNB_GROUPS } from "@/data/navigation";
 import { resolveStoreSearchDestination } from "@/data/storeSearch";
+import { useSearchableStores } from "@/lib/use-stores";
 import { useToast } from "@/contexts/ToastContext";
 
 const DESKTOP_BREAKPOINT = 1280;
@@ -16,6 +17,7 @@ export function useHeaderMenu() {
   const pathname = usePathname();
   const router = useRouter();
   const { showToast } = useToast();
+  const searchableStores = useSearchableStores();
 
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileAccordion, setMobileAccordion] = useState<number | null>(null);
@@ -105,7 +107,7 @@ export function useHeaderMenu() {
 
   const navigateStoreSearch = useCallback(
     (query: string) => {
-      const destination = resolveStoreSearchDestination(query);
+      const destination = resolveStoreSearchDestination(searchableStores, query);
 
       if (destination.type === "empty") {
         showToast("검색어를 입력해 주세요.");
@@ -115,7 +117,7 @@ export function useHeaderMenu() {
       router.push(destination.href);
       closeSearch();
     },
-    [router, closeSearch, showToast]
+    [router, closeSearch, showToast, searchableStores]
   );
 
   const handleSearchSubmit = useCallback(

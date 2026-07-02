@@ -1,5 +1,4 @@
 import {
-  STORE_DIRECTORY,
   STORE_GUIDE_CATEGORIES,
   formatStoreLocation,
   type StoreRecord,
@@ -7,11 +6,11 @@ import {
 
 export { formatStoreLocation };
 
-export function searchStores(query: string): StoreRecord[] {
+export function searchStores(stores: StoreRecord[], query: string): StoreRecord[] {
   const keyword = query.trim().toLowerCase();
   if (!keyword) return [];
 
-  return STORE_DIRECTORY.filter((store) => {
+  return stores.filter((store) => {
     if (store.name.toLowerCase().includes(keyword)) return true;
 
     const category = STORE_GUIDE_CATEGORIES.find(
@@ -46,11 +45,14 @@ export type StoreSearchDestination =
   | { type: "single"; href: string }
   | { type: "results"; href: string };
 
-export function resolveStoreSearchDestination(query: string): StoreSearchDestination {
+export function resolveStoreSearchDestination(
+  stores: StoreRecord[],
+  query: string
+): StoreSearchDestination {
   const trimmed = query.trim();
   if (!trimmed) return { type: "empty" };
 
-  const results = searchStores(trimmed);
+  const results = searchStores(stores, trimmed);
 
   if (results.length === 1) {
     return { type: "single", href: getStoreFloorHref(results[0]) };

@@ -8,6 +8,7 @@ import {
   getStoreSearchPageHref,
   searchStores,
 } from "@/data/storeSearch";
+import { useSearchableStores } from "@/lib/use-stores";
 
 type HeaderSearchResultsProps = {
   query: string;
@@ -18,7 +19,8 @@ export default function HeaderSearchResults({
   query,
   onSelect,
 }: HeaderSearchResultsProps) {
-  const results = useMemo(() => searchStores(query), [query]);
+  const stores = useSearchableStores();
+  const results = useMemo(() => searchStores(stores, query), [stores, query]);
   const trimmed = query.trim();
 
   if (!trimmed) return null;

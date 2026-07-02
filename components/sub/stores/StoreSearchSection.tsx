@@ -9,12 +9,14 @@ import {
   getStoreFloorHref,
   searchStores,
 } from "@/data/storeSearch";
+import { useSearchableStores } from "@/lib/use-stores";
 
 export default function StoreSearchSection() {
   const searchParams = useSearchParams();
   const query = searchParams.get("q")?.trim() ?? "";
+  const stores = useSearchableStores();
 
-  const results = useMemo(() => searchStores(query), [query]);
+  const results = useMemo(() => searchStores(stores, query), [stores, query]);
 
   return (
     <div className="floors store_search">
