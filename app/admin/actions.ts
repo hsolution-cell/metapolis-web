@@ -88,6 +88,60 @@ export async function deleteCategory(id: string) {
   revalidateCategories();
 }
 
+// ---------- 메타폴리스 이벤트 ----------
+export type EventInput = {
+  title: string;
+  startDate: string;
+  endDate: string;
+  thumbnail: string | null;
+  body: string;
+  pinned: boolean;
+};
+
+function revalidateEvents(id?: string) {
+  revalidatePath("/events");
+  revalidatePath("/admin/events");
+  if (id) revalidatePath(`/events/${id}`);
+}
+
+export async function createEvent(input: EventInput) {
+  const supabase = await createSupabaseServerClient();
+  const { error } = await supabase.from("events").insert({
+    title: input.title.trim(),
+    start_date: input.startDate,
+    end_date: input.endDate,
+    thumbnail: input.thumbnail,
+    body: input.body.trim() || null,
+    pinned: input.pinned,
+  });
+  if (error) throw new Error(error.message);
+  revalidateEvents();
+}
+
+export async function updateEvent(id: string, input: EventInput) {
+  const supabase = await createSupabaseServerClient();
+  const { error } = await supabase
+    .from("events")
+    .update({
+      title: input.title.trim(),
+      start_date: input.startDate,
+      end_date: input.endDate,
+      thumbnail: input.thumbnail,
+      body: input.body.trim() || null,
+      pinned: input.pinned,
+    })
+    .eq("id", id);
+  if (error) throw new Error(error.message);
+  revalidateEvents(id);
+}
+
+export async function deleteEvent(id: string) {
+  const supabase = await createSupabaseServerClient();
+  const { error } = await supabase.from("events").delete().eq("id", id);
+  if (error) throw new Error(error.message);
+  revalidateEvents(id);
+}
+
 // ---------- 인증 ----------
 export async function signOut() {
   const supabase = await createSupabaseServerClient();

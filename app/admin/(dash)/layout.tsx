@@ -18,7 +18,8 @@ export default async function AdminDashLayout({
         <div className="admin-side__brand">METAPOLIS Admin</div>
         <nav className="admin-side__nav">
           <Link href="/admin/notices">고객알림</Link>
-          <Link href="/admin/categories">구분 관리</Link>
+          <Link href="/admin/categories">└ 구분 관리</Link>
+          <Link href="/admin/events">메타폴리스 이벤트</Link>
         </nav>
         <div className="admin-side__foot">
           <p className="admin-side__user">{user?.email}</p>

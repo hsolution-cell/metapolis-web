@@ -1,71 +1,50 @@
 import Link from "next/link";
-import {
-  EVENT_LIST_PATHS,
-  formatEventDateRange,
-  getEventBody,
-  getEventDetailHref,
-  getNextEvent,
-  type EventItem,
-  type EventListKind,
-} from "@/data/events";
+import { formatEventDateRange } from "@/data/events";
 
 type EventDetailSectionProps = {
-  event: EventItem;
-  events: EventItem[];
-  kind: EventListKind;
+  title: string;
+  startDate: string;
+  endDate: string;
+  bodyHtml: string;
+  listPath: string;
+  nextHref?: string;
 };
 
 export default function EventDetailSection({
-  event,
-  events,
-  kind,
+  title,
+  startDate,
+  endDate,
+  bodyHtml,
+  listPath,
+  nextHref,
 }: EventDetailSectionProps) {
-  const nextEvent = getNextEvent(events, event.id);
-  const listPath = EVENT_LIST_PATHS[kind];
-  const body = getEventBody(event);
+  const html = bodyHtml?.trim()
+    ? bodyHtml
+    : `<p>${title} 이벤트에 대한 상세 안내입니다.</p><p>자세한 참여 방법 및 유의사항은 아래 내용을 확인해 주세요.</p>`;
 
   return (
     <article className="events_detail">
       <div className="events_detail_inner content_inner innerTop innerBot">
         <div className="events_detail_head">
-          <h2 className="events_detail_title">{event.title}</h2>
+          <h2 className="events_detail_title">{title}</h2>
           <p className="events_detail_period">
             <span className="events_detail_period_label">이벤트 기간</span>
-            {formatEventDateRange(event.startDate, event.endDate)}
+            {formatEventDateRange(startDate, endDate)}
           </p>
         </div>
 
         <div className="events_detail_rule" aria-hidden="true" />
 
-        <div className="events_detail_body">
-          {body.map((paragraph, index) => (
-            <p key={`${event.id}-body-${index}`} className="events_detail_text">
-              {paragraph}
-            </p>
-          ))}
-
-          {event.contentImage ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              className="events_detail_image"
-              src={event.contentImage}
-              alt=""
-            />
-          ) : (
-            <div className="events_detail_image events_detail_image--placeholder">
-              <span>이미지가 보여지는 영역입니다</span>
-            </div>
-          )}
-        </div>
+        <div
+          className="events_detail_body"
+          dangerouslySetInnerHTML={{ __html: html }}
+        />
 
         <div className="events_detail_rule" aria-hidden="true" />
 
         <nav className="events_detail_nav" aria-label="게시글 이동">
-          {nextEvent ? (
-            <Link
-              href={getEventDetailHref(kind, nextEvent.id)}
-              className="events_detail_btn events_detail_btn--outline"
-            >
+          {nextHref ? (
+            <Link href={nextHref} className="events_detail_btn events_detail_btn--outline">
               다음글
             </Link>
           ) : null}

@@ -3,8 +3,10 @@ import SubPageLayout from "@/components/sub/SubPageLayout";
 import EventDetailSection from "@/components/sub/events/EventDetailSection";
 import {
   EVENT_DETAIL_BANNER,
+  getEventBody,
   getEventById,
   getEventsByKind,
+  getNextEvent,
   STORE_EVENTS,
 } from "@/data/events";
 
@@ -39,13 +41,25 @@ export default async function Page({ params }: PageProps) {
     notFound();
   }
 
+  const bodyHtml = getEventBody(event)
+    .map((p) => `<p>${p}</p>`)
+    .join("");
+  const next = getNextEvent(events, event.id);
+
   return (
     <SubPageLayout
       path="/events/stores"
       className="events events--detail"
       bannerImage={EVENT_DETAIL_BANNER}
     >
-      <EventDetailSection event={event} events={events} kind="store" />
+      <EventDetailSection
+        title={event.title}
+        startDate={event.startDate}
+        endDate={event.endDate}
+        bodyHtml={bodyHtml}
+        listPath="/events/stores"
+        nextHref={next ? `/events/stores/${next.id}` : undefined}
+      />
     </SubPageLayout>
   );
 }

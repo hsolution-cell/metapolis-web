@@ -258,6 +258,24 @@
   font-weight: 700;
   vertical-align: middle;
 }
+.admin-imgfield {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+}
+.admin-imgfield__preview {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.admin-imgfield__preview img {
+  width: 160px;
+  height: auto;
+  border: 1px solid var(--a-border);
+  border-radius: 8px;
+  display: block;
+}
 .admin-error {
   color: #c0392b;
   font-size: 13px;

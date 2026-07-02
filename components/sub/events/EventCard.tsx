@@ -43,6 +43,11 @@ export default function EventCard({ event, kind }: EventCardProps) {
           <span className="events_card_badge_dot" aria-hidden="true" />
           {statusLabel}
         </span>
+        {event.pinned ? (
+          <span className="events_card_pin" aria-hidden="true">
+            고정
+          </span>
+        ) : null}
       </div>
 
       {kind === "store" && event.brandName ? (

@@ -3,27 +3,25 @@
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import RichEditor from "@/components/admin/RichEditor";
-import { createNotice, updateNotice, type NoticeInput } from "@/app/admin/actions";
-import type { NoticeCategory } from "@/lib/notices-db";
+import ImageUploadField from "@/components/admin/ImageUploadField";
+import { createEvent, updateEvent, type EventInput } from "@/app/admin/actions";
 
-type NoticeFormProps = {
+type EventFormProps = {
   mode: "new" | "edit";
-  noticeId?: string;
-  categories: NoticeCategory[];
-  initial?: NoticeInput;
+  eventId?: string;
+  initial?: EventInput;
 };
 
 function todayISO() {
   return new Date().toISOString().slice(0, 10);
 }
 
-export default function NoticeForm({ mode, noticeId, categories, initial }: NoticeFormProps) {
+export default function EventForm({ mode, eventId, initial }: EventFormProps) {
   const router = useRouter();
-  const [categoryId, setCategoryId] = useState(
-    initial?.categoryId ?? categories[0]?.id ?? ""
-  );
   const [title, setTitle] = useState(initial?.title ?? "");
-  const [date, setDate] = useState(initial?.date ?? todayISO());
+  const [startDate, setStartDate] = useState(initial?.startDate ?? todayISO());
+  const [endDate, setEndDate] = useState(initial?.endDate ?? todayISO());
+  const [thumbnail, setThumbnail] = useState<string | null>(initial?.thumbnail ?? null);
   const [body, setBody] = useState(initial?.body ?? "");
   const [pinned, setPinned] = useState(initial?.pinned ?? false);
   const [error, setError] = useState<string | null>(null);
@@ -36,22 +34,20 @@ export default function NoticeForm({ mode, noticeId, categories, initial }: Noti
       setError("제목을 입력해 주세요.");
       return;
     }
+    if (endDate < startDate) {
+      setError("종료일이 시작일보다 빠를 수 없습니다.");
+      return;
+    }
 
     startTransition(async () => {
       try {
-        const input: NoticeInput = {
-          categoryId: categoryId || null,
-          title,
-          date,
-          body,
-          pinned,
-        };
+        const input: EventInput = { title, startDate, endDate, thumbnail, body, pinned };
         if (mode === "new") {
-          await createNotice(input);
+          await createEvent(input);
         } else {
-          await updateNotice(noticeId!, input);
+          await updateEvent(eventId!, input);
         }
-        router.push("/admin/notices");
+        router.push("/admin/events");
         router.refresh();
       } catch {
         setError("저장 중 오류가 발생했습니다. 다시 시도해 주세요.");
@@ -62,29 +58,34 @@ export default function NoticeForm({ mode, noticeId, categories, initial }: Noti
   return (
     <form className="admin-form" onSubmit={handleSubmit}>
       <div className="admin-field">
-        <label htmlFor="category">구분</label>
-        <select
-          id="category"
-          value={categoryId}
-          onChange={(e) => setCategoryId(e.target.value)}
-        >
-          {categories.length === 0 && <option value="">(구분 없음)</option>}
-          {categories.map((c) => (
-            <option key={c.id} value={c.id}>
-              {c.name}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      <div className="admin-field">
         <label htmlFor="title">제목</label>
         <input id="title" value={title} onChange={(e) => setTitle(e.target.value)} />
       </div>
 
+      <div style={{ display: "flex", gap: 16 }}>
+        <div className="admin-field" style={{ flex: 1 }}>
+          <label htmlFor="startDate">시작일</label>
+          <input
+            id="startDate"
+            type="date"
+            value={startDate}
+            onChange={(e) => setStartDate(e.target.value)}
+          />
+        </div>
+        <div className="admin-field" style={{ flex: 1 }}>
+          <label htmlFor="endDate">종료일</label>
+          <input
+            id="endDate"
+            type="date"
+            value={endDate}
+            onChange={(e) => setEndDate(e.target.value)}
+          />
+        </div>
+      </div>
+
       <div className="admin-field">
-        <label htmlFor="date">등록일</label>
-        <input id="date" type="date" value={date} onChange={(e) => setDate(e.target.value)} />
+        <label>썸네일 이미지</label>
+        <ImageUploadField value={thumbnail} onChange={setThumbnail} />
       </div>
 
       <label className="admin-check">
@@ -104,11 +105,7 @@ export default function NoticeForm({ mode, noticeId, categories, initial }: Noti
       {error && <p className="admin-error">{error}</p>}
 
       <div className="admin-form__actions">
-        <button
-          type="button"
-          className="admin-btn"
-          onClick={() => router.push("/admin/notices")}
-        >
+        <button type="button" className="admin-btn" onClick={() => router.push("/admin/events")}>
           취소
         </button>
         <button type="submit" className="admin-btn admin-btn--primary" disabled={pending}>

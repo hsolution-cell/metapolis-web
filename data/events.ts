@@ -14,6 +14,8 @@ export type EventItem = {
   storeId?: string;
   /** 매장 이벤트 — 카드 뱃지용 브랜드명 */
   brandName?: string;
+  /** 상단 고정 */
+  pinned?: boolean;
 };
 
 export type EventListKind = "metapolis" | "store";

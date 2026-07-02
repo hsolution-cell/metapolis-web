@@ -140,6 +140,18 @@
   backdrop-filter: blur(4px);
 }
 
+.events_card_pin {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--mp-gold, #b89968);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+}
+
 .events_card_badge_dot {
   width: 7px;
   height: 7px;
