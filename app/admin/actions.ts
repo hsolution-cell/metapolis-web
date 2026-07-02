@@ -193,6 +193,89 @@ export async function deleteWinner(id: string) {
   revalidateWinners(id);
 }
 
+// ---------- FAQ ----------
+export type FaqInput = {
+  categoryId: string | null;
+  question: string;
+  answer: string;
+  pinned: boolean;
+  sortOrder: number;
+};
+
+function revalidateFaqs() {
+  revalidatePath("/support/faq");
+  revalidatePath("/admin/faq");
+}
+
+export async function createFaq(input: FaqInput) {
+  const supabase = await createSupabaseServerClient();
+  const { error } = await supabase.from("faqs").insert({
+    category_id: input.categoryId,
+    question: input.question.trim(),
+    answer: input.answer.trim() || null,
+    pinned: input.pinned,
+    sort_order: input.sortOrder,
+  });
+  if (error) throw new Error(error.message);
+  revalidateFaqs();
+}
+
+export async function updateFaq(id: string, input: FaqInput) {
+  const supabase = await createSupabaseServerClient();
+  const { error } = await supabase
+    .from("faqs")
+    .update({
+      category_id: input.categoryId,
+      question: input.question.trim(),
+      answer: input.answer.trim() || null,
+      pinned: input.pinned,
+      sort_order: input.sortOrder,
+    })
+    .eq("id", id);
+  if (error) throw new Error(error.message);
+  revalidateFaqs();
+}
+
+export async function deleteFaq(id: string) {
+  const supabase = await createSupabaseServerClient();
+  const { error } = await supabase.from("faqs").delete().eq("id", id);
+  if (error) throw new Error(error.message);
+  revalidateFaqs();
+}
+
+// ---------- FAQ 카테고리 ----------
+function revalidateFaqCategories() {
+  revalidatePath("/admin/faq/categories");
+  revalidatePath("/admin/faq");
+  revalidatePath("/support/faq");
+}
+
+export async function createFaqCategory(name: string, sortOrder: number) {
+  const supabase = await createSupabaseServerClient();
+  const { error } = await supabase
+    .from("faq_categories")
+    .insert({ name: name.trim(), sort_order: sortOrder });
+  if (error) throw new Error(error.message);
+  revalidateFaqCategories();
+}
+
+export async function updateFaqCategory(id: string, name: string, sortOrder: number) {
+  const supabase = await createSupabaseServerClient();
+  const { error } = await supabase
+    .from("faq_categories")
+    .update({ name: name.trim(), sort_order: sortOrder })
+    .eq("id", id);
+  if (error) throw new Error(error.message);
+  revalidateFaqCategories();
+}
+
+export async function deleteFaqCategory(id: string) {
+  const supabase = await createSupabaseServerClient();
+  const { error } = await supabase.from("faq_categories").delete().eq("id", id);
+  if (error) throw new Error(error.message);
+  revalidateFaqCategories();
+}
+
 // ---------- 인증 ----------
 export async function signOut() {
   const supabase = await createSupabaseServerClient();

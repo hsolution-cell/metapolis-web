@@ -1,19 +1,23 @@
 "use client";
 
-import type { FaqCategoryFilter } from "@/data/faq";
-import { FAQ_CATEGORIES } from "@/data/faq";
+import type { FaqCategory } from "@/lib/faq-db";
 
 type FaqFilterTabsProps = {
-  active: FaqCategoryFilter;
-  onChange: (category: FaqCategoryFilter) => void;
+  categories: FaqCategory[];
+  active: string; // "all" 또는 category id
+  onChange: (categoryId: string) => void;
 };
 
-export default function FaqFilterTabs({ active, onChange }: FaqFilterTabsProps) {
+export default function FaqFilterTabs({ categories, active, onChange }: FaqFilterTabsProps) {
+  const tabs = [
+    { id: "all", label: "전체" },
+    ...categories.map((c) => ({ id: c.id, label: c.name })),
+  ];
+
   return (
     <div className="faq_tabs" role="tablist" aria-label="FAQ 카테고리">
-      {FAQ_CATEGORIES.map((tab) => {
+      {tabs.map((tab) => {
         const isActive = active === tab.id;
-
         return (
           <button
             key={tab.id}

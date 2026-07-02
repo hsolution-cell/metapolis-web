@@ -6,27 +6,21 @@ import SubSectionHead from "@/components/sub/SubSectionHead";
 import EventsPagination from "@/components/sub/events/EventsPagination";
 import FaqFilterTabs from "@/components/sub/faq/FaqFilterTabs";
 import FaqListItem from "@/components/sub/faq/FaqListItem";
-import {
-  FAQ_ITEMS,
-  FAQ_PER_PAGE,
-  filterFaqItems,
-  getFaqListNumber,
-  paginateFaqItems,
-  type FaqCategoryFilter,
-  type FaqItem,
-} from "@/data/faq";
+import { FAQ_PER_PAGE, getFaqListNumber, paginateFaqItems } from "@/data/faq";
+import type { FaqCategory, FaqRecord } from "@/lib/faq-db";
 
 type FaqSectionProps = {
-  items?: FaqItem[];
+  items: FaqRecord[];
+  categories: FaqCategory[];
 };
 
-export default function FaqSection({ items = FAQ_ITEMS }: FaqSectionProps) {
-  const [category, setCategory] = useState<FaqCategoryFilter>("all");
+export default function FaqSection({ items, categories }: FaqSectionProps) {
+  const [category, setCategory] = useState<string>("all");
   const [page, setPage] = useState(1);
   const [openId, setOpenId] = useState<string | null>(null);
 
   const filteredItems = useMemo(
-    () => filterFaqItems(items, category),
+    () => (category === "all" ? items : items.filter((i) => i.categoryId === category)),
     [items, category]
   );
 
@@ -36,12 +30,10 @@ export default function FaqSection({ items = FAQ_ITEMS }: FaqSectionProps) {
   );
 
   useEffect(() => {
-    setTimeout(() => {
-      setOpenId(null);
-    }, 100);
+    setTimeout(() => setOpenId(null), 100);
   }, [category, safePage]);
 
-  const handleCategoryChange = (nextCategory: FaqCategoryFilter) => {
+  const handleCategoryChange = (nextCategory: string) => {
     setCategory(nextCategory);
     setPage(1);
   };
@@ -66,7 +58,11 @@ export default function FaqSection({ items = FAQ_ITEMS }: FaqSectionProps) {
             </p>
 
             <div className="faq_toolbar">
-              <FaqFilterTabs active={category} onChange={handleCategoryChange} />
+              <FaqFilterTabs
+                categories={categories}
+                active={category}
+                onChange={handleCategoryChange}
+              />
             </div>
 
             <div className="faq_table">
@@ -83,12 +79,7 @@ export default function FaqSection({ items = FAQ_ITEMS }: FaqSectionProps) {
                     <FaqListItem
                       key={item.id}
                       item={item}
-                      listNumber={getFaqListNumber(
-                        totalItems,
-                        safePage,
-                        FAQ_PER_PAGE,
-                        index
-                      )}
+                      listNumber={getFaqListNumber(totalItems, safePage, FAQ_PER_PAGE, index)}
                       isOpen={openId === item.id}
                       onToggle={() => handleToggle(item.id)}
                     />

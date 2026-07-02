@@ -1,9 +1,9 @@
 "use client";
 
-import type { FaqItem } from "@/data/faq";
+import type { FaqRecord } from "@/lib/faq-db";
 
 type FaqListItemProps = {
-  item: FaqItem;
+  item: FaqRecord;
   listNumber: number;
   isOpen: boolean;
   onToggle: () => void;
@@ -55,7 +55,7 @@ export default function FaqListItem({
               </span>
               <div
                 className="faq_a_text"
-                dangerouslySetInnerHTML={{ __html: item.answer }}
+                dangerouslySetInnerHTML={{ __html: item.answer ?? "" }}
               />
             </div>
             <span className="faq_col faq_col_action" aria-hidden="true" />

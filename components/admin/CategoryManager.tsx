@@ -2,14 +2,23 @@
 
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import {
-  createCategory,
-  updateCategory,
-  deleteCategory,
-} from "@/app/admin/actions";
-import type { NoticeCategory } from "@/lib/notices-db";
 
-function CategoryRow({ category }: { category: NoticeCategory }) {
+type Category = { id: string; name: string; sortOrder: number };
+
+type Actions = {
+  onCreate: (name: string, sortOrder: number) => Promise<void>;
+  onUpdate: (id: string, name: string, sortOrder: number) => Promise<void>;
+  onDelete: (id: string) => Promise<void>;
+  deleteWarning: string;
+};
+
+function CategoryRow({
+  category,
+  actions,
+}: {
+  category: Category;
+  actions: Actions;
+}) {
   const router = useRouter();
   const [name, setName] = useState(category.name);
   const [order, setOrder] = useState(category.sortOrder);
@@ -35,7 +44,7 @@ function CategoryRow({ category }: { category: NoticeCategory }) {
             disabled={pending || !name.trim()}
             onClick={() =>
               startTransition(async () => {
-                await updateCategory(category.id, name, order);
+                await actions.onUpdate(category.id, name, order);
                 router.refresh();
               })
             }
@@ -47,9 +56,9 @@ function CategoryRow({ category }: { category: NoticeCategory }) {
             className="admin-btn admin-btn--sm admin-btn--danger"
             disabled={pending}
             onClick={() => {
-              if (!confirm("이 구분을 삭제할까요? 이 구분을 쓰던 공지는 '미분류'로 표시됩니다.")) return;
+              if (!confirm(actions.deleteWarning)) return;
               startTransition(async () => {
-                await deleteCategory(category.id);
+                await actions.onDelete(category.id);
                 router.refresh();
               });
             }}
@@ -64,19 +73,30 @@ function CategoryRow({ category }: { category: NoticeCategory }) {
 
 export default function CategoryManager({
   categories,
+  onCreate,
+  onUpdate,
+  onDelete,
+  deleteWarning = "이 구분을 삭제할까요? 이 구분을 쓰던 글은 '미분류'로 표시됩니다.",
 }: {
-  categories: NoticeCategory[];
-}) {
+  categories: Category[];
+} & Partial<Actions>) {
   const router = useRouter();
   const [newName, setNewName] = useState("");
   const [pending, startTransition] = useTransition();
+
+  const actions: Actions = {
+    onCreate: onCreate!,
+    onUpdate: onUpdate!,
+    onDelete: onDelete!,
+    deleteWarning,
+  };
 
   function handleAdd() {
     const name = newName.trim();
     if (!name) return;
     const nextOrder = (categories[categories.length - 1]?.sortOrder ?? 0) + 1;
     startTransition(async () => {
-      await createCategory(name, nextOrder);
+      await actions.onCreate(name, nextOrder);
       setNewName("");
       router.refresh();
     });
@@ -94,7 +114,7 @@ export default function CategoryManager({
         </thead>
         <tbody>
           {categories.map((c) => (
-            <CategoryRow key={c.id} category={c} />
+            <CategoryRow key={c.id} category={c} actions={actions} />
           ))}
           {categories.length === 0 && (
             <tr>
