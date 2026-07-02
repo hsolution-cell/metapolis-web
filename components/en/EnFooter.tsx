@@ -16,7 +16,9 @@ export default function EnFooter() {
         </div>
 
         <div className="f_mid">
-          {/* 영문 푸터에서는 입점문의·대관문의·이용약관·개인정보처리방침·사이트맵 링크 미노출 */}
+          {/* 영문 푸터에서는 링크(입점문의·대관문의·이용약관·개인정보처리방침·사이트맵) 미노출.
+              레이아웃은 국문과 동일하게 유지하기 위해 빈 자리(ul)만 둠 → KOR·ENG는 우측 정렬 */}
+          <ul className="f_nav" aria-hidden="true" />
           <div className="f_lang">
             <button type="button" data-lang="kor" onClick={() => router.push("/")}>
               KOR
