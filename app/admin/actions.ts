@@ -3,6 +3,29 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { cleanupRemovedImages } from "@/lib/storage-cleanup";
+
+type ServerSupabase = Awaited<ReturnType<typeof createSupabaseServerClient>>;
+
+/**
+ * 행의 이미지 관련 컬럼 값들을 조회(수정/삭제 전 스냅샷).
+ * 이후 cleanupRemovedImages 와 조합해 안 쓰게 된 스토리지 이미지를 정리한다.
+ */
+async function fetchRowImageSources(
+  supabase: ServerSupabase,
+  table: string,
+  id: string,
+  columns: string[]
+): Promise<(string | null)[]> {
+  const { data } = await supabase
+    .from(table)
+    .select(columns.join(", "))
+    .eq("id", id)
+    .maybeSingle();
+  if (!data) return [];
+  const row = data as unknown as Record<string, string | null>;
+  return columns.map((c) => row[c] ?? null);
+}
 
 export type NoticeInput = {
   categoryId: string | null;
@@ -34,6 +57,7 @@ export async function createNotice(input: NoticeInput) {
 
 export async function updateNotice(id: string, input: NoticeInput) {
   const supabase = await createSupabaseServerClient();
+  const old = await fetchRowImageSources(supabase, "notices", id, ["body"]);
   const { error } = await supabase
     .from("notices")
     .update({
@@ -45,13 +69,16 @@ export async function updateNotice(id: string, input: NoticeInput) {
     })
     .eq("id", id);
   if (error) throw new Error(error.message);
+  await cleanupRemovedImages(supabase, old, [input.body]);
   revalidateNotices(id);
 }
 
 export async function deleteNotice(id: string) {
   const supabase = await createSupabaseServerClient();
+  const old = await fetchRowImageSources(supabase, "notices", id, ["body"]);
   const { error } = await supabase.from("notices").delete().eq("id", id);
   if (error) throw new Error(error.message);
+  await cleanupRemovedImages(supabase, old);
   revalidateNotices(id);
 }
 
@@ -120,6 +147,7 @@ export async function createEvent(input: EventInput) {
 
 export async function updateEvent(id: string, input: EventInput) {
   const supabase = await createSupabaseServerClient();
+  const old = await fetchRowImageSources(supabase, "events", id, ["thumbnail", "body"]);
   const { error } = await supabase
     .from("events")
     .update({
@@ -132,13 +160,16 @@ export async function updateEvent(id: string, input: EventInput) {
     })
     .eq("id", id);
   if (error) throw new Error(error.message);
+  await cleanupRemovedImages(supabase, old, [input.thumbnail, input.body]);
   revalidateEvents(id);
 }
 
 export async function deleteEvent(id: string) {
   const supabase = await createSupabaseServerClient();
+  const old = await fetchRowImageSources(supabase, "events", id, ["thumbnail", "body"]);
   const { error } = await supabase.from("events").delete().eq("id", id);
   if (error) throw new Error(error.message);
+  await cleanupRemovedImages(supabase, old);
   revalidateEvents(id);
 }
 
@@ -172,6 +203,7 @@ export async function createWinner(input: WinnerInput) {
 
 export async function updateWinner(id: string, input: WinnerInput) {
   const supabase = await createSupabaseServerClient();
+  const old = await fetchRowImageSources(supabase, "winners", id, ["thumbnail", "body"]);
   const { error } = await supabase
     .from("winners")
     .update({
@@ -183,13 +215,16 @@ export async function updateWinner(id: string, input: WinnerInput) {
     })
     .eq("id", id);
   if (error) throw new Error(error.message);
+  await cleanupRemovedImages(supabase, old, [input.thumbnail, input.body]);
   revalidateWinners(id);
 }
 
 export async function deleteWinner(id: string) {
   const supabase = await createSupabaseServerClient();
+  const old = await fetchRowImageSources(supabase, "winners", id, ["thumbnail", "body"]);
   const { error } = await supabase.from("winners").delete().eq("id", id);
   if (error) throw new Error(error.message);
+  await cleanupRemovedImages(supabase, old);
   revalidateWinners(id);
 }
 
@@ -222,6 +257,7 @@ export async function createFaq(input: FaqInput) {
 
 export async function updateFaq(id: string, input: FaqInput) {
   const supabase = await createSupabaseServerClient();
+  const old = await fetchRowImageSources(supabase, "faqs", id, ["answer"]);
   const { error } = await supabase
     .from("faqs")
     .update({
@@ -233,13 +269,16 @@ export async function updateFaq(id: string, input: FaqInput) {
     })
     .eq("id", id);
   if (error) throw new Error(error.message);
+  await cleanupRemovedImages(supabase, old, [input.answer]);
   revalidateFaqs();
 }
 
 export async function deleteFaq(id: string) {
   const supabase = await createSupabaseServerClient();
+  const old = await fetchRowImageSources(supabase, "faqs", id, ["answer"]);
   const { error } = await supabase.from("faqs").delete().eq("id", id);
   if (error) throw new Error(error.message);
+  await cleanupRemovedImages(supabase, old);
   revalidateFaqs();
 }
 
@@ -314,6 +353,7 @@ export async function createStoreEvent(input: StoreEventInput) {
 
 export async function updateStoreEvent(id: string, input: StoreEventInput) {
   const supabase = await createSupabaseServerClient();
+  const old = await fetchRowImageSources(supabase, "store_events", id, ["thumbnail", "body"]);
   const { error } = await supabase
     .from("store_events")
     .update({
@@ -328,13 +368,16 @@ export async function updateStoreEvent(id: string, input: StoreEventInput) {
     })
     .eq("id", id);
   if (error) throw new Error(error.message);
+  await cleanupRemovedImages(supabase, old, [input.thumbnail, input.body]);
   revalidateStoreEvents(id);
 }
 
 export async function deleteStoreEvent(id: string) {
   const supabase = await createSupabaseServerClient();
+  const old = await fetchRowImageSources(supabase, "store_events", id, ["thumbnail", "body"]);
   const { error } = await supabase.from("store_events").delete().eq("id", id);
   if (error) throw new Error(error.message);
+  await cleanupRemovedImages(supabase, old);
   revalidateStoreEvents(id);
 }
 
@@ -439,6 +482,7 @@ export async function createHeroBanner(input: HeroBannerInput) {
 
 export async function updateHeroBanner(id: string, input: HeroBannerInput) {
   const supabase = await createSupabaseServerClient();
+  const old = await fetchRowImageSources(supabase, "hero_banners", id, ["bg", "bg_mobile"]);
   const { error } = await supabase
     .from("hero_banners")
     .update({
@@ -454,13 +498,16 @@ export async function updateHeroBanner(id: string, input: HeroBannerInput) {
     })
     .eq("id", id);
   if (error) throw new Error(error.message);
+  await cleanupRemovedImages(supabase, old, [input.bg, input.bgMobile]);
   revalidateHeroBanners();
 }
 
 export async function deleteHeroBanner(id: string) {
   const supabase = await createSupabaseServerClient();
+  const old = await fetchRowImageSources(supabase, "hero_banners", id, ["bg", "bg_mobile"]);
   const { error } = await supabase.from("hero_banners").delete().eq("id", id);
   if (error) throw new Error(error.message);
+  await cleanupRemovedImages(supabase, old);
   revalidateHeroBanners();
 }
 
@@ -500,6 +547,7 @@ export async function createPopup(input: PopupInput) {
 
 export async function updatePopup(id: string, input: PopupInput) {
   const supabase = await createSupabaseServerClient();
+  const old = await fetchRowImageSources(supabase, "popups", id, ["image"]);
   const { error } = await supabase
     .from("popups")
     .update({
@@ -514,13 +562,16 @@ export async function updatePopup(id: string, input: PopupInput) {
     })
     .eq("id", id);
   if (error) throw new Error(error.message);
+  await cleanupRemovedImages(supabase, old, [input.image]);
   revalidatePopups();
 }
 
 export async function deletePopup(id: string) {
   const supabase = await createSupabaseServerClient();
+  const old = await fetchRowImageSources(supabase, "popups", id, ["image"]);
   const { error } = await supabase.from("popups").delete().eq("id", id);
   if (error) throw new Error(error.message);
+  await cleanupRemovedImages(supabase, old);
   revalidatePopups();
 }
 
