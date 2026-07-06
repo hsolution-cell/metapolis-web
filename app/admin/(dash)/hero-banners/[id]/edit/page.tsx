@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import HeroBannerForm from "@/components/admin/HeroBannerForm";
 import { getHeroBannerById } from "@/lib/hero-banners-db";
+import { buildHeroEventOptions } from "../../event-options";
 
 export const dynamic = "force-dynamic";
 
@@ -10,7 +11,10 @@ type PageProps = {
 
 export default async function EditHeroBannerPage({ params }: PageProps) {
   const { id } = await params;
-  const banner = await getHeroBannerById(id);
+  const [banner, eventOptions] = await Promise.all([
+    getHeroBannerById(id),
+    buildHeroEventOptions(),
+  ]);
 
   if (!banner) {
     notFound();
@@ -25,6 +29,7 @@ export default async function EditHeroBannerPage({ params }: PageProps) {
         mode="edit"
         locale={banner.locale}
         bannerId={banner.id}
+        eventOptions={eventOptions}
         initial={{
           locale: banner.locale,
           badge: banner.badge,

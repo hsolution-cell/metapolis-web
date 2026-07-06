@@ -9,11 +9,18 @@ import {
   type HeroBannerInput,
 } from "@/app/admin/actions";
 
+export type HeroLinkOption = {
+  label: string;
+  href: string;
+};
+
 type HeroBannerFormProps = {
   mode: "new" | "edit";
   locale: "ko" | "en";
   bannerId?: string;
   initial?: HeroBannerInput;
+  /** 링크 자동 채움용 이벤트 목록 */
+  eventOptions?: HeroLinkOption[];
 };
 
 export default function HeroBannerForm({
@@ -21,6 +28,7 @@ export default function HeroBannerForm({
   locale,
   bannerId,
   initial,
+  eventOptions = [],
 }: HeroBannerFormProps) {
   const router = useRouter();
   const listPath =
@@ -108,11 +116,28 @@ export default function HeroBannerForm({
 
       <div className="admin-field">
         <label htmlFor="linkHref">설명 링크 (선택)</label>
+        {eventOptions.length > 0 && (
+          <select
+            aria-label="이벤트 선택으로 링크 채우기"
+            value={eventOptions.some((o) => o.href === linkHref) ? linkHref : ""}
+            onChange={(e) => {
+              if (e.target.value) setLinkHref(e.target.value);
+            }}
+            style={{ marginBottom: 8 }}
+          >
+            <option value="">이벤트 선택으로 자동 입력…</option>
+            {eventOptions.map((o) => (
+              <option key={o.href} value={o.href}>
+                {o.label}
+              </option>
+            ))}
+          </select>
+        )}
         <input
           id="linkHref"
           value={linkHref}
           onChange={(e) => setLinkHref(e.target.value)}
-          placeholder="예: /events 또는 https://..."
+          placeholder="예: /events 또는 https://... (직접 입력도 가능)"
         />
       </div>
 
