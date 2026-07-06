@@ -183,7 +183,7 @@ export default function LocationKakaoMap() {
       <div
         ref={embedRef}
         className="location_map_embed"
-        aria-label="메타폴리스 카카오맵 위치"
+        aria-label="메타폴리스몰 카카오맵 위치"
       />
     </figure>
   );

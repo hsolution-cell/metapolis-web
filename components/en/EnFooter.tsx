@@ -11,7 +11,7 @@ export default function EnFooter() {
       <div className="content_inner">
         <div className="f_top">
           <Link href="/en" className="f_logo">
-            <img src="/img/logo_footer.svg" alt="METAPOLIS" />
+            <img src="/img/logo_footer.svg" alt="METAPOLIS MALL" />
           </Link>
         </div>
 
@@ -29,7 +29,7 @@ export default function EnFooter() {
 
         {/* 2행: 저작권(좌) ↔ KOR · ENG(우) */}
         <div className="f_bottom">
-          <p className="f_copy">&copy; 2026 METAPOLIS. ALL RIGHTS RESERVED.</p>
+          <p className="f_copy">&copy; 2026 METAPOLIS MALL. ALL RIGHTS RESERVED.</p>
           <div className="f_lang">
             <button type="button" data-lang="kor" onClick={() => router.push("/")}>
               KOR

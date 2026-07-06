@@ -1,4 +1,4 @@
-const MARQUEE_TEXT = "Brands at Metapolis";
+const MARQUEE_TEXT = "Brands at Metapolis Mall";
 const MARQUEE_REPEAT = 8;
 
 export default function StoresBrandsMarquee() {

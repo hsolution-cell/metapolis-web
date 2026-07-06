@@ -64,7 +64,7 @@ export default async function AdminHome() {
     { label: "메인 배너", href: "/admin/hero-banners", value: `${bannersKo} / ${bannersEn}`, sub: "노출중 국문 / 영문" },
     { label: "팝업", href: "/admin/popups", value: `${popupsKo} / ${popupsEn}`, sub: "노출중 국문 / 영문" },
     { label: "고객알림", href: "/admin/notices", value: `${notices}건` },
-    { label: "메타폴리스 이벤트", href: "/admin/events", value: `${eventsOngoing}건`, sub: `진행중 · 전체 ${events}건` },
+    { label: "메타폴리스몰 이벤트", href: "/admin/events", value: `${eventsOngoing}건`, sub: `진행중 · 전체 ${events}건` },
     { label: "매장 이벤트", href: "/admin/store-events", value: `${storeEventsOngoing}건`, sub: "진행중" },
     { label: "당첨자 발표", href: "/admin/winners", value: `${winners}건` },
     { label: "자주 묻는 질문", href: "/admin/faq", value: `${faqs}건` },

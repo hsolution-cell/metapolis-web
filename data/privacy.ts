@@ -13,7 +13,7 @@ export const PRIVACY_REVISED_AT = "2026년 06월 17일 시행";
 
 const companyLabel = LEGAL_COMPANY_NAME.trim()
   ? `${LEGAL_COMPANY_NAME.trim()}(이하 "회사")`
-  : '메타폴리스(이하 "회사")';
+  : '메타폴리스몰(이하 "회사")';
 
 const contactPhone = PRIVACY_OFFICER_PHONE.trim() || INQUIRY_PHONE;
 
@@ -33,7 +33,7 @@ export const PRIVACY_ARTICLES: LegalArticle[] = [
     blocks: [
       {
         type: "paragraph",
-        text: `${companyLabel}는 「개인정보 보호법」에 따라 이용자 정보를 보호하며, 본 방침은 메타폴리스 공식 홈페이지에 적용됩니다.`,
+        text: `${companyLabel}는 「개인정보 보호법」에 따라 이용자 정보를 보호하며, 본 방침은 메타폴리스몰 공식 홈페이지에 적용됩니다.`,
       },
       {
         type: "paragraph",

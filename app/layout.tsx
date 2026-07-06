@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     title: DEFAULT_META.title,
     description: DEFAULT_META.description,
     type: "website",
-    siteName: "METAPOLIS",
+    siteName: "METAPOLIS MALL",
     images: [{ url: "/img/thumbnail.png", width: 1200, height: 630 }],
   },
 };

@@ -48,7 +48,7 @@ export default function NoticesSection({ items }: NoticesSectionProps) {
               titleId="notices-list-title"
             />
             <p className="notices_lead">
-              메타폴리스의 운영 소식과 안내사항을 전해드립니다
+              메타폴리스몰의 운영 소식과 안내사항을 전해드립니다
             </p>
 
             <div className="notices_toolbar">

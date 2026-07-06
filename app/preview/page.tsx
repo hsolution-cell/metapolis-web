@@ -19,7 +19,7 @@ type PreviewLink = {
 const GROUPS: { title: string; links: PreviewLink[] }[] = [
   { title: "메인", links: [{ href: "/", label: "메인 페이지", legacy: "index.html" }] },
   {
-    title: "메타폴리스",
+    title: "메타폴리스몰",
     links: SUB_PAGES.slice(0, 4).map((p) => ({ href: p.path, label: p.label, legacy: `${p.legacy}.html` })),
   },
   {
@@ -40,7 +40,7 @@ export default function PreviewPage() {
   return (
     <div className="preview_wrap">
       <div className="preview_head">
-        <h1>METAPOLIS 페이지 시안 미리보기</h1>
+        <h1>METAPOLIS MALL 페이지 시안 미리보기</h1>
         <p>
           각 링크는 헤더·푸터가 적용된 상태에서 해당 페이지를 확인할 수 있습니다.
         </p>

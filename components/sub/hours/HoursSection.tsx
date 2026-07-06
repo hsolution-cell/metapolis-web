@@ -78,7 +78,7 @@ const HOURS_CATEGORIES: HoursCategory[] = [
       },
       {
         category: "내과 / 소화기",
-        name: "메타폴리스내과",
+        name: "메타폴리스몰내과",
         logo: "/img/sub/hours/icons/internal.png",
         schedules: [
           { label: "월·화·목·금", value: "09:30 - 19:00" },
@@ -89,7 +89,7 @@ const HOURS_CATEGORIES: HoursCategory[] = [
       },
       {
         category: "치과",
-        name: "메타폴리스치과",
+        name: "메타폴리스몰치과",
         logo: "/img/sub/hours/icons/dental.png",
         schedules: [
           { label: "월·수·금", value: "10:00 - 19:00" },

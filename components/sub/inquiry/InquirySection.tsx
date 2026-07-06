@@ -78,7 +78,7 @@ export default function InquirySection({
   eyebrow = "We're Here to Help",
   title = (
     <>
-      메타폴리스에
+      메타폴리스몰에
       <br />
       무엇이든 문의하세요
     </>
@@ -90,7 +90,7 @@ export default function InquirySection({
   cardBadge = "• 고객센터 안내 •",
   cardLead = (
     <>
-      메타폴리스에 대한 <b>문의 사항은 아래 번호로 연락</b>해 주십시오
+      메타폴리스몰에 대한 <b>문의 사항은 아래 번호로 연락</b>해 주십시오
     </>
   ),
   phone = INQUIRY_PHONE,

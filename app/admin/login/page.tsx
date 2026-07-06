@@ -35,7 +35,7 @@ export default function AdminLoginPage() {
   return (
     <div className="admin-login">
       <form className="admin-login__card" onSubmit={handleSubmit}>
-        <h1 className="admin-login__title">METAPOLIS 관리자</h1>
+        <h1 className="admin-login__title">METAPOLIS MALL 관리자</h1>
         <p className="admin-login__desc">관리자 계정으로 로그인해 주세요.</p>
 
         <div className="admin-field">

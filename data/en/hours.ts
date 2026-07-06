@@ -57,7 +57,7 @@ export const EN_HOURS_CATEGORIES: EnHoursCategory[] = [
       },
       {
         category: "Internal Medicine",
-        name: "Metapolis Internal Medicine",
+        name: "Metapolis Mall Internal Medicine",
         logo: "/img/sub/hours/icons/internal.png",
         schedules: [
           { label: "Mon, Tue, Thu, Fri", value: "09:30 - 19:00" },
@@ -68,7 +68,7 @@ export const EN_HOURS_CATEGORIES: EnHoursCategory[] = [
       },
       {
         category: "Dentistry",
-        name: "Metapolis Dental Clinic",
+        name: "Metapolis Mall Dental Clinic",
         logo: "/img/sub/hours/icons/dental.png",
         schedules: [
           { label: "Mon, Wed, Fri", value: "10:00 - 19:00" },

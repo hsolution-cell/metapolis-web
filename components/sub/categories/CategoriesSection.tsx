@@ -83,7 +83,7 @@ export default function CategoriesSection({ allStores, ongoing }: CategoriesSect
 
               <div className="floors_nav">
                 <p className="floors_nav_label">
-                  <span className="floors_nav_label_site">METAPOLIS DONGTAN</span>
+                  <span className="floors_nav_label_site">METAPOLIS MALL DONGTAN</span>
                   <span className="floors_nav_label_dot" aria-hidden="true">
                     {" · "}
                   </span>

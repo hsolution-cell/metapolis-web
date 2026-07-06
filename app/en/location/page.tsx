@@ -9,8 +9,8 @@ import {
 } from "@/data/en/parking";
 
 export const metadata: Metadata = {
-  title: "METAPOLIS | Access & Parking",
-  description: "How to get to METAPOLIS and parking guide, fees, and validation.",
+  title: "METAPOLIS MALL | Access & Parking",
+  description: "How to get to METAPOLIS MALL and parking guide, fees, and validation.",
 };
 
 export default function Page() {
@@ -36,7 +36,7 @@ export default function Page() {
           </>
         }
         mapImage="/img/sub/parking/map-en.png"
-        mapAlt="Metapolis Block A / Block B parking entrance map"
+        mapAlt="Metapolis Mall Block A / Block B parking entrance map"
         caption="No vehicular movement between Blocks A & B"
         addressText="220, Dongtanjungang-ro, Dongtan-gu, Hwaseong-si, Gyeonggi-do"
         processLabel="Process"

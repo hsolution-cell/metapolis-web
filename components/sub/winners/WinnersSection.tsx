@@ -51,7 +51,7 @@ export default function WinnersSection({
               titleId="winners-list-title"
             />
             <p className="winners_lead">
-              메타폴리스 이벤트에 참여해 주신 고객님께 감사드리며, 당첨자 명단을
+              메타폴리스몰 이벤트에 참여해 주신 고객님께 감사드리며, 당첨자 명단을
               확인해 보세요!
             </p>
 

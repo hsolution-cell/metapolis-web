@@ -23,7 +23,7 @@ export default function Footer() {
       <div className="content_inner">
         <div className="f_top">
           <Link href="/" className="f_logo">
-            <img src="/img/logo_footer.svg" alt="METAPOLIS" />
+            <img src="/img/logo_footer.svg" alt="METAPOLIS MALL" />
           </Link>
         </div>
 
@@ -66,7 +66,7 @@ export default function Footer() {
             TEL 031-371-7000 <span className="f_sep">|</span>
             FAX 031-613-2891
           </p>
-          <p className="f_copy">&copy; 2026 METAPOLIS. ALL RIGHTS RESERVED.</p>
+          <p className="f_copy">&copy; 2026 METAPOLIS MALL. ALL RIGHTS RESERVED.</p>
         </div>
       </div>
     </footer>

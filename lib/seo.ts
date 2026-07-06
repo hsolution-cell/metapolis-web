@@ -1,7 +1,7 @@
 /** 상세 게시글용 openGraph 메타 — 이미지 있으면 og:image 포함(없으면 루트 기본 og 유지) */
 export function postOpenGraph(title: string, image?: string | null) {
   return {
-    title: `METAPOLIS | ${title}`,
+    title: `METAPOLIS MALL | ${title}`,
     description: title,
     ...(image ? { images: [image] } : {}),
   };

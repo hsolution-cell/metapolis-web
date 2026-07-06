@@ -12,7 +12,7 @@ export default async function AdminEventsPage() {
   return (
     <>
       <div className="admin-page-head">
-        <h1>메타폴리스 이벤트</h1>
+        <h1>메타폴리스몰 이벤트</h1>
         <Link href="/admin/events/new" className="admin-btn admin-btn--primary">
           + 새 이벤트
         </Link>

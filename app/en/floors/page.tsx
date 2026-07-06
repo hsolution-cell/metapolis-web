@@ -6,8 +6,8 @@ import { resolveFloorGuideSelection } from "@/data/floorGuide";
 import { listStores } from "@/lib/stores-db";
 
 export const metadata: Metadata = {
-  title: "METAPOLIS | Floor Guide",
-  description: "METAPOLIS floor-by-floor store directory for Block A and Block B.",
+  title: "METAPOLIS MALL | Floor Guide",
+  description: "METAPOLIS MALL floor-by-floor store directory for Block A and Block B.",
 };
 
 type PageProps = {

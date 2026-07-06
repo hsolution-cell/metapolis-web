@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-const MARQUEE_TEXT = "METAPOLIS DONGTAN";
+const MARQUEE_TEXT = "METAPOLIS MALL DONGTAN";
 
 type HoursHeroVisualProps = {
   open?: string;

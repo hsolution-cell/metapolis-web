@@ -63,7 +63,7 @@ export default function EnHeader() {
           <div className="header_inner">
             <div className="h_logo">
               <Link href="/en">
-                <img src="/img/logo_metapolis.svg" alt="METAPOLIS" className="h_logo_icon" />
+                <img src="/img/logo_metapolis.svg" alt="METAPOLIS MALL" className="h_logo_icon" />
               </Link>
             </div>
 

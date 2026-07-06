@@ -24,9 +24,9 @@ export default async function Page() {
       <EventsSection
         events={events}
         kind="store"
-        eyebrow="Store Events at Metapolis"
+        eyebrow="Store Events at Metapolis Mall"
         title={<strong>매장 이벤트</strong>}
-        lead="메타폴리스 입점 매장에서 진행 중인 다양한 프로모션과 혜택을 확인해 보세요"
+        lead="메타폴리스몰 입점 매장에서 진행 중인 다양한 프로모션과 혜택을 확인해 보세요"
         titleId="store-events-list-title"
       />
     </SubPageLayout>

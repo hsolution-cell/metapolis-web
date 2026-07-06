@@ -15,11 +15,11 @@ export async function generateMetadata({ params }: PageProps) {
   const item = await getNoticeById(id);
 
   if (!item) {
-    return { title: "METAPOLIS | 고객알림" };
+    return { title: "METAPOLIS MALL | 고객알림" };
   }
 
   return {
-    title: `METAPOLIS | ${item.title}`,
+    title: `METAPOLIS MALL | ${item.title}`,
     description: item.title,
     openGraph: postOpenGraph(item.title, firstImageSrc(item.body)),
   };

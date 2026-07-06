@@ -11,7 +11,7 @@ export const DEFAULT_SUB_BANNER = "/img/sub/banner/default.jpg";
 
 /** GNB 1뎁스 그룹별 서브 히어로 배경 (그룹 내 페이지 공통) */
 export const GNB_BANNER_IMAGES: Record<number, string> = {
-  0: "/img/sub/banner/menu1.png", // 메타폴리스
+  0: "/img/sub/banner/menu1.png", // 메타폴리스몰
   1: "/img/sub/banner/menu2.png", // 매장안내
   2: "/img/sub/banner/menu3.png", // 이벤트
   3: "/img/sub/banner/menu4.png", // 고객센터

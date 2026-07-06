@@ -4,25 +4,25 @@ import AboutSection from "@/components/sub/about/AboutSection";
 import { EN_ABOUT_WAYS } from "@/data/en/about";
 
 export const metadata: Metadata = {
-  title: "METAPOLIS | About METAPOLIS",
-  description: "About METAPOLIS — Dongtan's premier heart of premium lifestyle.",
+  title: "METAPOLIS MALL | About METAPOLIS MALL",
+  description: "About METAPOLIS MALL — Dongtan's premier heart of premium lifestyle.",
 };
 
 export default function Page() {
   return (
     <EnSubLayout
       currentPath="/en/about"
-      label="About METAPOLIS"
+      label="About METAPOLIS MALL"
       bannerImage="/img/sub/banner/menu1.png"
       className="about"
     >
       <AboutSection
         introEyebrow="Mall Introduction"
-        introTitle={<b>About METAPOLIS</b>}
+        introTitle={<b>About METAPOLIS MALL</b>}
         lead={
           <>
             <p>
-              Metapolis breathes new inspiration into your daily life, turning an
+              Metapolis Mall breathes new inspiration into your daily life, turning an
               ordinary day into an extraordinary scene.
             </p>
             <p>
@@ -30,7 +30,7 @@ export default function Page() {
               nature-embraced terrace. Enjoy joyful moments built together with
               your loved ones, and experience the comforting stay delivered by our
               thoughtfully designed spaces. Where shopping, dining, and culture
-              seamlessly blend — Metapolis, the premier heart of Dongtan&apos;s
+              seamlessly blend — Metapolis Mall, the premier heart of Dongtan&apos;s
               premium lifestyle.
             </p>
             <p>

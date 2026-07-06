@@ -117,7 +117,7 @@ type BranchSectionProps = {
 };
 
 export default function BranchSection({
-  title = "메타폴리스 층별 주요 매장 안내",
+  title = "메타폴리스몰 층별 주요 매장 안내",
   desc = "층마다 다르게 보여지는 다채로운 즐거움을 지금 한눈에 확인해 보세요",
   backLabel = "돌아가기",
   ariaLabel = "지점 소개",
@@ -201,9 +201,9 @@ export default function BranchSection({
       </div>
       <div className="main_branch_watermark" aria-hidden="true">
         <div className="main_branch_watermark_track">
-          <p className="main_branch_watermark_text">METAPOLIS DONGTAN METAPOLIS DONGTAN</p>
+          <p className="main_branch_watermark_text">METAPOLIS MALL DONGTAN METAPOLIS MALL DONGTAN</p>
           <p className="main_branch_watermark_text" aria-hidden="true">
-            METAPOLIS DONGTAN METAPOLIS DONGTAN
+            METAPOLIS MALL DONGTAN METAPOLIS MALL DONGTAN
           </p>
         </div>
       </div>

@@ -115,7 +115,7 @@ export async function deleteCategory(id: string) {
   revalidateCategories();
 }
 
-// ---------- 메타폴리스 이벤트 ----------
+// ---------- 메타폴리스몰 이벤트 ----------
 export type EventInput = {
   title: string;
   startDate: string;

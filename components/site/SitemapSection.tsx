@@ -19,7 +19,7 @@ export default function SitemapSection() {
           <div className="site_sitemap_head">
             <h2 className="site_page_title">사이트맵</h2>
             <p className="site_sitemap_desc">
-              메타폴리스 홈페이지의 전체 메뉴를 한눈에 확인하실 수 있습니다.
+              메타폴리스몰 홈페이지의 전체 메뉴를 한눈에 확인하실 수 있습니다.
             </p>
           </div>
 

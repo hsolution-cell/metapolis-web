@@ -107,7 +107,7 @@ export default function ParkingSection({
     </>
   ),
   mapImage = "/img/sub/parking/map.png",
-  mapAlt = "메타폴리스 A블록·B블록 주차장 입구 안내 지도",
+  mapAlt = "메타폴리스몰 A블록·B블록 주차장 입구 안내 지도",
   caption = "지하주차장 진입 후 자동차로는 블록 간 이동할 수 없습니다.",
   addressText,
   processLabel = "Process",

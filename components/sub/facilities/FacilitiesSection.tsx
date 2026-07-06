@@ -32,7 +32,7 @@ export default function FacilitiesSection() {
               titleId="facilities-cards-title"
             />
             <p className="facilities_cards_lead">
-              메타폴리스는 모든 고객이 편리하게 머무를 수 있도록 다양한
+              메타폴리스몰은 모든 고객이 편리하게 머무를 수 있도록 다양한
               편의시설을 운영합니다
             </p>
 

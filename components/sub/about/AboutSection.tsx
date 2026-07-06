@@ -27,7 +27,7 @@ type AboutSectionProps = {
 const DEFAULT_LEAD = (
   <>
     <p>
-      메타폴리스는 당신의 일상에 새로운 감각을 불어넣고, 평범한 하루를 특별한
+      메타폴리스몰은 당신의 일상에 새로운 감각을 불어넣고, 평범한 하루를 특별한
       장면으로 바꿔놓습니다.
     </p>
     <p>
@@ -35,7 +35,7 @@ const DEFAULT_LEAD = (
       소중한 사람과 즐겁게 쌓아가는 오늘의 시간, 세심하게 설계된 공간이 선사하는
       편안한 머무름. <br />
       쇼핑·다이닝·컬처가 자연스럽게 어우러지는 동탄 프리미엄 라이프스타일의 중심,
-      메타폴리스.
+      메타폴리스몰.
     </p>
     <p>
       일상을 산책하듯 머무는 이곳에서, 기분 좋은 힐링으로 특별한 하루를 맞이해
@@ -52,7 +52,7 @@ const DEFAULT_WAYS: AboutWay[] = [
     shape: "rect",
     src: "/img/sub/about/strolling.png",
     alt: "햇살이 비치는 산책로와 벤치",
-    deco: "METAPOLIS STROLLING",
+    deco: "METAPOLIS MALL STROLLING",
   },
   {
     num: "02 함께",
@@ -61,24 +61,24 @@ const DEFAULT_WAYS: AboutWay[] = [
     shape: "circle",
     src: "/img/sub/about/dining.png",
     alt: "셰프가 요리를 플레이팅하는 모습",
-    deco: "METAPOLIS DINING",
+    deco: "METAPOLIS MALL DINING",
     reverse: true,
   },
   {
     num: "03 편하게",
     title: "Living",
-    desc: "세심하게 설계된 공간이 선사하는 편안한 머무름. 동탄 프리미엄 라이프스타일의 중심, 메타폴리스에서 일상을 설계해 보세요.",
+    desc: "세심하게 설계된 공간이 선사하는 편안한 머무름. 동탄 프리미엄 라이프스타일의 중심, 메타폴리스몰에서 일상을 설계해 보세요.",
     shape: "rect",
     src: "/img/sub/about/living.png",
     alt: "모던한 라운지 인테리어",
-    deco: "METAPOLIS LIVING",
+    deco: "METAPOLIS MALL LIVING",
     decoClassName: "about_way_deco--living",
   },
 ];
 
 export default function AboutSection({
   introEyebrow = "Mall Introduction",
-  introTitle = <b>METAPOLIS</b>,
+  introTitle = <b>METAPOLIS MALL</b>,
   lead = DEFAULT_LEAD,
   waysEyebrow = "Three Ways to Stay",
   waysTitle = (

@@ -11,10 +11,10 @@ export type NavGroup = {
 
 export const GNB_GROUPS: NavGroup[] = [
   {
-    label: "메타폴리스",
+    label: "메타폴리스몰",
     href: "/about",
     items: [
-      { label: "메타폴리스 소개", href: "/about" },
+      { label: "메타폴리스몰 소개", href: "/about" },
       { label: "영업시간", href: "/hours" },
       { label: "오시는 길", href: "/location" },
       { label: "주차안내", href: "/parking" },
@@ -34,7 +34,7 @@ export const GNB_GROUPS: NavGroup[] = [
     label: "이벤트",
     href: "/events",
     items: [
-      { label: "메타폴리스 이벤트", href: "/events" },
+      { label: "메타폴리스몰 이벤트", href: "/events" },
       { label: "매장 이벤트", href: "/events/stores" },
       { label: "당첨자 발표", href: "/events/winners" },
     ],

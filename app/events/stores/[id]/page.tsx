@@ -15,10 +15,10 @@ export async function generateMetadata({ params }: PageProps) {
   const { id } = await params;
   const event = await getStoreEventById(id);
   if (!event) {
-    return { title: "METAPOLIS | 매장 이벤트" };
+    return { title: "METAPOLIS MALL | 매장 이벤트" };
   }
   return {
-    title: `METAPOLIS | ${event.title}`,
+    title: `METAPOLIS MALL | ${event.title}`,
     description: event.title,
     openGraph: postOpenGraph(event.title, event.thumbnail),
   };

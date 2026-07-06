@@ -2,7 +2,7 @@
 export type EnNavItem = { label: string; href: string };
 
 export const EN_NAV: EnNavItem[] = [
-  { label: "About METAPOLIS", href: "/en/about" },
+  { label: "About METAPOLIS MALL", href: "/en/about" },
   { label: "Hours", href: "/en/hours" },
   { label: "Access & Parking", href: "/en/location" },
   { label: "Floor Guide", href: "/en/floors" },

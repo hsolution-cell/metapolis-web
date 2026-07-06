@@ -7,13 +7,13 @@ export const EN_HERO_SLIDES: HeroSlide[] = [
     bg: "/img/hero_bg_01.png",
     bgMobile: "/img/hero_bg_01_mo.png",
     badge: "NOTICE",
-    title: "A joyful daily stroll\nat the all-new METAPOLIS",
+    title: "A joyful daily stroll\nat the all-new METAPOLIS MALL",
     desc: "A new beginning this May, a new name.",
   },
 ];
 
 export const EN_BRANCH = {
-  title: "Metapolis Store Directory by Floor",
+  title: "Metapolis Mall Store Directory by Floor",
   desc: "Discover the endless fun at Time Terrace at a glance",
   backLabel: "Back",
 };
@@ -23,7 +23,7 @@ export type EnFaqItem = { num: string; question: string; answer: string };
 export const EN_FAQ_ITEMS: EnFaqItem[] = [
   {
     num: "01",
-    question: "What is the parking policy at Metapolis?",
+    question: "What is the parking policy at Metapolis Mall?",
     answer:
       'Free for the first 30 mins, then 500 won per 10 mins. Free parking varies by purchase amount. See <a href="/en/location">Access &amp; Parking</a> for details.',
   },
@@ -82,7 +82,7 @@ export const EN_FAQ_INTRO = {
 };
 
 export const EN_LOCATION = {
-  desc: "Enjoy a relaxing time at Metapolis, a place to stroll and unwind.",
+  desc: "Enjoy a relaxing time at Metapolis Mall, a place to stroll and unwind.",
   addressEn: "220, Dongtanjungang-ro, Dongtan-gu, Hwaseong-si, Gyeonggi-do",
   tel: "031-371-7000",
   hour: "10:30 - 22:00",

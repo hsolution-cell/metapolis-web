@@ -15,7 +15,7 @@ export function buildPageMetadata({ path }: BuildPageMetadataOptions): Metadata 
       title: meta.title,
       description: meta.description,
       type: "website",
-      siteName: "METAPOLIS",
+      siteName: "METAPOLIS MALL",
       images: [{ url: "/img/thumbnail.png", width: 1200, height: 630 }],
     },
   };

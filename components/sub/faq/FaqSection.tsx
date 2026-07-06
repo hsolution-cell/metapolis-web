@@ -54,7 +54,7 @@ export default function FaqSection({ items, categories }: FaqSectionProps) {
               titleId="faq-list-title"
             />
             <p className="faq_lead">
-              메타폴리스 방문 전, 가장 많이 찾으시는 문의사항을 모았습니다.
+              메타폴리스몰 방문 전, 가장 많이 찾으시는 문의사항을 모았습니다.
             </p>
 
             <div className="faq_toolbar">

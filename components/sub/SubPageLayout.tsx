@@ -24,6 +24,7 @@ export default function SubPageLayout({
         <SubTopBanner {...ctx} bannerImage={bannerImage} />
         <div className="sub_body ">
           {children}
+          
         </div>
       </div>
     </>

@@ -3,7 +3,7 @@ import { LEGAL_COMPANY_NAME } from "@/data/legalContact";
 
 export const TERMS_REVISED_AT = "2026년 06월 17일 시행";
 
-const SITE_NAME = "메타폴리스";
+const SITE_NAME = "메타폴리스몰";
 const OPERATOR = LEGAL_COMPANY_NAME.trim() || SITE_NAME;
 
 export const TERMS_ARTICLES: LegalArticle[] = [
@@ -13,7 +13,7 @@ export const TERMS_ARTICLES: LegalArticle[] = [
     blocks: [
       {
         type: "paragraph",
-        text: `이 약관은 ${OPERATOR}가 운영하는 메타폴리스 공식 홈페이지(이하 "홈페이지")에서 제공하는 정보 서비스(이하 "서비스") 이용과 관련하여 ${OPERATOR}와 이용자의 권리·의무 및 책임사항을 규정함을 목적으로 합니다.`,
+        text: `이 약관은 ${OPERATOR}가 운영하는 메타폴리스몰 공식 홈페이지(이하 "홈페이지")에서 제공하는 정보 서비스(이하 "서비스") 이용과 관련하여 ${OPERATOR}와 이용자의 권리·의무 및 책임사항을 규정함을 목적으로 합니다.`,
       },
     ],
   },
@@ -64,7 +64,7 @@ export const TERMS_ARTICLES: LegalArticle[] = [
       {
         type: "ordered-list",
         items: [
-          "메타폴리스 소개, 영업시간, 오시는 길, 주차 안내",
+          "메타폴리스몰 소개, 영업시간, 오시는 길, 주차 안내",
           "매장·층별·카테고리·편의시설 안내",
           "이벤트·프로모션·당첨자 발표 등 안내",
           "자주 묻는 질문 및 고객센터 연락 안내",

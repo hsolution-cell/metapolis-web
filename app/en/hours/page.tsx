@@ -4,8 +4,8 @@ import HoursSection from "@/components/sub/hours/HoursSection";
 import { EN_HOURS_CATEGORIES } from "@/data/en/hours";
 
 export const metadata: Metadata = {
-  title: "METAPOLIS | Hours",
-  description: "METAPOLIS opening hours — open year-round, 10:30 AM to 10:00 PM.",
+  title: "METAPOLIS MALL | Hours",
+  description: "METAPOLIS MALL opening hours — open year-round, 10:30 AM to 10:00 PM.",
 };
 
 export default function Page() {

@@ -19,10 +19,10 @@ export default function StoresSection() {
           >
             <SubSectionHead
               className="stores_brands_head"
-              eyebrow="Brands at Metapolis"
+              eyebrow="Brands at Metapolis Mall"
               title={
                 <>
-                  <strong>메타폴리스를 빛내는 입점 브랜드</strong>
+                  <strong>메타폴리스몰을 빛내는 입점 브랜드</strong>
                 </>
               }
               titleId="stores-brands-title"

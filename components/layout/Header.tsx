@@ -102,7 +102,7 @@ export default function Header() {
               <Link href="/">
                 <img
                   src="/img/logo_metapolis.svg"
-                  alt="METAPOLIS"
+                  alt="METAPOLIS MALL"
                   className="h_logo_icon"
                 />
               </Link>

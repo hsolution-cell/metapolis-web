@@ -21,7 +21,7 @@ export default function FaqSection({
   tags = FAQ_TAGS,
   title = (
     <>
-      메타폴리스 방문 전,
+      메타폴리스몰 방문 전,
       <br />
       <strong>가장 많이 찾는 질문</strong>
     </>
@@ -66,7 +66,7 @@ export default function FaqSection({
     >
       <div className="main_faq_bg" aria-hidden="true" />
       <p className="main_faq_watermark" aria-hidden="true">
-        METAPOLIS
+        METAPOLIS MALL
       </p>
 
       <div className="main_faq_inner content_inner">
