@@ -61,7 +61,7 @@ const DEFAULT_WAYS: AboutWay[] = [
     shape: "circle",
     src: "/img/sub/about/dining.png",
     alt: "셰프가 요리를 플레이팅하는 모습",
-    deco: "METAPOLIS MALL DINING",
+    deco: "METAPOLIS DINING",
     reverse: true,
   },
   {

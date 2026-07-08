@@ -17,7 +17,7 @@ export const EN_ABOUT_WAYS = [
     shape: "circle" as const,
     src: "/img/sub/about/dining.png",
     alt: "A chef plating a dish",
-    deco: "METAPOLIS MALL DINING",
+    deco: "METAPOLIS DINING",
     reverse: true,
   },
   {
