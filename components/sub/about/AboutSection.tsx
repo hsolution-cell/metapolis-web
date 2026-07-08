@@ -52,7 +52,7 @@ const DEFAULT_WAYS: AboutWay[] = [
     shape: "rect",
     src: "/img/sub/about/strolling.png",
     alt: "햇살이 비치는 산책로와 벤치",
-    deco: "METAPOLIS MALL STROLLING",
+    deco: "METAPOLIS STROLLING",
   },
   {
     num: "02 함께",
@@ -71,7 +71,7 @@ const DEFAULT_WAYS: AboutWay[] = [
     shape: "rect",
     src: "/img/sub/about/living.png",
     alt: "모던한 라운지 인테리어",
-    deco: "METAPOLIS MALL LIVING",
+    deco: "METAPOLIS LIVING",
     decoClassName: "about_way_deco--living",
   },
 ];

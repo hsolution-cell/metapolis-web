@@ -8,7 +8,7 @@ export const EN_ABOUT_WAYS = [
     shape: "rect" as const,
     src: "/img/sub/about/strolling.png",
     alt: "A sunlit walking path with benches",
-    deco: "METAPOLIS MALL STROLLING",
+    deco: "METAPOLIS STROLLING",
   },
   {
     num: "02 Connect",
@@ -27,7 +27,7 @@ export const EN_ABOUT_WAYS = [
     shape: "rect" as const,
     src: "/img/sub/about/living.png",
     alt: "A modern lounge interior",
-    deco: "METAPOLIS MALL LIVING",
+    deco: "METAPOLIS LIVING",
     decoClassName: "about_way_deco--living",
   },
 ];
