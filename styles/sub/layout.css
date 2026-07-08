@@ -253,7 +253,7 @@
   display: block;
   padding: 12px 20px;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 500;
   color: #8a6e3e;
   text-align: center;
   white-space: nowrap;
@@ -641,4 +641,3 @@
 .sub_section_title strong {
   font-weight: 700;
 }
-
