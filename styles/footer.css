@@ -16,6 +16,7 @@ footer .content_inner {
   margin-bottom: 60px;
 }
 .f_logo {
+  max-width: 330px;
   display: inline-block;
   line-height: 0;
 }
@@ -105,7 +106,9 @@ footer .content_inner {
   white-space: nowrap;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.25s ease, transform 0.25s ease;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
 }
 .f_toast.is-show {
   opacity: 1;

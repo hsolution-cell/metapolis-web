@@ -9,7 +9,7 @@ export default function CateSection() {
           <h2 className="main_cate_title">
             일상의 시간을 산책하던 타임테라스의 설렘,
             <br />
-            <strong>새로운 이름 메타폴리스몰로 더 높이 도약합니다.</strong>
+            <strong>새로운 이름 메타폴리스몰로 도약합니다.</strong>
           </h2>
           <div className="main_cate_hours">
             OPENING HOURS <br />
