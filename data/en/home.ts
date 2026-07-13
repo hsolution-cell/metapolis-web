@@ -14,7 +14,7 @@ export const EN_HERO_SLIDES: HeroSlide[] = [
 
 export const EN_BRANCH = {
   title: "Metapolis Mall Store Directory by Floor",
-  desc: "Discover the endless fun at Time Terrace at a glance",
+  desc: "Check out the diverse experiences on every floor, all at a single glance",
   backLabel: "Back",
 };
 

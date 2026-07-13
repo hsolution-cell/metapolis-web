@@ -731,6 +731,11 @@
   height: 60px;
 }
 
+/* 연결통로 라벨 — 데스크톱은 위치 자체가 의미 전달이라 숨김(모바일에서만 표시) */
+.main_branch_divider_label {
+  display: none;
+}
+
 .main_branch_grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1046,12 +1051,32 @@
     gap: 14px;
   }
 
+  /* 세로 스택: 계단 아이콘을 연결 방향(세로)으로 회전 + 연결통로 라벨 표시 */
   .main_branch_divider {
     transform: none;
     position: relative;
     left: auto;
     top: auto;
+    width: auto;
+    gap: 6px;
     margin: -16px auto;
+  }
+
+  .main_branch_divider img {
+    transform: rotate(90deg);
+  }
+
+  .main_branch_divider_label {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid #eadfc9;
+    background: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    color: #8a6e3e;
+    white-space: nowrap;
+    box-shadow: 0 1px 4px rgba(135, 102, 49, 0.12);
   }
 
   .main_branch_grid {

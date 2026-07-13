@@ -27,6 +27,7 @@ export default async function EnHome() {
         title={EN_BRANCH.title}
         desc={EN_BRANCH.desc}
         backLabel={EN_BRANCH.backLabel}
+        dividerLabel="A 2F ↔ B 3F Bridge"
         ariaLabel="Store directory by floor"
       />
 

@@ -114,12 +114,14 @@ type BranchSectionProps = {
   desc?: string;
   backLabel?: string;
   ariaLabel?: string;
+  dividerLabel?: string;
 };
 
 export default function BranchSection({
   title = "메타폴리스몰 층별 주요 매장 안내",
   desc = "층마다 다르게 보여지는 다채로운 즐거움을 지금 한눈에 확인해 보세요",
   backLabel = "돌아가기",
+  dividerLabel = "A 2F ↔ B 3F 연결통로",
   ariaLabel = "지점 소개",
 }: BranchSectionProps = {}) {
   const sectionRef = useRef<HTMLElement>(null);
@@ -226,8 +228,9 @@ export default function BranchSection({
                 {renderMainGrid("a")}
               </ul>
             </div>
-            <div className="main_branch_divider" aria-hidden="true">
+            <div className="main_branch_divider">
               <img src="/img/main_branch_divider.svg" alt="" />
+              <span className="main_branch_divider_label">{dividerLabel}</span>
             </div>
             <div className="main_branch_block">
               <ul className="main_branch_grid">
@@ -250,8 +253,9 @@ export default function BranchSection({
                   )}
                 </ul>
               </div>
-              <div className="main_branch_divider" aria-hidden="true">
+              <div className="main_branch_divider">
                 <img src="/img/main_branch_divider.svg" alt="" />
+                <span className="main_branch_divider_label">{dividerLabel}</span>
               </div>
               <div className="main_branch_block">
                 <ul className="main_branch_grid">
@@ -272,8 +276,9 @@ export default function BranchSection({
                   )}
                 </ul>
               </div>
-              <div className="main_branch_divider" aria-hidden="true">
+              <div className="main_branch_divider">
                 <img src="/img/main_branch_divider.svg" alt="" />
+                <span className="main_branch_divider_label">{dividerLabel}</span>
               </div>
               <div className="main_branch_block">
                 <ul className="main_branch_grid">
