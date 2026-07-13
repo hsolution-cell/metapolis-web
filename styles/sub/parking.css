@@ -176,11 +176,10 @@
   align-items: stretch;
 }
 
+/* li 를 레이아웃에서 제외(display: contents) → 카드·화살표가 리스트에서 직접 폭 배분.
+   화살표는 고정폭, 카드들은 flex:1 로 서로 동일한 폭이 됨(마지막 카드 포함). */
 .parking_process_item {
-  display: flex;
-  align-items: center;
-  flex: 1;
-  min-width: 0;
+  display: contents;
 }
 
 .parking_process_card {
@@ -667,12 +666,12 @@
     gap: 10px;
   }
 
-  .parking_process_item {
-    width: 100%;
-  }
-
   .parking_process_arrow {
     display: none;
+  }
+
+  .parking_process_card {
+    flex: none;
   }
 
   .parking_process_card {
