@@ -17,7 +17,7 @@ export default function QuickMenu() {
     ? {
         inquiryTitle: "Contact Us",
         locationTitle: "Location",
-        locationDesc: "220, Dongtanjungang-ro",
+        locationDesc: "METAPOLIS",
         locationHref: "/en/location",
         topLabel: "Back to top",
       }
