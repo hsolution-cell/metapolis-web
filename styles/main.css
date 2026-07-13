@@ -1048,7 +1048,7 @@
 
   .main_branch_blocks {
     grid-template-columns: 1fr;
-    gap: 14px;
+    gap: 24px;
   }
 
   /* 세로 스택: 아이콘은 숨기고 연결통로 라벨만 표시 */
