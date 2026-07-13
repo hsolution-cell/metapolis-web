@@ -1047,11 +1047,10 @@
   }
 
   .main_branch_divider {
-    transform: rotate(90deg);
+    transform: none;
     position: relative;
     left: auto;
     top: auto;
-    /* transform: none; */
     margin: -16px auto;
   }
 
