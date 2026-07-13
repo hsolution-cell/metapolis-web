@@ -22,9 +22,9 @@
   align-items: center;
   gap: 10px;
   margin: 0;
-  font-size: 18px;
+  font-size: 24px;
   line-height: 1.5;
-  color: #33302b;
+  color: #1a2e3b;
 }
 
 .parking_notice_item a {
@@ -378,14 +378,12 @@
 }
 
 .parking_benefits_table tbody tr.parking_benefits_note_row td {
-  padding: 10px 20px 14px;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
   line-height: 1.5;
-  text-align: left;
-  color: #8c857b;
-  background: #fff;
+  color: #777;
   border-top: none;
+  text-align: center;
 }
 
 .parking_special_list {
@@ -409,7 +407,7 @@
   justify-content: center;
   gap: 14px;
   min-height: 0;
-  padding: 24px 18px 22px;
+  padding: 20px 18px;
   border-radius: 16px;
   border: 1px solid #dee6e9;
   background: #fff;
@@ -434,7 +432,7 @@
 
 .parking_special_title {
   margin: 0;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 700;
   line-height: 1.4;
   color: #1a2e3b;
@@ -442,7 +440,7 @@
 
 .parking_special_time {
   margin: 0;
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 700;
   line-height: 1.35;
   color: #1a2e3b;
@@ -477,7 +475,8 @@
 }
 
 .sub_reveal.parking_layout.is-inview .parking_map_sticky {
-  animation: sub-reveal-slide-left 1.05s cubic-bezier(0.16, 1, 0.3, 1) 0.08s both;
+  animation: sub-reveal-slide-left 1.05s cubic-bezier(0.16, 1, 0.3, 1) 0.08s
+    both;
 }
 
 .sub_reveal.parking_layout.is-inview .parking_block {

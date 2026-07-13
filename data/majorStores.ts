@@ -137,7 +137,7 @@ export const MAJOR_STORES: MajorStore[] = [
     locationBadge: "B블록 2F",
     floorGuide: { block: "b", floorId: "2f" },
     description:
-      "프리미엄 소재와 감각적인 디자인으로 공간 그 이상의 품격 있는 삶을 완성합니다",
+      "프리미엄 소재와 감각적인 디자인으로 품격 있는 삶을 완성합니다",
     cardLogo: "/img/main_branch_store_zin.png",
     detailLogo: "/img/sub/stores/zin-logo.png",
     image: "/img/sub/stores/zin.png",
