@@ -89,20 +89,29 @@ function revalidateCategories() {
   revalidatePath("/support/notices");
 }
 
-export async function createCategory(name: string, sortOrder: number) {
+export async function createCategory(
+  name: string,
+  sortOrder: number,
+  color?: string | null
+) {
   const supabase = await createSupabaseServerClient();
   const { error } = await supabase
     .from("notice_categories")
-    .insert({ name: name.trim(), sort_order: sortOrder });
+    .insert({ name: name.trim(), sort_order: sortOrder, color: color ?? null });
   if (error) throw new Error(error.message);
   revalidateCategories();
 }
 
-export async function updateCategory(id: string, name: string, sortOrder: number) {
+export async function updateCategory(
+  id: string,
+  name: string,
+  sortOrder: number,
+  color?: string | null
+) {
   const supabase = await createSupabaseServerClient();
   const { error } = await supabase
     .from("notice_categories")
-    .update({ name: name.trim(), sort_order: sortOrder })
+    .update({ name: name.trim(), sort_order: sortOrder, color: color ?? null })
     .eq("id", id);
   if (error) throw new Error(error.message);
   revalidateCategories();

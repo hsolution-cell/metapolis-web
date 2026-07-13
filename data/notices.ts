@@ -15,6 +15,7 @@ export const NOTICES_PER_PAGE = 10;
 export type NoticeListData = {
   id: string;
   categoryLabel: string;
+  categoryColor?: string | null;
   title: string;
   date: string;
   pinned?: boolean;

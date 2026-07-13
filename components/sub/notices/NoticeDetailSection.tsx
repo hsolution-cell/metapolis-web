@@ -17,7 +17,16 @@ export default function NoticeDetailSection({ item, nextHref }: NoticeDetailSect
       <div className="events_detail_inner content_inner innerTop innerBot">
         <div className="events_detail_head">
           <p className="notices_detail_meta">
-            <span className="notices_badge">{item.categoryLabel}</span>
+            <span
+              className="notices_badge"
+              style={
+                item.categoryColor
+                  ? { backgroundColor: item.categoryColor, color: "#fff" }
+                  : undefined
+              }
+            >
+              {item.categoryLabel}
+            </span>
           </p>
           <h2 className="events_detail_title">{item.title}</h2>
           <p className="events_detail_period">

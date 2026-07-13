@@ -32,7 +32,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0;
-  margin-bottom: 20px;
+  margin-bottom: 55px;
   padding: 4px;
   border-radius: 50px;
   border: 1px solid #bbb;
@@ -47,7 +47,7 @@
   z-index: 0;
   height: calc(100% - 8px);
   border-radius: 999px;
-  background: #1a2e3b;
+  background: #33302b;
   opacity: 0;
   pointer-events: none;
   transition:
@@ -87,7 +87,7 @@
 
 .floors_nav_label {
   margin: 0 15px;
-  padding: 10px 12px;
+  padding: 6px 12px 4px;
   font-family: "Roboto", "Noto Sans KR", sans-serif;
   font-size: clamp(11px, 1.2vw, 14px);
   line-height: 1.35;
@@ -133,7 +133,7 @@
   align-items: center;
   gap: clamp(12px, 2vw, 20px);
   width: 100%;
-  padding: clamp(14px, 2vw, 18px) clamp(16px, 2.5vw, 20px);
+  padding: clamp(18px, 2vw, 18px) clamp(25px, 2.5vw, 25px);
   border: 0;
   text-align: left;
   cursor: pointer;
@@ -265,7 +265,9 @@
   background: rgba(26, 46, 59, 0.84);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
   pointer-events: none;
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
 }
 
 .floors_map_trigger:hover .floors_map_zoom_hint,
@@ -357,7 +359,11 @@
   flex: 1;
   min-height: 0;
   overflow: auto;
-  background: linear-gradient(270deg, rgba(239, 235, 227, 0.5) 0%, #efebe3 100%);
+  background: linear-gradient(
+    270deg,
+    rgba(239, 235, 227, 0.5) 0%,
+    #efebe3 100%
+  );
   -webkit-overflow-scrolling: touch;
 }
 
@@ -781,9 +787,7 @@
     display: block;
     min-height: 0;
     overflow: auto;
-    padding:
-      calc(max(12px, env(safe-area-inset-top, 0px)) + 52px)
-      12px
+    padding: calc(max(12px, env(safe-area-inset-top, 0px)) + 52px) 12px
       calc(max(12px, env(safe-area-inset-bottom, 0px)) + 48px);
     background: linear-gradient(
       180deg,

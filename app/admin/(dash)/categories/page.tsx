@@ -14,6 +14,7 @@ export default async function AdminCategoriesPage() {
       </div>
       <CategoryManager
         categories={categories}
+        withColor
         onCreate={createCategory}
         onUpdate={updateCategory}
         onDelete={deleteCategory}

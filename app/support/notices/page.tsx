@@ -11,6 +11,7 @@ export default async function Page() {
   const items = notices.map((n) => ({
     id: n.id,
     categoryLabel: n.categoryLabel,
+    categoryColor: n.categoryColor,
     title: n.title,
     date: n.date,
     pinned: n.pinned,

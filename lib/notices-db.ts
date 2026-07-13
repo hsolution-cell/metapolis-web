@@ -4,6 +4,7 @@ export type NoticeCategory = {
   id: string;
   name: string;
   sortOrder: number;
+  color: string | null; // 배지 색상(hex), null 이면 기본색
 };
 
 /** 공지 뷰모델 */
@@ -11,6 +12,7 @@ export type NoticeRecord = {
   id: string;
   categoryId: string | null;
   categoryLabel: string; // 카테고리명 (없으면 "미분류")
+  categoryColor: string | null; // 구분 배지 색상
   title: string;
   date: string; // YYYY-MM-DD
   body: string | null; // HTML
@@ -24,17 +26,18 @@ type NoticeRow = {
   date: string;
   body: string | null;
   pinned: boolean;
-  notice_categories: { name: string } | null;
+  notice_categories: { name: string; color: string | null } | null;
 };
 
 const NOTICE_SELECT =
-  "id, category_id, title, date, body, pinned, notice_categories(name)";
+  "id, category_id, title, date, body, pinned, notice_categories(name, color)";
 
 function mapRow(row: NoticeRow): NoticeRecord {
   return {
     id: row.id,
     categoryId: row.category_id,
     categoryLabel: row.notice_categories?.name ?? "미분류",
+    categoryColor: row.notice_categories?.color ?? null,
     title: row.title,
     date: row.date,
     body: row.body,
@@ -74,7 +77,7 @@ export async function listCategories(): Promise<NoticeCategory[]> {
   const supabase = createSupabasePublicClient();
   const { data, error } = await supabase
     .from("notice_categories")
-    .select("id, name, sort_order")
+    .select("id, name, sort_order, color")
     .order("sort_order", { ascending: true })
     .order("name", { ascending: true });
 
@@ -83,5 +86,6 @@ export async function listCategories(): Promise<NoticeCategory[]> {
     id: c.id,
     name: c.name,
     sortOrder: c.sort_order,
+    color: c.color ?? null,
   }));
 }

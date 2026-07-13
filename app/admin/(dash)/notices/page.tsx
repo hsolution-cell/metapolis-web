@@ -31,7 +31,16 @@ export default async function AdminNoticesPage() {
             {notices.map((n) => (
               <tr key={n.id}>
                 <td>
-                  <span className="admin-badge">{n.categoryLabel}</span>
+                  <span
+                    className="admin-badge"
+                    style={
+                      n.categoryColor
+                        ? { backgroundColor: n.categoryColor, color: "#fff", borderColor: n.categoryColor }
+                        : undefined
+                    }
+                  >
+                    {n.categoryLabel}
+                  </span>
                 </td>
                 <td>
                   {n.pinned && <span className="admin-pin">고정</span>}

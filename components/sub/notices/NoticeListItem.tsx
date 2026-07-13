@@ -18,7 +18,16 @@ export default function NoticeListItem({ item, listNumber }: NoticeListItemProps
           {item.pinned ? <span className="notices_pin">고정</span> : listNumber}
         </span>
         <span className="notices_col notices_col_category">
-          <span className="notices_badge">{item.categoryLabel}</span>
+          <span
+            className="notices_badge"
+            style={
+              item.categoryColor
+                ? { backgroundColor: item.categoryColor, color: "#fff" }
+                : undefined
+            }
+          >
+            {item.categoryLabel}
+          </span>
         </span>
         <span className="notices_col notices_col_topic">
           <span className="notices_topic_text">{item.title}</span>
