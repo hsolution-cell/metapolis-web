@@ -1051,19 +1051,18 @@
     gap: 14px;
   }
 
-  /* 세로 스택: 계단 아이콘을 연결 방향(세로)으로 회전 + 연결통로 라벨 표시 */
+  /* 세로 스택: 아이콘은 숨기고 연결통로 라벨만 표시 */
   .main_branch_divider {
     transform: none;
     position: relative;
     left: auto;
     top: auto;
     width: auto;
-    gap: 6px;
-    margin: -16px auto;
+    margin: -14px auto;
   }
 
   .main_branch_divider img {
-    transform: rotate(90deg);
+    display: none;
   }
 
   .main_branch_divider_label {
