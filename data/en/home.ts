@@ -65,13 +65,13 @@ export const EN_FAQ_ITEMS: EnFaqItem[] = [
 ];
 
 export const EN_FAQ_TAGS = [
-  "Amenities",
-  "Partners",
-  "FAQ",
-  "Returns/Lost & Found",
-  "Parking",
-  "Rental Services",
-  "Operating Hours",
+  "# Amenities",
+  "# Partners",
+  "# FAQ",
+  "# Returns / Lost & Found",
+  "# Parking",
+  "# Rental Services",
+  "# Operating Hours",
 ];
 
 export const EN_FAQ_INTRO = {
