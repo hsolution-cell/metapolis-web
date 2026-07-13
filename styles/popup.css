@@ -16,13 +16,9 @@
   background: rgba(0, 0, 0, 0.5);
 }
 
-.popup-layer__stack {
-  position: relative;
-  z-index: 1;
-}
-
 .popup-card {
   position: relative;
+  z-index: 1;
   width: 360px;
   max-width: calc(100vw - 40px);
   background: #fff;
@@ -31,16 +27,25 @@
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.28);
 }
 
-/* 여러 개일 때 겹쳐진 카드가 어긋나 보이도록 stack 컨테이너 중앙 정렬 */
-.popup-layer__stack .popup-card:not(:first-child) {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
 .popup-card__body {
   display: block;
   line-height: 0;
+}
+
+/* 여러 팝업 롤링(Swiper) — 페이지네이션 도트 */
+.popup-swiper .swiper-pagination {
+  bottom: 10px;
+}
+.popup-swiper .swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  opacity: 1;
+}
+.popup-swiper .swiper-pagination-bullet-active {
+  background: #b89968;
+  border-color: #b89968;
 }
 
 .popup-card__body img {

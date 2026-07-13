@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination } from "swiper/modules";
 
 type Popup = {
   id: string;
@@ -38,6 +40,7 @@ function readHiddenIds(): Set<string> {
 export default function PopupLayer() {
   const pathname = usePathname();
   const [popups, setPopups] = useState<Popup[]>([]);
+  const [closed, setClosed] = useState(false);
 
   // 국문 메인("/")·영문 메인("/en")에서만 노출
   const isHome = pathname === "/" || pathname === "/en";
@@ -55,6 +58,7 @@ export default function PopupLayer() {
         if (cancelled) return;
         const hidden = readHiddenIds();
         setPopups(data.filter((p) => !hidden.has(p.id)));
+        setClosed(false);
       } catch {
         /* 조회 실패 시 표시 안 함 */
       }
@@ -65,60 +69,63 @@ export default function PopupLayer() {
     };
   }, [isHome, locale]);
 
-  if (!isHome || popups.length === 0) return null;
+  if (!isHome || closed || popups.length === 0) return null;
 
-  function close(id: string) {
-    setPopups((prev) => prev.filter((p) => p.id !== id));
-  }
+  const isSingle = popups.length <= 1;
 
-  function hideToday(id: string) {
+  /** 오늘 하루 보지 않기 — 현재 노출 중인 팝업 전체에 적용 */
+  function hideToday() {
     try {
-      localStorage.setItem(`${HIDE_PREFIX}${id}`, todayKey());
+      const today = todayKey();
+      for (const p of popups) {
+        localStorage.setItem(`${HIDE_PREFIX}${p.id}`, today);
+      }
     } catch {
       /* 무시 */
     }
-    close(id);
+    setClosed(true);
   }
 
   return (
     <div className="popup-layer" role="dialog" aria-modal="true" aria-label="팝업 공지">
       <div className="popup-layer__backdrop" />
-      <div className="popup-layer__stack">
-        {popups.map((popup, i) => (
-          <div
-            className="popup-card"
-            key={popup.id}
-            style={{ transform: `translate(${i * 24}px, ${i * 24}px)` }}
+      <div className="popup-card">
+        <div className="popup-card__body">
+          <Swiper
+            className="popup-swiper"
+            modules={[Autoplay, Pagination]}
+            loop={!isSingle}
+            speed={600}
+            autoplay={isSingle ? false : { delay: 4000, disableOnInteraction: false }}
+            pagination={isSingle ? false : { clickable: true }}
           >
-            <div className="popup-card__body">
-              {popup.linkHref ? (
-                <a href={popup.linkHref} className="popup-card__link">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
+            {popups.map((popup) => (
+              <SwiperSlide key={popup.id}>
+                {popup.linkHref ? (
+                  <a href={popup.linkHref} className="popup-card__link">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={popup.image} alt={popup.title} />
+                  </a>
+                ) : (
+                  // eslint-disable-next-line @next/next/no-img-element
                   <img src={popup.image} alt={popup.title} />
-                </a>
-              ) : (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img src={popup.image} alt={popup.title} />
-              )}
-            </div>
-            <div className="popup-card__foot">
-              <button
-                type="button"
-                className="popup-card__btn"
-                onClick={() => hideToday(popup.id)}
-              >
-                오늘 하루 보지 않기
-              </button>
-              <button
-                type="button"
-                className="popup-card__btn popup-card__btn--close"
-                onClick={() => close(popup.id)}
-              >
-                닫기
-              </button>
-            </div>
-          </div>
-        ))}
+                )}
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+        <div className="popup-card__foot">
+          <button type="button" className="popup-card__btn" onClick={hideToday}>
+            오늘 하루 보지 않기
+          </button>
+          <button
+            type="button"
+            className="popup-card__btn popup-card__btn--close"
+            onClick={() => setClosed(true)}
+          >
+            닫기
+          </button>
+        </div>
       </div>
     </div>
   );
