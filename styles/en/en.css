@@ -61,9 +61,14 @@
 /* ---------- EN 본문 타이포 미세조정 (.en-root 스코프 = 헤더/푸터 제외) ---------- */
 /* 히어로: 영문 라벨이 2줄에 맞도록 크기·굵기·자간 조정 */
 .en-root .hero_title {
-  font-size: 40px;
   font-weight: 600;
   letter-spacing: -0.01em;
+}
+/* 크기 지정은 데스크톱에서만 — 768px 이하는 국문과 동일한 반응형(vw 상한 포함) 사용 */
+@media (min-width: 769px) {
+  .en-root .hero_title {
+    font-size: 40px;
+  }
 }
 
 /* 서브 상단 배너 제목: 국문(-0.02em)은 영문 대형 제목엔 촘촘 → 자간 넓힘 */
