@@ -83,7 +83,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 2;
+  z-index: 0; /* 지도 뒤로 — 패널 밖으로 나온 부분만 보임 */
   width: clamp(72px, 9vw, 121px);
   height: auto;
   pointer-events: none;
@@ -98,6 +98,8 @@
 }
 
 .parking_map_visual {
+  position: relative;
+  z-index: 1; /* 회전 배지보다 위 */
   overflow: hidden;
   border-radius: 20px 20px 0 0;
   background: #f5f2ec;
