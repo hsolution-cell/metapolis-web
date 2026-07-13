@@ -358,6 +358,9 @@
   }
 
   .about_way_frame--rect {
+    /* 원형(320px)과 동일한 이미지 폭: 320 + 우측 데코 여백 34 */
+    width: min(100%, 354px);
+    margin: 0 auto;
     padding-right: 34px;
   }
 
@@ -425,6 +428,7 @@
   }
 
   .about_way_frame--rect {
+    width: min(100%, 286px); /* 원형(260px) + 데코 여백 26 */
     padding-right: 26px;
   }
 
