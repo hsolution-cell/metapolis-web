@@ -897,13 +897,11 @@
   }
 
   .floors_nav_label_site {
-    display: block;
     letter-spacing: 0.1em;
   }
 
   .floors_nav_label_dot,
   .floors_nav_label_block {
-    display: block;
     margin-top: 2px;
   }
 

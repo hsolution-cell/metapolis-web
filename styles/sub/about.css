@@ -380,11 +380,6 @@
     font-size: clamp(3.2rem, 7vw, 4.8rem);
     margin-bottom: 48px;
   }
-
-  .sub_section_title b,
-  .sub_section_title strong {
-    display: block;
-  }
 }
 
 @media (max-width: 480px) {
