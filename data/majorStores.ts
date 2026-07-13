@@ -117,7 +117,6 @@ export const MAJOR_STORES: MajorStore[] = [
     detailLogo: "/img/sub/stores/aladin-logo.png",
     image: "/img/sub/stores/aladin.png",
     imageAlt: "알라딘 중고서점",
-    isNew: true,
     details: [
       { label: "Hours", value: "09:30 – 22:00" },
       { label: "Tel", value: "1544-2514" },
