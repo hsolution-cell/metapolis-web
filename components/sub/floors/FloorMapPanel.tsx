@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import { usePathname } from "next/navigation";
 
 type FloorMapPanelProps = {
   src: string;
@@ -10,6 +11,24 @@ type FloorMapPanelProps = {
 };
 
 export default function FloorMapPanel({ src, alt, caption }: FloorMapPanelProps) {
+  const pathname = usePathname();
+  // 영문 페이지에서는 영문 문구 사용
+  const isEn = pathname === "/en" || pathname?.startsWith("/en/");
+  const t = isEn
+    ? {
+        zoom: "View Larger",
+        zoomAria: (a: string) => `View larger: ${a}`,
+        closeMap: "Close floor map",
+        close: "Close",
+        scrollHint: "Scroll to view the full map",
+      }
+    : {
+        zoom: "크게 보기",
+        zoomAria: (a: string) => `${a} 크게 보기`,
+        closeMap: "층별 지도 닫기",
+        close: "닫기",
+        scrollHint: "{t.scrollHint}",
+      };
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const closeBtnRef = useRef<HTMLButtonElement>(null);
@@ -45,7 +64,7 @@ export default function FloorMapPanel({ src, alt, caption }: FloorMapPanelProps)
             <button
               type="button"
               className="floors_map_lightbox_backdrop"
-              aria-label="층별 지도 닫기"
+              aria-label={t.closeMap}
               onClick={close}
             />
             <div
@@ -62,7 +81,7 @@ export default function FloorMapPanel({ src, alt, caption }: FloorMapPanelProps)
                   ref={closeBtnRef}
                   type="button"
                   className="floors_map_lightbox_close"
-                  aria-label="닫기"
+                  aria-label={t.close}
                   onClick={close}
                 >
                   <span aria-hidden="true">×</span>
@@ -72,7 +91,7 @@ export default function FloorMapPanel({ src, alt, caption }: FloorMapPanelProps)
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img className="floors_map_lightbox_img" src={src} alt="" />
                 <p className="floors_map_lightbox_scroll_hint" aria-hidden="true">
-                  좌우·상하로 스크롤하여 확인하세요
+                  {t.scrollHint}
                 </p>
               </div>
               {caption ? <p className="floors_map_lightbox_caption">{caption}</p> : null}
@@ -88,7 +107,7 @@ export default function FloorMapPanel({ src, alt, caption }: FloorMapPanelProps)
         <button
           type="button"
           className="floors_map_trigger"
-          aria-label={`${alt} 크게 보기`}
+          aria-label={t.zoomAria(alt)}
           onClick={() => setOpen(true)}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -99,7 +118,7 @@ export default function FloorMapPanel({ src, alt, caption }: FloorMapPanelProps)
               <path d="M20 20L16.5 16.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
               <path d="M11 8V14M8 11H14" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
             </svg>
-            크게 보기
+            {t.zoom}
           </span>
         </button>
         {caption ? <p className="floors_map_caption">{caption}</p> : null}
