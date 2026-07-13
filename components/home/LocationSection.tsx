@@ -6,6 +6,7 @@ type LocationSectionProps = {
   desc?: string;
   addressKo?: string;
   addressEn?: string;
+  mapSrc?: string;
   mapAlt?: string;
   tel?: string;
   telHref?: string;
@@ -19,6 +20,7 @@ export default function LocationSection({
   desc = "산책하듯 머무는 곳, 메타폴리스몰에서 여유를 즐겨보세요.",
   addressKo = "경기도 화성시 동탄중앙로 220 메타폴리스몰",
   addressEn = "220, Dongtanjungang-ro, Dongtan-gu, Hwaseong-si, Gyeonggi-do",
+  mapSrc = "/img/main_location_map.png",
   mapAlt = "메타폴리스몰 A Block, B Block 위치 안내 지도",
   tel = "031-371-7000",
   telHref = "tel:0313717000",
@@ -39,7 +41,7 @@ export default function LocationSection({
 
         <div className="main_location_body">
           <figure className="main_location_map">
-            <img src="/img/main_location_map.png" alt={mapAlt} />
+            <img src={mapSrc} alt={mapAlt} />
           </figure>
 
           <div className="main_location_info">

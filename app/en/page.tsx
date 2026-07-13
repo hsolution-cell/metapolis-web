@@ -84,6 +84,7 @@ export default async function EnHome() {
         desc={EN_LOCATION.desc}
         addressKo=""
         addressEn={EN_LOCATION.addressEn}
+        mapSrc="/img/main_location_map_en.png"
         mapAlt="Metapolis Mall location map"
         tel={EN_LOCATION.tel}
         hour={EN_LOCATION.hour}
