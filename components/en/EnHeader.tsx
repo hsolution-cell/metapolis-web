@@ -41,7 +41,7 @@ export default function EnHeader() {
                 <span />
               </button>
             </div>
-            <ul className="hidden_gnb">
+            <ul className="hidden_gnb hidden_gnb--en">
               {EN_NAV.map((item) => (
                 <li key={item.href}>
                   <Link

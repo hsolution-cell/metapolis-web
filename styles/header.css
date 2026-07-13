@@ -129,6 +129,10 @@
   transform: rotate(-135deg);
   border-color: var(--mp-gold);
 }
+/* 영문 모바일 메뉴: 하위메뉴가 없어 화살표 미표시 */
+.hidden_gnb--en > li > a::after {
+  display: none;
+}
 .hidden_gnb .top_0 {
   display: none;
   background: #fafafa;
