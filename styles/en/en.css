@@ -89,11 +89,16 @@
   white-space: nowrap;
 }
 
-/* Floor Guide 좌측 nav: 영문 요약이 활성(bold) 시 줄바꿈되지 않게 크기 조정 + 한 줄 유지 */
+/* Floor Guide 좌측 nav: 영문 요약 자간 조정.
+   nowrap은 overflow:hidden 리스트에서 긴 영문이 잘려 보여 제거(자연 줄바꿈 허용). */
 .en-root .floors_nav_summary {
-  font-size: 15px;
   letter-spacing: -0.01em;
-  white-space: nowrap;
+}
+/* 크기 지정은 데스크톱 전용 — 모바일(768px 이하)은 공통 12px 규칙 사용 */
+@media (min-width: 769px) {
+  .en-root .floors_nav_summary {
+    font-size: 15px;
+  }
 }
 .en-root .floors_nav_btn.is-active .floors_nav_summary {
   font-weight: 600;
