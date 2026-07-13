@@ -175,6 +175,12 @@ export default function ParkingSection({
           >
             <div className="parking_map_sticky">
               <figure className="parking_map_panel">
+                <img
+                  className="parking_map_deco_spin"
+                  src="/img/sub/parking/deco-spin.svg"
+                  alt=""
+                  aria-hidden="true"
+                />
                 <div className="parking_map_visual">
                   <Image
                     src={mapImage}

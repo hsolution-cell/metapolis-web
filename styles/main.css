@@ -1665,7 +1665,7 @@
   }
 
   .main_faq_title {
-    font-size: 2rem;
+    font-size: min(2.8rem, 7vw);
   }
 
   .main_faq_desc {
