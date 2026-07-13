@@ -57,9 +57,9 @@ type ParkingSectionProps = {
 };
 
 const DEFAULT_PROCESS: ProcessStep[] = [
-  { iconType: "entry", label: <>입차 차량<br />번호 인식</> },
-  { iconType: "confirm", label: <>구매 매장에서<br />주차 확인</> },
-  { iconType: "payment", label: <>사전무인 or<br />출구무인정산</> },
+  { iconType: "entry", label: <>입차 차량<br />{" "}번호 인식</> },
+  { iconType: "confirm", label: <>구매 매장에서<br />{" "}주차 확인</> },
+  { iconType: "payment", label: <>사전무인 or<br />{" "}출구무인정산</> },
 ];
 
 const DEFAULT_FEE_DETAILS: FeeDetail[] = [

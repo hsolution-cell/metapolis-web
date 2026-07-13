@@ -708,6 +708,9 @@
     font-size: 1.45rem;
     text-align: left;
   }
+  .parking_process_label br {
+    display: none;
+  }
 
   .parking_fee_card {
     padding: 24px 20px 20px;
