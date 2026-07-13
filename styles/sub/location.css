@@ -419,7 +419,9 @@
 
 .sub_reveal.location_transport:not(.is-inview) .location_tabs_wrap,
 .sub_reveal.location_transport:not(.is-inview) .location_transport_col,
-.sub_reveal.location_transport:not(.is-inview) .location_transport_car .location_category_head,
+.sub_reveal.location_transport:not(.is-inview)
+  .location_transport_car
+  .location_category_head,
 .sub_reveal.location_transport:not(.is-inview) .location_route_card,
 .sub_reveal.location_transport:not(.is-inview) .location_car_card {
   opacity: 0;
@@ -435,7 +437,9 @@
   animation-delay: calc(120ms + var(--sub-reveal-i, 0) * 120ms);
 }
 
-.sub_reveal.location_transport.is-inview .location_transport_car .location_category_head {
+.sub_reveal.location_transport.is-inview
+  .location_transport_car
+  .location_category_head {
   animation: sub-reveal-title 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both;
 }
 
@@ -691,8 +695,7 @@
   }
 
   .location_contact li {
-    font-size: 1.4rem;
-    max-width: 28rem;
+    font-size: min(1.6rem, 4.5vw);
   }
 
   .location_map {
@@ -801,7 +804,9 @@
   .sub_reveal.location_hero.is-inview .location_map,
   .sub_reveal.location_transport.is-inview .location_tabs_wrap,
   .sub_reveal.location_transport.is-inview .location_transport_col,
-  .sub_reveal.location_transport.is-inview .location_transport_car .location_category_head,
+  .sub_reveal.location_transport.is-inview
+    .location_transport_car
+    .location_category_head,
   .sub_reveal.location_transport.is-inview .location_route_card,
   .sub_reveal.location_transport.is-inview .location_car_card {
     animation: none;
@@ -814,7 +819,9 @@
   .sub_reveal.location_hero:not(.is-inview) .location_map,
   .sub_reveal.location_transport:not(.is-inview) .location_tabs_wrap,
   .sub_reveal.location_transport:not(.is-inview) .location_transport_col,
-  .sub_reveal.location_transport:not(.is-inview) .location_transport_car .location_category_head,
+  .sub_reveal.location_transport:not(.is-inview)
+    .location_transport_car
+    .location_category_head,
   .sub_reveal.location_transport:not(.is-inview) .location_route_card,
   .sub_reveal.location_transport:not(.is-inview) .location_car_card {
     opacity: 1;

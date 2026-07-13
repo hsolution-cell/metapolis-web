@@ -623,7 +623,7 @@
   .parking_notice_item {
     justify-content: center;
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
   }
 
   .parking_notice_icon {
@@ -798,7 +798,7 @@
   }
 
   .parking_notice_item {
-    font-size: 1.35rem;
+    font-size: 1.5rem;
     max-width: 28rem;
   }
 
