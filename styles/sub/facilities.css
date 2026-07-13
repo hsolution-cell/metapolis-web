@@ -159,8 +159,8 @@ html:has(.sub_page.facilities) {
 
 /* detail list */
 .facilities_detail {
-  background: url("/img/sub/stores/stores-detail-bg.png") no-repeat center
-    center / cover;
+  background: url("/img/sub/facilities/facilities-detail-bg.png") no-repeat
+    center center / cover;
 }
 
 .facilities_detail_list {
@@ -181,7 +181,7 @@ html:has(.sub_page.facilities) {
 }
 
 .facilities_detail_media {
-  flex: 1 1 auto;
+  flex: 1 1 45%;
   min-width: 0;
   align-self: stretch;
   border-radius: 0 0 70px 0;
@@ -240,7 +240,7 @@ html:has(.sub_page.facilities) {
 }
 
 .facilities_detail_body {
-  flex: 1 1 auto;
+  flex: 1 1 55%;
   min-width: 0;
 }
 

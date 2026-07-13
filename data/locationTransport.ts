@@ -135,7 +135,7 @@ export const CAR_ROUTES: LocationCarRouteItem[] = [
   },
 ];
 
-export const LOCATION_ADDRESS = "경기 화성시 동탄중앙로 220 메타폴리스";
+export const LOCATION_ADDRESS = "경기 화성시 동탄중앙로 220 메타폴리스몰";
 export const LOCATION_PHONE = "031-371-7000";
 export const LOCATION_MAP_LINK =
   "https://map.naver.com/p/search/%EB%A9%94%ED%83%80%ED%8F%B4%EB%A6%AC%EC%8A%A4%20%EB%8F%99%ED%83%84/place/";
