@@ -71,7 +71,8 @@
 .parking_map_panel {
   position: relative;
   margin: 0;
-  overflow: hidden;
+  /* overflow: hidden 제거 — 좌상단 회전 배지가 패널 밖으로 걸치도록.
+     둥근 모서리 클리핑은 내부(visual/notice)에서 처리 */
   border-radius: 20px;
   background: #f5f2ec;
   box-shadow: 0 2px 3px 2px rgba(0, 0, 0, 0.03);
@@ -80,23 +81,25 @@
 /* 지도 왼쪽 상단 회전 텍스트 배지 장식 */
 .parking_map_deco_spin {
   position: absolute;
-  top: 18px;
-  left: 18px;
+  top: 0;
+  left: 0;
   z-index: 2;
   width: clamp(72px, 9vw, 121px);
   height: auto;
   pointer-events: none;
+  transform: translate(-50%, -50%);
   animation: parking-deco-spin 18s linear infinite;
 }
 
 @keyframes parking-deco-spin {
   to {
-    transform: rotate(360deg);
+    transform: translate(-50%, -50%) rotate(360deg);
   }
 }
 
 .parking_map_visual {
   overflow: hidden;
+  border-radius: 20px 20px 0 0;
   background: #f5f2ec;
 }
 
@@ -112,6 +115,7 @@
   gap: 10px;
   margin: 0;
   padding: 16px 20px;
+  border-radius: 0 0 20px 20px;
   background: #1a2e3b;
   color: #fff;
   font-size: 15px;
@@ -652,6 +656,14 @@
 
   .parking_map_panel {
     border-radius: 16px;
+  }
+
+  .parking_map_visual {
+    border-radius: 16px 16px 0 0;
+  }
+
+  .parking_map_notice {
+    border-radius: 0 0 16px 16px;
   }
 
   .parking_map_notice {
