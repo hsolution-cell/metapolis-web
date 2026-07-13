@@ -467,6 +467,7 @@ export type HeroBannerInput = {
   bgMobile: string | null;
   sortOrder: number;
   active: boolean;
+  showArrow: boolean;
 };
 
 function revalidateHeroBanners() {
@@ -487,6 +488,7 @@ export async function createHeroBanner(input: HeroBannerInput) {
     bg_mobile: input.bgMobile,
     sort_order: input.sortOrder,
     active: input.active,
+    show_arrow: input.showArrow,
   });
   if (error) throw new Error(error.message);
   revalidateHeroBanners();
@@ -507,6 +509,7 @@ export async function updateHeroBanner(id: string, input: HeroBannerInput) {
       bg_mobile: input.bgMobile,
       sort_order: input.sortOrder,
       active: input.active,
+      show_arrow: input.showArrow,
     })
     .eq("id", id);
   if (error) throw new Error(error.message);

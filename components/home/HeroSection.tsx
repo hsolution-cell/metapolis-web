@@ -108,7 +108,9 @@ export default function HeroSection({
                     <p className="hero_desc">
                       <a href={slide.link || "#"} className="hero_desc_link">
                         <span>{slide.desc}</span>
-                        <span className="hero_desc_arrow" aria-hidden="true" />
+                        {slide.showArrow !== false && (
+                          <span className="hero_desc_arrow" aria-hidden="true" />
+                        )}
                       </a>
                     </p>
                   </div>

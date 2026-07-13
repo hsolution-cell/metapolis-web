@@ -41,6 +41,7 @@ export default function HeroBannerForm({
   const [bgMobile, setBgMobile] = useState<string | null>(initial?.bgMobile ?? null);
   const [sortOrder, setSortOrder] = useState(String(initial?.sortOrder ?? 0));
   const [active, setActive] = useState(initial?.active ?? true);
+  const [showArrow, setShowArrow] = useState(initial?.showArrow ?? true);
   const [error, setError] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
 
@@ -68,6 +69,7 @@ export default function HeroBannerForm({
           bgMobile,
           sortOrder: Number.parseInt(sortOrder, 10) || 0,
           active,
+          showArrow,
         };
         if (mode === "new") {
           await createHeroBanner(input);
@@ -161,6 +163,15 @@ export default function HeroBannerForm({
           onChange={(e) => setSortOrder(e.target.value)}
         />
       </div>
+
+      <label className="admin-check">
+        <input
+          type="checkbox"
+          checked={showArrow}
+          onChange={(e) => setShowArrow(e.target.checked)}
+        />
+        설명 옆 화살표 아이콘 표시
+      </label>
 
       <label className="admin-check">
         <input

@@ -5,6 +5,8 @@ export type HeroSlide = {
   title: string;
   desc: string;
   link?: string;
+  /** 설명 옆 화살표 아이콘 표시 여부(기본 true) */
+  showArrow?: boolean;
 };
 
 // TODO(고객확정): 슬라이드별 실제 이미지/문구 확정 시 항목 추가(다중 슬라이드).

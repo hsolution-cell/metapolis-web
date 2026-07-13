@@ -40,6 +40,7 @@ export default async function EditHeroBannerPage({ params }: PageProps) {
           bgMobile: banner.bgMobile,
           sortOrder: banner.sortOrder,
           active: banner.active,
+          showArrow: banner.showArrow,
         }}
       />
     </>

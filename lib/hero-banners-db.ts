@@ -14,6 +14,7 @@ export type HeroBannerRecord = {
   bgMobile: string | null;
   sortOrder: number;
   active: boolean;
+  showArrow: boolean;
 };
 
 type HeroBannerRow = {
@@ -27,10 +28,11 @@ type HeroBannerRow = {
   bg_mobile: string | null;
   sort_order: number;
   active: boolean;
+  show_arrow: boolean;
 };
 
 const HERO_SELECT =
-  "id, locale, badge, title, description, link_href, bg, bg_mobile, sort_order, active";
+  "id, locale, badge, title, description, link_href, bg, bg_mobile, sort_order, active, show_arrow";
 
 function mapRow(row: HeroBannerRow): HeroBannerRecord {
   return {
@@ -44,6 +46,7 @@ function mapRow(row: HeroBannerRow): HeroBannerRecord {
     bgMobile: row.bg_mobile,
     sortOrder: row.sort_order,
     active: row.active,
+    showArrow: row.show_arrow ?? true,
   };
 }
 
@@ -96,6 +99,7 @@ export async function getActiveHeroSlides(
       title: b.title,
       desc: b.description,
       link: b.linkHref ?? undefined,
+      showArrow: b.showArrow,
     }));
   } catch {
     return null;
