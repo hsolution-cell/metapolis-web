@@ -17,7 +17,7 @@ export default function QuickMenu() {
     ? {
         inquiryTitle: "Contact Us",
         locationTitle: "Location",
-        locationDesc: "METAPOLIS",
+        locationDesc: "METAPOLIS MALL",
         locationHref: "/en/location",
         topLabel: "Back to top",
       }
