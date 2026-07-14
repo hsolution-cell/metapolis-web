@@ -72,6 +72,12 @@ export default function FaqSection({
       <div className="main_faq_inner content_inner">
         <div className="main_faq_layout">
           <aside className="main_faq_intro">
+            <img
+              className="main_faq_deco_spin"
+              src="/img/main_faq_deco_spin.svg"
+              alt=""
+              aria-hidden="true"
+            />
             <div className="main_faq_card">
               <h2 className="main_faq_title">{title}</h2>
               <p className="main_faq_desc">{desc}</p>

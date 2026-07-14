@@ -1216,6 +1216,31 @@
   }
 }
 
+/* FAQ 카드 왼쪽 상단 회전 텍스트 배지 장식 — 카드(z-index:2) 뒤에 깔려 밖으로 나온 부분만 보임 */
+.main_faq_deco_spin {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: clamp(72px, 9vw, 121px);
+  height: auto;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  animation: main-deco-spin 18s linear infinite;
+}
+
+@keyframes main-deco-spin {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .main_faq_deco_spin {
+    animation: none;
+  }
+}
+
 .main_faq_card {
   position: relative;
   z-index: 2;
