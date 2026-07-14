@@ -89,6 +89,11 @@
   white-space: nowrap;
 }
 
+/* 메인 LOCATION 영문 주소: 영문 페이지에서만 볼드 */
+.en-root .main_location_address_en {
+  font-weight: 700;
+}
+
 /* Floor Guide 좌측 nav: 영문 요약 자간 조정.
    nowrap은 overflow:hidden 리스트에서 긴 영문이 잘려 보여 제거(자연 줄바꿈 허용). */
 .en-root .floors_nav_summary {
