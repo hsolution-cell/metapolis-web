@@ -31,7 +31,8 @@ export default function RichEditor({
         menubar: false,
         plugins: "lists link image table code autolink",
         toolbar:
-          "undo redo | bold italic underline | bullist numlist | link image table | removeformat code",
+          "undo redo | fontsize | bold italic underline | bullist numlist | link image table | removeformat code",
+        font_size_formats: "12px 14px 15px 16px 18px 20px 24px 28px 32px",
         images_upload_handler: imagesUploadHandler,
         branding: false,
       }}
