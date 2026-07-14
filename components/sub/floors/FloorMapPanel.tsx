@@ -10,6 +10,8 @@ type FloorMapPanelProps = {
   caption?: string;
 };
 
+const MAX_ZOOM = 3;
+
 export default function FloorMapPanel({ src, alt, caption }: FloorMapPanelProps) {
   const pathname = usePathname();
   // 영문 페이지에서는 영문 문구 사용
@@ -20,23 +22,92 @@ export default function FloorMapPanel({ src, alt, caption }: FloorMapPanelProps)
         zoomAria: (a: string) => `View larger: ${a}`,
         closeMap: "Close floor map",
         close: "Close",
-        scrollHint: "Scroll to view the full map",
+        scrollHint: "Pinch to zoom, scroll to move",
       }
     : {
         zoom: "크게 보기",
         zoomAria: (a: string) => `${a} 크게 보기`,
         closeMap: "층별 지도 닫기",
         close: "닫기",
-        scrollHint: "{t.scrollHint}",
+        scrollHint: "두 손가락으로 확대·축소, 스크롤로 이동하세요",
       };
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const closeBtnRef = useRef<HTMLButtonElement>(null);
+  const bodyRef = useRef<HTMLDivElement>(null);
+  const imgRef = useRef<HTMLImageElement>(null);
+  const zoomRef = useRef(1);
+  const pinchRef = useRef<{ dist: number; zoom: number } | null>(null);
   const titleId = useId();
 
   useEffect(() => setMounted(true), []);
 
   const close = useCallback(() => setOpen(false), []);
+
+  // 핀치 줌 — 이미지 폭을 키워(스크롤 영역 확장) 확대하고, 핀치 중심을 유지
+  useEffect(() => {
+    if (!open) return;
+
+    zoomRef.current = 1;
+    const el = bodyRef.current;
+    const img = imgRef.current;
+    if (!el || !img) return;
+    img.style.width = "100%";
+
+    const touchDist = (touches: TouchList) =>
+      Math.hypot(
+        touches[0].clientX - touches[1].clientX,
+        touches[0].clientY - touches[1].clientY
+      );
+
+    const applyZoom = (next: number, centerX: number, centerY: number) => {
+      const prev = zoomRef.current;
+      const zoom = Math.min(MAX_ZOOM, Math.max(1, next));
+      if (zoom === prev) return;
+      const rect = el.getBoundingClientRect();
+      const cx = centerX - rect.left;
+      const cy = centerY - rect.top;
+      const contentX = el.scrollLeft + cx;
+      const contentY = el.scrollTop + cy;
+      zoomRef.current = zoom;
+      img.style.width = `${zoom * 100}%`;
+      el.scrollLeft = (contentX * zoom) / prev - cx;
+      el.scrollTop = (contentY * zoom) / prev - cy;
+    };
+
+    const onTouchStart = (e: TouchEvent) => {
+      if (e.touches.length === 2) {
+        pinchRef.current = { dist: touchDist(e.touches), zoom: zoomRef.current };
+      }
+    };
+
+    const onTouchMove = (e: TouchEvent) => {
+      const pinch = pinchRef.current;
+      if (!pinch || e.touches.length !== 2) return;
+      e.preventDefault();
+      const next = (pinch.zoom * touchDist(e.touches)) / pinch.dist;
+      applyZoom(
+        next,
+        (e.touches[0].clientX + e.touches[1].clientX) / 2,
+        (e.touches[0].clientY + e.touches[1].clientY) / 2
+      );
+    };
+
+    const onTouchEnd = (e: TouchEvent) => {
+      if (e.touches.length < 2) pinchRef.current = null;
+    };
+
+    el.addEventListener("touchstart", onTouchStart, { passive: true });
+    el.addEventListener("touchmove", onTouchMove, { passive: false });
+    el.addEventListener("touchend", onTouchEnd, { passive: true });
+    el.addEventListener("touchcancel", onTouchEnd, { passive: true });
+    return () => {
+      el.removeEventListener("touchstart", onTouchStart);
+      el.removeEventListener("touchmove", onTouchMove);
+      el.removeEventListener("touchend", onTouchEnd);
+      el.removeEventListener("touchcancel", onTouchEnd);
+    };
+  }, [open]);
 
   useEffect(() => {
     if (!open) return;
@@ -87,9 +158,9 @@ export default function FloorMapPanel({ src, alt, caption }: FloorMapPanelProps)
                   <span aria-hidden="true">×</span>
                 </button>
               </div>
-              <div className="floors_map_lightbox_body">
+              <div className="floors_map_lightbox_body" ref={bodyRef}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img className="floors_map_lightbox_img" src={src} alt="" />
+                <img ref={imgRef} className="floors_map_lightbox_img" src={src} alt="" />
                 <p className="floors_map_lightbox_scroll_hint" aria-hidden="true">
                   {t.scrollHint}
                 </p>
