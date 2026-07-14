@@ -1262,6 +1262,7 @@
 
 .main_faq_tags {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 20px 9px;
   margin: 0;

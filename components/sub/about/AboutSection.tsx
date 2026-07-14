@@ -83,7 +83,8 @@ export default function AboutSection({
   waysEyebrow = "Three Ways to Stay",
   waysTitle = (
     <>
-      일상이 특별해지는 <strong>세 가지 방식</strong>
+      일상이 특별해지는 <br className="br-mobile" />
+      <strong>세 가지 방식</strong>
     </>
   ),
   ways = DEFAULT_WAYS,
