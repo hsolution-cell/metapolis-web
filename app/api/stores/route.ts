@@ -10,6 +10,7 @@ export async function GET() {
     stores.map((s) => ({
       id: s.id,
       name: s.name,
+      nameEn: s.nameEn ?? null,
       block: s.block,
       floorId: s.floorId,
       tel: s.tel,

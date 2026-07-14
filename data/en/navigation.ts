@@ -16,3 +16,6 @@ export const EN_FOOTER_LINKS: EnNavItem[] = [
   { label: "Privacy Policy", href: "/privacy" },
   { label: "Sitemap", href: "/sitemap" },
 ];
+
+/** 헤더 검색 추천 해시태그(영문) */
+export const EN_SEARCH_TAGS = ["adidas", "SPAO", "Clinic", "ZIOZIA", "Kids"];

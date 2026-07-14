@@ -2,8 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { EN_NAV } from "@/data/en/navigation";
-import { SEARCH_TAGS } from "@/data/navigation";
+import { EN_NAV, EN_SEARCH_TAGS } from "@/data/en/navigation";
 import { useHeaderMenu } from "@/hooks/useHeaderMenu";
 import HeaderSearchResults from "@/components/layout/HeaderSearchResults";
 
@@ -146,7 +145,7 @@ export default function EnHeader() {
             </form>
             <HeaderSearchResults query={searchQuery} onSelect={closeSearch} />
             <ul className="header_search_tags" aria-label="Suggested keywords">
-              {SEARCH_TAGS.map((keyword) => (
+              {EN_SEARCH_TAGS.map((keyword) => (
                 <li key={keyword}>
                   <button
                     type="button"

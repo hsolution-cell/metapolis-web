@@ -105,19 +105,25 @@ export function useHeaderMenu() {
     setMobileAccordion((prev) => (prev === index ? null : index));
   }, []);
 
+  const isEnPath = pathname === "/en" || pathname?.startsWith("/en/");
+
   const navigateStoreSearch = useCallback(
     (query: string) => {
-      const destination = resolveStoreSearchDestination(searchableStores, query);
+      const destination = resolveStoreSearchDestination(
+        searchableStores,
+        query,
+        isEnPath
+      );
 
       if (destination.type === "empty") {
-        showToast("검색어를 입력해 주세요.");
+        showToast(isEnPath ? "Please enter a search term." : "검색어를 입력해 주세요.");
         return;
       }
 
       router.push(destination.href);
       closeSearch();
     },
-    [router, closeSearch, showToast, searchableStores]
+    [router, closeSearch, showToast, searchableStores, isEnPath]
   );
 
   const handleSearchSubmit = useCallback(

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useMemo } from "react";
+import { usePathname } from "next/navigation";
 import {
   formatStoreLocation,
   getStoreFloorHref,
@@ -19,6 +20,8 @@ export default function HeaderSearchResults({
   query,
   onSelect,
 }: HeaderSearchResultsProps) {
+  const pathname = usePathname();
+  const isEn = pathname === "/en" || pathname?.startsWith("/en/");
   const stores = useSearchableStores();
   const results = useMemo(() => searchStores(stores, query), [stores, query]);
   const trimmed = query.trim();
@@ -26,7 +29,11 @@ export default function HeaderSearchResults({
   if (!trimmed) return null;
 
   if (!results.length) {
-    return <p className="header_search_empty">검색 결과가 없습니다.</p>;
+    return (
+      <p className="header_search_empty">
+        {isEn ? "No results found." : "검색 결과가 없습니다."}
+      </p>
+    );
   }
 
   const preview = results.slice(0, 5);
@@ -34,23 +41,24 @@ export default function HeaderSearchResults({
   return (
     <div className="header_search_results">
       <p className="header_search_results_label">
-        매장 검색 결과 <span>{results.length}</span>
+        {isEn ? "Store results" : "매장 검색 결과"} <span>{results.length}</span>
       </p>
       <ul className="header_search_results_list">
         {preview.map((store) => (
           <li key={store.id}>
             <Link
-              href={getStoreFloorHref(store)}
+              href={getStoreFloorHref(store, isEn)}
               className="header_search_results_link"
               onClick={onSelect}
             >
-              <strong>{store.name}</strong>
+              <strong>{isEn ? store.nameEn ?? store.name : store.name}</strong>
               <span>{formatStoreLocation(store)}</span>
             </Link>
           </li>
         ))}
       </ul>
-      {results.length > preview.length ? (
+      {/* 전체 보기(국문 검색 페이지)는 영문에서 미노출 */}
+      {!isEn && results.length > preview.length ? (
         <Link
           href={getStoreSearchPageHref(trimmed)}
           className="header_search_results_more"
