@@ -22,7 +22,10 @@ export default function StoresSection() {
               eyebrow="Brands at Metapolis Mall"
               title={
                 <>
-                  <strong>메타폴리스몰을 빛내는 입점 브랜드</strong>
+                  <strong>
+                    메타폴리스몰을 빛내는 <br className="br-mobile" />
+                    입점 브랜드
+                  </strong>
                 </>
               }
               titleId="stores-brands-title"
