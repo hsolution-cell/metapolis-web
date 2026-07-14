@@ -36,9 +36,9 @@ export default async function EnHome() {
         tags={EN_FAQ_TAGS}
         title={
           <>
-            Before You Visit,
+            <strong>FAQs</strong>
             <br />
-            <strong>Frequently Asked Questions</strong>
+            Before You Visit
           </>
         }
         desc={EN_FAQ_INTRO.desc}
