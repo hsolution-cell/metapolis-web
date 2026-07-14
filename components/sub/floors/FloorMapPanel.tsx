@@ -37,6 +37,7 @@ export default function FloorMapPanel({ src, alt, caption }: FloorMapPanelProps)
   const bodyRef = useRef<HTMLDivElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
   const zoomRef = useRef(1);
+  const baseRef = useRef<{ w: number; h: number } | null>(null);
   const pinchRef = useRef<{ dist: number; zoom: number } | null>(null);
   const titleId = useId();
 
@@ -49,10 +50,13 @@ export default function FloorMapPanel({ src, alt, caption }: FloorMapPanelProps)
     if (!open) return;
 
     zoomRef.current = 1;
+    baseRef.current = null;
     const el = bodyRef.current;
     const img = imgRef.current;
     if (!el || !img) return;
-    img.style.width = "100%";
+    // 기본 크기는 CSS가 결정(데스크톱: 폭 맞춤 / 모바일: 높이 맞춤)
+    img.style.width = "";
+    img.style.height = "";
 
     const touchDist = (touches: TouchList) =>
       Math.hypot(
@@ -61,6 +65,8 @@ export default function FloorMapPanel({ src, alt, caption }: FloorMapPanelProps)
       );
 
     const applyZoom = (next: number, centerX: number, centerY: number) => {
+      const base = baseRef.current;
+      if (!base) return;
       const prev = zoomRef.current;
       const zoom = Math.min(MAX_ZOOM, Math.max(1, next));
       if (zoom === prev) return;
@@ -70,13 +76,19 @@ export default function FloorMapPanel({ src, alt, caption }: FloorMapPanelProps)
       const contentX = el.scrollLeft + cx;
       const contentY = el.scrollTop + cy;
       zoomRef.current = zoom;
-      img.style.width = `${zoom * 100}%`;
+      // 기준 크기 × 배율을 폭·높이 모두 지정 → 비율 항상 유지
+      img.style.width = `${base.w * zoom}px`;
+      img.style.height = `${base.h * zoom}px`;
       el.scrollLeft = (contentX * zoom) / prev - cx;
       el.scrollTop = (contentY * zoom) / prev - cy;
     };
 
     const onTouchStart = (e: TouchEvent) => {
       if (e.touches.length === 2) {
+        // 첫 핀치 시점의 렌더 크기를 기준으로 저장(비율 보존용)
+        if (!baseRef.current && zoomRef.current === 1) {
+          baseRef.current = { w: img.offsetWidth, h: img.offsetHeight };
+        }
         pinchRef.current = { dist: touchDist(e.touches), zoom: zoomRef.current };
       }
     };
