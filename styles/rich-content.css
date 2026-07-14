@@ -1,0 +1,110 @@
+/* ============================================================
+   관리자 에디터(TinyMCE) 본문 렌더 영역 — 전역 리셋 복원
+   common.css 리셋(b/strong·h태그·list-style 무력화)을
+   게시글 본문 스코프에서만 되돌린다.
+   적용: .events_detail_body(이벤트·당첨자·공지), .faq_a_text(FAQ)
+   ============================================================ */
+
+.events_detail_body strong,
+.events_detail_body b,
+.faq_a_text strong,
+.faq_a_text b {
+  font-weight: 700;
+}
+
+.events_detail_body em,
+.events_detail_body i,
+.faq_a_text em,
+.faq_a_text i {
+  font-style: italic;
+}
+
+.events_detail_body u,
+.faq_a_text u {
+  text-decoration: underline;
+}
+
+/* 제목 */
+.events_detail_body h1,
+.faq_a_text h1 {
+  font-size: 1.6em;
+  font-weight: 700;
+  margin: 1.2em 0 0.5em;
+}
+
+.events_detail_body h2,
+.faq_a_text h2 {
+  font-size: 1.4em;
+  font-weight: 700;
+  margin: 1.1em 0 0.5em;
+}
+
+.events_detail_body h3,
+.faq_a_text h3 {
+  font-size: 1.2em;
+  font-weight: 700;
+  margin: 1em 0 0.4em;
+}
+
+.events_detail_body h4,
+.faq_a_text h4 {
+  font-size: 1.05em;
+  font-weight: 700;
+  margin: 1em 0 0.4em;
+}
+
+/* 목록 */
+.events_detail_body ul,
+.faq_a_text ul {
+  list-style: disc;
+  padding-left: 1.4em;
+  margin: 0.6em 0;
+}
+
+.events_detail_body ol,
+.faq_a_text ol {
+  list-style: decimal;
+  padding-left: 1.4em;
+  margin: 0.6em 0;
+}
+
+.events_detail_body li,
+.faq_a_text li {
+  margin: 0.25em 0;
+}
+
+/* 링크 */
+.events_detail_body a,
+.faq_a_text a {
+  color: #8a6e3e;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* 표 (에디터 table 플러그인) */
+.events_detail_body table,
+.faq_a_text table {
+  border-collapse: collapse;
+  margin: 0.8em 0;
+  max-width: 100%;
+}
+
+.events_detail_body th,
+.events_detail_body td,
+.faq_a_text th,
+.faq_a_text td {
+  border: 1px solid #ddd;
+  padding: 8px 12px;
+}
+
+.events_detail_body th,
+.faq_a_text th {
+  font-weight: 700;
+  background: #f8f5ef;
+}
+
+/* 문단 기본 여백 */
+.events_detail_body p,
+.faq_a_text p {
+  margin: 0 0 0.9em;
+}
