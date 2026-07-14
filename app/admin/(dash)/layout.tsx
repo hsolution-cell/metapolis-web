@@ -20,14 +20,14 @@ export default async function AdminDashLayout({
           <Link href="/admin">대시보드</Link>
           <Link href="/admin/hero-banners">메인 배너</Link>
           <Link href="/admin/popups">팝업</Link>
-          <Link href="/admin/notices">고객알림</Link>
-          <Link href="/admin/categories">└ 구분 관리</Link>
           <Link href="/admin/events">메타폴리스몰 이벤트</Link>
           <Link href="/admin/store-events">매장 이벤트</Link>
           <Link href="/admin/winners">당첨자 발표</Link>
           <Link href="/admin/faq">자주 묻는 질문</Link>
           <Link href="/admin/faq/categories">└ 구분 관리</Link>
           <Link href="/admin/stores">입점 매장</Link>
+          <Link href="/admin/notices">고객알림</Link>
+          <Link href="/admin/categories">└ 구분 관리</Link>
         </nav>
         <div className="admin-side__foot">
           <p className="admin-side__user">{user?.email}</p>
