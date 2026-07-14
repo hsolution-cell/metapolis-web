@@ -553,7 +553,7 @@ html:has(.sub_page.stores) {
 
   .stores_detail_media {
     padding: 12px;
-    border-radius: 26px 26px 12px 12px;
+    border-radius: 26px;
   }
 
   .stores_detail_frame {
