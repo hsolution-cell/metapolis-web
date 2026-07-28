@@ -365,6 +365,10 @@ header.is-mega-open .mega_col[data-col="4"] {
   transition-delay:
     calc(var(--open-delay-item) + 0.16s), calc(var(--open-delay-item) + 0.16s);
 }
+header.is-mega-open .mega_col[data-col="5"] {
+  transition-delay:
+    calc(var(--open-delay-item) + 0.2s), calc(var(--open-delay-item) + 0.2s);
+}
 
 .mega_col ul {
   display: flex;

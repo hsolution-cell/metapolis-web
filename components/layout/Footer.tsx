@@ -30,7 +30,7 @@ export default function Footer() {
         <div className="f_mid">
           <ul className="f_nav">
             <li>
-              <Link href="/support/inquiry">입점문의</Link>
+              <Link href="/partnership">입점문의</Link>
             </li>
             <li>
               <Link href="/support/inquiry">대관문의</Link>

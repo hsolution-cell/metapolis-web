@@ -15,6 +15,7 @@ export const GNB_BANNER_IMAGES: Record<number, string> = {
   1: "/img/sub/banner/menu2.png", // 매장안내
   2: "/img/sub/banner/menu3.png", // 이벤트
   3: "/img/sub/banner/menu4.png", // 고객센터
+  4: "/img/sub/banner/menu4.png", // 입점·제휴 (고객센터 배너 공용)
 };
 
 export function getSubBannerImage(path: string): string {

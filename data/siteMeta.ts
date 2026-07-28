@@ -26,6 +26,7 @@ export const PAGE_META: Record<string, PageMeta> = {
   "/support/faq": { title: "METAPOLIS MALL | 자주 묻는 질문", description: "METAPOLIS MALL 자주 묻는 질문" },
   "/support/inquiry": { title: "METAPOLIS MALL | 문의하기", description: "METAPOLIS MALL 문의하기" },
   "/support/notices": { title: "METAPOLIS MALL | 고객알림", description: "METAPOLIS MALL 고객알림" },
+  "/partnership": { title: "METAPOLIS MALL | 입점·제휴 문의", description: "METAPOLIS MALL 입점·제휴 문의" },
   "/privacy": { title: "METAPOLIS MALL | 개인정보처리방침", description: "METAPOLIS MALL 개인정보처리방침" },
   "/terms": { title: "METAPOLIS MALL | 이용약관", description: "METAPOLIS MALL 이용약관" },
   "/sitemap": { title: "METAPOLIS MALL | 사이트맵", description: "METAPOLIS MALL 사이트맵" },
@@ -51,6 +52,7 @@ export const SUB_PAGES = [
   { path: "/support/faq", legacy: "menu4_1", label: "자주 묻는 질문" },
   { path: "/support/inquiry", legacy: "menu4_2", label: "문의하기" },
   { path: "/support/notices", legacy: "menu4_3", label: "고객알림" },
+  { path: "/partnership", legacy: "menu5_1", label: "입점·제휴 문의" },
 ] as const;
 
 export function getPageMeta(pathname: string): PageMeta {
