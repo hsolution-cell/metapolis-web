@@ -51,6 +51,8 @@ export type StoreRecord = {
   nameEn?: string | null;
   /** 추가 검색어(별칭) 목록 — 예: 무인양품 → ["무지", "muji"] */
   searchKeywords?: string[] | null;
+  /** 매장 소개 (팝업 노출용, 관리자 입력) */
+  description?: string | null;
   block: BranchBlock;
   floorId: string;
   tel: string;
@@ -1260,6 +1262,7 @@ export type StoreCardView = {
   name: string;
   tel: string;
   location: string;
+  description?: string | null;
   iconCategory: StoreIconCategory;
   guideCategory: StoreGuideCategory;
   hasEvent: boolean;
@@ -1280,6 +1283,7 @@ export function toStoreCardView(
     name: store.name,
     tel: store.tel,
     location: formatStoreLocation(store),
+    description: store.description ?? null,
     iconCategory: store.iconCategory,
     guideCategory: store.guideCategory,
     hasEvent: Boolean(eventHref),

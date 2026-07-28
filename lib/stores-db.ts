@@ -19,6 +19,8 @@ type StoreRow = {
   sort_order: number;
   /** 쉼표 구분 별칭 목록 (stores-search-keywords.sql 이전 DB에는 컬럼이 없을 수 있음) */
   search_keywords?: string | null;
+  /** 매장 소개 (stores-descriptions.sql 이전 DB에는 컬럼이 없을 수 있음) */
+  description?: string | null;
 };
 
 // 별칭 컬럼 미적용 DB에서도 조회가 깨지지 않도록 전체 컬럼 선택
@@ -39,6 +41,7 @@ function mapRow(row: StoreRow): StoreRecord & { sortOrder: number } {
     name: row.name,
     nameEn: row.name_en,
     searchKeywords: parseSearchKeywords(row.search_keywords),
+    description: row.description ?? null,
     block: row.block,
     floorId: row.floor_id,
     tel: row.tel,

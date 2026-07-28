@@ -42,6 +42,7 @@ export default function StoreForm({ mode, storeId, initial }: StoreFormProps) {
   const [name, setName] = useState(initial?.name ?? "");
   const [nameEn, setNameEn] = useState(initial?.nameEn ?? "");
   const [searchKeywords, setSearchKeywords] = useState(initial?.searchKeywords ?? "");
+  const [description, setDescription] = useState(initial?.description ?? "");
   const [block, setBlock] = useState<BranchBlock>((initial?.block as BranchBlock) ?? "a");
   const [floorId, setFloorId] = useState(
     initial?.floorId ?? BRANCH_FLOORS.a[0].id
@@ -78,6 +79,7 @@ export default function StoreForm({ mode, storeId, initial }: StoreFormProps) {
           name,
           nameEn,
           searchKeywords,
+          description,
           block,
           floorId,
           tel,
@@ -157,6 +159,17 @@ export default function StoreForm({ mode, storeId, initial }: StoreFormProps) {
           value={searchKeywords}
           onChange={(e) => setSearchKeywords(e.target.value)}
           placeholder="예: 무지, muji"
+        />
+      </div>
+
+      <div className="admin-field">
+        <label htmlFor="description">매장 소개 (매장 클릭 팝업에 노출)</label>
+        <textarea
+          id="description"
+          rows={3}
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          placeholder="예: 감각적인 문구·팬시 전문 브랜드로, 다양한 디자인 문구와 선물용 아이템을 만나볼 수 있습니다."
         />
       </div>
 

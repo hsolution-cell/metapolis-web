@@ -1,12 +1,17 @@
+"use client";
+
+import { useState } from "react";
 import type { StoreCardView } from "@/data/storeDirectory";
 import FloorIcon from "@/components/sub/floors/FloorIcon";
+import StoreDetailModal from "@/components/sub/floors/StoreDetailModal";
 
 type FloorStoreCardProps = {
   store: Pick<
     StoreCardView,
-    "name" | "tel" | "iconCategory" | "hasEvent" | "eventHref"
+    "id" | "name" | "tel" | "iconCategory" | "hasEvent" | "eventHref"
   > & {
     location?: string;
+    description?: string | null;
   };
   showLocation?: boolean;
 };
@@ -46,6 +51,7 @@ function StoreTel({
 }
 
 export default function FloorStoreCard({ store, showLocation = false }: FloorStoreCardProps) {
+  const [detailOpen, setDetailOpen] = useState(false);
   const isEventLink = Boolean(store.hasEvent && store.eventHref);
 
   return (
@@ -60,12 +66,15 @@ export default function FloorStoreCard({ store, showLocation = false }: FloorSto
         </span>
       ) : null}
 
-      {isEventLink ? (
-        <a
-          href={store.eventHref}
-          className="floors_store_hit"
-          aria-label={`${store.name} 진행 중 이벤트 보기`}
-        />
+      <button
+        type="button"
+        className="floors_store_hit"
+        aria-label={`${store.name} 상세 보기`}
+        onClick={() => setDetailOpen(true)}
+      />
+
+      {detailOpen ? (
+        <StoreDetailModal store={store} onClose={() => setDetailOpen(false)} />
       ) : null}
 
       <span className="floors_store_icon" aria-hidden="true">

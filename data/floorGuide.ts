@@ -15,7 +15,8 @@ export type FloorStoreCategory = StoreIconCategory;
 export type FloorGuideStore = Pick<
   StoreCardView,
   "id" | "name" | "tel" | "iconCategory" | "hasEvent" | "eventHref"
->;
+> &
+  Partial<Pick<StoreCardView, "location" | "description">>;
 
 function toFloorGuideStore(store: StoreCardView): FloorGuideStore {
   return {
@@ -25,6 +26,8 @@ function toFloorGuideStore(store: StoreCardView): FloorGuideStore {
     iconCategory: store.iconCategory,
     hasEvent: store.hasEvent,
     eventHref: store.eventHref,
+    location: store.location,
+    description: store.description,
   };
 }
 
