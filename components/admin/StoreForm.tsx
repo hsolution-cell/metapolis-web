@@ -41,6 +41,7 @@ export default function StoreForm({ mode, storeId, initial }: StoreFormProps) {
   const router = useRouter();
   const [name, setName] = useState(initial?.name ?? "");
   const [nameEn, setNameEn] = useState(initial?.nameEn ?? "");
+  const [searchKeywords, setSearchKeywords] = useState(initial?.searchKeywords ?? "");
   const [block, setBlock] = useState<BranchBlock>((initial?.block as BranchBlock) ?? "a");
   const [floorId, setFloorId] = useState(
     initial?.floorId ?? BRANCH_FLOORS.a[0].id
@@ -76,6 +77,7 @@ export default function StoreForm({ mode, storeId, initial }: StoreFormProps) {
         const input: StoreInput = {
           name,
           nameEn,
+          searchKeywords,
           block,
           floorId,
           tel,
@@ -146,6 +148,16 @@ export default function StoreForm({ mode, storeId, initial }: StoreFormProps) {
             onChange={(e) => setSortOrder(Number(e.target.value))}
           />
         </div>
+      </div>
+
+      <div className="admin-field">
+        <label htmlFor="searchKeywords">추가 검색어 (쉼표로 구분 — 이 단어로도 매장검색에 노출)</label>
+        <input
+          id="searchKeywords"
+          value={searchKeywords}
+          onChange={(e) => setSearchKeywords(e.target.value)}
+          placeholder="예: 무지, muji"
+        />
       </div>
 
       <div className="admin-field">

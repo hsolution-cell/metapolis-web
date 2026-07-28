@@ -11,6 +11,7 @@ export async function GET() {
       id: s.id,
       name: s.name,
       nameEn: s.nameEn ?? null,
+      searchKeywords: s.searchKeywords ?? null,
       block: s.block,
       floorId: s.floorId,
       tel: s.tel,

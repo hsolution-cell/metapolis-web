@@ -13,6 +13,7 @@ export function searchStores(stores: StoreRecord[], query: string): StoreRecord[
   return stores.filter((store) => {
     if (store.name.toLowerCase().includes(keyword)) return true;
     if (store.nameEn?.toLowerCase().includes(keyword)) return true;
+    if (store.searchKeywords?.some((k) => k.toLowerCase().includes(keyword))) return true;
 
     const category = STORE_GUIDE_CATEGORIES.find(
       (item) => item.id === store.guideCategory

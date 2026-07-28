@@ -49,6 +49,8 @@ export type StoreRecord = {
   name: string;
   /** 영문 매장명(관리자 입력, 없으면 국문 이름 사용) */
   nameEn?: string | null;
+  /** 추가 검색어(별칭) 목록 — 예: 무인양품 → ["무지", "muji"] */
+  searchKeywords?: string[] | null;
   block: BranchBlock;
   floorId: string;
   tel: string;

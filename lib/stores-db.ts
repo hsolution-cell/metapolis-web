@@ -17,16 +17,28 @@ type StoreRow = {
   guide_category: StoreGuideCategory;
   is_signature: boolean;
   sort_order: number;
+  /** 쉼표 구분 별칭 목록 (stores-search-keywords.sql 이전 DB에는 컬럼이 없을 수 있음) */
+  search_keywords?: string | null;
 };
 
-const STORE_SELECT =
-  "id, name, name_en, block, floor_id, tel, icon_category, guide_category, is_signature, sort_order";
+// 별칭 컬럼 미적용 DB에서도 조회가 깨지지 않도록 전체 컬럼 선택
+const STORE_SELECT = "*";
+
+function parseSearchKeywords(raw: string | null | undefined): string[] | null {
+  if (!raw) return null;
+  const keywords = raw
+    .split(",")
+    .map((k) => k.trim())
+    .filter(Boolean);
+  return keywords.length ? keywords : null;
+}
 
 function mapRow(row: StoreRow): StoreRecord & { sortOrder: number } {
   return {
     id: row.id,
     name: row.name,
     nameEn: row.name_en,
+    searchKeywords: parseSearchKeywords(row.search_keywords),
     block: row.block,
     floorId: row.floor_id,
     tel: row.tel,

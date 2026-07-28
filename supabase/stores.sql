@@ -40,7 +40,7 @@ select v.* from (values
   ('juno_hair', '준오헤어', 'a', '4f', '031-8015-4102', 'hair_service', 'beauty', false),
   ('bandiinhouse', '반디인하우스', 'a', '4f', '010-8689-8241', 'makeup', 'beauty', false),
   ('yoshikatsu', '요시카츠', 'a', '4f', '031-613-5525', 'fb', 'dining', false),
-  ('namdopansikㅊ', '남도분식', 'a', '4f', '031-613-5525', 'fb', 'dining', false),
+  ('namdopansik', '남도분식', 'a', '4f', '031-613-5525', 'fb', 'dining', false),
   ('hongsujjimdak', '홍수계찜닭', 'a', '4f', '031-613-6755', 'fb', 'dining', false),
   ('abikko', '아비꼬', 'a', '4f', '031-613-8101', 'fb', 'dining', false),
   ('cgv-a-3f', 'CGV', 'a', '3f', '031-8015-4110', 'culture', 'lifestyle', true),

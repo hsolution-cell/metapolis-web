@@ -394,6 +394,7 @@ export async function deleteStoreEvent(id: string) {
 export type StoreInput = {
   name: string;
   nameEn: string;
+  searchKeywords: string;
   block: string;
   floorId: string;
   tel: string;
@@ -417,6 +418,7 @@ export async function createStore(input: StoreInput) {
     id,
     name: input.name.trim(),
     name_en: input.nameEn.trim() || null,
+    search_keywords: input.searchKeywords.trim() || null,
     block: input.block,
     floor_id: input.floorId,
     tel: input.tel.trim() || "—",
@@ -436,6 +438,7 @@ export async function updateStore(id: string, input: StoreInput) {
     .update({
       name: input.name.trim(),
       name_en: input.nameEn.trim() || null,
+      search_keywords: input.searchKeywords.trim() || null,
       block: input.block,
       floor_id: input.floorId,
       tel: input.tel.trim() || "—",
