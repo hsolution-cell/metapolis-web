@@ -24,7 +24,16 @@ const LEGACY_REDIRECTS = [
 
 const nextConfig: NextConfig = {
   async redirects() {
-    return LEGACY_REDIRECTS;
+    return [
+      // www → 대표 도메인(metapolis.kr) 통일
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.metapolis.kr" }],
+        destination: "https://metapolis.kr/:path*",
+        permanent: true,
+      },
+      ...LEGACY_REDIRECTS,
+    ];
   },
 };
 

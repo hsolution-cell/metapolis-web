@@ -8,7 +8,7 @@ import { ToastProvider } from "@/contexts/ToastContext";
 import { DEFAULT_META } from "@/data/siteMeta";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://metapolis.co.kr";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://metapolis.kr";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

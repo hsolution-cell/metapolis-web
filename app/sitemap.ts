@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { SUB_PAGES } from "@/data/siteMeta";
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://metapolis.co.kr";
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://metapolis.kr";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPaths = [
