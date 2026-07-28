@@ -23,7 +23,7 @@ export default function StoreSearchSection() {
     <div className="floors store_search">
       <div className="floors_inner content_inner innerTop innerBot">
         <SubReveal threshold={0.12} rootMargin="0px 0px -8% 0px">
-          <header className="store_search_head">
+          <div className="store_search_head">
             <p className="store_search_eyebrow">Store Search</p>
             <h2 className="store_search_title">매장 검색</h2>
             {query ? (
@@ -34,7 +34,7 @@ export default function StoreSearchSection() {
             ) : (
               <p className="store_search_lead">찾으시는 매장명을 입력해 주세요.</p>
             )}
-          </header>
+          </div>
 
           <StoreSearchBar autoFocus={!query} />
 
