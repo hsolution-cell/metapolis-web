@@ -486,7 +486,8 @@
 .floors_store_hit {
   position: absolute;
   inset: 0;
-  z-index: 1;
+  /* 아이콘·매장명·전화(z-index:2)까지 덮어 카드 전체가 팝업 트리거가 되도록 최상위 배치 */
+  z-index: 3;
   border-radius: inherit;
   text-decoration: none;
 }
