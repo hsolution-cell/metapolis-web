@@ -83,7 +83,7 @@ export const EN_FAQ_INTRO = {
 
 export const EN_LOCATION = {
   desc: "Enjoy a relaxing time at Metapolis Mall, a place to stroll and unwind.",
-  addressEn: "220, Dongtanjungang-ro, Dongtan-gu, Hwaseong-si, Gyeonggi-do",
+  addressEn: "220(A Block) · 200(B Block), Dongtanjungang-ro, Dongtan-gu, Hwaseong-si, Gyeonggi-do",
   tel: "031-371-7000",
   hour: "10:30 - 22:00",
   primary: { href: "/en/location", label: "Access & Parking" },
@@ -95,7 +95,7 @@ export const EN_CONTACT = {
   title: "Contact Us",
   subtitle: "Got a question?",
   text: "Feel free to call our main number. Our Service Desk is happy to assist you with general inquiries, store leasing, and venue rentals.",
-  address: "220 Dongtanjungang-ro, Hwaseong-si, Gyeonggi-do",
+  address: "220(A) · 200(B) Dongtanjungang-ro, Hwaseong-si, Gyeonggi-do",
   phone: "031-371-7000",
   supportHours: "09:00 - 18:00",
   // "(365 days)"가 중간에서 끊기지 않도록 비분리 공백 사용 → "10:30 - 22:00 / (365 days)"

@@ -24,7 +24,7 @@ export default function QuickMenu() {
     : {
         inquiryTitle: "빠른 문의",
         locationTitle: "위치 안내",
-        locationDesc: "동탄중앙로 220",
+        locationDesc: "동탄중앙로 220·200",
         locationHref: "/location",
         topLabel: "맨 위로",
       };

@@ -62,7 +62,7 @@ export default function Footer() {
 
         <div className="f_bottom">
           <p className="f_info">
-            경기 화성시 동탄중앙로 220 <span className="f_sep">|</span>
+            경기 화성시 동탄중앙로 220(A블록)·200(B블록) <span className="f_sep">|</span>
             TEL 031-371-7000 <span className="f_sep">|</span>
             FAX 031-613-2891
           </p>
