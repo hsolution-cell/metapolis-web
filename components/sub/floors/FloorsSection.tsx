@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import SubReveal from "@/components/sub/SubReveal";
+import StoreSearchBar from "@/components/sub/stores/StoreSearchBar";
 import FloorsBlockToggle from "@/components/sub/floors/FloorsBlockToggle";
 import FloorMapPanel from "@/components/sub/floors/FloorMapPanel";
 import FloorStoreCard from "@/components/sub/floors/FloorStoreCard";
@@ -73,6 +74,7 @@ export default function FloorsSection({
     <div className="floors">
       <div className="floors_inner content_inner innerTop innerBot">
         <SubReveal threshold={0.12} rootMargin="0px 0px -8% 0px">
+          <StoreSearchBar />
           <div className="floors_layout">
             <aside className="floors_sidebar" aria-label={ariaLabel}>
               <FloorsBlockToggle block={block} onChange={handleBlockChange} />

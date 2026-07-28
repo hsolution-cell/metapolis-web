@@ -115,3 +115,96 @@
     white-space: normal;
   }
 }
+
+/* 인페이지 매장 검색바 (층별안내·매장검색 페이지 상단) */
+.store_searchbar {
+  position: relative;
+  max-width: 640px;
+  margin: 0 auto clamp(32px, 4.5vw, 48px);
+}
+
+.store_searchbar_form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 6px 4px 20px;
+  border: 1.5px solid var(--mp-gold, #b89968);
+  border-radius: 999px;
+  background: #fff;
+}
+
+.store_searchbar_input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+  font-size: 16px;
+  line-height: 44px;
+  color: var(--mp-text, #1a2e3b);
+}
+
+.store_searchbar_input::placeholder {
+  color: rgba(26, 46, 59, 0.4);
+}
+
+.store_searchbar_input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+
+.store_searchbar_submit {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--mp-gold, #b89968);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.store_searchbar_submit:hover {
+  background: #a8895a;
+}
+
+.store_searchbar_submit svg {
+  width: 20px;
+  height: 20px;
+}
+
+.store_searchbar_results {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% + 8px);
+  z-index: 5;
+  padding: 4px 24px 20px;
+  border: 1px solid #ece8e1;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 16px 40px rgba(26, 46, 59, 0.12);
+}
+
+.store_searchbar_results .header_search_results {
+  margin-top: 16px;
+}
+
+.store_searchbar_results .header_search_empty {
+  margin: 16px 0 0;
+  font-size: 15px;
+  color: #8c857b;
+}
+
+@media (max-width: 768px) {
+  .store_searchbar_form {
+    padding-left: 16px;
+  }
+  .store_searchbar_input {
+    font-size: 15px;
+    line-height: 40px;
+  }
+}

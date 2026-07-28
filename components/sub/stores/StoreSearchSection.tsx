@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useMemo } from "react";
 import { useSearchParams } from "next/navigation";
 import SubReveal from "@/components/sub/SubReveal";
+import StoreSearchBar from "@/components/sub/stores/StoreSearchBar";
 import {
   formatStoreLocation,
   getStoreFloorHref,
@@ -31,9 +32,11 @@ export default function StoreSearchSection() {
                 <span>{results.length}</span>건
               </p>
             ) : (
-              <p className="store_search_lead">헤더 검색창에서 매장명을 입력해 주세요.</p>
+              <p className="store_search_lead">찾으시는 매장명을 입력해 주세요.</p>
             )}
           </header>
+
+          <StoreSearchBar autoFocus={!query} />
 
           {!query ? (
             <p className="store_search_empty">검색어가 없습니다.</p>

@@ -15,6 +15,10 @@ export default function QuickMenu() {
   const isEn = pathname === "/en" || pathname?.startsWith("/en/");
   const t = isEn
     ? {
+        searchTitle: "Store Search",
+        searchDesc: "Find a store",
+        // 영문 검색 페이지가 없어 검색바가 있는 층별안내로 연결
+        searchHref: "/en/floors",
         inquiryTitle: "Contact Us",
         locationTitle: "Location",
         locationDesc: "METAPOLIS MALL",
@@ -22,6 +26,9 @@ export default function QuickMenu() {
         topLabel: "Back to top",
       }
     : {
+        searchTitle: "매장검색",
+        searchDesc: "찾으시는 매장 검색",
+        searchHref: "/stores/search",
         inquiryTitle: "빠른 문의",
         locationTitle: "위치 안내",
         locationDesc: "동탄중앙로 220·200",
@@ -37,6 +44,20 @@ export default function QuickMenu() {
   return (
     <aside className="quick">
       <ul className="quick_list">
+        <li className="quick_item quick_item--expand">
+          <Link href={t.searchHref} className="quick_link">
+            <span className="quick_icon quick_icon--gold" aria-hidden="true">
+              <img src="/img/quick_icon_search.svg" alt="" />
+            </span>
+            <span className="quick_body">
+              <span className="quick_title">{t.searchTitle}</span>
+              <span className="quick_desc">{t.searchDesc}</span>
+            </span>
+            <span className="quick_arrow" aria-hidden="true">
+              <img src="/img/quick_icon_arrow.svg" alt="" />
+            </span>
+          </Link>
+        </li>
         <li className="quick_item quick_item--expand">
           <a href="tel:031-371-7000" className="quick_link">
             <span className="quick_icon quick_icon--gold" aria-hidden="true">
