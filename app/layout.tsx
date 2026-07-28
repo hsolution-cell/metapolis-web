@@ -43,6 +43,42 @@ export default function RootLayout({
         />
       </head>
       <body>
+        {/* 쇼핑몰 사업장 구조화 데이터 — 구글 지역검색·AI 검색용 */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "ShoppingCenter",
+              name: "메타폴리스몰",
+              alternateName: "METAPOLIS MALL",
+              url: SITE_URL,
+              image: `${SITE_URL}/img/thumbnail.png`,
+              telephone: "+82-31-371-7000",
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "동탄중앙로 220",
+                addressLocality: "화성시",
+                addressRegion: "경기도",
+                addressCountry: "KR",
+              },
+              openingHoursSpecification: {
+                "@type": "OpeningHoursSpecification",
+                dayOfWeek: [
+                  "Monday",
+                  "Tuesday",
+                  "Wednesday",
+                  "Thursday",
+                  "Friday",
+                  "Saturday",
+                  "Sunday",
+                ],
+                opens: "10:30",
+                closes: "22:00",
+              },
+            }),
+          }}
+        />
         <ToastProvider>
           <div className="wrap">
             <Header />

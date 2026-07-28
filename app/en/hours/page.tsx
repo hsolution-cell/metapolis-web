@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import { buildPageAlternates } from "@/lib/pageMetadata";
 import EnSubLayout from "@/components/en/EnSubLayout";
 import HoursSection from "@/components/sub/hours/HoursSection";
 import { EN_HOURS_CATEGORIES } from "@/data/en/hours";
 
 export const metadata: Metadata = {
+  alternates: buildPageAlternates("/en/hours"),
   title: "METAPOLIS MALL | Hours",
   description: "METAPOLIS MALL opening hours — open year-round, 10:30 AM to 10:00 PM.",
 };

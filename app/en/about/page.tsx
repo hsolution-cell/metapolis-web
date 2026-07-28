@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import { buildPageAlternates } from "@/lib/pageMetadata";
 import EnSubLayout from "@/components/en/EnSubLayout";
 import AboutSection from "@/components/sub/about/AboutSection";
 import { EN_ABOUT_WAYS } from "@/data/en/about";
 
 export const metadata: Metadata = {
+  alternates: buildPageAlternates("/en/about"),
   title: "METAPOLIS MALL | About METAPOLIS MALL",
   description: "About METAPOLIS MALL — Dongtan's premier heart of premium lifestyle.",
 };

@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+import { buildPageAlternates } from "@/lib/pageMetadata";
 import HeroSection from "@/components/home/HeroSection";
 import BranchSection from "@/components/home/BranchSection";
 import FaqSection from "@/components/home/FaqSection";
@@ -13,6 +15,10 @@ import {
   EN_CONTACT,
 } from "@/data/en/home";
 import { getActiveHeroSlides } from "@/lib/hero-banners-db";
+
+export const metadata: Metadata = {
+  alternates: buildPageAlternates("/en"),
+};
 
 export default async function EnHome() {
   // 관리자가 등록한 영문 배너 사용, 없거나 조회 실패 시 기본 슬라이드로 폴백

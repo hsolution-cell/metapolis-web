@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildPageAlternates } from "@/lib/pageMetadata";
 import EnSubLayout from "@/components/en/EnSubLayout";
 import ParkingSection from "@/components/sub/parking/ParkingSection";
 import {
@@ -9,6 +10,7 @@ import {
 } from "@/data/en/parking";
 
 export const metadata: Metadata = {
+  alternates: buildPageAlternates("/en/location"),
   title: "METAPOLIS MALL | Access & Parking",
   description: "How to get to METAPOLIS MALL and parking guide, fees, and validation.",
 };

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildPageAlternates } from "@/lib/pageMetadata";
 import EnSubLayout from "@/components/en/EnSubLayout";
 import FloorsSection from "@/components/sub/floors/FloorsSection";
 import { buildEnFloorGuideBlocks } from "@/data/en/floors";
@@ -6,6 +7,7 @@ import { resolveFloorGuideSelection } from "@/data/floorGuide";
 import { listStores } from "@/lib/stores-db";
 
 export const metadata: Metadata = {
+  alternates: buildPageAlternates("/en/floors"),
   title: "METAPOLIS MALL | Floor Guide",
   description: "METAPOLIS MALL floor-by-floor store directory for Block A and Block B.",
 };
