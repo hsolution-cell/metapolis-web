@@ -38,7 +38,7 @@ export default function Page() {
         mapImage="/img/sub/parking/map-en.png"
         mapAlt="Metapolis Mall Block A / Block B parking entrance map"
         caption="No vehicular movement between Blocks A & B"
-        addressText="220, Dongtanjungang-ro, Dongtan-gu, Hwaseong-si, Gyeonggi-do"
+        addressText="220(A Block) · 200(B Block), Dongtanjungang-ro, Dongtan-gu, Hwaseong-si, Gyeonggi-do"
         processLabel="Process"
         processTitle="Parking Guide"
         processSteps={EN_PARKING_STEPS}
