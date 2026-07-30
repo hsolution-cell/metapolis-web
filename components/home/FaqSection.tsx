@@ -28,8 +28,8 @@ export default function FaqSection({
   ),
   desc = "가장 많이 찾으시는 문의사항을 정리해 드립니다.",
   contactLabel = "고객센터",
-  tel = "Tel. 031 - 731 - 7000",
-  telHref = "tel:0317317000",
+  tel = "Tel. 031 - 371 - 7000",
+  telHref = "tel:0313717000",
   ariaLabel = "자주 묻는 질문",
 }: FaqSectionProps = {}) {
   const sectionRef = useRef<HTMLElement>(null);

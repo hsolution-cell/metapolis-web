@@ -36,7 +36,7 @@ export const EN_FAQ_ITEMS: EnFaqItem[] = [
     num: "03",
     question: "Where can I rent a stroller or wheelchair?",
     answer:
-      "Rentals are available at the Service Desk (Block A, 2nd floor). For inquiries, call 031-731-7000.",
+      "Rentals are available at the Service Desk (Block A, 2nd floor). For inquiries, call 031-371-7000.",
   },
   {
     num: "04",
@@ -60,7 +60,7 @@ export const EN_FAQ_ITEMS: EnFaqItem[] = [
     num: "07",
     question: "How do I inquire about partnerships and venue rentals?",
     answer:
-      "Please contact our Customer Center (031-731-7000). A representative will review and assist you.",
+      "Please contact our Customer Center (031-371-7000). A representative will review and assist you.",
   },
 ];
 
