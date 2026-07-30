@@ -18,8 +18,8 @@ type LocationSectionProps = {
 
 export default function LocationSection({
   desc = "산책하듯 머무는 곳, 메타폴리스몰에서 여유를 즐겨보세요.",
-  addressKo = "경기도 화성시 동탄중앙로 220(A블록)·200(B블록) 메타폴리스몰",
-  addressEn = "220(A Block) · 200(B Block), Dongtanjungang-ro, Dongtan-gu, Hwaseong-si, Gyeonggi-do",
+  addressKo = "경기도 화성시 동탄중앙로 220 / 200 메타폴리스몰",
+  addressEn = "220 / 200, Dongtanjungang-ro, Dongtan-gu, Hwaseong-si, Gyeonggi-do",
   mapSrc = "/img/main_location_map.png",
   mapAlt = "메타폴리스몰 A Block, B Block 위치 안내 지도",
   tel = "031-371-7000",

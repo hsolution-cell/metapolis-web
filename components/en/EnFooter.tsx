@@ -18,7 +18,7 @@ export default function EnFooter() {
         {/* 1행: 주소(좌) ↔ FAX · TEL(우) */}
         <div className="f_mid">
           <p className="f_info">
-            220(A Block) · 200(B Block), Dongtanjungang-ro, Dongtan-gu, Hwaseong-si, Gyeonggi-do
+            220 / 200, Dongtanjungang-ro, Dongtan-gu, Hwaseong-si, Gyeonggi-do
           </p>
           <p className="f_contact">
             FAX 031-613-2891 <span className="f_sep">|</span> TEL 031-371-7000
