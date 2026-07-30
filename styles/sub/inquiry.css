@@ -48,6 +48,7 @@
   margin-bottom: clamp(40px, 6vw, 60px);
   font-size: 20px;
   line-height: 1.75;
+  letter-spacing: -0.05em;
   color: #33302b;
   opacity: 0.6;
   word-break: keep-all;
