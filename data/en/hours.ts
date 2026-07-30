@@ -8,13 +8,6 @@ export const EN_HOURS_CATEGORIES: EnHoursCategory[] = [
     title: "Shopping & Culture",
     stores: [
       {
-        category: "Hypermarket",
-        name: "Homeplus",
-        logo: "/img/main_branch_store_homeplus.png",
-        schedules: [{ label: "Daily", value: "10:00 - 24:00" }],
-        note: "Closed: 2nd & 4th Sundays",
-      },
-      {
         category: "Cinema",
         name: "CGV",
         logo: "/img/main_branch_store_cgv.png",
@@ -124,10 +117,7 @@ export const EN_HOURS_CATEGORIES: EnHoursCategory[] = [
         category: "Pharmacy",
         name: "I-Sarang Haedeun Pharmacy",
         logo: "/img/sub/hours/icons/pharmacy.png",
-        schedules: [
-          { label: "Mon - Fri", value: "08:30 - 22:00" },
-          { label: "Sun & Holidays", value: "09:00 - 22:00" },
-        ],
+        schedules: [{ label: "Mon - Sat", value: "08:30 - 21:00" }],
       },
     ],
   },

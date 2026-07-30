@@ -52,30 +52,6 @@ export const MAJOR_STORES: MajorStore[] = [
     ],
   },
   {
-    id: "homeplus",
-    category: "MART · 대형마트",
-    name: "홈플러스",
-    cardLocation: "B블록 B2 ~ B5",
-    locationBadge: "B블록 B2 ~ B5",
-    floorGuide: { block: "b", floorId: "b2b4" },
-    description:
-      "엄선된 신선함과 합리적인 가치로 쇼핑 그 이상의 풍요로운 일상을 선물합니다",
-    cardLogo: "/img/main_branch_store_homeplus.png",
-    detailLogo: "/img/sub/stores/homeplus-logo.png",
-    image: "/img/sub/stores/homeplus.png",
-    imageAlt: "홈플러스 매장",
-    details: [
-      { label: "Hours", value: "10:00 – 24:00 (2·4번째 일요일 휴무)" },
-      { label: "Tel", value: "031-8015-7000" },
-      {
-        label: "Location",
-        value: "B블록 B2 ~ B5",
-        link: { label: "위치 확인하기" },
-      },
-      { label: "Parking", value: "구매 금액별 무료 시간 상이" },
-    ],
-  },
-  {
     id: "outback",
     category: "DINING · 레스토랑",
     name: "아웃백",

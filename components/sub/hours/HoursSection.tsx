@@ -29,13 +29,6 @@ const HOURS_CATEGORIES: HoursCategory[] = [
     title: "Shopping & Culture",
     stores: [
       {
-        category: "대형마트",
-        name: "홈플러스",
-        logo: "/img/main_branch_store_homeplus.png",
-        schedules: DAILY("10:00 - 24:00"),
-        note: "매달 둘째 · 넷째 주 일요일 의무휴업",
-      },
-      {
         category: "영화관",
         name: "CGV",
         logo: "/img/main_branch_store_cgv.png",

@@ -31,7 +31,6 @@ export const STORE_LABELS: Record<string, string> = {
   theblackbelt: "THE BLACK BELT",
   gs25: "GS25",
   mochistory: "MOCHISTORY",
-  tiger: "TIGER",
   abcmart: "ABC MART",
   artbox: "artbox",
   zin: "ZIN",
@@ -73,7 +72,7 @@ export const BRANCH_STORES: Record<BranchBlock, Record<string, string[]>> = {
   },
   b: {
     "4f": ["aladin", "majipiero", "salon_de_marshall"],
-    "3f": ["theblackbelt", "gs25", "mochistory", "jjang_orakil", "tiger"],
+    "3f": ["theblackbelt", "gs25", "mochistory", "jjang_orakil"],
     "2f": ["abcmart", "artbox", "zin", "modernhouse", "topten"],
     "1f": ["muji", "etland", "designskin", "modernhouse", "lloyd"],
     b2b4: ["homeplus"],

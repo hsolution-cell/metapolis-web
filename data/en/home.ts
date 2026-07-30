@@ -77,8 +77,8 @@ export const EN_FAQ_TAGS = [
 export const EN_FAQ_INTRO = {
   desc: "Here are our most frequently asked questions",
   contactLabel: "Customer Service Center",
-  tel: "Tel. 031 - 731 - 7000",
-  telHref: "tel:0317317000",
+  tel: "Tel. 031 - 371 - 7000",
+  telHref: "tel:0313717000",
 };
 
 export const EN_LOCATION = {
