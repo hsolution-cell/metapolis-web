@@ -24,7 +24,6 @@ export const STORE_LABELS: Record<string, string> = {
   ashley: "ASHLEY",
   starbucks: "Starbucks",
   resortlab: "RESORT LAB",
-  frisbee: "FRISBEE",
   aladin: "알라딘",
   majipiero: "마지삐에로",
   salon_de_marshall: "Salon de Marshall",
@@ -40,7 +39,6 @@ export const STORE_LABELS: Record<string, string> = {
   etland: "전자랜드",
   designskin: "designskin",
   lloyd: "LLOYD",
-  homeplus: "Homeplus",
 };
 
 export type BranchBlock = "a" | "b";
@@ -68,14 +66,15 @@ export const BRANCH_STORES: Record<BranchBlock, Record<string, string[]>> = {
     "3f": ["cgv", "outback", "thai", "jjang_orakil", "geogung"],
     "2f": ["mixxo", "shesmiss", "giordano", "crocs", "tokkijung"],
     "1f": ["adidas", "discovery", "newbalance", "thenorthface", "oliveyoung"],
-    b2: ["8seconds", "ashley", "starbucks", "resortlab", "frisbee"],
+    b2: ["8seconds", "ashley", "starbucks", "resortlab"],
   },
   b: {
     "4f": ["aladin", "majipiero", "salon_de_marshall"],
     "3f": ["theblackbelt", "gs25", "mochistory", "jjang_orakil"],
     "2f": ["abcmart", "artbox", "zin", "modernhouse", "topten"],
     "1f": ["muji", "etland", "designskin", "modernhouse", "lloyd"],
-    b2b4: ["homeplus"],
+    // 홈플러스 안내 삭제 요청으로 비움 — 빈 층은 메인 바로가기에서 미노출
+    b2b4: [],
   },
 };
 

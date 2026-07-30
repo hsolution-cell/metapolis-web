@@ -44,7 +44,10 @@ function FloorNav({
   activeFloorId: string;
   onSelect: (key: string) => void;
 }) {
-  const floors = BRANCH_FLOORS[block];
+  // 매장이 없는 층은 메인 바로가기에서 미노출
+  const floors = BRANCH_FLOORS[block].filter(
+    (floor) => (BRANCH_STORES[block][floor.id] ?? []).length > 0
+  );
   const blockLabel = block.toUpperCase();
 
   return (
@@ -151,7 +154,7 @@ export default function BranchSection({
     const parsed = parseDetailKey(key);
     if (!parsed) return;
     const { block, floorId } = parsed;
-    if (!BRANCH_STORES[block]?.[floorId]) return;
+    if (!BRANCH_STORES[block]?.[floorId]?.length) return;
     setDetailBlock(block);
     setActiveFloorId(floorId);
   }, []);
