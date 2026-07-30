@@ -2,6 +2,7 @@ import HeroSection from "@/components/home/HeroSection";
 import CateSection from "@/components/home/CateSection";
 import BranchSection from "@/components/home/BranchSection";
 import FaqSection from "@/components/home/FaqSection";
+import InquirySection from "@/components/sub/inquiry/InquirySection";
 import LocationSection from "@/components/home/LocationSection";
 import { getActiveHeroSlides } from "@/lib/hero-banners-db";
 import { buildPageMetadata } from "@/lib/pageMetadata";
@@ -19,6 +20,8 @@ export default async function HomePage() {
       <CateSection />
       <BranchSection />
       <FaqSection />
+      {/* Contact Us — 영문 메인과 동일 구성(문의하기 디자인 재사용, 국문 기본 문구) */}
+      <InquirySection className="main-inquiry" />
       <LocationSection />
     </>
   );

@@ -2109,3 +2109,19 @@
     background: #c75d3c;
   }
 }
+
+/* 메인 Contact Us 섹션 — 영문 메인(en-inquiry)과 동일 룩 */
+.inquiry.main-inquiry .inquiry_card {
+  background: linear-gradient(
+    180deg,
+    rgba(91, 65, 22, 0.95) 0%,
+    rgba(58, 39, 8, 0.95) 77%
+  );
+}
+.inquiry.main-inquiry .inquiry_title {
+  color: #462e0a;
+}
+.inquiry.main-inquiry .inquiry_address_text {
+  font-size: 16px;
+  color: #8a6e3e;
+}
