@@ -117,7 +117,10 @@ export const EN_HOURS_CATEGORIES: EnHoursCategory[] = [
         category: "Pharmacy",
         name: "I-Sarang Haedeun Pharmacy",
         logo: "/img/sub/hours/icons/pharmacy.png",
-        schedules: [{ label: "Mon - Sat", value: "08:30 - 21:00" }],
+        schedules: [
+          { label: "Mon - Sat", value: "08:30 - 21:00" },
+          { label: "Sun & Holidays", value: "09:00 - 21:00" },
+        ],
       },
     ],
   },

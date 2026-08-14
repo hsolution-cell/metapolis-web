@@ -139,8 +139,8 @@ const HOURS_CATEGORIES: HoursCategory[] = [
         name: "아이사랑해든약국",
         logo: "/img/sub/hours/icons/pharmacy.png",
         schedules: [
-          { label: "평일 · 토요일", value: "08:30 - 22:00" },
-          { label: "일 · 공휴일", value: "09:00 - 22:00" },
+          { label: "평일 · 토요일", value: "08:30 - 21:00" },
+          { label: "일 · 공휴일", value: "09:00 - 21:00" },
         ],
       },
     ],
