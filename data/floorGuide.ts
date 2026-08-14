@@ -124,13 +124,7 @@ const FLOOR_META: Record<BranchBlock, Omit<FloorGuideFloor, "stores">[]> = {
       mapImage: MAP_B1,
       mapCaption: "B BLOCK · FLOOR DIRECTORY",
     },
-    {
-      id: "b2b4",
-      label: "B2",
-      summary: "기타",
-      mapImage: MAP_BB2,
-      mapCaption: "B BLOCK · FLOOR DIRECTORY",
-    },
+    // B2(b2b4)는 홈플러스 안내 정리로 층별안내에서 숨김 (2026-08 고객 요청)
   ],
 };
 
