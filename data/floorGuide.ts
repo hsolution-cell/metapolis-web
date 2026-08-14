@@ -127,7 +127,7 @@ const FLOOR_META: Record<BranchBlock, Omit<FloorGuideFloor, "stores">[]> = {
     {
       id: "b2b4",
       label: "B2",
-      summary: "홈플러스 · 대형마트",
+      summary: "기타",
       mapImage: MAP_BB2,
       mapCaption: "B BLOCK · FLOOR DIRECTORY",
     },

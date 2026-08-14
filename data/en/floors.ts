@@ -16,7 +16,7 @@ const EN_FLOOR_META: Record<BranchBlock, Omit<FloorGuideFloor, "stores">[]> = {
     { id: "3f", label: "3F", summary: "Kids · Convenience · F&B", mapImage: "/img/sub/floors/maps/b3_en.png", mapCaption: "B BLOCK · FLOOR DIRECTORY" },
     { id: "2f", label: "2F", summary: "Living · Goods · Interior", mapImage: "/img/sub/floors/maps/b2_en.png", mapCaption: "B BLOCK · FLOOR DIRECTORY" },
     { id: "1f", label: "1F", summary: "Lifestyle · Electronics · Beauty", mapImage: "/img/sub/floors/maps/b1_en.png", mapCaption: "B BLOCK · FLOOR DIRECTORY" },
-    { id: "b2b4", label: "B2", summary: "Homeplus · Hypermarket", mapImage: "/img/sub/floors/maps/bb2_en.png", mapCaption: "B BLOCK · FLOOR DIRECTORY" },
+    { id: "b2b4", label: "B2", summary: "Others", mapImage: "/img/sub/floors/maps/bb2_en.png", mapCaption: "B BLOCK · FLOOR DIRECTORY" },
   ],
 };
 

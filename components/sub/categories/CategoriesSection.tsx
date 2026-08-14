@@ -23,6 +23,12 @@ const BLOCK_LABELS: Record<BranchBlock, string> = {
   b: "B Block",
 };
 
+/** More 카테고리 국문 라벨은 블록별로 다르게 표기 (A: 기타, B: 잡화 · 기타) */
+const MORE_LABELS_KO: Record<BranchBlock, string> = {
+  a: "기타",
+  b: "잡화 · 기타",
+};
+
 type CategoriesSectionProps = {
   allStores: StoreRecord[];
   ongoing?: OngoingStoreEventLinks;
@@ -41,6 +47,10 @@ export default function CategoriesSection({ allStores, ongoing }: CategoriesSect
 
   const blockLabel = BLOCK_LABELS[block];
   const banner = getCategoryBanner(categoryId);
+
+  const getLabelKo = (item: { id: StoreGuideCategoryFilter; labelKo: string }) =>
+    item.id === "more" ? MORE_LABELS_KO[block] : item.labelKo;
+  const categoryLabelKo = getLabelKo(category);
 
   const stores = useMemo(
     () =>
@@ -104,7 +114,7 @@ export default function CategoriesSection({ allStores, ongoing }: CategoriesSect
                           }}
                         >
                           <span className="floors_nav_floor">{item.labelEn}</span>
-                          <span className="floors_nav_summary">{item.labelKo}</span>
+                          <span className="floors_nav_summary">{getLabelKo(item)}</span>
                         </button>
                       </li>
                     );
@@ -117,10 +127,10 @@ export default function CategoriesSection({ allStores, ongoing }: CategoriesSect
               <div className="floors_content_head">
                 <div className="floors_content_title">
                   <p className="floors_content_block">{blockLabel}</p>
-                  <h2 className="floors_content_floor categories_content_title">{category.labelKo}</h2>
+                  <h2 className="floors_content_floor categories_content_title">{categoryLabelKo}</h2>
                 </div>
                 <p className="floors_content_summary">
-                  {getCategoryGuideSummary(blockLabel, category.labelKo)}
+                  {getCategoryGuideSummary(blockLabel, categoryLabelKo)}
                 </p>
               </div>
 
@@ -129,7 +139,7 @@ export default function CategoriesSection({ allStores, ongoing }: CategoriesSect
                 categoryId={categoryId}
                 image={banner.image}
                 captionEn={banner.captionEn}
-                alt={`${blockLabel} ${category.labelKo} 카테고리 배너`}
+                alt={`${blockLabel} ${categoryLabelKo} 카테고리 배너`}
               />
 
               <section className="floors_directory" aria-labelledby="categories-directory-title">
