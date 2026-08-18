@@ -83,7 +83,7 @@ export default function InquirySection({
       무엇이든 문의하세요
     </>
   ),
-  desc = "대표 번호로 편하게 연락해 주시면, 서비스 데스크에서 이용 안내 및 입점 · 대관 등의 업무를 친절하게 안내해 드립니다.",
+  desc = "대표 번호로 편하게 연락해 주시면, 서비스 데스크에서 이용 안내를 친절하게 안내해 드립니다.",
   addressLabel = "ADDRESS",
   address = INQUIRY_ADDRESS,
   cardAriaLabel = "고객센터 연락처",
