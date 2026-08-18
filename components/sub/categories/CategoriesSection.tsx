@@ -52,17 +52,22 @@ export default function CategoriesSection({ allStores, ongoing }: CategoriesSect
     item.id === "more" ? MORE_LABELS_KO[block] : item.labelKo;
   const categoryLabelKo = getLabelKo(category);
 
-  const stores = useMemo(
-    () =>
-      allStores
-        .filter(
-          (store) =>
-            store.block === block &&
-            (categoryId === "all" || store.guideCategory === categoryId)
-        )
-        .map((store) => toStoreCardView(store, ongoing)),
-    [allStores, categoryId, block, ongoing]
-  );
+  const stores = useMemo(() => {
+    // 층별안내용으로 층마다 등록된 동일 매장(CGV 등)은 카테고리 화면에서 한 번만 노출
+    const seenNames = new Set<string>();
+    return allStores
+      .filter(
+        (store) =>
+          store.block === block &&
+          (categoryId === "all" || store.guideCategory === categoryId)
+      )
+      .filter((store) => {
+        if (seenNames.has(store.name)) return false;
+        seenNames.add(store.name);
+        return true;
+      })
+      .map((store) => toStoreCardView(store, ongoing));
+  }, [allStores, categoryId, block, ongoing]);
 
   const visibleStores = stores.slice(0, visibleCount);
   const hasMore = visibleCount < stores.length;
