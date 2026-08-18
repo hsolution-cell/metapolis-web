@@ -4,7 +4,6 @@ export const STORE_LABELS: Record<string, string> = {
   cgv: "CGV",
   mad_for_garlic: "Mad for Garlic",
   juno_hair: "JUNO HAIR",
-  hanilgwan: "한일관",
   hongsujjimdak: "홍수계찜닭",
   outback: "OUTBACK",
   thai: "Thai",
@@ -62,7 +61,7 @@ export const BRANCH_FLOORS: Record<BranchBlock, { id: string; label: string }[]>
 
 export const BRANCH_STORES: Record<BranchBlock, Record<string, string[]>> = {
   a: {
-    "4f": ["cgv", "mad_for_garlic", "juno_hair", "hanilgwan", "hongsujjimdak"],
+    "4f": ["cgv", "mad_for_garlic", "juno_hair", "hongsujjimdak"],
     "3f": ["cgv", "outback", "thai", "jjang_orakil", "geogung"],
     "2f": ["mixxo", "shesmiss", "giordano", "crocs", "tokkijung"],
     "1f": ["adidas", "discovery", "newbalance", "thenorthface", "oliveyoung"],
