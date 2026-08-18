@@ -40,7 +40,7 @@ export const FACILITIES: Facility[] = [
     cardLocation: "A블록 2F",
     locationBadge: "A블록 2F",
     description:
-      "고객 불편사항 접수, 미아 보호 서비스, 유모차 및 휠체어 대여 등 방문 고객을 위한 기본 안내 서비스를 제공합니다.",
+      "고객 불편사항 접수, 분실물 보관, 미아 보호 서비스, 유모차 및 휠체어 대여 등 방문 고객을 위한 기본 안내 서비스를 제공합니다.",
     imageCaption: "SERVICE",
     image: `${IMAGE_BASE}/service.jpg`,
     imageAlt: "서비스 데스크 안내 데스크",
@@ -136,7 +136,7 @@ export const FACILITIES: Facility[] = [
     cardLocation: "A블록 B2",
     locationBadge: "A블록 B2",
     description:
-      "분실물 보관, 안전 관리, 비상 상황 대응 등 고객이 안심하고 머무를 수 있도록 24시간 운영합니다.",
+      "안전 관리, 비상 상황 대응 등 고객이 안심하고 머무를 수 있도록 24시간 운영합니다.",
     imageCaption: "SECURITY",
     image: `${IMAGE_BASE}/security.jpg`,
     imageAlt: "보안실",
