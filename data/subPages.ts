@@ -18,9 +18,16 @@ export const GNB_BANNER_IMAGES: Record<number, string> = {
   4: "/img/sub/banner/menu4.png", // 입점·제휴 (고객센터 배너 공용)
 };
 
+/** GNB에서 숨긴 페이지의 배너 (그룹 인덱스로 찾을 수 없어 경로로 지정) */
+const HIDDEN_PAGE_BANNERS: Record<string, string> = {
+  "/partnership": "/img/sub/banner/menu4.png", // 고객센터 배너 공용
+};
+
 export function getSubBannerImage(path: string): string {
   const gnbIndex = getGnbIndex(path);
-  if (gnbIndex === undefined) return DEFAULT_SUB_BANNER;
+  if (gnbIndex === undefined) {
+    return HIDDEN_PAGE_BANNERS[path] ?? DEFAULT_SUB_BANNER;
+  }
   return GNB_BANNER_IMAGES[gnbIndex] ?? DEFAULT_SUB_BANNER;
 }
 
