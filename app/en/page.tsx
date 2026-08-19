@@ -77,11 +77,19 @@ export default async function EnHome() {
         phone={EN_CONTACT.phone}
         phoneHref="tel:0313717000"
         consultLabel="Support Hours"
-        consultHours={EN_CONTACT.supportHours}
+        consultHours={
+          <>
+            10:30 - 22:00
+            <br />
+            (365 days)
+          </>
+        }
         operationLabel="Operating Hours"
         operationHours={
           <>
-            10:30 - 22:00 <span className="en-nowrap">(365 days)</span>
+            10:30 - 22:00
+            <br />
+            (365 days)
           </>
         }
         watermark="CALL"
