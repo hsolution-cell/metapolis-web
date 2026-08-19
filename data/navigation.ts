@@ -48,11 +48,12 @@ export const GNB_GROUPS: NavGroup[] = [
       { label: "고객알림", href: "/support/notices" },
     ],
   },
-  {
-    label: "입점·제휴",
-    href: "/partnership",
-    items: [{ label: "입점·제휴 문의", href: "/partnership" }],
-  },
+  // 입점·제휴 메뉴 숨김 (2026-08 요청) — 페이지(/partnership)는 유지, 노출만 중단
+  // {
+  //   label: "입점·제휴",
+  //   href: "/partnership",
+  //   items: [{ label: "입점·제휴 문의", href: "/partnership" }],
+  // },
 ];
 
 export const SEARCH_TAGS = ["아디다스", "스파오", "내과", "지오지아", "키즈"];
@@ -74,7 +75,6 @@ export const PATH_GNB_INDEX: Record<string, number> = {
   "/support/faq": 3,
   "/support/inquiry": 3,
   "/support/notices": 3,
-  "/partnership": 4,
 };
 
 export function getGnbIndex(pathname: string): number | undefined {

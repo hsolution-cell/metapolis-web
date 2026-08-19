@@ -29,12 +29,14 @@ export default function Footer() {
 
         <div className="f_mid">
           <ul className="f_nav">
+            {/* 입점문의·대관문의 숨김 (2026-08 요청)
             <li>
               <Link href="/partnership">입점문의</Link>
             </li>
             <li>
               <Link href="/support/inquiry">대관문의</Link>
             </li>
+            */}
             <li>
               <Link href="/terms">이용약관</Link>
             </li>
